@@ -1,55 +1,131 @@
 /*  TODO
-load gfx files
-load pal files
-draw gfx to screen with palettes
-list of sprites and their locations/compatibility within the gfx files
-select which sprites you want to include
-detect conflicts
-create exgfx based on selection
-save exgfx file
+[x] load gfx files
+[x] draw gfx to screen
+[x] select palette
+[ ] list of sprites and their palettes/locations/compatibility
+[ ] select which sprites you want to include
+[ ] detect conflicts
+[ ] create exgfx based on selection
+[ ] save exgfx file
 
 
-search bar
-categories - castle, koopas, powerups, etc
-sprite images
-"passable" conflict detection (pokey head football, bone spiny etc)
-    show all animation frames, variations etc
-checkbox for lava particles
+[ ] search bar
+[ ] categories - castle, koopas, powerups, etc
+[ ] sprite images
+[ ] "passable" conflict detection (pokey head football, bone spiny etc)
+[ ]     show all animation frames, variations etc
+[ ] checkbox for lava particles
 
 
-remap sprite locations? (for use with STEAR etc)
-custom sprites?
+[ ] load custom pal files
+[ ] remap sprite locations? (for use with STEAR etc)
+[ ] custom sprites?
 
 */
-const palette = ["#000000", "#202020", "#404040", "#606060", "#808080", "#A0A0A0", "#C0C0C0", "#E0E0E0", "#FFFFFF"]
+const palettes = [
+    ["#0000","#f8f8f8","#000000","#885818","#d8a038","#f8d870","#f8c898","#e800b0","#500000","#f84070","#203088","#408098","#80d8c8","#b02860","#f87068","#f8f800"],
+    ["#0000","#f8f8f8","#000000","#707070","#a0a0a0","#c0c0c0","#e0e0e0","#f81058","#0000","#f8f8f8","#000000","#00c800","#b00000","#f80000","#f85800","#f8a000"],
+    ["#0000","#f8f8f8","#000000","#f87800","#f8c000","#f8f800","#b82800","#f88800","#0000","#f8f8f8","#000000","#00c800","#e81868","#f040a8","#f878c8","#f8c0f0"],
+    ["#0000","#f8f8f8","#000000","#4040d8","#6868d8","#8888f8","#b82800","#f88800","#0000","#f8f8f8","#000000","#00c800","#00e000","#88f838","#c8f800","#f8f898"],
+    ["#0000","#f8f8f8","#000000","#880000","#b80000","#f80000","#b82800","#f88800","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"],
+    ["#0000","#f8f8f8","#000000","#007800","#00b800","#00f800","#b82800","#f88800","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"],
+    ["#0000","#f8f8f8","#000000","#005050","#007878","#00a0a0","#b82800","#f88800","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"],
+    ["#0000","#f8f8f8","#000000","#707070","#a0a0a0","#c0c0c0","#b82800","#f88800","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"],
+    ["#0000","#f8f8f8","#000000","#a00868","#d00888","#f860c8","#b04000","#f89800","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"],
+    ["#0000","#f8f8f8","#000000","#d8f8c0","#60c000","#588000","#a84828","#f89030","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"],
+    ["#0000","#f8f8f8","#000000","#283048","#485058","#686858","#989040","#c0c078","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"],
+    ["#0000","#f8f8f8","#184848","#207068","#288878","#30a088","#38b898","#f80080","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"],
+    ["#0000","#f8f8f8","#000000","#307080","#a0d0e0","#d0f8f8","#e8f8f8","#4040d8","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"],
+    ["#0000","#f8f8f8","#000000","#706858","#908878","#b0a890","#c8b8a0","#983858","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"],
+    ["#0000","#f8f8f8","#000000","#8098f8","#98b0f8","#b0c8f8","#c8e0f8","#f80080","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"],
+    ["#0000","#f8f8f8","#000000","#f8b098","#f0b0b0","#e8a8c8","#e098e0","#f80080","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"],
+    ["#0000","#f8f8f8","#000000","#5858a0","#689898","#98e898","#f82860","#e8c068","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"],
+    ["#0000","#f8f8f8","#908858","#688090","#402020","#505040","#685850","#787078","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"],
+    ["#0000","#f8f8f8","#000000","#a8f8f8","#b8f8f8","#c8f8f8","#c8f8f8","#e0f8f8","#000000","#000000","#000000","#000000","#000000","#000000","#000000","#000000"]
+];
+const gfxFileNames = ["GFX00","GFX01","GFX02","GFX03","GFX04","GFX05","GFX06","GFX09","GFX0A","GFX0D","GFX0E","GFX0F","GFX11","GFX12","GFX13","GFX20","GFX22","GFX23","GFX24","GFX25"]
 
-const allGfx = []
+//  ==============================================================
+
+let activePaletteIndex = 2;
+let slot1GfxIndex = 0;
+let slot2GfxIndex = 1;
+const allGfx = [];
+
+//  ==============================================================
+
+window.onload = async function () {
+    // load cached palettes, gfx etc...
+
+    // populate palette select
+    const paletteSelect = document.getElementById("paletteSelect")
+    for (let i = 0; i < palettes.length; i++) {
+        const option = new Option(`Palette ${i}`, i)
+        paletteSelect.appendChild(option)
+    }
+    paletteSelect.onchange = function (e) {
+        activePaletteIndex = +(e.target.value)
+        drawPixelsToCanvas()
+    }
+
+    // populate gfx select
+    const gfx1Select = document.getElementById("gfx1Select")
+    const gfx2Select = document.getElementById("gfx2Select")
+    for (let i = 0; i < gfxFileNames.length; i++) {
+        gfx1Select.appendChild(new Option(gfxFileNames[i], i))
+        gfx2Select.appendChild(new Option(gfxFileNames[i], i))
+    }
+    gfx1Select.onchange = function (e) {
+        slot1GfxIndex = +(e.target.value)
+        drawPixelsToCanvas()
+    }
+    gfx2Select.onchange = function (e) {
+        slot2GfxIndex = +(e.target.value)
+        drawPixelsToCanvas()
+    }
+    gfx1Select.value = slot1GfxIndex
+    gfx2Select.value = slot2GfxIndex
+
+    // import GFX files
+    for (let i = 0; i < gfxFileNames.length; i++) {
+        const blob = await fetch(`/gfx/${gfxFileNames[i]}.bin`)
+        loadGfxFile(blob, gfxFileNames[i])
+    };
+
+    drawPixelsToCanvas()
+};
 
 function loadGfxFile(blob, name) {
     blob.arrayBuffer().then(((arrayBuffer) => {
-        const snesBytes = new Int8Array(arrayBuffer)
+        const snesBytes = new Int8Array(arrayBuffer);
 
-        const pixels = snesToPixels(snesBytes)
+        const pixels = snesToPixels(snesBytes);
 
-        allGfx.push({ name, pixels })
-
-        drawPixelsToCanvas(pixels)
+        allGfx.push({ name, pixels });
     }))
 }
 
-function loadGraphics() {
-    fetch("/gfx/GFX05.bin").then(blob => loadGfxFile(blob))
-}
-
-function drawPixelsToCanvas(pixels) {
+function drawPixelsToCanvas() {
     const canvas = document.getElementById("canvas");
     const ctx = canvas.getContext("2d");
+    ctx.reset()
     ctx.resetTransform()
-    ctx.scale(2,2)
+    ctx.scale(2, 2)
+
     // todo: createImageData from pixels
-    for (i = 0; i < pixels.length; i++) {
-        ctx.fillStyle = palette[pixels[i]]
+
+    const palette = palettes[activePaletteIndex]
+    const slot1Gfx = allGfx[slot1GfxIndex]
+    const slot2Gfx = allGfx[slot2GfxIndex]
+
+    for (i = 0; i < slot1Gfx.pixels.length; i++) {
+        ctx.fillStyle = palette[slot1Gfx.pixels[i]]
         ctx.fillRect(i % 256, Math.floor(i / 256), 1, 1);
+    }
+
+    for (i = 0; i < slot2Gfx.pixels.length; i++) {
+        ctx.fillStyle = palette[slot2Gfx.pixels[i]]
+        ctx.fillRect(i % 256, Math.floor(i / 256) + 70, 1, 1);
     }
 }
 
