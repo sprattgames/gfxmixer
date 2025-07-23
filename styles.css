@@ -28,9 +28,15 @@ canvas {
 .flex-column {
     display: flex;
     flex-direction: column;
+    .flex-row {
+        margin-bottom: 16px;
+    }
 }
 
 .flex-row {
     display: flex;
     flex-direction: row;
+    .flex-column {
+        margin-right: 16px;
+    }
 }

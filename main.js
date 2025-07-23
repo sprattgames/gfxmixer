@@ -85,11 +85,11 @@ const allSprites = [
 
 //  ==============================================================
 
-let activePaletteIndex = 2;
-const scale = 2;
+let activePaletteIndex = 0;
 const allGfx = [];
-const gfxIndexes = [0, 1, 2, 3]
+const gfxIndexes = [0, 1, 13, 3]
 const gfxBitmaps = [];
+const scale = 3;
 
 let selectedTile = -1
 let selected8x8 = true
@@ -105,6 +105,8 @@ let gfxCtx, spriteCtx
 
 window.onload = async function () {
     const gfxCanvas = document.getElementById("gfxCanvas");
+    gfxCanvas.setAttribute("width", 128 * scale)
+    gfxCanvas.setAttribute("height", 256 * scale)
     gfxCtx = gfxCanvas.getContext("2d");
     gfxCanvas.onclick = function (e) {
         let x, y
@@ -146,16 +148,18 @@ window.onload = async function () {
     }
 
     const spriteCanvas = document.getElementById("spriteCanvas");
+    spriteCanvas.setAttribute("width", 128 * scale)
+    spriteCanvas.setAttribute("height", 128 * scale)
     spriteCtx = spriteCanvas.getContext("2d");
     spriteCanvas.onclick = function (e) {
-        if (selectedTile) {
+        if (selectedTile > -1) {
             let x, y
             if (selected8x8) {
-                x = Math.floor(e.offsetX / (8 * scale))
-                y = Math.floor(e.offsetY / (8 * scale))
+                x = Math.floor(e.offsetX / (4 * scale))
+                y = Math.floor(e.offsetY / (4 * scale))
             } else {
-                x = Math.floor((e.offsetX - 8) / (8 * scale))
-                y = Math.floor((e.offsetY - 8) / (8 * scale))
+                x = Math.floor((e.offsetX - 16) / (4 * scale))
+                y = Math.floor((e.offsetY - 16) / (4 * scale))
             }
             currentSprite.renderSequence.push([
                 Math.floor(selectedTile / 128),
@@ -164,8 +168,8 @@ window.onload = async function () {
                 selected8x8,
                 x,
                 y,
-                false,
-                false
+                e.shiftKey,
+                e.ctrlKey
             ])
         }
         renderSpriteCanvas();
@@ -176,19 +180,30 @@ window.onload = async function () {
         if (selectedTile > -1) {
             let x, y
             if (selected8x8) {
-                x = Math.floor(e.offsetX / (8 * scale))
-                y = Math.floor(e.offsetY / (8 * scale))
+                x = Math.floor(e.offsetX / (4 * scale))
+                y = Math.floor(e.offsetY / (4 * scale))
             } else {
-                x = Math.floor((e.offsetX - 8) / (8 * scale))
-                y = Math.floor((e.offsetY - 8) / (8 * scale))
+                x = Math.floor((e.offsetX - 16) / (4 * scale))
+                y = Math.floor((e.offsetY - 16) / (4 * scale))
             }
             const tx = selectedTile % 16
             const ty = Math.floor(selectedTile / 16) % 8
             const size = selected8x8 ? 8 : 16
             const bitmap = gfxBitmaps[Math.floor(selectedTile / 128)];
-            spriteCtx.globalAlpha = 0.5
-            spriteCtx.drawImage(bitmap, tx * 8, ty * 8, size, size, x * 8, y * 8, size, size)
-            spriteCtx.globalAlpha = 1
+            const xScale = e.shiftKey ? -1 : 1
+            const yScale = e.ctrlKey ? -1 : 1
+
+            spriteCtx.save();
+
+            spriteCtx.globalAlpha = 0.5;
+
+            spriteCtx.translate(x * 4, y * 4);
+            spriteCtx.scale(xScale, yScale);
+            spriteCtx.translate(-x * 4, -y * 4);
+
+            spriteCtx.drawImage(bitmap, tx * 8, ty * 8, size, size, x * 4, y * 4, size * xScale, size * yScale);
+
+            spriteCtx.restore();
         }
     }
     spriteCanvas.onmouseleave = function (e) {
@@ -297,11 +312,30 @@ function renderSpriteCanvas() {
     spriteCtx.scale(scale, scale)
     spriteCtx.imageSmoothingEnabled = false;
 
+    // draw center point
+    spriteCtx.strokeStyle = "darkslategrey";
+    spriteCtx.moveTo(64, 0);
+    spriteCtx.lineTo(64, 256);
+    spriteCtx.moveTo(0, 64);
+    spriteCtx.lineTo(256, 64);
+    spriteCtx.stroke()
+
     for (let i = 0; i < currentSprite.renderSequence.length; i++) {
         const [slot, tx, ty, is8x8, x, y, xFlip, yFlip] = currentSprite.renderSequence[i]
         const size = is8x8 ? 8 : 16
         const bitmap = gfxBitmaps[slot];
-        spriteCtx.drawImage(bitmap, tx * 8, ty * 8, size, size, x * 8, y * 8, size, size)
+        const xScale = xFlip ? -1 : 1
+        const yScale = yFlip ? -1 : 1
+
+        spriteCtx.save();
+
+        spriteCtx.translate(x * 4, y * 4);
+        spriteCtx.scale(xScale, yScale);
+        spriteCtx.translate(-x * 4, -y * 4);
+
+        spriteCtx.drawImage(bitmap, tx * 8, ty * 8, size, size, x * 4, y * 4, size * xScale, size * yScale);
+
+        spriteCtx.restore();
     }
 }
 
