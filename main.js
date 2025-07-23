@@ -44,53 +44,59 @@ const hexPalettes = [
     ["#0000", "#f8f8f8", "#000000", "#a8f8f8", "#b8f8f8", "#c8f8f8", "#c8f8f8", "#e0f8f8", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"]
 ];
 
-const rgbaPalettes = [
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [136, 88, 24, 255], [216, 160, 56, 255], [248, 216, 112, 255], [248, 200, 152, 255], [232, 0, 176, 255], [80, 0, 0, 255], [248, 64, 112, 255], [32, 48, 136, 255], [64, 128, 152, 255], [128, 216, 200, 255], [176, 40, 96, 255], [248, 112, 104, 255], [248, 248, 0, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [112, 112, 112, 255], [160, 160, 160, 255], [192, 192, 192, 255], [224, 224, 224, 255], [248, 16, 88, 255], [0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [0, 200, 0, 255], [176, 0, 0, 255], [248, 0, 0, 255], [248, 88, 0, 255], [248, 160, 0, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [248, 120, 0, 255], [248, 192, 0, 255], [248, 248, 0, 255], [184, 40, 0, 255], [248, 136, 0, 255], [0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [0, 200, 0, 255], [232, 24, 104, 255], [240, 64, 168, 255], [248, 120, 200, 255], [248, 192, 240, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [64, 64, 216, 255], [104, 104, 216, 255], [136, 136, 248, 255], [184, 40, 0, 255], [248, 136, 0, 255], [0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [0, 200, 0, 255], [0, 224, 0, 255], [136, 248, 56, 255], [200, 248, 0, 255], [248, 248, 152, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [136, 0, 0, 255], [184, 0, 0, 255], [248, 0, 0, 255], [184, 40, 0, 255], [248, 136, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [0, 120, 0, 255], [0, 184, 0, 255], [0, 248, 0, 255], [184, 40, 0, 255], [248, 136, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [0, 80, 80, 255], [0, 120, 120, 255], [0, 160, 160, 255], [184, 40, 0, 255], [248, 136, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [112, 112, 112, 255], [160, 160, 160, 255], [192, 192, 192, 255], [184, 40, 0, 255], [248, 136, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [160, 8, 104, 255], [208, 8, 136, 255], [248, 96, 200, 255], [176, 64, 0, 255], [248, 152, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [216, 248, 192, 255], [96, 192, 0, 255], [88, 128, 0, 255], [168, 72, 40, 255], [248, 144, 48, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [40, 48, 72, 255], [72, 80, 88, 255], [104, 104, 88, 255], [152, 144, 64, 255], [192, 192, 120, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [24, 72, 72, 255], [32, 112, 104, 255], [40, 136, 120, 255], [48, 160, 136, 255], [56, 184, 152, 255], [248, 0, 128, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [48, 112, 128, 255], [160, 208, 224, 255], [208, 248, 248, 255], [232, 248, 248, 255], [64, 64, 216, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [112, 104, 88, 255], [144, 136, 120, 255], [176, 168, 144, 255], [200, 184, 160, 255], [152, 56, 88, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [128, 152, 248, 255], [152, 176, 248, 255], [176, 200, 248, 255], [200, 224, 248, 255], [248, 0, 128, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [248, 176, 152, 255], [240, 176, 176, 255], [232, 168, 200, 255], [224, 152, 224, 255], [248, 0, 128, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [88, 88, 160, 255], [104, 152, 152, 255], [152, 232, 152, 255], [248, 40, 96, 255], [232, 192, 104, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [144, 136, 88, 255], [104, 128, 144, 255], [64, 32, 32, 255], [80, 80, 64, 255], [104, 88, 80, 255], [120, 112, 120, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255]],
-    [[0, 0, 0, 0], [248, 248, 248, 255], [0, 0, 0, 255], [168, 248, 248, 255], [184, 248, 248, 255], [200, 248, 248, 255], [200, 248, 248, 255], [224, 248, 248, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255], [0, 0, 0, 255]]
-]
-
 // generate rgba palettes from hexPalettes
-/*
-console.log(hexPalettes.map(palette => `[${palette.map(hex => {
+const rgbaPalettes = hexPalettes.map(palette => palette.map(hex => {
     var c;
+    if (hex.length == 5 || hex.length == 9) {
+        return [0, 0, 0, 0]
+    }
     if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
         c = hex.substring(1).split('');
         if (c.length == 3) {
             c = [c[0], c[0], c[1], c[1], c[2], c[2]];
         }
         c = '0x' + c.join('');
-        return '[' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',1]\n';
+        return [(c >> 16) & 255, (c >> 8) & 255, c & 255, 255]
     }
-    return '[0,0,0,0]\n'
-}).join()
-    }]`).join());
-*/
+    return [0, 0, 0, 0] // bad hex code, return as empty
+}))
 
 const gfxFileNames = ["GFX00", "GFX01", "GFX02", "GFX03", "GFX04", "GFX05", "GFX06", "GFX09", "GFX0A", "GFX0D", "GFX0E", "GFX0F", "GFX11", "GFX12", "GFX13", "GFX20", "GFX22", "GFX23", "GFX24", "GFX25"]
 
 //  ==============================================================
 
+const allSprites = [
+    {
+        id: 0x0D,
+        name: "Bob-Omb",
+        palette: 1,
+        tiles: [316, 330, 331, 332, 333, 346, 347, 348, 349],
+        gfxTiles: [
+            {
+                slot: 2,
+                validGfxFiles: ["GFX02"],
+            }
+        ],
+        renderSequence: [
+            // [ tile, x, y, small, flipx, flipy ]
+        ]
+    }
+]
+
+//  ==============================================================
+
 let activePaletteIndex = 2;
+const scale = 2;
 const allGfx = [];
 const gfxIndexes = [0, 1, 2, 3]
 const gfxBitmaps = [];
+
+let selectedTile = -1
+let selected8x8 = true
+
+let currentSprite = allSprites[0]
+
+let gfxCtx, spriteCtx
 
 //  ==============================================================
 
@@ -98,6 +104,112 @@ const gfxBitmaps = [];
 //  ==============================================================
 
 window.onload = async function () {
+    const gfxCanvas = document.getElementById("gfxCanvas");
+    gfxCtx = gfxCanvas.getContext("2d");
+    gfxCanvas.onclick = function (e) {
+        let x, y
+        if (e.shiftKey) {
+            x = Math.floor(e.offsetX / (8 * scale))
+            y = Math.floor(e.offsetY / (8 * scale))
+            selected8x8 = true
+        } else {
+            x = Math.floor((e.offsetX - 8) / (8 * scale))
+            y = Math.floor((e.offsetY - 8) / (8 * scale))
+            selected8x8 = false
+        }
+        selectedTile = x + y * 16
+        renderGfxCanvas();
+        e.preventDefault();
+    }
+    gfxCanvas.onmousemove = function (e) {
+        renderGfxCanvas();
+        let x, y
+        if (e.shiftKey) {
+            x = Math.floor(e.offsetX / (8 * scale))
+            y = Math.floor(e.offsetY / (8 * scale))
+        } else {
+            x = Math.floor((e.offsetX - 8) / (8 * scale))
+            y = Math.floor((e.offsetY - 8) / (8 * scale))
+        }
+        gfxCtx.beginPath()
+        gfxCtx.lineWidth = 1;
+        gfxCtx.strokeStyle = 'white';
+        if (e.shiftKey) {
+            gfxCtx.rect(x * 8, y * 8, 8, 8);
+        } else {
+            gfxCtx.rect(x * 8, y * 8, 16, 16);
+        }
+        gfxCtx.stroke();
+    }
+    gfxCanvas.onmouseleave = function (e) {
+        renderGfxCanvas();
+    }
+
+    const spriteCanvas = document.getElementById("spriteCanvas");
+    spriteCtx = spriteCanvas.getContext("2d");
+    spriteCanvas.onclick = function (e) {
+        if (selectedTile) {
+            let x, y
+            if (selected8x8) {
+                x = Math.floor(e.offsetX / (8 * scale))
+                y = Math.floor(e.offsetY / (8 * scale))
+            } else {
+                x = Math.floor((e.offsetX - 8) / (8 * scale))
+                y = Math.floor((e.offsetY - 8) / (8 * scale))
+            }
+            currentSprite.renderSequence.push([
+                Math.floor(selectedTile / 128),
+                selectedTile % 16,
+                Math.floor(selectedTile / 16) % 8,
+                selected8x8,
+                x,
+                y,
+                false,
+                false
+            ])
+        }
+        renderSpriteCanvas();
+        e.preventDefault();
+    }
+    spriteCanvas.onmousemove = function (e) {
+        renderSpriteCanvas();
+        if (selectedTile > -1) {
+            let x, y
+            if (selected8x8) {
+                x = Math.floor(e.offsetX / (8 * scale))
+                y = Math.floor(e.offsetY / (8 * scale))
+            } else {
+                x = Math.floor((e.offsetX - 8) / (8 * scale))
+                y = Math.floor((e.offsetY - 8) / (8 * scale))
+            }
+            const tx = selectedTile % 16
+            const ty = Math.floor(selectedTile / 16) % 8
+            const size = selected8x8 ? 8 : 16
+            const bitmap = gfxBitmaps[Math.floor(selectedTile / 128)];
+            spriteCtx.globalAlpha = 0.5
+            spriteCtx.drawImage(bitmap, tx * 8, ty * 8, size, size, x * 8, y * 8, size, size)
+            spriteCtx.globalAlpha = 1
+        }
+    }
+    spriteCanvas.onmouseleave = function (e) {
+        renderSpriteCanvas();
+    }
+
+    document.getElementById("clearButton").onclick = function (e) {
+        selectedTile = -1
+        currentSprite.renderSequence = []
+        renderGfxCanvas()
+        renderSpriteCanvas()
+    }
+
+    document.getElementById("copyButton").onclick = function (e) {
+        // selectedTiles.sort((a, b) => a - b)
+        // unsecuredCopyToClipboard(`${selectedTiles.join(', ')}`)
+
+        renderGfxCanvas()
+        renderSpriteCanvas()
+    }
+
     // load cached palettes, gfx etc...
 
     // populate palette select
@@ -120,7 +232,7 @@ window.onload = async function () {
     ]
     for (let i = 0; i < gfxSelects.length; i++) {
         const select = gfxSelects[i];
-        
+
         for (let j = 0; j < gfxFileNames.length; j++) {
             select.appendChild(new Option(gfxFileNames[j], j));
         }
@@ -137,6 +249,7 @@ window.onload = async function () {
         loadGfxFile(blob, gfxFileNames[i]);
     };
 
+
     refreshBitmaps();
 };
 
@@ -150,19 +263,45 @@ function loadGfxFile(blob, name) {
     }))
 }
 
-function drawPixelsToCanvas() {
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
-    ctx.reset()
-    ctx.resetTransform()
-    ctx.scale(2, 2)
-    ctx.imageSmoothingEnabled = false;
+function renderGfxCanvas() {
+    gfxCtx.reset()
+    gfxCtx.resetTransform()
+    gfxCtx.scale(scale, scale)
+    gfxCtx.imageSmoothingEnabled = false;
 
     for (let i = 0; i < 4; ++i) {
         const bitmap = gfxBitmaps[i];
         if (bitmap) {
-            ctx.drawImage(bitmap, 0, i * 72)
+            gfxCtx.drawImage(bitmap, 0, i * 64)
         }
+    }
+
+    gfxCtx.beginPath()
+    gfxCtx.lineWidth = 1;
+    gfxCtx.strokeStyle = "white";
+    if (selectedTile > -1) {
+        const x = selectedTile % 16
+        const y = Math.floor(selectedTile / 16)
+        if (selected8x8) {
+            gfxCtx.rect(x * 8, y * 8, 8, 8);
+        } else {
+            gfxCtx.rect(x * 8, y * 8, 16, 16);
+        }
+        gfxCtx.stroke();
+    }
+}
+
+function renderSpriteCanvas() {
+    spriteCtx.reset()
+    spriteCtx.resetTransform()
+    spriteCtx.scale(scale, scale)
+    spriteCtx.imageSmoothingEnabled = false;
+
+    for (let i = 0; i < currentSprite.renderSequence.length; i++) {
+        const [slot, tx, ty, is8x8, x, y, xFlip, yFlip] = currentSprite.renderSequence[i]
+        const size = is8x8 ? 8 : 16
+        const bitmap = gfxBitmaps[slot];
+        spriteCtx.drawImage(bitmap, tx * 8, ty * 8, size, size, x * 8, y * 8, size, size)
     }
 }
 
@@ -171,7 +310,8 @@ async function refreshBitmaps() {
         for (let i = 0; i < 4; ++i) {
             await updateBitmap(allGfx[gfxIndexes[i]].pixels, rgbaPalettes[activePaletteIndex], i)
         }
-        drawPixelsToCanvas()
+        renderGfxCanvas()
+        renderSpriteCanvas()
         resolve()
     })
 }
@@ -219,28 +359,18 @@ function snesToPixels(snesBytes) {
     }
 
     return pixels
-    // for (let spriteIndex = 0; spriteIndex <= mainIndexLimit; spriteIndex += 32) {
-    //     srcIndex = (mainIndex << 5);
-    //     if (srcIndex + 31 >= src.length)
-    //         return dest;
-    //     destX = srcIndex & 0x0F;
-    //     destY = srcIndex >> 4;
-    //     destIndex = ((destY << 7) + destX) << 3;
-    //     if (destIndex + 903 >= dest.length)
-    //         return dest;
-    //     for (let i = 0; i < 16; i += 2) {
-    //         mul = 1;
-    //         b0 = src[srcIndex + i];
-    //         b1 = src[srcIndex + i + 1];
-    //         b2 = src[srcIndex + i + 16];
-    //         b3 = src[srcIndex + i + 17];
-    //         for (let j = 0; j < 8; j++) {
-    //             res = ((b0 & mul) | ((b1 & mul) << 1) | ((b2 & mul) << 2) | ((b3 & mul) << 3)) >> j
-    //             dest[destIndex + (7 - j) + yAdder] = res;
-    //             mul <<= 1;
-    //         }
-    //         yAdder += 128;
-    //     }
-    // }
 }
 
+function unsecuredCopyToClipboard(text) {
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    try {
+        document.execCommand('copy');
+    } catch (err) {
+        console.error('Unable to copy to clipboard', err);
+    }
+    document.body.removeChild(textArea);
+}

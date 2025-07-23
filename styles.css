@@ -2,7 +2,10 @@ body {
     background-color:darkslategrey;
     color: whitesmoke;
     font-family: sans-serif;
-    text-align: center;
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
 }
 
 canvas {
@@ -13,5 +16,21 @@ canvas {
     image-rendering: -webkit-optimize-contrast;
     -ms-interpolation-mode: nearest-neighbor;
 
-    margin: 16px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    border: 4px solid rgb(35, 65, 65);
+
+    align-self: center;
+
+    background-color: rgb(35, 65, 65);
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
 }
