@@ -11,10 +11,11 @@
 
 [ ] search bar
 [ ] categories - castle, koopas, powerups, etc
-[ ] sprite images
+[x] sprite images
+[ ] multiple palettes within sprite
 [ ] "passable" conflict detection (pokey head football, bone spiny etc)
 [ ]     show all animation frames, variations etc
-[ ] checkbox for lava particles
+[ ] checkbox for lava particles, bounce sprites etc
 
 
 [ ] load custom pal files
@@ -67,21 +68,575 @@ const gfxFileNames = ["GFX00", "GFX01", "GFX02", "GFX03", "GFX04", "GFX05", "GFX
 
 const allSprites = [
     {
-        id: 0x0D,
         name: "Bob-Omb",
-        palette: 1,
-        tiles: [316, 330, 331, 332, 333, 346, 347, 348, 349],
-        gfxTiles: [
-            {
-                slot: 2,
-                validGfxFiles: ["GFX02"],
-            }
-        ],
+        palette: 0,
         renderSequence: [
-            // [ tile, x, y, small, flipx, flipy ]
+            [3, 10, 4, false, 12, 14, false, false],
+            [3, 12, 4, false, 7, 14, false, false],
+            [3, 12, 3, true, 20, 12, false, false],
+            [3, 12, 3, true, 23, 14, false, false],
+            [3, 12, 3, true, 22, 17, false, false],
+            [3, 12, 3, true, 18, 17, false, false],
+            [3, 12, 3, true, 17, 14, false, false]
         ]
-    }
+    },
+    {
+        name: "Buzzy Beetle",
+        palette: 6,
+        renderSequence: [
+            [3, 6, 0, false, 14, 17, false, false],
+            [3, 4, 0, false, 9, 17, false, false],
+            [3, 8, 0, false, 19, 17, false, false],
+            [3, 0, 0, false, 11, 12, false, false],
+            [3, 2, 0, false, 17, 12, false, false]
+        ]
+    },
+    {
+        name: "Spiny",
+        palette: 0,
+        renderSequence: [
+            [3, 0, 0, false, 11, 14, false, false],
+            [3, 2, 0, false, 17, 14, false, false]
+        ]
+    },
+    {
+        name: "Hopping Flame",
+        palette: 0,
+        renderSequence: [
+            [3, 14, 0, false, 10, 13, false, false],
+            [3, 14, 2, false, 14, 13, false, false],
+            [3, 12, 2, true, 19, 15, false, false],
+            [3, 13, 2, true, 21, 15, false, false]
+        ]
+    },
+    {
+        name: "Falling Spiny",
+        palette: 0,
+        renderSequence: [
+            [3, 4, 0, true, 11, 14, false, false],
+            [3, 4, 0, true, 11, 16, false, true],
+            [3, 4, 0, true, 13, 14, true, false],
+            [3, 4, 0, true, 13, 16, true, true],
+            [3, 4, 1, true, 17, 14, false, false],
+            [3, 4, 1, true, 17, 16, false, true],
+            [3, 4, 1, true, 19, 14, true, false],
+            [3, 4, 1, true, 19, 16, true, true]
+        ]
+    },
+    {
+        name: "Flying Lakitu",
+        palette: 0,
+        renderSequence: [
+            [0, 0, 6, false, 17, 10, false, false],
+            [0, 0, 6, false, 21, 10, false, false],
+            [3, 12, 6, false, 19, 6, false, false],
+            [3, 14, 6, false, 19, 10, false, false],
+            [0, 0, 6, false, 18, 11, true, false],
+            [0, 0, 6, false, 20, 11, false, false],
+            [2, 13, 4, true, 20, 12, false, false],
+
+            [0, 2, 6, false, 12, 21, false, false],
+            [0, 2, 6, false, 16, 21, false, false],
+            [3, 14, 4, false, 14, 17, false, false],
+            [3, 14, 6, false, 14, 21, false, false],
+            [0, 2, 6, false, 13, 22, false, false],
+            [0, 2, 6, false, 15, 22, false, false],
+            [2, 13, 4, true, 15, 23, false, false],
+
+            [0, 0, 6, false, 11, 10, false, false],
+            [0, 0, 6, false, 7, 10, false, false],
+            [3, 10, 2, false, 6, 6, false, false],
+            [3, 14, 6, false, 9, 10, false, false],
+            [3, 12, 6, false, 9, 6, false, false],
+            [0, 0, 6, false, 8, 11, false, false],
+            [0, 0, 6, false, 10, 11, false, false],
+            [2, 13, 4, true, 10, 12, false, false],
+            [3, 9, 0, true, 4, 6, false, false],
+            [3, 9, 0, true, 4, 8, false, false],
+            [3, 9, 0, true, 4, 10, false, false],
+            [3, 9, 0, true, 4, 12, false, false],
+            [3, 9, 0, true, 4, 14, false, false],
+            [3, 9, 0, true, 4, 16, false, false],
+            [3, 9, 0, true, 4, 18, false, false],
+            [3, 9, 0, true, 4, 20, false, false],
+            [0, 4, 2, false, 4, 22, false, false]
+        ]
+    },
+    {
+        name: "Pipe Dwelling Lakitu",
+        palette: 0,
+        renderSequence: [
+            [3, 12, 6, false, 9, 12, false, false],
+            [3, 8, 2, false, 14, 12, false, false],
+            [3, 14, 4, false, 19, 12, false, false],
+            [3, 14, 6, false, 19, 16, false, false],
+            [3, 14, 6, false, 14, 16, false, false],
+            [3, 14, 6, false, 9, 16, false, false]
+        ]
+    },
+    {
+        name: "Cheep Cheep",
+        palette: 0,
+        renderSequence: [
+            [2, 7, 6, false, 11, 14, false, false],
+            [2, 9, 6, false, 17, 14, false, false]
+        ]
+    },
+    {
+        name: "Football",
+        palette: 0,
+        renderSequence: [
+            [3, 10, 0, false, 14, 14, false, false]
+        ]
+    },
+    {
+        name: "Magikoopa",
+        palette: 0,
+        renderSequence: [
+            [3, 0, 2, false, 14, 12, false, false],
+            [3, 0, 4, false, 14, 16, false, false],
+            [3, 9, 1, true, 12, 16, false, false],
+            [3, 4, 2, false, 7, 12, false, false],
+            [3, 4, 4, false, 7, 16, false, false],
+            [3, 2, 4, false, 21, 16, false, false],
+            [3, 9, 1, true, 19, 16, false, false],
+            [3, 0, 2, false, 21, 12, false, false]
+        ]
+    },
+    {
+        name: "Magikoopa's Magic",
+        palette: 0,
+        renderSequence: [
+            [3, 8, 0, true, 14, 13, false, false],
+            [3, 9, 0, true, 17, 15, false, false],
+            [3, 8, 1, true, 14, 17, false, false]
+        ]
+    },
+    {
+        name: "Net Koopas",
+        palette: 0,
+        renderSequence: [
+            [2, 7, 0, false, 9, 11, false, false],
+            [2, 7, 2, false, 9, 15, false, false],
+            [2, 9, 2, false, 14, 15, false, false],
+            [2, 12, 4, false, 14, 11, false, false],
+            [2, 14, 4, false, 19, 11, false, false],
+            [2, 11, 2, false, 19, 15, false, false]
+        ]
+    },
+    {
+        name: "Thwomp",
+        palette: 1,
+        renderSequence: [
+            [3, 14, 0, false, 6, 12, false, false],
+            [3, 14, 0, false, 8, 12, true, false],
+            [3, 14, 2, false, 6, 16, false, false],
+            [3, 14, 2, false, 8, 16, true, false],
+            [3, 14, 0, false, 13, 12, false, false],
+            [3, 14, 0, false, 15, 12, true, false],
+            [3, 14, 2, false, 13, 16, false, false],
+            [3, 14, 2, false, 15, 16, true, false],
+            [3, 8, 4, false, 14, 14, false, false],
+            [3, 14, 0, false, 20, 12, false, false],
+            [3, 14, 0, false, 22, 12, true, false],
+            [3, 14, 2, false, 20, 16, false, false],
+            [3, 14, 2, false, 22, 16, true, false],
+            [3, 10, 4, false, 21, 14, false, false]
+        ]
+    },
+    {
+        name: "Thwimp",
+        palette: 1,
+        renderSequence: [
+            [3, 2, 2, true, 14, 14, false, false],
+            [3, 2, 3, true, 14, 16, false, false],
+            [3, 2, 3, true, 16, 16, true, false],
+            [3, 2, 2, true, 16, 14, true, false]
+        ]
+    },
+    {
+        name: "Big Boo",
+        palette: 14,
+        renderSequence: [
+            [3, 0, 0, false, 0, 8, false, false],
+            [3, 2, 0, false, 4, 8, false, false],
+            [3, 4, 0, false, 8, 8, false, false],
+            [3, 6, 0, false, 12, 8, false, false],
+            [3, 0, 2, false, 0, 12, false, false],
+            [3, 2, 2, false, 4, 12, false, false],
+            [3, 4, 2, false, 8, 12, false, false],
+            [3, 6, 2, false, 12, 12, false, false],
+            [3, 0, 2, false, 0, 16, false, true],
+            [3, 2, 2, false, 4, 16, false, false],
+            [3, 4, 4, false, 8, 16, false, false],
+            [3, 6, 4, false, 12, 16, false, false],
+            [3, 6, 6, false, 12, 20, false, false],
+            [3, 4, 6, false, 8, 20, false, false],
+            [3, 0, 0, false, 0, 20, false, true],
+            [3, 2, 0, false, 4, 20, false, true],
+            [3, 2, 4, false, 2, 13, false, false],
+            [3, 2, 6, false, 2, 17, false, false],
+            [3, 8, 6, false, 0, 14, true, false],
+            [3, 8, 6, false, 4, 14, false, false],
+            [3, 8, 6, false, 15, 14, false, false],
+            [3, 0, 2, false, 16, 12, false, false],
+            [3, 0, 0, false, 16, 8, false, false],
+            [3, 2, 0, false, 20, 8, false, false],
+            [3, 4, 0, false, 24, 8, false, false],
+            [3, 6, 0, false, 28, 8, false, false],
+            [3, 6, 2, false, 28, 12, false, false],
+            [3, 4, 2, false, 24, 12, false, false],
+            [3, 2, 2, false, 20, 12, false, false],
+            [3, 2, 2, false, 20, 16, false, false],
+            [3, 0, 2, false, 16, 16, false, true],
+            [3, 0, 0, false, 16, 20, false, true],
+            [3, 2, 0, false, 20, 20, false, true],
+            [3, 4, 4, false, 24, 16, false, false],
+            [3, 6, 4, false, 28, 16, false, false],
+            [3, 6, 6, false, 28, 20, false, false],
+            [3, 4, 6, false, 24, 20, false, false],
+            [3, 8, 6, false, 24, 14, true, false],
+            [3, 0, 4, false, 18, 13, false, false],
+            [3, 0, 6, false, 18, 17, false, false]
+
+        ]
+    },
+    {
+        name: "Pirahna Plant",
+        palette: 0,
+        renderSequence: [
+            [3, 14, 4, false, 11, 12, false, true],
+            [1, 14, 2, false, 11, 16, false, true],
+            [3, 14, 4, false, 17, 12, false, true],
+            [1, 12, 2, false, 17, 16, false, true]
+        ]
+    },
+    {
+        name: "Lightning",
+        palette: 0,
+        renderSequence: [
+            [3, 3, 7, true, 13, 14, false, false],
+            [3, 3, 7, true, 13, 16, true, true],
+            [3, 12, 6, false, 17, 16, false, false],
+            [3, 12, 4, false, 17, 12, false, false]
+        ]
+    },
+    {
+        name: "Yoshi Egg",
+        palette: 0,
+        renderSequence: [
+            [2, 2, 0, false, 14, 14, false, false],
+            [2, 0, 0, false, 9, 14, false, false],
+            [2, 15, 6, true, 19, 13, false, false],
+            [2, 15, 6, true, 20, 16, true, false],
+            [2, 15, 6, true, 23, 13, true, false],
+            [2, 15, 6, true, 22, 16, false, false]
+        ]
+    },
+    {
+        name: "Spike Top",
+        palette: 0,
+        renderSequence: [
+            [3, 12, 0, false, 14, 7, false, false],
+            [3, 10, 2, false, 21, 14, false, false],
+            [3, 8, 2, false, 7, 14, true, true],
+            [3, 12, 6, false, 14, 21, true, true],
+            [3, 14, 0, false, 19, 9, false, false],
+            [3, 14, 0, false, 9, 19, true, true],
+            [3, 12, 2, false, 19, 19, true, false],
+            [3, 12, 2, false, 9, 9, false, true]
+        ]
+    },
+    {
+        name: "Dry Bones",
+        palette: 0,
+        renderSequence: [
+            [2, 4, 6, false, 3, 12, false, false],
+            [2, 6, 6, false, 5, 16, false, false],
+            [2, 4, 6, false, 8, 12, false, false],
+            [2, 8, 6, false, 10, 16, false, false],
+            [2, 7, 4, false, 15, 16, false, false],
+            [2, 8, 4, false, 17, 16, false, false],
+            [2, 13, 2, false, 22, 16, false, false],
+            [2, 14, 2, false, 24, 16, false, false]
+        ]
+    },
+    {
+        name: "Bony Beetle",
+        palette: 0,
+        renderSequence: [
+            [3, 12, 0, false, 6, 11, false, false],
+            [3, 10, 2, false, 11, 11, false, false],
+            [3, 6, 0, false, 17, 11, false, false],
+            [3, 4, 0, false, 22, 11, false, false],
+            [2, 8, 4, false, 11, 17, false, false],
+            [2, 7, 4, false, 9, 17, false, false],
+            [2, 13, 2, false, 17, 17, false, false],
+            [2, 14, 2, false, 19, 17, false, false]
+        ]
+    },
+    {
+        name: "Dry Bones (Throwing)",
+        palette: 0,
+        renderSequence: [
+            [2, 4, 6, false, 3, 15, false, false],
+            [2, 6, 6, false, 5, 19, false, false],
+            [2, 4, 6, false, 8, 15, false, false],
+            [2, 8, 6, false, 10, 19, false, false],
+            [2, 7, 4, false, 15, 19, false, false],
+            [2, 8, 4, false, 17, 19, false, false],
+            [2, 13, 2, false, 22, 19, false, false],
+            [2, 14, 2, false, 24, 19, false, false],
+            [2, 4, 6, false, 22, 10, false, false],
+            [3, 6, 6, false, 24, 14, false, false],
+            [3, 2, 0, false, 24, 11, false, false],
+            [3, 0, 0, false, 16, 9, false, false],
+            [3, 0, 0, false, 12, 9, true, false],
+            [3, 2, 0, false, 8, 9, true, false],
+            [3, 2, 0, false, 3, 9, false, false]
+        ]
+    },
+    {
+        name: "Lava Particles",
+        palette: 0,
+        renderSequence: [
+            [3, 6, 4, true, 11, 14, false, false],
+            [3, 6, 5, true, 14, 13, false, false],
+            [3, 7, 4, true, 17, 14, false, false],
+            [3, 7, 5, true, 18, 16, false, false]
+        ]
+    },
+    {
+        name: "Boss Fireball",
+        palette: 0,
+        renderSequence: [
+            [3, 10, 4, false, 12, 11, false, false],
+            [3, 12, 4, false, 16, 11, false, false],
+            [3, 10, 6, false, 12, 17, false, false],
+            [3, 12, 6, false, 16, 17, false, false]
+        ]
+    },
+    {
+        name: "Boo",
+        palette: 0,
+        renderSequence: [
+            [3, 8, 0, false, 11, 14, false, false],
+            [3, 12, 0, false, 17, 14, false, false]
+        ]
+    },
+    {
+        name: "Boo Block",
+        palette: 0,
+        renderSequence: [
+            [3, 8, 0, false, 9, 14, false, false],
+            [3, 8, 4, false, 14, 14, false, false],
+            [3, 10, 4, false, 19, 14, false, false]
+        ]
+    },
+    {
+        name: "Eerie",
+        palette: 0,
+        renderSequence: [
+            [2, 10, 6, false, 11, 14, false, false],
+            [3, 13, 6, false, 17, 14, false, false]
+        ]
+    },
+    {
+        name: "Urchin",
+        palette: 0,
+        renderSequence: [
+            [3, 4, 4, false, 3, 12, false, false],
+            [3, 4, 4, false, 7, 12, true, false],
+            [3, 4, 4, false, 7, 16, true, true],
+            [3, 4, 4, false, 3, 16, false, true],
+            [3, 6, 4, false, 12, 12, false, false],
+            [3, 6, 4, false, 16, 12, true, false],
+            [3, 6, 4, false, 16, 16, true, true],
+            [3, 6, 4, false, 12, 16, false, true],
+            [3, 8, 4, false, 21, 12, false, false],
+            [3, 8, 4, false, 25, 12, true, false],
+            [3, 8, 4, false, 25, 16, true, true],
+            [3, 8, 4, false, 21, 16, false, true],
+            [3, 10, 4, false, 5, 14, false, false],
+            [3, 12, 4, false, 14, 14, false, false],
+            [3, 10, 4, false, 23, 14, false, false]
+        ]
+    },
+    {
+        name: "Rip Van Fish",
+        palette: 0,
+        renderSequence: [
+            [3, 12, 0, false, 6, 14, false, false],
+            [3, 14, 0, false, 11, 14, false, false],
+            [3, 0, 6, true, 9, 12, false, false],
+            [3, 1, 6, true, 10, 10, false, false],
+            [3, 0, 7, true, 9, 8, false, false],
+            [3, 1, 7, true, 14, 12, false, false],
+            [3, 12, 2, false, 17, 14, false, false],
+            [3, 14, 2, false, 22, 14, false, false]
+        ]
+    },
+    {
+        name: "Para-bomb",
+        palette: 0,
+        renderSequence: [
+            [3, 2, 4, false, 6, 12, false, false],
+            [3, 6, 6, false, 4, 8, false, false],
+            [3, 2, 2, true, 12, 12, false, false],
+            [3, 2, 2, true, 14, 12, true, false],
+            [3, 2, 3, true, 12, 14, false, false],
+            [3, 2, 3, true, 14, 14, true, false],
+            [3, 2, 6, false, 12, 8, false, false],
+            [3, 10, 4, false, 6, 17, false, false],
+            [3, 12, 4, false, 12, 17, false, false],
+            [3, 12, 3, true, 21, 13, false, false],
+            [3, 12, 3, true, 24, 15, false, false],
+            [3, 12, 3, true, 23, 18, false, false],
+            [3, 12, 3, true, 19, 18, false, false],
+            [3, 12, 3, true, 18, 15, false, false]
+        ]
+    },
+    {
+        name: "Para-goomba",
+        palette: 0,
+        renderSequence: [
+            [3, 3, 2, true, 17, 12, false, false],
+            [3, 3, 3, true, 17, 14, false, false],
+            [3, 3, 2, true, 19, 12, true, false],
+            [3, 3, 3, true, 19, 14, true, false],
+            [3, 2, 6, false, 17, 8, false, false],
+            [3, 8, 6, false, 11, 12, false, false],
+            [3, 6, 6, false, 9, 8, false, false],
+            [1, 10, 2, false, 17, 17, false, false],
+            [1, 8, 2, false, 11, 17, false, false]
+        ]
+    },
+    {
+        name: "Horizontal Dolphin",
+        palette: 0,
+        renderSequence: [
+            [3, 8, 0, false, 12, 11, false, false],
+            [3, 8, 2, false, 16, 11, false, false],
+            [3, 9, 2, false, 18, 11, false, false],
+            [3, 2, 6, false, 12, 17, false, false],
+            [3, 7, 6, false, 16, 17, false, false],
+            [3, 8, 6, false, 18, 17, false, false]
+        ]
+    },
+    {
+        name: "Vertical Dolphin",
+        palette: 0,
+        renderSequence: [
+            [3, 14, 4, false, 14, 12, false, false],
+            [3, 14, 6, false, 14, 16, false, false]
+        ]
+    },
+    {
+        name: "Torpedo Ted",
+        palette: 0,
+        renderSequence: [
+            [3, 0, 0, false, 10, 11, false, false],
+            [3, 2, 0, false, 14, 11, false, false],
+            [3, 0, 2, false, 14, 17, false, false],
+            [3, 0, 0, false, 10, 17, false, false],
+            [0, 2, 6, false, 18, 11, false, false],
+            [0, 4, 6, false, 18, 17, false, false],
+            [0, 6, 6, false, 20, 11, false, false],
+            [0, 6, 6, false, 20, 17, false, false]
+        ]
+    },
+    {
+        name: "Growing/Shrinking Pipe",
+        palette: 0,
+        renderSequence: [
+            [3, 4, 2, false, 12, 14, false, false],
+            [3, 6, 2, false, 16, 14, false, false]
+        ]
+    },
+    {
+        name: "Goal Point Question Sphere (Orb)",
+        palette: 0,
+        renderSequence: [
+            [3, 12, 0, false, 14, 14, true, false]
+        ]
+    },
+    {
+        name: "Monty Mole (ground)",
+        palette: 0,
+        renderSequence: [
+            [3, 8, 0, true, 8, 16, false, false],
+            [3, 9, 0, true, 10, 16, false, false],
+            [3, 6, 0, false, 8, 11, false, false],
+            [3, 4, 0, false, 13, 14, false, false],
+            [3, 2, 0, false, 18, 14, false, false]
+        ]
+    },
+    {
+        name: "Monty Mole (ledge)",
+        palette: 0,
+        renderSequence: [
+            [3, 12, 0, false, 9, 16, false, false],
+            [3, 6, 0, false, 9, 11, false, false],
+            [3, 2, 0, false, 14, 14, false, false],
+            [3, 4, 0, false, 19, 14, false, false]
+        ]
+    },
+    {
+        name: "Ninji",
+        palette: 0,
+        renderSequence: [
+            [3, 7, 2, false, 17, 14, false, false],
+            [3, 9, 2, false, 11, 14, false, false]
+        ]
+    },
+    {
+        name: "Moving Ghost House Hole",
+        palette: 0,
+        renderSequence: [
+            [3, 11, 6, false, 10, 14, true, false],
+            [3, 10, 6, false, 14, 14, false, false],
+            [3, 11, 6, false, 18, 14, false, false]
+        ]
+    },
+    {
+        name: "Revolving Net Door",
+        palette: 0,
+        renderSequence: [
+            [2, 0, 0, false, 6, 6, false, false],
+            [2, 0, 1, false, 6, 10, false, false],
+            [2, 0, 0, false, 6, 12, false, true],
+            [2, 0, 0, false, 12, 6, true, false],
+            [2, 0, 0, false, 12, 12, true, true],
+            [2, 2, 2, true, 10, 10, false, false],
+            [2, 1, 0, false, 10, 6, false, false],
+            [2, 1, 0, false, 10, 12, false, true],
+            [2, 0, 1, false, 12, 10, true, false],
+            [2, 5, 0, false, 17, 6, false, false],
+            [2, 5, 0, false, 21, 6, true, false],
+            [2, 5, 1, false, 17, 10, false, false],
+            [2, 5, 1, false, 21, 10, true, false],
+            [2, 5, 0, false, 17, 12, false, true],
+            [2, 5, 0, false, 21, 12, true, true],
+            [2, 5, 0, false, 8, 16, false, false],
+            [2, 5, 0, false, 10, 16, true, false],
+            [2, 5, 1, false, 8, 20, false, false],
+            [2, 5, 1, false, 10, 20, true, false],
+            [2, 5, 0, false, 8, 22, false, true],
+            [2, 5, 0, true, 12, 24, true, true],
+            [2, 3, 0, false, 20, 16, false, false],
+            [2, 3, 1, false, 20, 20, false, false],
+            [2, 3, 0, true, 20, 24, false, true]            
+        ]
+    },
 ]
+
+/*
+{
+    name: "",
+    palette: 0,
+    renderSequence: []
+},
+*/
 
 //  ==============================================================
 
@@ -94,7 +649,7 @@ const scale = 3;
 let selectedTile = -1
 let selected8x8 = true
 
-let currentSprite = allSprites[0]
+let currentSprite = allSprites[allSprites.length - 1]
 
 let gfxCtx, spriteCtx
 
@@ -217,12 +772,39 @@ window.onload = async function () {
         renderSpriteCanvas()
     }
 
-    document.getElementById("copyButton").onclick = function (e) {
-        // selectedTiles.sort((a, b) => a - b)
-        // unsecuredCopyToClipboard(`${selectedTiles.join(', ')}`)
+    document.getElementById("undoButton").onclick = undo
+    document.onkeydown = function (e) {
+        switch (e.key) {
+            case "z":
+                if (e.ctrlKey) undo()
+                break;
+            case "ArrowLeft":
+                currentSprite.renderSequence.forEach((step) => { step[4] -= 1 })
+                renderSpriteCanvas()
+                e.preventDefault()
+                break;
+            case "ArrowRight":
+                currentSprite.renderSequence.forEach((step) => { step[4] += 1 })
+                renderSpriteCanvas()
+                e.preventDefault()
+                break;
+            case "ArrowUp":
+                currentSprite.renderSequence.forEach((step) => { step[5] -= 1 })
+                renderSpriteCanvas()
+                e.preventDefault()
+                break;
+            case "ArrowDown":
+                currentSprite.renderSequence.forEach((step) => { step[5] += 1 })
+                renderSpriteCanvas()
+                e.preventDefault()
+                break;
+            default:
+        }
 
-        renderGfxCanvas()
-        renderSpriteCanvas()
+    }
+
+    document.getElementById("copyButton").onclick = function (e) {
+        unsecuredCopyToClipboard(`\n${currentSprite.renderSequence.map(step => `[${step.join(', ')}]`).join(',\n')}\n`)
     }
 
     // load cached palettes, gfx etc...
@@ -235,6 +817,18 @@ window.onload = async function () {
     }
     paletteSelect.onchange = function (e) {
         activePaletteIndex = +(e.target.value)
+        refreshBitmaps()
+    }
+
+    // populate sprite select
+    const spriteSelect = document.getElementById("spriteSelect")
+    for (let i = 0; i < allSprites.length; i++) {
+        const option = new Option(allSprites[i].name, i)
+        spriteSelect.appendChild(option)
+    }
+    spriteSelect.value = allSprites.length - 1
+    spriteSelect.onchange = function (e) {
+        currentSprite = allSprites[+(e.target.value)]
         refreshBitmaps()
     }
 
@@ -263,7 +857,6 @@ window.onload = async function () {
         const blob = await fetch(`/gfx/${gfxFileNames[i]}.bin`);
         loadGfxFile(blob, gfxFileNames[i]);
     };
-
 
     refreshBitmaps();
 };
@@ -407,4 +1000,11 @@ function unsecuredCopyToClipboard(text) {
         console.error('Unable to copy to clipboard', err);
     }
     document.body.removeChild(textArea);
+}
+
+function undo() {
+    if (currentSprite && currentSprite.renderSequence.length > 0) {
+        currentSprite.renderSequence.pop()
+        renderSpriteCanvas()
+    }
 }
