@@ -2,7 +2,7 @@
 [x] load gfx files
 [x] draw gfx to screen
 [x] select palette
-[ ] list of sprites and their palette/location/compatibility
+[x] list of sprites and their palette/location/compatibility
 [ ] select which sprites you want to include
 [ ] detect conflicts
 [ ] create exgfx based on selection
@@ -12,10 +12,10 @@
 [ ] search bar
 [ ] categories - castle, koopas, powerups, etc
 [x] sprite images
-[ ] multiple palettes within sprite
+[x] multiple palettes within sprite
 [ ] "passable" conflict detection (pokey head football, bone spiny etc)
-[ ]     show all animation frames, variations etc
-[ ] checkbox for lava particles, bounce sprites etc
+[x]     show all animation frames, variations etc
+[x] checkbox for lava particles, bounce sprites etc
 
 
 [ ] load custom pal files
@@ -30,12 +30,13 @@ const hexPalettes = [
     ["#0000", "#f8f8f8", "#000000", "#4040d8", "#6868d8", "#8888f8", "#b82800", "#f88800", "#0000", "#f8f8f8", "#000000", "#00c800", "#00e000", "#88f838", "#c8f800", "#f8f898"],
     ["#0000", "#f8f8f8", "#000000", "#880000", "#b80000", "#f80000", "#b82800", "#f88800", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
     ["#0000", "#f8f8f8", "#000000", "#007800", "#00b800", "#00f800", "#b82800", "#f88800", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
+    ["#0000", "#f8f8f8", "#000000", "#283048", "#485058", "#686858", "#989040", "#c0c078", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
+    ["#0000", "#f8f8f8", "#184848", "#207068", "#288878", "#30a088", "#38b898", "#f80080", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
+
     ["#0000", "#f8f8f8", "#000000", "#005050", "#007878", "#00a0a0", "#b82800", "#f88800", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
     ["#0000", "#f8f8f8", "#000000", "#707070", "#a0a0a0", "#c0c0c0", "#b82800", "#f88800", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
     ["#0000", "#f8f8f8", "#000000", "#a00868", "#d00888", "#f860c8", "#b04000", "#f89800", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
     ["#0000", "#f8f8f8", "#000000", "#d8f8c0", "#60c000", "#588000", "#a84828", "#f89030", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
-    ["#0000", "#f8f8f8", "#000000", "#283048", "#485058", "#686858", "#989040", "#c0c078", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
-    ["#0000", "#f8f8f8", "#184848", "#207068", "#288878", "#30a088", "#38b898", "#f80080", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
     ["#0000", "#f8f8f8", "#000000", "#307080", "#a0d0e0", "#d0f8f8", "#e8f8f8", "#4040d8", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
     ["#0000", "#f8f8f8", "#000000", "#706858", "#908878", "#b0a890", "#c8b8a0", "#983858", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
     ["#0000", "#f8f8f8", "#000000", "#8098f8", "#98b0f8", "#b0c8f8", "#c8e0f8", "#f80080", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000", "#000000"],
@@ -66,1462 +67,1475 @@ const gfxFileNames = ["GFX00", "GFX01", "GFX02", "GFX03", "GFX04", "GFX05", "GFX
 
 //  ==============================================================
 
-const allSprites = [
-    {
-        name: "Bob-Omb",
-        palette: 0,
-        renderSequence: [
-            [3, 10, 4, false, 48, 56, false, false],
-            [3, 12, 4, false, 28, 56, false, false],
-            [3, 12, 3, true, 80, 48, false, false],
-            [3, 12, 3, true, 92, 56, false, false],
-            [3, 12, 3, true, 88, 68, false, false],
-            [3, 12, 3, true, 72, 68, false, false],
-            [3, 12, 3, true, 68, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Buzzy Beetle",
-        palette: 6,
-        renderSequence: [
-            [3, 6, 0, false, 56, 68, false, false],
-            [3, 4, 0, false, 36, 68, false, false],
-            [3, 8, 0, false, 76, 68, false, false],
-            [3, 0, 0, false, 44, 48, false, false],
-            [3, 2, 0, false, 68, 48, false, false]
-
-        ]
-    },
-    {
-        name: "Spiny",
-        palette: 0,
-        renderSequence: [
-            [3, 0, 0, false, 44, 56, false, false],
-            [3, 2, 0, false, 68, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Hopping Flame",
-        palette: 0,
-        renderSequence: [
-            [3, 14, 0, false, 40, 52, false, false],
-            [3, 14, 2, false, 56, 52, false, false],
-            [3, 12, 2, true, 76, 60, false, false],
-            [3, 13, 2, true, 84, 60, false, false]
-
-        ]
-    },
-    {
-        name: "Falling Spiny",
-        palette: 0,
-        renderSequence: [
-            [3, 4, 0, true, 44, 56, false, false],
-            [3, 4, 0, true, 44, 64, false, true],
-            [3, 4, 0, true, 52, 56, true, false],
-            [3, 4, 0, true, 52, 64, true, true],
-            [3, 4, 1, true, 68, 56, false, false],
-            [3, 4, 1, true, 68, 64, false, true],
-            [3, 4, 1, true, 76, 56, true, false],
-            [3, 4, 1, true, 76, 64, true, true]
-
-        ]
-    },
-    {
-        name: "Flying Lakitu",
-        palette: 0,
-        renderSequence: [
-            [0, 0, 6, false, 68, 40, false, false],
-            [0, 0, 6, false, 84, 40, false, false],
-            [3, 12, 6, false, 76, 24, false, false],
-            [3, 14, 6, false, 76, 40, false, false],
-            [0, 0, 6, false, 72, 44, true, false],
-            [0, 0, 6, false, 80, 44, false, false],
-            [2, 13, 4, true, 80, 48, false, false],
-            [0, 2, 6, false, 48, 84, false, false],
-            [0, 2, 6, false, 64, 84, false, false],
-            [3, 14, 4, false, 56, 68, false, false],
-            [3, 14, 6, false, 56, 84, false, false],
-            [0, 2, 6, false, 52, 88, false, false],
-            [0, 2, 6, false, 60, 88, false, false],
-            [2, 13, 4, true, 60, 92, false, false],
-            [0, 0, 6, false, 44, 40, false, false],
-            [0, 0, 6, false, 28, 40, false, false],
-            [3, 10, 2, false, 24, 24, false, false],
-            [3, 14, 6, false, 36, 40, false, false],
-            [3, 12, 6, false, 36, 24, false, false],
-            [0, 0, 6, false, 32, 44, false, false],
-            [0, 0, 6, false, 40, 44, false, false],
-            [2, 13, 4, true, 40, 48, false, false],
-            [3, 9, 0, true, 16, 24, false, false],
-            [3, 9, 0, true, 16, 32, false, false],
-            [3, 9, 0, true, 16, 40, false, false],
-            [3, 9, 0, true, 16, 48, false, false],
-            [3, 9, 0, true, 16, 56, false, false],
-            [3, 9, 0, true, 16, 64, false, false],
-            [3, 9, 0, true, 16, 72, false, false],
-            [3, 9, 0, true, 16, 80, false, false],
-            [0, 4, 2, false, 16, 88, false, false]
-
-        ]
-    },
-    {
-        name: "Pipe Dwelling Lakitu",
-        palette: 0,
-        renderSequence: [
-            [3, 12, 6, false, 36, 48, false, false],
-            [3, 8, 2, false, 56, 48, false, false],
-            [3, 14, 4, false, 76, 48, false, false],
-            [3, 14, 6, false, 76, 64, false, false],
-            [3, 14, 6, false, 56, 64, false, false],
-            [3, 14, 6, false, 36, 64, false, false]
-
-        ]
-    },
-    {
-        name: "Cheep Cheep",
-        palette: 0,
-        renderSequence: [
-            [2, 7, 6, false, 44, 56, false, false],
-            [2, 9, 6, false, 68, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Football",
-        palette: 0,
-        renderSequence: [
-            [3, 10, 0, false, 56, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Magikoopa",
-        palette: 0,
-        renderSequence: [
-            [3, 0, 2, false, 56, 48, false, false],
-            [3, 0, 4, false, 56, 64, false, false],
-            [3, 9, 1, true, 48, 64, false, false],
-            [3, 4, 2, false, 28, 48, false, false],
-            [3, 4, 4, false, 28, 64, false, false],
-            [3, 2, 4, false, 84, 64, false, false],
-            [3, 9, 1, true, 76, 64, false, false],
-            [3, 0, 2, false, 84, 48, false, false]
-
-        ]
-    },
-    {
-        name: "Magikoopa's Magic",
-        palette: 0,
-        renderSequence: [
-            [3, 8, 0, true, 56, 52, false, false],
-            [3, 9, 0, true, 68, 60, false, false],
-            [3, 8, 1, true, 56, 68, false, false]
-
-        ]
-    },
-    {
-        name: "Net Koopas",
-        palette: 0,
-        renderSequence: [
-            [2, 7, 0, false, 36, 44, false, false],
-            [2, 7, 2, false, 36, 60, false, false],
-            [2, 9, 2, false, 56, 60, false, false],
-            [2, 12, 4, false, 56, 44, false, false],
-            [2, 14, 4, false, 76, 44, false, false],
-            [2, 11, 2, false, 76, 60, false, false]
-
-        ]
-    },
-    {
-        name: "Thwomp",
-        palette: 1,
-        renderSequence: [
-            [3, 14, 0, false, 24, 48, false, false],
-            [3, 14, 0, false, 32, 48, true, false],
-            [3, 14, 2, false, 24, 64, false, false],
-            [3, 14, 2, false, 32, 64, true, false],
-            [3, 14, 0, false, 52, 48, false, false],
-            [3, 14, 0, false, 60, 48, true, false],
-            [3, 14, 2, false, 52, 64, false, false],
-            [3, 14, 2, false, 60, 64, true, false],
-            [3, 8, 4, false, 56, 56, false, false],
-            [3, 14, 0, false, 80, 48, false, false],
-            [3, 14, 0, false, 88, 48, true, false],
-            [3, 14, 2, false, 80, 64, false, false],
-            [3, 14, 2, false, 88, 64, true, false],
-            [3, 10, 4, false, 84, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Thwimp",
-        palette: 1,
-        renderSequence: [
-            [3, 2, 2, true, 56, 56, false, false],
-            [3, 2, 3, true, 56, 64, false, false],
-            [3, 2, 3, true, 64, 64, true, false],
-            [3, 2, 2, true, 64, 56, true, false]
-
-        ]
-    },
-    {
-        name: "Big Boo",
-        palette: 14,
-        renderSequence: [
-            [3, 0, 0, false, 0, 32, false, false],
-            [3, 2, 0, false, 16, 32, false, false],
-            [3, 4, 0, false, 32, 32, false, false],
-            [3, 6, 0, false, 48, 32, false, false],
-            [3, 0, 2, false, 0, 48, false, false],
-            [3, 2, 2, false, 16, 48, false, false],
-            [3, 4, 2, false, 32, 48, false, false],
-            [3, 6, 2, false, 48, 48, false, false],
-            [3, 0, 2, false, 0, 64, false, true],
-            [3, 2, 2, false, 16, 64, false, false],
-            [3, 4, 4, false, 32, 64, false, false],
-            [3, 6, 4, false, 48, 64, false, false],
-            [3, 6, 6, false, 48, 80, false, false],
-            [3, 4, 6, false, 32, 80, false, false],
-            [3, 0, 0, false, 0, 80, false, true],
-            [3, 2, 0, false, 16, 80, false, true],
-            [3, 2, 4, false, 8, 52, false, false],
-            [3, 2, 6, false, 8, 68, false, false],
-            [3, 8, 6, false, 0, 56, true, false],
-            [3, 8, 6, false, 16, 56, false, false],
-            [3, 8, 6, false, 60, 56, false, false],
-            [3, 0, 2, false, 64, 48, false, false],
-            [3, 0, 0, false, 64, 32, false, false],
-            [3, 2, 0, false, 80, 32, false, false],
-            [3, 4, 0, false, 96, 32, false, false],
-            [3, 6, 0, false, 112, 32, false, false],
-            [3, 6, 2, false, 112, 48, false, false],
-            [3, 4, 2, false, 96, 48, false, false],
-            [3, 2, 2, false, 80, 48, false, false],
-            [3, 2, 2, false, 80, 64, false, false],
-            [3, 0, 2, false, 64, 64, false, true],
-            [3, 0, 0, false, 64, 80, false, true],
-            [3, 2, 0, false, 80, 80, false, true],
-            [3, 4, 4, false, 96, 64, false, false],
-            [3, 6, 4, false, 112, 64, false, false],
-            [3, 6, 6, false, 112, 80, false, false],
-            [3, 4, 6, false, 96, 80, false, false],
-            [3, 8, 6, false, 96, 56, true, false],
-            [3, 0, 4, false, 72, 52, false, false],
-            [3, 0, 6, false, 72, 68, false, false]
-
-
-        ]
-    },
-    {
-        name: "Pirahna Plant",
-        palette: 0,
-        renderSequence: [
-            [3, 14, 4, false, 44, 48, false, true],
-            [1, 14, 2, false, 44, 64, false, true],
-            [3, 14, 4, false, 68, 48, false, true],
-            [1, 12, 2, false, 68, 64, false, true]
-
-        ]
-    },
-    {
-        name: "Yoshi Egg",
-        palette: 0,
-        renderSequence: [
-            [2, 2, 0, false, 56, 56, false, false],
-            [2, 0, 0, false, 36, 56, false, false],
-            [2, 15, 6, true, 76, 52, false, false],
-            [2, 15, 6, true, 80, 64, true, false],
-            [2, 15, 6, true, 92, 52, true, false],
-            [2, 15, 6, true, 88, 64, false, false]
-
-        ]
-    },
-    {
-        name: "Spike Top",
-        palette: 0,
-        renderSequence: [
-            [3, 12, 0, false, 56, 28, false, false],
-            [3, 10, 2, false, 84, 56, false, false],
-            [3, 8, 2, false, 28, 56, true, true],
-            [3, 12, 6, false, 56, 84, true, true],
-            [3, 14, 0, false, 76, 36, false, false],
-            [3, 14, 0, false, 36, 76, true, true],
-            [3, 12, 2, false, 76, 76, true, false],
-            [3, 12, 2, false, 36, 36, false, true]
-
-        ]
-    },
-    {
-        name: "Dry Bones",
-        palette: 0,
-        renderSequence: [
-            [2, 4, 6, false, 12, 48, false, false],
-            [2, 6, 6, false, 20, 64, false, false],
-            [2, 4, 6, false, 32, 48, false, false],
-            [2, 8, 6, false, 40, 64, false, false],
-            [2, 7, 4, false, 60, 64, false, false],
-            [2, 8, 4, false, 68, 64, false, false],
-            [2, 13, 2, false, 88, 64, false, false],
-            [2, 14, 2, false, 96, 64, false, false]
-
-        ]
-    },
-    {
-        name: "Bony Beetle",
-        palette: 0,
-        renderSequence: [
-            [3, 12, 0, false, 24, 44, false, false],
-            [3, 10, 2, false, 44, 44, false, false],
-            [3, 6, 0, false, 68, 44, false, false],
-            [3, 4, 0, false, 88, 44, false, false],
-            [2, 8, 4, false, 44, 68, false, false],
-            [2, 7, 4, false, 36, 68, false, false],
-            [2, 13, 2, false, 68, 68, false, false],
-            [2, 14, 2, false, 76, 68, false, false]
-
-        ]
-    },
-    {
-        name: "Dry Bones (Throwing)",
-        palette: 0,
-        renderSequence: [
-            [2, 4, 6, false, 12, 60, false, false],
-            [2, 6, 6, false, 20, 76, false, false],
-            [2, 4, 6, false, 32, 60, false, false],
-            [2, 8, 6, false, 40, 76, false, false],
-            [2, 7, 4, false, 60, 76, false, false],
-            [2, 8, 4, false, 68, 76, false, false],
-            [2, 13, 2, false, 88, 76, false, false],
-            [2, 14, 2, false, 96, 76, false, false],
-            [2, 4, 6, false, 88, 40, false, false],
-            [3, 6, 6, false, 96, 56, false, false],
-            [3, 2, 0, false, 96, 44, false, false],
-            [3, 0, 0, false, 64, 36, false, false],
-            [3, 0, 0, false, 48, 36, true, false],
-            [3, 2, 0, false, 32, 36, true, false],
-            [3, 2, 0, false, 12, 36, false, false]
-
-        ]
-    },
-    {
-        name: "Lava Particles",
-        palette: 0,
-        renderSequence: [
-            [3, 6, 4, true, 44, 56, false, false],
-            [3, 6, 5, true, 56, 52, false, false],
-            [3, 7, 4, true, 68, 56, false, false],
-            [3, 7, 5, true, 72, 64, false, false]
-
-        ]
-    },
-    {
-        name: "Boss Fireball",
-        palette: 0,
-        renderSequence: [
-            [3, 10, 4, false, 48, 44, false, false],
-            [3, 12, 4, false, 64, 44, false, false],
-            [3, 10, 6, false, 48, 68, false, false],
-            [3, 12, 6, false, 64, 68, false, false]
-
-        ]
-    },
-    {
-        name: "Boo",
-        palette: 0,
-        renderSequence: [
-            [3, 8, 0, false, 44, 56, false, false],
-            [3, 12, 0, false, 68, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Boo Block",
-        palette: 0,
-        renderSequence: [
-            [3, 8, 0, false, 36, 56, false, false],
-            [3, 8, 4, false, 56, 56, false, false],
-            [3, 10, 4, false, 76, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Eerie",
-        palette: 0,
-        renderSequence: [
-            [2, 10, 6, false, 44, 56, false, false],
-            [3, 13, 6, false, 68, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Urchin",
-        palette: 0,
-        renderSequence: [
-            [3, 4, 4, false, 12, 48, false, false],
-            [3, 4, 4, false, 28, 48, true, false],
-            [3, 4, 4, false, 28, 64, true, true],
-            [3, 4, 4, false, 12, 64, false, true],
-            [3, 6, 4, false, 48, 48, false, false],
-            [3, 6, 4, false, 64, 48, true, false],
-            [3, 6, 4, false, 64, 64, true, true],
-            [3, 6, 4, false, 48, 64, false, true],
-            [3, 8, 4, false, 84, 48, false, false],
-            [3, 8, 4, false, 100, 48, true, false],
-            [3, 8, 4, false, 100, 64, true, true],
-            [3, 8, 4, false, 84, 64, false, true],
-            [3, 10, 4, false, 20, 56, false, false],
-            [3, 12, 4, false, 56, 56, false, false],
-            [3, 10, 4, false, 92, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Rip Van Fish",
-        palette: 0,
-        renderSequence: [
-            [3, 12, 0, false, 24, 56, false, false],
-            [3, 14, 0, false, 44, 56, false, false],
-            [3, 0, 6, true, 36, 48, false, false],
-            [3, 1, 6, true, 40, 40, false, false],
-            [3, 0, 7, true, 36, 32, false, false],
-            [3, 1, 7, true, 56, 48, false, false],
-            [3, 12, 2, false, 68, 56, false, false],
-            [3, 14, 2, false, 88, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Para-bomb",
-        palette: 0,
-        renderSequence: [
-            [3, 2, 4, false, 24, 48, false, false],
-            [3, 6, 6, false, 16, 32, false, false],
-            [3, 2, 2, true, 48, 48, false, false],
-            [3, 2, 2, true, 56, 48, true, false],
-            [3, 2, 3, true, 48, 56, false, false],
-            [3, 2, 3, true, 56, 56, true, false],
-            [3, 2, 6, false, 48, 32, false, false],
-            [3, 10, 4, false, 24, 68, false, false],
-            [3, 12, 4, false, 48, 68, false, false],
-            [3, 12, 3, true, 84, 52, false, false],
-            [3, 12, 3, true, 96, 60, false, false],
-            [3, 12, 3, true, 92, 72, false, false],
-            [3, 12, 3, true, 76, 72, false, false],
-            [3, 12, 3, true, 72, 60, false, false]
-
-        ]
-    },
-    {
-        name: "Para-goomba",
-        palette: 0,
-        renderSequence: [
-            [3, 3, 2, true, 68, 48, false, false],
-            [3, 3, 3, true, 68, 56, false, false],
-            [3, 3, 2, true, 76, 48, true, false],
-            [3, 3, 3, true, 76, 56, true, false],
-            [3, 2, 6, false, 68, 32, false, false],
-            [3, 8, 6, false, 44, 48, false, false],
-            [3, 6, 6, false, 36, 32, false, false],
-            [1, 10, 2, false, 68, 68, false, false],
-            [1, 8, 2, false, 44, 68, false, false]
-
-        ]
-    },
-    {
-        name: "Horizontal Dolphin",
-        palette: 0,
-        renderSequence: [
-            [3, 8, 0, false, 48, 44, false, false],
-            [3, 8, 2, false, 64, 44, false, false],
-            [3, 9, 2, false, 72, 44, false, false],
-            [3, 2, 6, false, 48, 68, false, false],
-            [3, 7, 6, false, 64, 68, false, false],
-            [3, 8, 6, false, 72, 68, false, false]
-
-        ]
-    },
-    {
-        name: "Vertical Dolphin",
-        palette: 0,
-        renderSequence: [
-            [3, 14, 4, false, 56, 48, false, false],
-            [3, 14, 6, false, 56, 64, false, false]
-
-        ]
-    },
-    {
-        name: "Torpedo Ted",
-        palette: 0,
-        renderSequence: [
-            [3, 0, 0, false, 40, 44, false, false],
-            [3, 2, 0, false, 56, 44, false, false],
-            [3, 0, 2, false, 56, 68, false, false],
-            [3, 0, 0, false, 40, 68, false, false],
-            [0, 2, 6, false, 72, 44, false, false],
-            [0, 4, 6, false, 72, 68, false, false],
-            [0, 6, 6, false, 80, 44, false, false],
-            [0, 6, 6, false, 80, 68, false, false]
-
-        ]
-    },
-    {
-        name: "Growing Pipe",
-        palette: 0,
-        renderSequence: [
-            [3, 4, 2, false, 48, 56, false, false],
-            [3, 6, 2, false, 64, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Goal Point Question Sphere (Orb)",
-        palette: 0,
-        renderSequence: [
-            [3, 12, 0, false, 56, 56, true, false]
-
-        ]
-    },
-    {
-        name: "Monty Mole (ground)",
-        palette: 0,
-        renderSequence: [
-            [3, 8, 0, true, 32, 64, false, false],
-            [3, 9, 0, true, 40, 64, false, false],
-            [3, 6, 0, false, 32, 44, false, false],
-            [3, 4, 0, false, 52, 56, false, false],
-            [3, 2, 0, false, 72, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Monty Mole (ledge)",
-        palette: 0,
-        renderSequence: [
-            [3, 12, 0, false, 36, 64, false, false],
-            [3, 6, 0, false, 36, 44, false, false],
-            [3, 2, 0, false, 56, 56, false, false],
-            [3, 4, 0, false, 76, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Ninji",
-        palette: 0,
-        renderSequence: [
-            [3, 7, 2, false, 68, 56, false, false],
-            [3, 9, 2, false, 44, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Moving Ghost House Hole",
-        palette: 0,
-        renderSequence: [
-            [3, 11, 6, false, 40, 56, true, false],
-            [3, 10, 6, false, 56, 56, false, false],
-            [3, 11, 6, false, 72, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Revolving Net Door",
-        palette: 0,
-        renderSequence: [
-            [2, 0, 0, false, 24, 24, false, false],
-            [2, 0, 1, false, 24, 40, false, false],
-            [2, 0, 0, false, 24, 48, false, true],
-            [2, 0, 0, false, 48, 24, true, false],
-            [2, 0, 0, false, 48, 48, true, true],
-            [2, 2, 2, true, 40, 40, false, false],
-            [2, 1, 0, false, 40, 24, false, false],
-            [2, 1, 0, false, 40, 48, false, true],
-            [2, 0, 1, false, 48, 40, true, false],
-            [2, 5, 0, false, 68, 24, false, false],
-            [2, 5, 0, false, 84, 24, true, false],
-            [2, 5, 1, false, 68, 40, false, false],
-            [2, 5, 1, false, 84, 40, true, false],
-            [2, 5, 0, false, 68, 48, false, true],
-            [2, 5, 0, false, 84, 48, true, true],
-            [2, 5, 0, false, 32, 64, false, false],
-            [2, 5, 0, false, 40, 64, true, false],
-            [2, 5, 1, false, 32, 80, false, false],
-            [2, 5, 1, false, 40, 80, true, false],
-            [2, 5, 0, false, 32, 88, false, true],
-            [2, 5, 0, true, 48, 96, true, true],
-            [2, 3, 0, false, 80, 64, false, false],
-            [2, 3, 1, false, 80, 80, false, false],
-            [2, 3, 0, true, 80, 96, false, true]
-
-        ]
-    },
-    {
-        name: "Checkerboard Platform",
-        palette: 0,
-        renderSequence: [
-            [3, 10, 6, false, 24, 60, false, false],
-            [3, 11, 6, false, 40, 60, false, false],
-            [3, 11, 6, false, 56, 60, false, false],
-            [3, 11, 6, false, 72, 60, false, false],
-            [3, 12, 6, false, 88, 60, false, false]
-
-        ]
-    },
-    {
-        name: "Rock Platform",
-        palette: 0,
-        renderSequence: [
-            [3, 5, 0, false, 40, 48, false, false],
-            [3, 6, 0, false, 56, 48, false, false],
-            [3, 5, 0, false, 72, 48, true, false],
-            [3, 8, 0, false, 48, 64, false, false],
-            [3, 8, 0, false, 64, 64, true, false]
-
-        ]
-    },
-    {
-        name: "Sinking Rock Platform",
-        palette: 0,
-        renderSequence: [
-            [3, 5, 0, false, 40, 48, false, false],
-            [3, 6, 0, false, 56, 48, false, false],
-            [3, 5, 0, false, 72, 48, true, false]
-
-        ]
-    },
-    {
-        name: "Grey / Brown Platforms",
-        palette: 0,
-        renderSequence: [
-            [2, 0, 6, false, 40, 68, false, false],
-            [2, 1, 6, false, 56, 68, false, false],
-            [2, 2, 6, false, 72, 68, false, false],
-            [2, 0, 6, false, 32, 44, false, false],
-            [2, 1, 6, false, 48, 44, false, false],
-            [2, 1, 6, false, 64, 44, false, false],
-            [2, 2, 6, false, 80, 44, false, false]
-
-        ]
-    },
-    {
-        name: "Rotating Brown / Grey Platforms",
-        palette: 0,
-        renderSequence: [
-            [3, 2, 2, false, 56, 24, false, false],
-            [2, 1, 6, false, 48, 20, false, false],
-            [2, 1, 6, false, 64, 20, false, false],
-            [2, 0, 6, false, 32, 20, false, false],
-            [2, 2, 6, false, 80, 20, false, false],
-            [3, 2, 2, false, 66, 36, false, false],
-            [3, 2, 2, false, 76, 48, false, false],
-            [3, 2, 2, false, 86, 60, false, false],
-            [3, 2, 2, false, 96, 72, false, false],
-            [3, 2, 2, false, 56, 96, false, false],
-            [3, 2, 2, false, 48, 82, false, false],
-            [3, 2, 2, false, 40, 68, false, false],
-            [2, 1, 6, false, 56, 92, false, false],
-            [2, 0, 6, false, 40, 92, false, false],
-            [2, 2, 6, false, 72, 92, false, false]            
-        ]
-    },
-    {
-        name: "Flattened Switch Palace Switch",
-        palette: 0,
-        renderSequence: [
-            [3, 0, 0, false, 48, 56, false, false],
-            [3, 0, 0, false, 64, 56, true, false]
-
-        ]
-    },
-    {
-        name: "Switch Palace Blocks Message",
-        palette: 0,
-        renderSequence: [
-            [2, 7, 2, true, 72, 56, false, false],
-            [2, 7, 2, true, 80, 56, true, false],
-            [2, 7, 3, true, 72, 64, false, false],
-            [2, 7, 3, true, 80, 64, true, false],
-            [2, 13, 2, true, 40, 56, false, false],
-            [2, 13, 2, true, 48, 56, true, false],
-            [2, 13, 2, true, 40, 64, false, true],
-            [2, 13, 2, true, 48, 64, true, true]
-
-        ]
-    },
-    {
-        name: "Floating Skull Platform",
-        palette: 0,
-        renderSequence: [
-            [3, 0, 6, false, 48, 44, false, false],
-            [3, 0, 6, false, 32, 44, false, false],
-            [3, 0, 6, false, 64, 44, false, false],
-            [3, 0, 6, false, 80, 44, false, false],
-            [3, 2, 6, false, 32, 68, false, false],
-            [3, 2, 6, false, 48, 68, false, false],
-            [3, 2, 6, false, 64, 68, false, false],
-            [3, 2, 6, false, 80, 68, false, false]
-
-        ]
-    },
-    {
-        name: "Rope Mechanism",
-        palette: 0,
-        renderSequence: [
-            [3, 0, 4, false, 36, 32, false, false],
-            [3, 2, 4, false, 56, 32, false, false],
-            [3, 0, 6, false, 76, 32, false, false],
-            [3, 14, 4, false, 36, 48, false, false],
-            [3, 14, 4, false, 56, 48, false, false],
-            [3, 14, 4, false, 76, 48, false, false],
-            [3, 14, 4, false, 36, 64, false, false],
-            [3, 14, 4, false, 56, 64, false, false],
-            [3, 14, 4, false, 76, 64, false, false],
-            [3, 14, 4, false, 36, 80, false, false],
-            [3, 14, 4, false, 56, 80, false, false],
-            [3, 14, 4, false, 76, 80, false, false],
-            [3, 14, 5, false, 36, 96, false, false],
-            [3, 14, 5, false, 56, 96, false, false],
-            [3, 14, 5, false, 76, 96, false, false]
-
-        ]
-    },
-    {
-        name: "Grinder",
-        palette: 0,
-        renderSequence: [
-            [2, 12, 6, false, 28, 48, false, false],
-            [2, 12, 6, false, 44, 48, true, false],
-            [2, 12, 6, false, 28, 64, false, true],
-            [2, 12, 6, false, 44, 64, true, true],
-            [2, 14, 6, false, 68, 48, false, false],
-            [2, 14, 6, false, 84, 48, true, false],
-            [2, 14, 6, false, 68, 64, false, true],
-            [2, 14, 6, false, 84, 64, true, true]
-
-        ]
-    },
-    {
-        name: "Chainsaw",
-        palette: 0,
-        renderSequence: [
-            [3, 14, 2, false, 32, 56, false, false],
-            [3, 14, 0, false, 32, 40, false, false],
-            [3, 14, 2, false, 56, 60, false, false],
-            [3, 14, 0, false, 56, 44, false, false],
-            [3, 14, 2, false, 80, 56, false, false],
-            [3, 14, 0, false, 80, 40, false, false],
-            [3, 0, 4, false, 32, 68, false, false],
-            [3, 2, 4, false, 56, 68, false, false],
-            [3, 0, 6, false, 80, 68, false, false]
-
-        ]
-    },
-    {
-        name: "Fuzzy",
-        palette: 0,
-        renderSequence: [
-            [3, 8, 4, false, 56, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Coin Game Cloud",
-        palette: 0,
-        renderSequence: [
-            [0, 0, 6, false, 44, 56, false, false],
-            [2, 13, 4, true, 48, 60, false, false],
-            [1, 2, 4, false, 68, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Dino-Rhino",
-        palette: 0,
-        renderSequence: [
-            [3, 0, 4, false, 28, 48, false, false],
-            [3, 0, 6, false, 28, 64, false, false],
-            [3, 2, 4, false, 44, 48, false, false],
-            [3, 2, 6, false, 44, 64, false, false],
-            [3, 4, 6, false, 68, 64, false, false],
-            [3, 6, 6, false, 84, 64, false, false],
-            [3, 0, 4, false, 68, 48, false, false],
-            [3, 2, 4, false, 84, 48, false, false]
-
-        ]
-    },
-    {
-        name: "Dino-Torch",
-        palette: 0,
-        renderSequence: [
-            [3, 0, 0, false, 24, 68, false, false],
-            [3, 2, 0, false, 32, 68, false, false],
-            [3, 4, 0, false, 44, 68, false, false],
-            [3, 6, 0, false, 56, 68, false, false],
-            [3, 4, 4, false, 64, 68, false, false],
-            [3, 8, 0, false, 84, 28, false, false],
-            [3, 10, 0, false, 84, 36, false, false],
-            [3, 12, 0, false, 84, 48, false, false],
-            [3, 14, 0, false, 84, 60, false, false],
-            [3, 6, 4, false, 84, 68, false, false],
-            [3, 10, 2, false, 24, 44, false, false],
-            [3, 10, 6, false, 44, 44, false, false],
-            [3, 12, 2, false, 64, 44, false, false]
-
-        ]
-    },
-    {
-        name: "Pokey",
-        palette: 0,
-        renderSequence: [
-            [3, 8, 6, false, 56, 88, false, false],
-            [3, 8, 6, false, 54, 72, false, false],
-            [3, 8, 6, false, 56, 56, false, false],
-            [3, 8, 6, false, 54, 40, false, false],
-            [3, 10, 0, false, 56, 24, false, false]
-        ]
-    },
-    {
-        name: "Super Koopa (Ground)",
-        palette: 0,
-        renderSequence: [
-            [1, 0, 6, false, 8, 44, false, false],
-            [3, 8, 4, true, 16, 44, false, false],
-            [3, 8, 5, true, 16, 52, false, false],
-            [3, 0, 5, true, 24, 52, false, false],
-            [1, 2, 6, false, 36, 44, false, false],
-            [3, 9, 4, true, 44, 44, false, false],
-            [3, 9, 5, true, 44, 52, false, false],
-            [3, 0, 4, true, 52, 52, false, false],
-            [1, 0, 6, false, 64, 44, false, false],
-            [3, 4, 6, true, 72, 40, false, false],
-            [3, 5, 6, true, 80, 40, false, false],
-            [1, 2, 6, false, 92, 44, false, false],
-            [3, 4, 7, true, 100, 40, false, false],
-            [3, 5, 7, true, 108, 40, false, false],
-            [3, 0, 6, false, 8, 68, false, false],
-            [3, 2, 7, true, 24, 76, false, false],
-            [3, 4, 6, true, 16, 72, false, false],
-            [3, 5, 6, true, 24, 72, false, false],
-            [3, 0, 6, false, 36, 68, false, false],
-            [3, 2, 7, true, 52, 76, false, false],
-            [3, 4, 7, true, 44, 72, false, false],
-            [3, 5, 7, true, 52, 72, false, false],
-            [1, 15, 4, true, 68, 68, false, false],
-            [1, 15, 4, true, 92, 68, false, false],
-            [1, 0, 6, false, 68, 68, false, true],
-            [1, 0, 6, false, 92, 68, false, true],
-            [3, 10, 4, true, 76, 76, false, true],
-            [3, 10, 5, true, 76, 68, false, true],
-            [3, 11, 4, true, 100, 76, false, true],
-            [3, 11, 5, true, 100, 68, false, true]
-
-        ]
-    },
-    {
-        name: "Super Koopa (Flying)",
-        palette: 0,
-        renderSequence: [
-            [3, 0, 6, false, 12, 56, false, false],
-            [3, 2, 7, true, 28, 64, false, false],
-            [3, 4, 6, true, 20, 60, false, false],
-            [3, 5, 6, true, 28, 60, false, false],
-            [3, 0, 6, false, 40, 56, false, false],
-            [3, 2, 7, true, 56, 64, false, false],
-            [3, 4, 7, true, 48, 60, false, false],
-            [3, 5, 7, true, 56, 60, false, false],
-            [1, 15, 4, true, 68, 56, false, false],
-            [1, 0, 6, false, 68, 56, false, true],
-            [3, 10, 4, true, 76, 64, false, true],
-            [3, 10, 5, true, 76, 56, false, true],
-            [1, 15, 4, true, 92, 56, false, false],
-            [1, 0, 6, false, 92, 56, false, true],
-            [3, 11, 4, true, 100, 64, false, true],
-            [3, 11, 5, true, 100, 56, false, true]
-
-        ]
-    },
-    {
-        name: "Firework",
-        palette: 0,
-        renderSequence: [
-            [3, 12, 6, true, 48, 52, false, false],
-            [3, 13, 6, true, 56, 52, false, false],
-            [3, 14, 0, true, 64, 52, false, false],
-            [3, 15, 0, true, 72, 52, false, false],
-            [2, 5, 3, true, 48, 68, false, false],
-            [3, 7, 4, true, 56, 68, false, false],
-            [2, 4, 3, true, 64, 68, false, false],
-            [2, 4, 2, true, 72, 68, false, false]
-
-        ]
-    },
-    {
-        name: "Peach",
-        palette: 0,
-        renderSequence: [
-            [1, 2, 0, false, 16, 44, false, false],
-            [1, 2, 2, false, 16, 60, false, false],
-            [1, 3, 0, false, 24, 44, false, false],
-            [1, 3, 2, false, 24, 60, false, false],
-            [3, 10, 2, false, 40, 60, false, false],
-            [2, 8, 6, false, 48, 60, false, false],
-            [3, 10, 0, false, 40, 44, false, false],
-            [3, 11, 0, false, 48, 44, false, false],
-            [3, 10, 2, false, 64, 60, false, false],
-            [2, 8, 6, false, 72, 60, false, false],
-            [3, 3, 0, false, 64, 44, false, false],
-            [3, 4, 0, false, 72, 44, false, false],
-            [3, 0, 0, false, 88, 56, false, false],
-            [3, 1, 0, false, 96, 56, false, false],
-            [3, 10, 0, false, 88, 40, false, false],
-            [3, 11, 0, false, 96, 40, false, false]
-
-        ]
-    },
-    {
-        name: "Peach Ending Cutscene Text",
-        palette: 0,
-        slot1: "GFX0D",
-        renderSequence: [
-            [1, 8, 0, true, 32, 36, false, false],
-            [1, 10, 0, true, 40, 36, false, false],
-            [1, 11, 0, true, 48, 36, false, false],
-            [1, 12, 0, true, 56, 36, false, false],
-            [1, 13, 0, true, 64, 36, false, false],
-            [1, 14, 0, true, 72, 36, false, false],
-            [1, 8, 1, true, 80, 36, false, false],
-            [1, 9, 1, true, 88, 36, false, false],
-            [1, 14, 1, true, 32, 44, false, false],
-            [1, 8, 2, true, 40, 44, false, false],
-            [1, 11, 2, true, 48, 44, false, false],
-            [1, 12, 2, true, 56, 44, false, false],
-            [1, 13, 2, true, 64, 44, false, false],
-            [1, 14, 2, true, 72, 44, false, false],
-            [1, 15, 2, true, 80, 44, false, false],
-            [1, 10, 3, true, 88, 44, false, false],
-            [1, 13, 3, true, 32, 52, false, false],
-            [1, 14, 3, true, 40, 52, false, false],
-            [1, 15, 3, true, 48, 52, false, false],
-            [1, 0, 2, true, 56, 52, false, false],
-            [1, 1, 2, true, 64, 52, false, false],
-            [1, 0, 3, true, 72, 52, false, false],
-            [1, 14, 2, true, 40, 68, false, false],
-            [1, 14, 1, true, 48, 68, false, false],
-            [1, 14, 2, true, 56, 68, false, false],
-            [1, 12, 2, true, 64, 68, false, false],
-            [1, 12, 0, true, 72, 68, false, false],
-            [1, 11, 0, true, 80, 68, false, false],
-            [1, 9, 0, true, 36, 80, false, false],
-            [1, 10, 1, true, 44, 80, false, false],
-            [1, 11, 1, true, 52, 80, false, false],
-            [1, 12, 1, true, 60, 80, false, false],
-            [1, 13, 1, true, 68, 80, false, false],
-            [1, 9, 2, true, 76, 80, false, false],
-            [1, 10, 2, true, 84, 80, false, false],
-            [1, 8, 3, true, 36, 88, false, false],
-            [1, 9, 3, true, 44, 88, false, false],
-            [1, 11, 3, true, 52, 88, false, false],
-            [1, 12, 3, true, 60, 88, false, false]
-
-        ]
-    },
-    {
-        name: "Wiggler",
-        palette: 0,
-        renderSequence: [
-            [3, 6, 4, false, 68, 44, false, false],
-            [3, 4, 4, false, 60, 44, false, false],
-            [3, 6, 4, false, 52, 44, false, false],
-            [3, 8, 4, false, 44, 44, false, false],
-            [3, 12, 0, false, 36, 44, false, false],
-            [3, 8, 1, true, 40, 36, false, false],
-            [3, 4, 4, false, 68, 68, false, false],
-            [3, 6, 4, false, 60, 68, false, false],
-            [3, 8, 4, false, 52, 68, false, false],
-            [3, 6, 4, false, 44, 68, false, false],
-            [3, 12, 0, false, 36, 68, false, false],
-            [3, 8, 0, true, 40, 68, false, false]
-
-        ]
-    },
-    {
-        name: "Lakitu's cloud",
-        palette: 0,
-        renderSequence: [
-            [0, 0, 6, false, 48, 52, false, false],
-            [0, 0, 6, false, 64, 52, false, false],
-            [0, 0, 6, false, 56, 52, true, false],
-            [0, 0, 6, false, 52, 56, false, false],
-            [0, 0, 6, false, 60, 56, false, false],
-            [2, 13, 4, true, 60, 60, false, false]
-
-        ]
-    },
-    {
-        name: "Yoshi's House Bird",
-        palette: 0,
-        renderSequence: [
-            [3, 0, 5, true, 52, 52, false, false],
-            [3, 1, 5, true, 68, 52, false, false],
-            [3, 2, 5, true, 52, 68, false, false],
-            [3, 3, 5, true, 68, 68, false, false]
-
-        ]
-    },
-    {
-        name: "Yoshi's House Fireplace",
-        palette: 0,
-        renderSequence: [
-            [3, 11, 3, true, 52, 76, false, false],
-            [3, 11, 2, true, 52, 68, false, false],
-            [3, 10, 1, true, 68, 76, false, false],
-            [3, 4, 5, true, 68, 68, false, false],
-            [3, 5, 4, false, 48, 44, false, false],
-            [3, 5, 4, false, 64, 44, true, false]
-
-        ]
-    },
-    {
-        name: "Ghost House Exit Door",
-        palette: 0,
-        renderSequence: [
-            [3, 0, 2, false, 8, 40, true, false],
-            [3, 0, 3, false, 8, 48, true, false],
-            [3, 0, 3, false, 8, 64, true, true],
-            [3, 0, 2, false, 8, 72, true, true],
-            [3, 0, 2, false, 24, 40, false, false],
-            [3, 0, 3, false, 24, 48, false, false],
-            [3, 0, 3, false, 24, 64, false, true],
-            [3, 0, 2, false, 24, 72, false, true],
-            [3, 3, 2, false, 48, 40, true, false],
-            [3, 3, 3, false, 48, 48, true, false],
-            [3, 3, 3, false, 48, 64, true, true],
-            [3, 3, 2, false, 48, 72, true, true],
-            [3, 3, 2, false, 64, 40, false, false],
-            [3, 3, 3, false, 64, 48, false, false],
-            [3, 3, 3, false, 64, 64, false, true],
-            [3, 3, 2, false, 64, 72, false, true],
-            [3, 2, 3, false, 88, 48, true, false],
-            [3, 2, 3, false, 88, 64, true, true],
-            [3, 2, 2, false, 88, 72, true, true],
-            [3, 2, 2, false, 88, 40, true, false],
-            [3, 2, 3, false, 104, 48, false, false],
-            [3, 2, 2, false, 104, 40, false, false],
-            [3, 2, 3, false, 104, 64, false, true],
-            [3, 2, 2, false, 104, 72, false, true]
-
-        ]
-    },
-    {
-        name: "Mushroom Platforms",
-        palette: 0,
-        renderSequence: [
-            [3, 0, 0, false, 48, 56, false, false],
-            [3, 0, 0, false, 64, 56, true, false]
-
-        ]
-    },
-    {
-        name: "	Large Green Gas Bubble",
-        palette: 0,
-        renderSequence: [
-            [3, 0, 0, false, 36, 32, false, false],
-            [3, 2, 0, false, 52, 32, false, false],
-            [3, 4, 0, false, 68, 32, false, false],
-            [3, 6, 0, false, 84, 32, false, false],
-            [3, 6, 2, false, 84, 48, false, false],
-            [3, 6, 2, false, 84, 64, false, true],
-            [3, 6, 0, false, 84, 80, false, true],
-            [3, 0, 2, false, 36, 48, false, false],
-            [3, 2, 2, false, 52, 48, false, false],
-            [3, 4, 2, false, 68, 48, false, false],
-            [3, 4, 2, false, 68, 64, false, true],
-            [3, 4, 0, false, 68, 80, false, true],
-            [3, 2, 0, false, 52, 80, false, true],
-            [3, 0, 0, false, 36, 80, false, true],
-            [3, 2, 2, false, 52, 64, false, false],
-            [3, 0, 2, false, 36, 64, false, true]
-
-        ]
-    },
-    {
-        name: "Bouncing Rock",
-        palette: 0,
-        renderSequence: [
-            [3, 4, 4, false, 44, 56, false, false],
-            [3, 6, 4, false, 68, 56, false, false]
-
-        ]
-    },
-    {
-        name: "Volcano Lotus",
-        palette: 0,
-        renderSequence: [
-            [3, 14, 4, false, 48, 68, false, false],
-            [3, 14, 4, false, 64, 68, true, false],
-            [3, 2, 6, true, 56, 68, false, false],
-            [3, 3, 6, true, 64, 68, false, false],
-            [3, 6, 2, true, 52, 40, false, false],
-            [3, 6, 3, true, 68, 40, false, false],
-            [3, 6, 2, true, 80, 48, false, false],
-            [3, 6, 3, true, 40, 48, false, false]
-
-        ]
-    },
-    {
-        name: "Sumo Bro",
-        palette: 0,
-        renderSequence: [
-            [3, 3, 4, false, 32, 44, false, false],
-            [3, 1, 4, false, 16, 44, false, false],
-            [3, 0, 0, false, 30, 36, false, false],
-            [3, 5, 4, false, 56, 44, false, false],
-            [3, 6, 4, false, 64, 44, false, false],
-            [3, 14, 6, false, 60, 36, false, false],
-            [3, 10, 2, false, 56, 76, false, false],
-            [3, 11, 2, false, 64, 76, false, false],
-            [3, 8, 1, true, 60, 68, false, false],
-            [3, 9, 1, true, 68, 68, false, false],
-            [3, 9, 1, true, 36, 68, false, false],
-            [3, 8, 1, true, 28, 68, false, false],
-            [3, 8, 2, false, 32, 76, false, false],
-            [3, 7, 2, false, 24, 76, false, false],
-            [3, 12, 6, false, 88, 76, false, false],
-            [3, 12, 4, false, 88, 60, false, false],
-            [3, 3, 7, true, 92, 44, true, true],
-            [3, 3, 7, true, 92, 36, false, false]
-        ]
-    },
-    {
-        name: "Diggin' Chuck",
-        palette: 0,
-        renderSequence: [
-            [3, 2, 6, false, 12, 56, false, false],
-            [2, 8, 2, false, 24, 56, false, false],
-            [2, 9, 2, false, 32, 56, false, false],
-            [2, 14, 0, false, 26, 48, false, false],
-            [3, 7, 6, false, 52, 56, false, false],
-            [3, 8, 6, false, 60, 56, false, false],
-            [2, 10, 0, false, 56, 48, false, false],
-            [3, 0, 2, false, 76, 48, false, false],
-            [3, 2, 0, false, 92, 56, false, false],
-            [3, 3, 0, false, 100, 56, false, false],
-            [2, 10, 0, false, 92, 46, false, false],
-            [3, 4, 4, false, 44, 80, false, false],
-            [3, 6, 4, false, 68, 80, false, false]
-
-        ]
-    },
-    {
-        name: "Chargin' Chuck",
-        palette: 0,
-        renderSequence: [
-            [2, 6, 0, false, 50, 32, false, false],
-            [2, 0, 2, false, 52, 44, false, false],
-            [2, 1, 2, false, 60, 44, false, false],
-            [2, 13, 1, true, 68, 36, false, false],
-            [2, 12, 1, true, 60, 36, false, false],
-            [2, 6, 0, false, 82, 32, false, false],
-            [2, 3, 2, false, 84, 44, false, false],
-            [2, 4, 2, false, 92, 44, false, false],
-            [2, 12, 1, true, 92, 36, false, false],
-            [2, 13, 1, true, 100, 36, false, false],
-            [2, 6, 2, false, 52, 76, false, false],
-            [2, 6, 2, false, 60, 76, true, false],
-            [2, 8, 2, false, 84, 76, false, false],
-            [2, 9, 2, false, 92, 76, false, false],
-            [2, 6, 0, false, 84, 68, false, false],
-            [2, 10, 0, false, 56, 68, false, false],
-            [2, 0, 4, false, 20, 40, false, false],
-            [2, 0, 4, false, 28, 40, true, false],
-            [2, 12, 0, true, 18, 32, false, false],
-            [2, 12, 0, true, 38, 32, true, false],
-            [2, 14, 0, false, 24, 28, false, false],
-            [2, 4, 6, false, 20, 76, false, false],
-            [2, 4, 6, false, 28, 76, true, false],
-            [2, 14, 0, false, 24, 68, false, false]
-        ]
-    },
-    {
-        name: "Clappin' Chuck",
-        palette: 0,
-        renderSequence: [
-            [2, 13, 2, false, 20, 60, false, false],
-            [2, 13, 2, false, 28, 60, true, false],
-            [2, 6, 0, false, 24, 56, false, false],
-            [2, 0, 4, false, 52, 60, false, false],
-            [2, 0, 4, false, 60, 60, true, false],
-            [2, 12, 0, true, 50, 52, false, false],
-            [2, 12, 0, true, 70, 52, true, false],
-            [2, 6, 0, false, 56, 48, false, false],
-            [2, 2, 4, false, 80, 60, false, false],
-            [2, 2, 4, false, 96, 60, true, false],
-            [2, 4, 4, false, 88, 44, false, false]
-        ]
-    },
-    {
-        name: "Pitchin' Chuck",
-        palette: 0,
-        renderSequence: [
-            [2, 6, 0, false, 24, 68, false, false],
-            [3, 13, 2, true, 26, 84, false, false],
-            [2, 14, 4, false, 32, 76, false, false],
-            [2, 13, 0, true, 24, 82, false, false],
-            [2, 6, 0, false, 54, 66, false, false],
-            [3, 14, 2, false, 60, 76, false, false],
-            [3, 13, 2, true, 61, 64, false, false],
-            [2, 13, 5, true, 61, 68, false, false],
-            [2, 6, 0, false, 80, 68, false, false],
-            [3, 13, 3, true, 80, 76, false, false],
-            [3, 4, 2, false, 88, 76, false, false],
-            [2, 6, 0, false, 24, 32, false, false],
-            [3, 0, 2, false, 28, 42, false, false],
-            [3, 13, 2, true, 34, 28, false, false],
-            [2, 13, 5, true, 34, 34, false, false],
-            [2, 6, 0, false, 52, 32, false, false],
-            [3, 0, 2, false, 56, 42, false, false],
-            [3, 13, 2, true, 66, 30, false, false],
-            [2, 12, 0, true, 64, 34, true, false],
-            [2, 6, 0, false, 80, 32, false, false],
-            [3, 2, 2, false, 88, 40, false, false],
-            [3, 13, 3, true, 80, 40, false, false]
-
-        ]
-    },
-    {
-        name: "Kickin' Chuck",
-        palette: 0,
-        renderSequence: [
-            [2, 6, 0, false, 80, 52, false, false],
-            [2, 14, 4, false, 88, 60, false, false],
-            [2, 13, 0, true, 80, 66, false, false],
-            [2, 6, 0, false, 50, 50, false, false],
-            [3, 12, 4, false, 56, 60, false, false],
-            [3, 11, 4, true, 48, 64, false, false],
-            [0, 12, 7, true, 32, 52, false, false],
-            [0, 13, 7, true, 40, 52, false, false],
-            [0, 13, 7, true, 32, 60, true, true],
-            [0, 12, 7, true, 40, 60, true, true],
-            [3, 10, 0, false, 20, 40, false, false]
-        ]
-    },
-    {
-        name: "Whistlin' Chuck",
-        palette: 0,
-        renderSequence: [
-            [2, 6, 2, false, 20, 56, false, false],
-            [2, 6, 2, false, 28, 56, true, false],
-            [2, 6, 0, false, 24, 48, false, false],
-            [2, 0, 4, false, 52, 56, false, false],
-            [2, 0, 4, false, 60, 56, true, false],
-            [2, 0, 4, false, 84, 56, false, false],
-            [2, 0, 4, false, 92, 56, true, false],
-            [2, 12, 0, true, 50, 48, false, false],
-            [2, 12, 0, true, 82, 48, false, false],
-            [2, 12, 0, true, 70, 48, true, false],
-            [2, 12, 0, true, 102, 48, true, false],
-            [2, 11, 4, false, 56, 44, false, false],
-            [2, 14, 0, false, 88, 44, false, false]
-        ]
-    },
-    {
-        name: "Splittin' / Jumpin' Chucks",
-        palette: 0,
-        renderSequence: [
-            [2, 13, 2, false, 60, 56, true, false],
-            [2, 13, 2, false, 52, 56, false, false],
-            [2, 6, 0, false, 56, 52, false, false],
-            [2, 6, 2, false, 32, 56, true, false],
-            [2, 6, 2, false, 24, 56, false, false],
-            [2, 6, 0, false, 28, 48, false, false],
-            [2, 0, 4, false, 80, 56, false, false],
-            [2, 0, 4, false, 88, 56, true, false],
-            [2, 12, 0, true, 78, 48, false, false],
-            [2, 12, 0, true, 98, 48, true, false],
-            [2, 6, 0, false, 84, 44, false, false]
-        ]
-    },
-    {
-        name: "Amazing Flying Hammer Brother",
-        palette: 0,
-        renderSequence: [
-            [2, 6, 4, false, 48, 60, false, false],
-            [2, 8, 4, false, 64, 60, false, false],
-            [2, 10, 4, true, 64, 52, false, false],
-            [2, 10, 5, true, 56, 52, false, false],
-            [2, 13, 6, false, 32, 40, false, false],
-            [2, 8, 0, false, 80, 32, false, false]
-        ]
-    },
-    {
-        name: "Bubble",
-        palette: 0,
-        renderSequence: [
-            [3, 0, 2, false, 48, 64, false, true],
-            [3, 0, 2, false, 48, 48, false, false],
-            [3, 0, 2, false, 64, 48, true, false],
-            [3, 0, 2, false, 64, 64, true, true],
-            [3, 9, 1, true, 56, 56, false, false],
-        ]
-    },
-    {
-        name: "Ball n' Chain",
-        palette: 0,
-        renderSequence: [
-            [3, 8, 6, false, 68, 68, false, false],
-            [3, 8, 6, false, 56, 56, false, false],
-            [3, 10, 6, false, 44, 48, true, true],
-            [3, 10, 6, false, 28, 48, false, true],
-            [3, 10, 6, false, 28, 32, false, false],
-            [3, 10, 6, false, 44, 32, true, false]
-        ]
-    },
-    {
-        name: "Banzai Bill",
-        palette: 0,
-        renderSequence: [
-            [3, 0, 0, false, 28, 32, false, false],
-            [3, 2, 0, false, 44, 32, false, false],
-            [3, 4, 0, false, 60, 32, false, false],
-            [3, 6, 0, false, 76, 32, false, false],
-            [3, 0, 2, false, 28, 48, false, false],
-            [3, 8, 0, false, 44, 48, false, false],
-            [3, 0, 4, false, 28, 64, false, false],
-            [3, 2, 4, false, 44, 64, false, false],
-            [3, 14, 0, false, 28, 80, false, false],
-            [3, 14, 2, false, 44, 80, false, false],
-            [3, 14, 4, false, 60, 48, false, false],
-            [3, 14, 4, false, 60, 64, false, false],
-            [3, 14, 6, false, 76, 48, false, false],
-            [3, 14, 6, false, 76, 64, false, false],
-            [3, 4, 0, false, 60, 80, false, true],
-            [3, 6, 0, false, 76, 80, false, true]
-        ]
-    },
-    {
-        name: "Big Steely",
-        palette: 0,
-        renderSequence: [
-            [2, 5, 4, false, 40, 40, false, false],
-            [2, 7, 4, false, 56, 40, false, false],
-            [2, 5, 4, false, 72, 40, true, false],
-            [2, 5, 6, false, 40, 56, false, false],
-            [2, 6, 6, false, 56, 56, false, false],
-            [2, 5, 6, false, 72, 56, true, false],
-            [2, 5, 4, false, 72, 72, true, true],
-            [2, 7, 4, false, 56, 72, true, true],
-            [2, 5, 4, false, 40, 72, false, true],
-            [2, 3, 6, false, 48, 48, false, false]
-        ]
-    },
-    {
-        name: "Mechakoopa",
-        palette: 0,
-        renderSequence: [
-            [2, 0, 4, false, 68, 20, false, false],
-            [2, 12, 0, false, 76, 28, false, false],
-            [2, 0, 4, false, 36, 20, false, false],
-            [2, 10, 0, false, 44, 28, false, false],
-            [2, 0, 6, true, 36, 36, false, false],
-            [2, 0, 6, true, 68, 36, false, false],
-            [2, 2, 4, true, 52, 20, false, false],
-            [2, 2, 4, true, 84, 20, false, false],
-            [2, 0, 4, false, 36, 52, false, false],
-            [2, 0, 4, false, 68, 52, false, false],
-            [2, 14, 0, false, 44, 60, false, false],
-            [2, 1, 5, false, 76, 60, false, false],
-            [2, 0, 6, true, 36, 68, false, false],
-            [2, 0, 6, true, 68, 68, false, false],
-            [2, 2, 4, true, 52, 52, false, false],
-            [2, 2, 4, true, 84, 52, false, false],
-            [2, 1, 7, true, 58, 62, false, false],
-            [2, 0, 7, true, 90, 60, false, false],
-            [2, 2, 7, true, 90, 28, false, false],
-            [2, 1, 7, true, 58, 30, false, false],
-            [2, 0, 0, false, 36, 88, false, false],
-            [2, 1, 0, false, 44, 88, false, false],
-            [2, 1, 0, false, 76, 88, false, false],
-            [2, 0, 0, false, 68, 88, false, false],
-            [2, 0, 7, true, 58, 88, false, false],
-            [2, 2, 7, true, 90, 88, false, false]
-        ]
-    },
-    {
-        name: "Sea Mine",
-        palette: 0,
-        renderSequence: [
-            [3, 10, 2, false, 28, 48, false, false],
-            [3, 10, 2, false, 44, 48, true, false],
-            [3, 10, 2, false, 44, 64, true, true],
-            [3, 10, 2, false, 28, 64, false, true],
-            [3, 12, 2, false, 68, 48, false, false],
-            [3, 12, 2, false, 84, 48, true, false],
-            [3, 12, 2, false, 84, 64, true, true],
-            [3, 12, 2, false, 68, 64, false, true]
-            ]
-    },
-    {
-        name: "Sparky",
-        palette: 0,
-        renderSequence: [
-            [2, 10, 0, false, 56, 56, false, false]
-            ]
-    },
-    {
-        name: "Hothead",
-        palette: 0,
-        renderSequence: [
-            [2, 12, 0, false, 28, 48, false, false],
-            [2, 14, 0, false, 44, 48, false, false],
-            [2, 14, 0, false, 28, 64, true, true],
-            [2, 12, 0, false, 44, 64, true, true],
-            [2, 14, 0, false, 68, 48, true, false],
-            [2, 14, 0, false, 84, 64, false, true],
-            [2, 12, 0, false, 84, 48, true, false],
-            [2, 12, 0, false, 68, 64, false, true],
-            [2, 9, 0, true, 36, 56, false, false],
-            [2, 9, 1, true, 76, 56, false, false]            
-            ]
-    },
-    {
-        name: "Blargg",
-        palette: 0,
-        renderSequence: [
-            [3, 2, 2, false, 28, 48, false, false],
-            [3, 4, 2, false, 44, 48, false, false],
-            [3, 2, 4, false, 28, 64, false, false],
-            [3, 4, 4, false, 44, 64, false, false],
-            [3, 6, 2, false, 60, 64, false, false],
-            [3, 6, 6, false, 76, 64, false, false],
-            [3, 8, 4, false, 92, 64, false, false],
-            [3, 6, 2, false, 108, 64, false, false],
-            [3, 4, 2, false, 92, 48, false, false],
-            [3, 2, 2, false, 76, 48, false, false],
-            [3, 0, 2, false, 8, 64, false, false]
-        ]
-    },
-    {
-        name: "",
-        palette: 0,
-        renderSequence: []
-    },
-]
+const allSprites = [{
+    name: "Bob-Omb",
+    renderSequence: [
+        [3, 0, 12, 4, false, 28, 56, false, false],
+        [3, 7, 10, 4, false, 48, 56, false, false],
+        [3, 2, 12, 3, true, 80, 48, false, false],
+        [3, 2, 12, 3, true, 92, 56, false, false],
+        [3, 2, 12, 3, true, 88, 68, false, false],
+        [3, 2, 12, 3, true, 72, 68, false, false],
+        [3, 2, 12, 3, true, 68, 56, false, false],
+    ]
+}, {
+    name: "Buzzy Beetle",
+    renderSequence: [
+        [3, 6, 6, 0, false, 56, 68, false, false],
+        [3, 6, 4, 0, false, 36, 68, false, false],
+        [3, 6, 8, 0, false, 76, 68, false, false],
+        [3, 6, 0, 0, false, 44, 48, false, false],
+        [3, 6, 2, 0, false, 68, 48, false, false],
+    ]
+}, {
+    name: "Spiny",
+    renderSequence: [
+        [3, 4, 0, 0, false, 44, 56, false, false],
+        [3, 4, 2, 0, false, 68, 56, false, false],
+    ]
+}, {
+    name: "Hopping Flame",
+    renderSequence: [
+        [3, 2, 14, 0, false, 40, 52, false, false],
+        [3, 2, 14, 2, false, 56, 52, false, false],
+        [3, 2, 12, 2, true, 76, 60, false, false],
+        [3, 2, 13, 2, true, 84, 60, false, false],
+    ]
+}, {
+    name: "Falling Spiny",
+    renderSequence: [
+        [3, 4, 4, 0, true, 44, 56, false, false],
+        [3, 4, 4, 0, true, 44, 64, false, true],
+        [3, 4, 4, 0, true, 52, 56, true, false],
+        [3, 4, 4, 0, true, 52, 64, true, true],
+        [3, 4, 4, 1, true, 68, 56, false, false],
+        [3, 4, 4, 1, true, 68, 64, false, true],
+        [3, 4, 4, 1, true, 76, 56, true, false],
+        [3, 4, 4, 1, true, 76, 64, true, true],
+    ]
+}, {
+    name: "Flying Lakitu",
+    renderSequence: [
+        [0, 0, 0, 6, false, 68, 40, false, false],
+        [0, 0, 0, 6, false, 84, 40, false, false],
+        [3, 4, 12, 6, false, 76, 24, false, false],
+        [3, 4, 14, 6, false, 76, 40, false, false],
+        [0, 0, 0, 6, false, 72, 44, true, false],
+        [0, 0, 0, 6, false, 80, 44, false, false],
+        [2, 4, 13, 4, true, 80, 48, false, false],
+        [0, 0, 2, 6, false, 48, 84, false, false],
+        [0, 0, 2, 6, false, 64, 84, false, false],
+        [3, 4, 14, 4, false, 56, 68, false, false],
+        [3, 4, 14, 6, false, 56, 84, false, false],
+        [0, 0, 2, 6, false, 52, 88, false, false],
+        [0, 0, 2, 6, false, 60, 88, false, false],
+        [2, 4, 13, 4, true, 60, 92, false, false],
+        [0, 0, 0, 6, false, 44, 40, false, false],
+        [0, 0, 0, 6, false, 28, 40, false, false],
+        [3, 2, 10, 2, false, 24, 24, false, false],
+        [3, 4, 14, 6, false, 36, 40, false, false],
+        [3, 4, 12, 6, false, 36, 24, false, false],
+        [0, 0, 0, 6, false, 32, 44, false, false],
+        [0, 0, 0, 6, false, 40, 44, false, false],
+        [2, 4, 13, 4, true, 40, 48, false, false],
+        [3, 0, 9, 0, true, 16, 24, false, false],
+        [3, 0, 9, 0, true, 16, 32, false, false],
+        [3, 0, 9, 0, true, 16, 40, false, false],
+        [3, 0, 9, 0, true, 16, 48, false, false],
+        [3, 0, 9, 0, true, 16, 56, false, false],
+        [3, 0, 9, 0, true, 16, 64, false, false],
+        [3, 0, 9, 0, true, 16, 72, false, false],
+        [3, 0, 9, 0, true, 16, 80, false, false],
+        [0, 5, 4, 2, false, 16, 88, false, false],
+    ]
+}, {
+    name: "Pipe Dwelling Lakitu",
+    renderSequence: [
+        [3, 4, 12, 6, false, 36, 48, false, false],
+        [3, 4, 8, 2, false, 56, 48, false, false],
+        [3, 4, 14, 4, false, 76, 48, false, false],
+        [3, 4, 14, 6, false, 76, 64, false, false],
+        [3, 4, 14, 6, false, 56, 64, false, false],
+        [3, 4, 14, 6, false, 36, 64, false, false],
+    ]
+}, {
+    name: "Cheep Cheep",
+    renderSequence: [
+        [2, 2, 7, 6, false, 44, 56, false, false],
+        [2, 2, 9, 6, false, 68, 56, false, false],
+    ]
+}, {
+    name: "Football",
+    renderSequence: [
+        [3, 0, 10, 0, false, 56, 56, false, false],
+    ]
+}, {
+    name: "Magikoopa",
+    renderSequence: [
+        [3, 3, 0, 4, false, 56, 64, false, false],
+        [3, 3, 0, 2, false, 56, 48, false, false],
+        [3, 3, 9, 1, true, 48, 64, false, false],
+        [3, 3, 4, 2, false, 28, 48, false, false],
+        [3, 3, 4, 4, false, 28, 64, false, false],
+        [3, 3, 2, 4, false, 84, 64, false, false],
+        [3, 3, 9, 1, true, 76, 64, false, false],
+        [3, 3, 0, 2, false, 84, 48, false, false],
+    ]
+}, {
+    name: "Magikoopa's Magic",
+    renderSequence: [
+        [3, 4, 8, 0, true, 56, 52, false, false],
+        [3, 3, 9, 0, true, 68, 60, false, false],
+        [3, 2, 8, 1, true, 56, 68, false, false],
+    ]
+}, {
+    name: "Net Koopas",
+    renderSequence: [
+        [2, 4, 7, 0, false, 36, 44, false, false],
+        [2, 4, 7, 2, false, 36, 60, false, false],
+        [2, 4, 9, 2, false, 56, 60, false, false],
+        [2, 4, 12, 4, false, 56, 44, false, false],
+        [2, 4, 14, 4, false, 76, 44, false, false],
+        [2, 4, 11, 2, false, 76, 60, false, false],
+    ]
+}, {
+    name: "Thwomp",
+    renderSequence: [
+        [3, 1, 14, 0, false, 24, 48, false, false],
+        [3, 1, 14, 0, false, 32, 48, true, false],
+        [3, 1, 14, 2, false, 24, 64, false, false],
+        [3, 1, 14, 2, false, 32, 64, true, false],
+        [3, 1, 14, 0, false, 52, 48, false, false],
+        [3, 1, 14, 0, false, 60, 48, true, false],
+        [3, 1, 14, 2, false, 52, 64, false, false],
+        [3, 1, 14, 2, false, 60, 64, true, false],
+        [3, 1, 8, 4, false, 56, 56, false, false],
+        [3, 1, 14, 0, false, 80, 48, false, false],
+        [3, 1, 14, 0, false, 88, 48, true, false],
+        [3, 1, 14, 2, false, 80, 64, false, false],
+        [3, 1, 14, 2, false, 88, 64, true, false],
+        [3, 1, 10, 4, false, 84, 56, false, false],
+    ]
+}, {
+    name: "Thwimp",
+    renderSequence: [
+        [3, 1, 2, 2, true, 56, 56, false, false],
+        [3, 1, 2, 3, true, 56, 64, false, false],
+        [3, 1, 2, 3, true, 64, 64, true, false],
+        [3, 1, 2, 2, true, 64, 56, true, false],
+    ]
+}, {
+    name: "Pirahna Plant",
+    renderSequence: [
+        [3, 5, 14, 4, false, 44, 48, false, true],
+        [1, 4, 14, 2, false, 44, 64, false, true],
+        [3, 5, 14, 4, false, 68, 48, false, true],
+        [1, 4, 12, 2, false, 68, 64, false, true],
+    ]
+}, {
+    name: "Yoshi Egg",
+    renderSequence: [
+        [2, 5, 2, 0, false, 56, 56, false, false],
+        [2, 5, 0, 0, false, 36, 56, false, false],
+        [2, 0, 15, 6, true, 76, 52, false, false],
+        [2, 0, 15, 6, true, 80, 64, true, false],
+        [2, 0, 15, 6, true, 92, 52, true, false],
+        [2, 0, 15, 6, true, 88, 64, false, false],
+    ]
+}, {
+    name: "Spike Top",
+    renderSequence: [
+        [3, 4, 12, 0, false, 56, 28, false, false],
+        [3, 4, 10, 2, false, 84, 56, false, false],
+        [3, 4, 8, 2, false, 28, 56, true, true],
+        [3, 4, 12, 6, false, 56, 84, true, true],
+        [3, 4, 14, 0, false, 76, 36, false, false],
+        [3, 4, 14, 0, false, 36, 76, true, true],
+        [3, 4, 12, 2, false, 76, 76, true, false],
+        [3, 4, 12, 2, false, 36, 36, false, true],
+    ]
+}, {
+    name: "Dry Bones",
+    renderSequence: [
+        [2, 1, 4, 6, false, 12, 48, false, false],
+        [2, 1, 6, 6, false, 20, 64, false, false],
+        [2, 1, 4, 6, false, 32, 48, false, false],
+        [2, 1, 8, 6, false, 40, 64, false, false],
+        [2, 1, 7, 4, false, 60, 64, false, false],
+        [2, 1, 8, 4, false, 68, 64, false, false],
+        [2, 1, 13, 2, false, 88, 64, false, false],
+        [2, 1, 14, 2, false, 96, 64, false, false],
+    ]
+}, {
+    name: "Bony Beetle",
+    renderSequence: [
+        [3, 1, 12, 0, false, 24, 44, false, false],
+        [3, 1, 10, 2, false, 44, 44, false, false],
+        [3, 1, 6, 0, false, 68, 44, false, false],
+        [3, 1, 4, 0, false, 88, 44, false, false],
+        [2, 1, 8, 4, false, 44, 68, false, false],
+        [2, 1, 7, 4, false, 36, 68, false, false],
+        [2, 1, 13, 2, false, 68, 68, false, false],
+        [2, 1, 14, 2, false, 76, 68, false, false],
+    ]
+}, {
+    name: "Dry Bones (Throwing)",
+    renderSequence: [
+        [2, 1, 4, 6, false, 12, 60, false, false],
+        [2, 1, 6, 6, false, 20, 76, false, false],
+        [2, 1, 4, 6, false, 32, 60, false, false],
+        [2, 1, 8, 6, false, 40, 76, false, false],
+        [2, 1, 7, 4, false, 60, 76, false, false],
+        [2, 1, 8, 4, false, 68, 76, false, false],
+        [2, 1, 13, 2, false, 88, 76, false, false],
+        [2, 1, 14, 2, false, 96, 76, false, false],
+        [2, 1, 4, 6, false, 88, 40, false, false],
+        [3, 1, 6, 6, false, 96, 56, false, false],
+        [3, 1, 2, 0, false, 96, 44, false, false],
+        [3, 1, 0, 0, false, 64, 36, false, false],
+        [3, 1, 0, 0, false, 48, 36, true, false],
+        [3, 1, 2, 0, false, 32, 36, true, false],
+        [3, 1, 2, 0, false, 12, 36, false, false],
+    ]
+}, {
+    name: "Lava Particles",
+    renderSequence: [
+        [3, 2, 6, 4, true, 44, 56, false, false],
+        [3, 2, 6, 5, true, 56, 52, false, false],
+        [3, 2, 7, 4, true, 68, 56, false, false],
+        [3, 2, 7, 5, true, 72, 64, false, false],
+    ]
+}, {
+    name: "Boss Fireball",
+    renderSequence: [
+        [3, 2, 10, 4, false, 48, 44, false, false],
+        [3, 2, 12, 4, false, 64, 44, false, false],
+        [3, 2, 10, 6, false, 48, 68, false, false],
+        [3, 2, 12, 6, false, 64, 68, false, false],
+    ]
+}, {
+    name: "Urchin",
+    renderSequence: [
+        [3, 3, 4, 4, false, 12, 48, false, false],
+        [3, 3, 4, 4, false, 28, 48, true, false],
+        [3, 3, 4, 4, false, 28, 64, true, true],
+        [3, 3, 4, 4, false, 12, 64, false, true],
+        [3, 3, 6, 4, false, 48, 48, false, false],
+        [3, 3, 6, 4, false, 64, 48, true, false],
+        [3, 3, 6, 4, false, 64, 64, true, true],
+        [3, 3, 6, 4, false, 48, 64, false, true],
+        [3, 3, 8, 4, false, 84, 48, false, false],
+        [3, 3, 8, 4, false, 100, 48, true, false],
+        [3, 3, 8, 4, false, 100, 64, true, true],
+        [3, 3, 8, 4, false, 84, 64, false, true],
+        [3, 3, 10, 4, false, 20, 56, false, false],
+        [3, 3, 12, 4, false, 56, 56, false, false],
+        [3, 3, 10, 4, false, 92, 56, false, false],
+    ]
+}, {
+    name: "Rip Van Fish",
+    renderSequence: [
+        [3, 3, 12, 0, false, 24, 56, false, false],
+        [3, 3, 14, 0, false, 44, 56, false, false],
+        [3, 3, 0, 6, true, 36, 48, false, false],
+        [3, 3, 1, 6, true, 40, 40, false, false],
+        [3, 3, 0, 7, true, 36, 32, false, false],
+        [3, 3, 1, 7, true, 56, 48, false, false],
+        [3, 3, 12, 2, false, 68, 56, false, false],
+        [3, 3, 14, 2, false, 88, 56, false, false],
+    ]
+}, {
+    name: "Para-bomb",
+    renderSequence: [
+        [3, 0, 2, 4, false, 24, 48, false, false],
+        [3, 3, 6, 6, false, 16, 32, false, false],
+        [3, 0, 2, 2, true, 48, 48, false, false],
+        [3, 0, 2, 2, true, 56, 48, true, false],
+        [3, 0, 2, 3, true, 48, 56, false, false],
+        [3, 0, 2, 3, true, 56, 56, true, false],
+        [3, 3, 2, 6, false, 48, 32, false, false],
+        [3, 0, 12, 4, false, 24, 68, false, false],
+        [3, 7, 10, 4, false, 48, 68, false, false],
+        [3, 2, 12, 3, true, 84, 52, false, false],
+        [3, 2, 12, 3, true, 96, 60, false, false],
+        [3, 2, 12, 3, true, 92, 72, false, false],
+        [3, 2, 12, 3, true, 76, 72, false, false],
+        [3, 2, 12, 3, true, 72, 60, false, false],
+    ]
+}, {
+    name: "Para-goomba",
+    renderSequence: [
+        [3, 0, 3, 2, true, 68, 48, false, false],
+        [3, 0, 3, 3, true, 68, 56, false, false],
+        [3, 0, 3, 2, true, 76, 48, true, false],
+        [3, 0, 3, 3, true, 76, 56, true, false],
+        [3, 3, 2, 6, false, 68, 32, false, false],
+        [3, 0, 8, 6, false, 44, 48, false, false],
+        [3, 3, 6, 6, false, 36, 32, false, false],
+        [1, 0, 10, 2, false, 68, 68, false, false],
+        [1, 0, 8, 2, false, 44, 68, false, false],
+    ]
+}, {
+    name: "Horizontal Dolphin",
+    renderSequence: [
+        [3, 3, 8, 0, false, 48, 44, false, false],
+        [3, 3, 8, 2, false, 64, 44, false, false],
+        [3, 3, 9, 2, false, 72, 44, false, false],
+        [3, 3, 2, 6, false, 48, 68, false, false],
+        [3, 3, 7, 6, false, 64, 68, false, false],
+        [3, 3, 8, 6, false, 72, 68, false, false],
+    ]
+}, {
+    name: "Vertical Dolphin",
+    renderSequence: [
+        [3, 3, 14, 4, false, 56, 48, false, false],
+        [3, 3, 14, 6, false, 56, 64, false, false],
+    ]
+}, {
+    name: "Torpedo Ted",
+    renderSequence: [
+        [3, 1, 0, 0, false, 40, 44, false, false],
+        [3, 1, 2, 0, false, 56, 44, false, false],
+        [3, 1, 0, 2, false, 56, 68, false, false],
+        [3, 1, 0, 0, false, 40, 68, false, false],
+        [0, 1, 2, 6, false, 72, 44, false, false],
+        [0, 1, 4, 6, false, 72, 68, false, false],
+        [0, 1, 6, 6, false, 80, 44, false, false],
+        [0, 1, 6, 6, false, 80, 68, false, false],
+    ]
+}, {
+    name: "Torpedo Ted Launcher",
+    renderSequence: [
+        [3, 1, 0, 0, false, 40, 40, false, false],
+        [3, 1, 2, 0, false, 56, 40, false, false],
+        [3, 1, 4, 0, false, 48, 30, false, false],
+        [3, 1, 0, 2, false, 56, 76, false, false],
+        [3, 1, 0, 0, false, 40, 76, false, false],
+        [0, 1, 4, 6, false, 72, 76, false, false],
+        [0, 1, 6, 6, false, 80, 76, false, false],
+        [3, 1, 4, 2, false, 48, 60, false, false],
+    ]
+}, {
+    name: "Growing Pipe",
+    renderSequence: [
+        [3, 5, 4, 2, false, 48, 56, false, false],
+        [3, 5, 6, 2, false, 64, 56, false, false],
+    ]
+}, {
+    name: "Goal Point Question Sphere (Orb)",
+    renderSequence: [
+        [3, 5, 12, 0, false, 56, 56, true, false],
+    ]
+}, {
+    name: "Monty Mole (ground)",
+    renderSequence: [
+        [3, 0, 8, 0, true, 32, 64, false, false],
+        [3, 0, 9, 0, true, 40, 64, false, false],
+        [3, 0, 6, 0, false, 32, 44, false, false],
+        [3, 0, 4, 0, false, 52, 56, false, false],
+        [3, 0, 2, 0, false, 72, 56, false, false],
+    ]
+}, {
+    name: "Monty Mole (ledge)",
+    renderSequence: [
+        [3, 0, 12, 0, false, 36, 64, false, false],
+        [3, 0, 6, 0, false, 36, 44, false, false],
+        [3, 0, 2, 0, false, 56, 56, false, false],
+        [3, 0, 4, 0, false, 76, 56, false, false],
+    ]
+}, {
+    name: "Ninji",
+    renderSequence: [
+        [3, 4, 7, 2, false, 68, 56, false, false],
+        [3, 4, 9, 2, false, 44, 56, false, false],
+    ]
+}, {
+    name: "Moving Ghost House Hole",
+    renderSequence: [
+        [3, 0, 11, 6, false, 40, 56, true, false],
+        [3, 0, 10, 6, false, 56, 56, false, false],
+        [3, 0, 11, 6, false, 72, 56, false, false],
+    ]
+}, {
+    name: "Revolving Net Door",
+    renderSequence: [
+        [2, 4, 0, 0, false, 24, 24, false, false],
+        [2, 4, 0, 1, false, 24, 40, false, false],
+        [2, 4, 0, 0, false, 24, 48, false, true],
+        [2, 4, 0, 0, false, 48, 24, true, false],
+        [2, 4, 0, 0, false, 48, 48, true, true],
+        [2, 4, 2, 2, true, 40, 40, false, false],
+        [2, 4, 1, 0, false, 40, 24, false, false],
+        [2, 4, 1, 0, false, 40, 48, false, true],
+        [2, 4, 0, 1, false, 48, 40, true, false],
+        [2, 4, 5, 0, false, 68, 24, false, false],
+        [2, 4, 5, 0, false, 84, 24, true, false],
+        [2, 4, 5, 1, false, 68, 40, false, false],
+        [2, 4, 5, 1, false, 84, 40, true, false],
+        [2, 4, 5, 0, false, 68, 48, false, true],
+        [2, 4, 5, 0, false, 84, 48, true, true],
+        [2, 4, 5, 0, false, 32, 64, false, false],
+        [2, 4, 5, 0, false, 40, 64, true, false],
+        [2, 4, 5, 1, false, 32, 80, false, false],
+        [2, 4, 5, 1, false, 40, 80, true, false],
+        [2, 4, 5, 0, false, 32, 88, false, true],
+        [2, 4, 5, 0, true, 48, 96, true, true],
+        [2, 4, 3, 0, false, 80, 64, false, false],
+        [2, 4, 3, 1, false, 80, 80, false, false],
+        [2, 4, 3, 0, true, 80, 96, false, true],
+    ]
+}, {
+    name: "Checkerboard Platforms",
+    renderSequence: [
+        [3, 0, 10, 6, false, 24, 68, false, false],
+        [3, 0, 11, 6, false, 40, 68, false, false],
+        [3, 0, 11, 6, false, 56, 68, false, false],
+        [3, 0, 11, 6, false, 72, 68, false, false],
+        [3, 0, 12, 6, false, 88, 68, false, false],
+        [3, 1, 10, 6, false, 24, 48, false, false],
+        [3, 1, 11, 6, false, 40, 48, false, false],
+        [3, 1, 11, 6, false, 56, 48, false, false],
+        [3, 1, 11, 6, false, 72, 48, false, false],
+        [3, 1, 12, 6, false, 88, 48, false, false],
+    ]
+}, {
+    name: "Rock Platform",
+    renderSequence: [
+        [3, 1, 5, 0, false, 40, 48, false, false],
+        [3, 1, 6, 0, false, 56, 48, false, false],
+        [3, 1, 5, 0, false, 72, 48, true, false],
+        [3, 1, 8, 0, false, 48, 64, false, false],
+        [3, 1, 8, 0, false, 64, 64, true, false],
+    ]
+}, {
+    name: "Sinking Rock Platform",
+    renderSequence: [
+        [3, 1, 5, 0, false, 40, 48, false, false],
+        [3, 1, 6, 0, false, 56, 48, false, false],
+        [3, 1, 5, 0, false, 72, 48, true, false],
+    ]
+}, {
+    name: "Grey / Brown Platforms",
+    renderSequence: [
+        [2, 0, 0, 6, false, 40, 68, false, false],
+        [2, 0, 1, 6, false, 56, 68, false, false],
+        [2, 0, 2, 6, false, 72, 68, false, false],
+        [2, 1, 0, 6, false, 32, 44, false, false],
+        [2, 1, 1, 6, false, 48, 44, false, false],
+        [2, 1, 1, 6, false, 64, 44, false, false],
+        [2, 1, 2, 6, false, 80, 44, false, false],
+    ]
+}, {
+    name: "Rotating Brown / Grey Platforms",
+    renderSequence: [
+        [3, 0, 2, 2, false, 56, 24, false, false],
+        [2, 0, 1, 6, false, 48, 20, false, false],
+        [2, 0, 1, 6, false, 64, 20, false, false],
+        [2, 0, 0, 6, false, 32, 20, false, false],
+        [2, 0, 2, 6, false, 80, 20, false, false],
+        [3, 0, 2, 2, false, 66, 36, false, false],
+        [3, 0, 2, 2, false, 76, 48, false, false],
+        [3, 0, 2, 2, false, 86, 60, false, false],
+        [3, 0, 2, 2, false, 96, 72, false, false],
+        [3, 1, 2, 2, false, 56, 96, false, false],
+        [3, 1, 2, 2, false, 48, 82, false, false],
+        [3, 1, 2, 2, false, 40, 68, false, false],
+        [2, 1, 1, 6, false, 56, 92, false, false],
+        [2, 1, 0, 6, false, 40, 92, false, false],
+        [2, 1, 2, 6, false, 72, 92, false, false],
+    ]
+}, {
+    name: "Flattened Switch Palace Switch",
+    renderSequence: [
+        [3, 5, 0, 0, false, 48, 56, false, false],
+        [3, 5, 0, 0, false, 64, 56, true, false],
+    ]
+}, {
+    name: "Switch Palace Blocks Message",
+    renderSequence: [
+        [2, 5, 7, 2, true, 72, 56, false, false],
+        [2, 5, 7, 2, true, 80, 56, true, false],
+        [2, 5, 7, 3, true, 72, 64, false, false],
+        [2, 5, 7, 3, true, 80, 64, true, false],
+        [2, 5, 13, 2, true, 40, 56, false, false],
+        [2, 5, 13, 2, true, 48, 56, true, false],
+        [2, 5, 13, 2, true, 40, 64, false, true],
+        [2, 5, 13, 2, true, 48, 64, true, true],
+    ]
+}, {
+    name: "Floating Skull Platform",
+    renderSequence: [
+        [3, 1, 0, 6, false, 48, 44, false, false],
+        [3, 1, 0, 6, false, 32, 44, false, false],
+        [3, 1, 0, 6, false, 64, 44, false, false],
+        [3, 1, 0, 6, false, 80, 44, false, false],
+        [3, 1, 2, 6, false, 32, 68, false, false],
+        [3, 1, 2, 6, false, 48, 68, false, false],
+        [3, 1, 2, 6, false, 64, 68, false, false],
+        [3, 1, 2, 6, false, 80, 68, false, false],
+    ]
+}, {
+    name: "Rope Mechanism",
+    renderSequence: [
+        [3, 3, 0, 4, false, 36, 32, false, false],
+        [3, 3, 2, 4, false, 56, 32, false, false],
+        [3, 3, 0, 6, false, 76, 32, false, false],
+        [3, 0, 14, 4, false, 36, 48, false, false],
+        [3, 0, 14, 4, false, 56, 48, false, false],
+        [3, 0, 14, 4, false, 76, 48, false, false],
+        [3, 0, 14, 4, false, 36, 64, false, false],
+        [3, 0, 14, 4, false, 56, 64, false, false],
+        [3, 0, 14, 4, false, 76, 64, false, false],
+        [3, 0, 14, 4, false, 36, 80, false, false],
+        [3, 0, 14, 4, false, 56, 80, false, false],
+        [3, 0, 14, 4, false, 76, 80, false, false],
+        [3, 0, 14, 5, false, 36, 96, false, false],
+        [3, 0, 14, 5, false, 56, 96, false, false],
+        [3, 0, 14, 5, false, 76, 96, false, false],
+    ]
+}, {
+    name: "Grinder",
+    renderSequence: [
+        [2, 1, 12, 6, false, 28, 48, false, false],
+        [2, 1, 12, 6, false, 44, 48, true, false],
+        [2, 1, 12, 6, false, 28, 64, false, true],
+        [2, 1, 12, 6, false, 44, 64, true, true],
+        [2, 1, 14, 6, false, 68, 48, false, false],
+        [2, 1, 14, 6, false, 84, 48, true, false],
+        [2, 1, 14, 6, false, 68, 64, false, true],
+        [2, 1, 14, 6, false, 84, 64, true, true],
+    ]
+}, {
+    name: "Chainsaw",
+    renderSequence: [
+        [3, 1, 14, 2, false, 32, 56, false, false],
+        [3, 1, 14, 0, false, 32, 40, false, false],
+        [3, 1, 14, 2, false, 56, 60, false, false],
+        [3, 1, 14, 0, false, 56, 44, false, false],
+        [3, 1, 14, 2, false, 80, 56, false, false],
+        [3, 1, 14, 0, false, 80, 40, false, false],
+        [3, 3, 0, 4, false, 32, 68, false, false],
+        [3, 3, 2, 4, false, 56, 68, false, false],
+        [3, 3, 0, 6, false, 80, 68, false, false],
+    ]
+}, {
+    name: "Fuzzy",
+    renderSequence: [
+        [3, 2, 8, 4, false, 56, 56, false, false],
+    ]
+}, {
+    name: "Coin Game Cloud",
+    renderSequence: [
+        [0, 0, 0, 6, false, 44, 56, false, false],
+        [2, 4, 13, 4, true, 48, 60, false, false],
+        [1, 2, 2, 4, false, 68, 56, false, false],
+    ]
+}, {
+    name: "Dino-Rhino",
+    renderSequence: [
+        [3, 7, 0, 4, false, 28, 48, false, false],
+        [3, 7, 0, 6, false, 28, 64, false, false],
+        [3, 7, 2, 4, false, 44, 48, false, false],
+        [3, 7, 2, 6, false, 44, 64, false, false],
+        [3, 7, 4, 6, false, 68, 64, false, false],
+        [3, 7, 6, 6, false, 84, 64, false, false],
+        [3, 7, 0, 4, false, 68, 48, false, false],
+        [3, 7, 2, 4, false, 84, 48, false, false],
+    ]
+}, {
+    name: "Dino-Torch",
+    renderSequence: [
+        [3, 4, 0, 0, false, 24, 68, false, false],
+        [3, 2, 2, 0, false, 32, 68, false, false],
+        [3, 2, 4, 0, false, 44, 68, false, false],
+        [3, 2, 6, 0, false, 56, 68, false, false],
+        [3, 7, 4, 4, false, 64, 68, false, false],
+        [3, 4, 8, 0, false, 84, 28, false, false],
+        [3, 2, 10, 0, false, 84, 36, false, false],
+        [3, 2, 12, 0, false, 84, 48, false, false],
+        [3, 2, 14, 0, false, 84, 60, false, false],
+        [3, 7, 6, 4, false, 84, 68, false, false],
+        [3, 7, 10, 2, false, 24, 44, false, false],
+        [3, 7, 10, 6, false, 44, 44, false, false],
+        [3, 7, 12, 2, false, 64, 44, false, false],
+    ]
+}, {
+    name: "Pokey",
+    renderSequence: [
+        [3, 2, 8, 6, false, 56, 88, false, false],
+        [3, 2, 8, 6, false, 54, 72, false, false],
+        [3, 2, 8, 6, false, 56, 56, false, false],
+        [3, 2, 8, 6, false, 54, 40, false, false],
+        [3, 2, 10, 0, false, 56, 24, false, false],
+    ]
+}, {
+    name: "Super Koopa (Ground)",
+    renderSequence: [
+        [1, 3, 0, 6, false, 8, 44, false, false],
+        [3, 2, 8, 4, true, 16, 44, false, false],
+        [3, 2, 8, 5, true, 16, 52, false, false],
+        [3, 2, 0, 5, true, 24, 52, false, false],
+        [1, 3, 2, 6, false, 36, 44, false, false],
+        [3, 2, 9, 4, true, 44, 44, false, false],
+        [3, 2, 9, 5, true, 44, 52, false, false],
+        [3, 2, 0, 4, true, 52, 52, false, false],
+        [1, 3, 0, 6, false, 64, 44, false, false],
+        [3, 2, 4, 6, true, 72, 40, false, false],
+        [3, 2, 5, 6, true, 80, 40, false, false],
+        [1, 3, 2, 6, false, 92, 44, false, false],
+        [3, 2, 4, 7, true, 100, 40, false, false],
+        [3, 2, 5, 7, true, 108, 40, false, false],
+        [3, 2, 0, 6, false, 8, 68, false, false],
+        [3, 3, 2, 7, true, 24, 76, false, false],
+        [3, 4, 4, 6, true, 16, 72, false, false],
+        [3, 4, 5, 6, true, 24, 72, false, false],
+        [3, 2, 0, 6, false, 36, 68, false, false],
+        [3, 3, 2, 7, true, 52, 76, false, false],
+        [3, 4, 4, 7, true, 44, 72, false, false],
+        [3, 4, 5, 7, true, 52, 72, false, false],
+        [1, 3, 15, 4, true, 68, 68, false, false],
+        [1, 3, 15, 4, true, 92, 68, false, false],
+        [1, 3, 0, 6, false, 68, 68, false, true],
+        [1, 3, 0, 6, false, 92, 68, false, true],
+        [3, 4, 10, 4, true, 76, 76, false, true],
+        [3, 4, 10, 5, true, 76, 68, false, true],
+        [3, 4, 11, 4, true, 100, 76, false, true],
+        [3, 4, 11, 5, true, 100, 68, false, true],
+    ]
+}, {
+    name: "Super Koopa (Flying)",
+    renderSequence: [
+        [3, 5, 0, 6, false, 12, 56, false, false],
+        [3, 5, 2, 7, true, 28, 64, false, false],
+        [3, 4, 4, 6, true, 20, 60, false, false],
+        [3, 4, 5, 6, true, 28, 60, false, false],
+        [3, 5, 0, 6, false, 40, 56, false, false],
+        [3, 5, 2, 7, true, 56, 64, false, false],
+        [3, 4, 4, 7, true, 48, 60, false, false],
+        [3, 4, 5, 7, true, 56, 60, false, false],
+        [1, 5, 15, 4, true, 68, 56, false, false],
+        [1, 5, 0, 6, false, 68, 56, false, true],
+        [3, 4, 10, 4, true, 76, 64, false, true],
+        [3, 4, 10, 5, true, 76, 56, false, true],
+        [1, 5, 15, 4, true, 92, 56, false, false],
+        [1, 5, 0, 6, false, 92, 56, false, true],
+        [3, 4, 11, 4, true, 100, 64, false, true],
+        [3, 4, 11, 5, true, 100, 56, false, true],
+    ]
+}, {
+    name: "Firework",
+    renderSequence: [
+        [3, 5, 12, 6, true, 48, 52, false, false],
+        [3, 5, 13, 6, true, 56, 52, false, false],
+        [3, 5, 14, 0, true, 64, 52, false, false],
+        [3, 5, 15, 0, true, 72, 52, false, false],
+        [2, 5, 5, 3, true, 48, 68, false, false],
+        [3, 5, 7, 4, true, 56, 68, false, false],
+        [2, 5, 4, 3, true, 64, 68, false, false],
+        [2, 5, 4, 2, true, 72, 68, false, false],
+    ]
+}, {
+    name: "Peach",
+    renderSequence: [
+        [1, 0, 2, 0, false, 16, 44, false, false],
+        [1, 0, 2, 2, false, 16, 60, false, false],
+        [1, 0, 3, 0, false, 24, 44, false, false],
+        [1, 0, 3, 2, false, 24, 60, false, false],
+        [3, 0, 10, 2, false, 40, 60, false, false],
+        [2, 0, 8, 6, false, 48, 60, false, false],
+        [3, 0, 10, 0, false, 40, 44, false, false],
+        [3, 0, 11, 0, false, 48, 44, false, false],
+        [3, 0, 10, 2, false, 64, 60, false, false],
+        [2, 0, 8, 6, false, 72, 60, false, false],
+        [3, 0, 3, 0, false, 64, 44, false, false],
+        [3, 0, 4, 0, false, 72, 44, false, false],
+        [3, 0, 0, 0, false, 88, 56, false, false],
+        [3, 0, 1, 0, false, 96, 56, false, false],
+        [3, 0, 10, 0, false, 88, 40, false, false],
+        [3, 0, 11, 0, false, 96, 40, false, false],
+    ]
+}, {
+    name: "Peach Ending Cutscene Text",
+    renderSequence: [
+        [1, 0, 8, 0, true, 32, 36, false, false],
+        [1, 0, 10, 0, true, 40, 36, false, false],
+        [1, 0, 11, 0, true, 48, 36, false, false],
+        [1, 0, 12, 0, true, 56, 36, false, false],
+        [1, 0, 13, 0, true, 64, 36, false, false],
+        [1, 0, 14, 0, true, 72, 36, false, false],
+        [1, 0, 8, 1, true, 80, 36, false, false],
+        [1, 0, 9, 1, true, 88, 36, false, false],
+        [1, 0, 14, 1, true, 32, 44, false, false],
+        [1, 0, 8, 2, true, 40, 44, false, false],
+        [1, 0, 11, 2, true, 48, 44, false, false],
+        [1, 0, 12, 2, true, 56, 44, false, false],
+        [1, 0, 13, 2, true, 64, 44, false, false],
+        [1, 0, 14, 2, true, 72, 44, false, false],
+        [1, 0, 15, 2, true, 80, 44, false, false],
+        [1, 0, 10, 3, true, 88, 44, false, false],
+        [1, 0, 13, 3, true, 32, 52, false, false],
+        [1, 0, 14, 3, true, 40, 52, false, false],
+        [1, 0, 15, 3, true, 48, 52, false, false],
+        [1, 0, 0, 2, true, 56, 52, false, false],
+        [1, 0, 1, 2, true, 64, 52, false, false],
+        [1, 0, 0, 3, true, 72, 52, false, false],
+        [1, 0, 14, 2, true, 40, 68, false, false],
+        [1, 0, 14, 1, true, 48, 68, false, false],
+        [1, 0, 14, 2, true, 56, 68, false, false],
+        [1, 0, 12, 2, true, 64, 68, false, false],
+        [1, 0, 12, 0, true, 72, 68, false, false],
+        [1, 0, 11, 0, true, 80, 68, false, false],
+        [1, 0, 9, 0, true, 36, 80, false, false],
+        [1, 0, 10, 1, true, 44, 80, false, false],
+        [1, 0, 11, 1, true, 52, 80, false, false],
+        [1, 0, 12, 1, true, 60, 80, false, false],
+        [1, 0, 13, 1, true, 68, 80, false, false],
+        [1, 0, 9, 2, true, 76, 80, false, false],
+        [1, 0, 10, 2, true, 84, 80, false, false],
+        [1, 0, 8, 3, true, 36, 88, false, false],
+        [1, 0, 9, 3, true, 44, 88, false, false],
+        [1, 0, 11, 3, true, 52, 88, false, false],
+        [1, 0, 12, 3, true, 60, 88, false, false],
+    ]
+}, {
+    name: "Wiggler",
+    renderSequence: [
+        [3, 2, 6, 4, false, 68, 44, false, false],
+        [3, 2, 4, 4, false, 60, 44, false, false],
+        [3, 2, 6, 4, false, 52, 44, false, false],
+        [3, 2, 8, 4, false, 44, 44, false, false],
+        [3, 2, 12, 0, false, 36, 44, false, false],
+        [3, 5, 8, 1, true, 40, 36, false, false],
+        [3, 4, 4, 4, false, 68, 68, false, false],
+        [3, 4, 6, 4, false, 60, 68, false, false],
+        [3, 4, 8, 4, false, 52, 68, false, false],
+        [3, 4, 6, 4, false, 44, 68, false, false],
+        [3, 4, 12, 0, false, 36, 68, false, false],
+        [3, 4, 8, 0, true, 40, 68, false, false],
+    ]
+}, {
+    name: "Lakitu's cloud",
+    renderSequence: [
+        [0, 0, 0, 6, false, 48, 52, false, false],
+        [0, 0, 0, 6, false, 64, 52, false, false],
+        [0, 0, 0, 6, false, 56, 52, true, false],
+        [0, 0, 0, 6, false, 52, 56, false, false],
+        [0, 0, 0, 6, false, 60, 56, false, false],
+        [2, 4, 13, 4, true, 60, 60, false, false],
+    ]
+}, {
+    name: "Yoshi's House Bird",
+    renderSequence: [
+        [3, 2, 0, 5, true, 52, 52, false, false],
+        [3, 3, 1, 5, true, 68, 52, false, false],
+        [3, 4, 2, 5, true, 52, 68, false, false],
+        [3, 5, 3, 5, true, 68, 68, false, false],
+    ]
+}, {
+    name: "Yoshi's House Fireplace",
+    renderSequence: [
+        [3, 2, 11, 3, true, 52, 76, false, false],
+        [3, 2, 11, 2, true, 52, 68, false, false],
+        [3, 2, 10, 1, true, 68, 76, false, false],
+        [3, 2, 4, 5, true, 68, 68, false, false],
+        [3, 0, 5, 4, false, 48, 44, false, false],
+        [3, 0, 5, 4, false, 64, 44, true, false],
+    ]
+}, {
+    name: "Ghost House Exit Door",
+    renderSequence: [
+        [3, 7, 0, 2, false, 8, 40, true, false],
+        [3, 7, 0, 3, false, 8, 48, true, false],
+        [3, 7, 0, 3, false, 8, 64, true, true],
+        [3, 7, 0, 2, false, 8, 72, true, true],
+        [3, 7, 0, 2, false, 24, 40, false, false],
+        [3, 7, 0, 3, false, 24, 48, false, false],
+        [3, 7, 0, 3, false, 24, 64, false, true],
+        [3, 7, 0, 2, false, 24, 72, false, true],
+        [3, 7, 3, 2, false, 48, 40, true, false],
+        [3, 7, 3, 3, false, 48, 48, true, false],
+        [3, 7, 3, 3, false, 48, 64, true, true],
+        [3, 7, 3, 2, false, 48, 72, true, true],
+        [3, 7, 3, 2, false, 64, 40, false, false],
+        [3, 7, 3, 3, false, 64, 48, false, false],
+        [3, 7, 3, 3, false, 64, 64, false, true],
+        [3, 7, 3, 2, false, 64, 72, false, true],
+        [3, 7, 2, 3, false, 88, 48, true, false],
+        [3, 7, 2, 3, false, 88, 64, true, true],
+        [3, 7, 2, 2, false, 88, 72, true, true],
+        [3, 7, 2, 2, false, 88, 40, true, false],
+        [3, 7, 2, 3, false, 104, 48, false, false],
+        [3, 7, 2, 2, false, 104, 40, false, false],
+        [3, 7, 2, 3, false, 104, 64, false, true],
+        [3, 7, 2, 2, false, 104, 72, false, true],
+    ]
+}, {
+    name: "Mushroom Platforms",
+    renderSequence: [
+        [3, 5, 0, 0, false, 48, 56, false, false],
+        [3, 5, 0, 0, false, 64, 56, true, false],
+    ]
+}, {
+    name: "	Large Green Gas Bubble",
+    renderSequence: [
+        [3, 5, 0, 0, false, 36, 32, false, false],
+        [3, 5, 2, 0, false, 52, 32, false, false],
+        [3, 5, 4, 0, false, 68, 32, false, false],
+        [3, 5, 6, 0, false, 84, 32, false, false],
+        [3, 5, 6, 2, false, 84, 48, false, false],
+        [3, 5, 6, 2, false, 84, 64, false, true],
+        [3, 5, 6, 0, false, 84, 80, false, true],
+        [3, 5, 0, 2, false, 36, 48, false, false],
+        [3, 5, 2, 2, false, 52, 48, false, false],
+        [3, 5, 4, 2, false, 68, 48, false, false],
+        [3, 5, 4, 2, false, 68, 64, false, true],
+        [3, 5, 4, 0, false, 68, 80, false, true],
+        [3, 5, 2, 0, false, 52, 80, false, true],
+        [3, 5, 0, 0, false, 36, 80, false, true],
+        [3, 5, 2, 2, false, 52, 64, false, false],
+        [3, 5, 0, 2, false, 36, 64, false, true],
+    ]
+}, {
+    name: "Bouncing Rock",
+    renderSequence: [
+        [3, 6, 4, 4, false, 44, 56, false, false],
+        [3, 6, 6, 4, false, 68, 56, false, false],
+    ]
+}, {
+    name: "Volcano Lotus",
+    renderSequence: [
+        [3, 5, 14, 4, false, 48, 68, false, false],
+        [3, 5, 14, 4, false, 64, 68, true, false],
+        [3, 4, 2, 6, true, 56, 68, false, false],
+        [3, 4, 3, 6, true, 64, 68, false, false],
+        [3, 4, 6, 2, true, 52, 40, false, false],
+        [3, 4, 6, 3, true, 68, 40, false, false],
+        [3, 4, 6, 2, true, 80, 48, false, false],
+        [3, 4, 6, 3, true, 40, 48, false, false],
+    ]
+}, {
+    name: "Sumo Bro",
+    renderSequence: [
+        [3, 2, 3, 4, false, 32, 44, false, false],
+        [3, 2, 1, 4, false, 16, 44, false, false],
+        [3, 2, 0, 0, false, 30, 36, false, false],
+        [3, 2, 5, 4, false, 56, 44, false, false],
+        [3, 2, 6, 4, false, 64, 44, false, false],
+        [3, 2, 14, 6, false, 60, 36, false, false],
+        [3, 2, 10, 2, false, 56, 76, false, false],
+        [3, 2, 11, 2, false, 64, 76, false, false],
+        [3, 2, 8, 1, true, 60, 68, false, false],
+        [3, 2, 9, 1, true, 68, 68, false, false],
+        [3, 2, 9, 1, true, 36, 68, false, false],
+        [3, 2, 8, 1, true, 28, 68, false, false],
+        [3, 2, 8, 2, false, 32, 76, false, false],
+        [3, 2, 7, 2, false, 24, 76, false, false],
+        [3, 2, 12, 6, false, 88, 76, false, false],
+        [3, 2, 12, 4, false, 88, 60, false, false],
+        [3, 2, 3, 7, true, 92, 44, true, true],
+        [3, 2, 3, 7, true, 92, 36, false, false],
+    ]
+}, {
+    name: "Diggin' Chuck",
+    renderSequence: [
+        [3, 3, 2, 6, false, 12, 56, false, false],
+        [2, 5, 8, 2, false, 24, 56, false, false],
+        [2, 5, 9, 2, false, 32, 56, false, false],
+        [2, 5, 14, 0, false, 26, 48, false, false],
+        [3, 5, 7, 6, false, 52, 56, false, false],
+        [3, 5, 8, 6, false, 60, 56, false, false],
+        [2, 5, 10, 0, false, 56, 48, false, false],
+        [3, 3, 0, 2, false, 76, 48, false, false],
+        [3, 5, 2, 0, false, 92, 56, false, false],
+        [3, 5, 3, 0, false, 100, 56, false, false],
+        [2, 5, 10, 0, false, 92, 46, false, false],
+        [3, 6, 4, 4, false, 44, 80, false, false],
+        [3, 6, 6, 4, false, 68, 80, false, false],
+    ]
+}, {
+    name: "Chargin' Chuck",
+    renderSequence: [
+        [2, 5, 6, 0, false, 50, 32, false, false],
+        [2, 5, 0, 2, false, 52, 44, false, false],
+        [2, 5, 1, 2, false, 60, 44, false, false],
+        [2, 5, 13, 1, true, 68, 36, false, false],
+        [2, 5, 12, 1, true, 60, 36, false, false],
+        [2, 5, 6, 0, false, 82, 32, false, false],
+        [2, 5, 3, 2, false, 84, 44, false, false],
+        [2, 5, 4, 2, false, 92, 44, false, false],
+        [2, 5, 12, 1, true, 92, 36, false, false],
+        [2, 5, 13, 1, true, 100, 36, false, false],
+        [2, 5, 6, 2, false, 52, 76, false, false],
+        [2, 5, 6, 2, false, 60, 76, true, false],
+        [2, 5, 8, 2, false, 84, 76, false, false],
+        [2, 5, 9, 2, false, 92, 76, false, false],
+        [2, 5, 6, 0, false, 84, 68, false, false],
+        [2, 5, 10, 0, false, 56, 68, false, false],
+        [2, 5, 0, 4, false, 20, 40, false, false],
+        [2, 5, 0, 4, false, 28, 40, true, false],
+        [2, 5, 12, 0, true, 18, 32, false, false],
+        [2, 5, 12, 0, true, 38, 32, true, false],
+        [2, 5, 14, 0, false, 24, 28, false, false],
+        [2, 5, 4, 6, false, 20, 76, false, false],
+        [2, 5, 4, 6, false, 28, 76, true, false],
+        [2, 5, 14, 0, false, 24, 68, false, false],
+    ]
+}, {
+    name: "Clappin' Chuck",
+    renderSequence: [
+        [2, 5, 13, 2, false, 20, 60, false, false],
+        [2, 5, 13, 2, false, 28, 60, true, false],
+        [2, 5, 6, 0, false, 24, 56, false, false],
+        [2, 5, 0, 4, false, 52, 60, false, false],
+        [2, 5, 0, 4, false, 60, 60, true, false],
+        [2, 5, 12, 0, true, 50, 52, false, false],
+        [2, 5, 12, 0, true, 70, 52, true, false],
+        [2, 5, 6, 0, false, 56, 48, false, false],
+        [2, 5, 2, 4, false, 80, 60, false, false],
+        [2, 5, 2, 4, false, 96, 60, true, false],
+        [2, 5, 4, 4, false, 88, 44, false, false],
+    ]
+}, {
+    name: "Pitchin' Chuck",
+    renderSequence: [
+        [2, 5, 6, 0, false, 24, 68, false, false],
+        [3, 4, 13, 2, true, 26, 84, false, false],
+        [2, 5, 14, 4, false, 32, 76, false, false],
+        [2, 5, 13, 0, true, 24, 82, false, false],
+        [2, 5, 6, 0, false, 54, 66, false, false],
+        [3, 5, 14, 2, false, 60, 76, false, false],
+        [3, 4, 13, 2, true, 61, 64, false, false],
+        [2, 5, 13, 5, true, 61, 68, false, false],
+        [2, 5, 6, 0, false, 80, 68, false, false],
+        [3, 5, 13, 3, true, 80, 76, false, false],
+        [3, 5, 4, 2, false, 88, 76, false, false],
+        [2, 5, 6, 0, false, 24, 32, false, false],
+        [3, 5, 0, 2, false, 28, 42, false, false],
+        [3, 4, 13, 2, true, 34, 28, false, false],
+        [2, 5, 13, 5, true, 34, 34, false, false],
+        [2, 5, 6, 0, false, 52, 32, false, false],
+        [3, 5, 0, 2, false, 56, 42, false, false],
+        [3, 4, 13, 2, true, 66, 30, false, false],
+        [2, 5, 12, 0, true, 64, 34, true, false],
+        [2, 5, 6, 0, false, 80, 32, false, false],
+        [3, 5, 2, 2, false, 88, 40, false, false],
+        [3, 5, 13, 3, true, 80, 40, false, false],
+    ]
+}, {
+    name: "Kickin' Chuck",
+    renderSequence: [
+        [2, 5, 6, 0, false, 80, 52, false, false],
+        [2, 5, 14, 4, false, 88, 60, false, false],
+        [2, 5, 13, 0, true, 80, 66, false, false],
+        [2, 5, 6, 0, false, 50, 50, false, false],
+        [3, 5, 12, 4, false, 56, 60, false, false],
+        [3, 5, 11, 4, true, 48, 64, false, false],
+        [0, 0, 12, 7, true, 32, 52, false, false],
+        [0, 0, 13, 7, true, 40, 52, false, false],
+        [0, 0, 13, 7, true, 32, 60, true, true],
+        [0, 0, 12, 7, true, 40, 60, true, true],
+        [3, 0, 10, 0, false, 20, 40, false, false],
+    ]
+}, {
+    name: "Whistlin' Chuck",
+    renderSequence: [
+        [2, 5, 6, 2, false, 20, 56, false, false],
+        [2, 5, 6, 2, false, 28, 56, true, false],
+        [2, 5, 6, 0, false, 24, 48, false, false],
+        [2, 5, 0, 4, false, 52, 56, false, false],
+        [2, 5, 0, 4, false, 60, 56, true, false],
+        [2, 5, 0, 4, false, 84, 56, false, false],
+        [2, 5, 0, 4, false, 92, 56, true, false],
+        [2, 5, 12, 0, true, 50, 48, false, false],
+        [2, 5, 12, 0, true, 82, 48, false, false],
+        [2, 5, 12, 0, true, 70, 48, true, false],
+        [2, 5, 12, 0, true, 102, 48, true, false],
+        [2, 5, 11, 4, false, 56, 44, false, false],
+        [2, 5, 14, 0, false, 88, 44, false, false],
+    ]
+}, {
+    name: "Splittin' / Jumpin' Chucks",
+    renderSequence: [
+        [2, 5, 13, 2, false, 60, 56, true, false],
+        [2, 5, 13, 2, false, 52, 56, false, false],
+        [2, 5, 6, 0, false, 56, 52, false, false],
+        [2, 5, 6, 2, false, 32, 56, true, false],
+        [2, 5, 6, 2, false, 24, 56, false, false],
+        [2, 5, 6, 0, false, 28, 48, false, false],
+        [2, 5, 0, 4, false, 80, 56, false, false],
+        [2, 5, 0, 4, false, 88, 56, true, false],
+        [2, 5, 12, 0, true, 78, 48, false, false],
+        [2, 5, 12, 0, true, 98, 48, true, false],
+        [2, 5, 6, 0, false, 84, 44, false, false],
+    ]
+}, {
+    name: "Amazing Flying Hammer Brother",
+    renderSequence: [
+        [2, 3, 6, 4, false, 48, 60, false, false],
+        [2, 3, 8, 4, false, 64, 60, false, false],
+        [2, 3, 10, 4, true, 64, 52, false, false],
+        [2, 3, 10, 5, true, 56, 52, false, false],
+        [2, 3, 13, 6, false, 32, 40, false, false],
+        [2, 3, 8, 0, false, 80, 32, false, false],
+    ]
+}, {
+    name: "Bubble",
+    renderSequence: [
+        [3, 3, 0, 2, false, 48, 64, false, true],
+        [3, 3, 0, 2, false, 48, 48, false, false],
+        [3, 3, 0, 2, false, 64, 48, true, false],
+        [3, 3, 0, 2, false, 64, 64, true, true],
+        [3, 3, 9, 1, true, 56, 56, false, false],
+    ]
+}, {
+    name: "Ball n' Chain",
+    renderSequence: [
+        [3, 1, 8, 6, false, 68, 68, false, false],
+        [3, 1, 8, 6, false, 56, 56, false, false],
+        [3, 1, 10, 6, false, 44, 48, true, true],
+        [3, 1, 10, 6, false, 28, 48, false, true],
+        [3, 1, 10, 6, false, 28, 32, false, false],
+        [3, 1, 10, 6, false, 44, 32, true, false],
+    ]
+}, {
+    name: "Banzai Bill",
+    renderSequence: [
+        [3, 1, 0, 0, false, 28, 32, false, false],
+        [3, 1, 2, 0, false, 44, 32, false, false],
+        [3, 1, 4, 0, false, 60, 32, false, false],
+        [3, 1, 6, 0, false, 76, 32, false, false],
+        [3, 1, 0, 2, false, 28, 48, false, false],
+        [3, 1, 8, 0, false, 44, 48, false, false],
+        [3, 1, 0, 4, false, 28, 64, false, false],
+        [3, 1, 2, 4, false, 44, 64, false, false],
+        [3, 1, 14, 0, false, 28, 80, false, false],
+        [3, 1, 14, 2, false, 44, 80, false, false],
+        [3, 1, 14, 4, false, 60, 48, false, false],
+        [3, 1, 14, 4, false, 60, 64, false, false],
+        [3, 1, 14, 6, false, 76, 48, false, false],
+        [3, 1, 14, 6, false, 76, 64, false, false],
+        [3, 1, 4, 0, false, 60, 80, false, true],
+        [3, 1, 6, 0, false, 76, 80, false, true],
+    ]
+}, {
+    name: "Big Steely",
+    renderSequence: [
+        [2, 6, 5, 4, false, 40, 40, false, false],
+        [2, 6, 7, 4, false, 56, 40, false, false],
+        [2, 6, 5, 4, false, 72, 40, true, false],
+        [2, 6, 5, 6, false, 40, 56, false, false],
+        [2, 6, 6, 6, false, 56, 56, false, false],
+        [2, 6, 5, 6, false, 72, 56, true, false],
+        [2, 6, 5, 4, false, 72, 72, true, true],
+        [2, 6, 7, 4, false, 56, 72, true, true],
+        [2, 6, 5, 4, false, 40, 72, false, true],
+        [2, 6, 3, 6, false, 48, 48, false, false],
+    ]
+}, {
+    name: "Mechakoopa",
+    renderSequence: [
+        [2, 5, 0, 4, false, 68, 20, false, false],
+        [2, 5, 12, 0, false, 76, 28, false, false],
+        [2, 5, 0, 4, false, 36, 20, false, false],
+        [2, 5, 10, 0, false, 44, 28, false, false],
+        [2, 5, 0, 6, true, 36, 36, false, false],
+        [2, 5, 0, 6, true, 68, 36, false, false],
+        [2, 5, 2, 4, true, 52, 20, false, false],
+        [2, 5, 2, 4, true, 84, 20, false, false],
+        [2, 5, 0, 4, false, 36, 52, false, false],
+        [2, 5, 0, 4, false, 68, 52, false, false],
+        [2, 5, 14, 0, false, 44, 60, false, false],
+        [2, 5, 1, 5, false, 76, 60, false, false],
+        [2, 5, 0, 6, true, 36, 68, false, false],
+        [2, 5, 0, 6, true, 68, 68, false, false],
+        [2, 5, 2, 4, true, 52, 52, false, false],
+        [2, 5, 2, 4, true, 84, 52, false, false],
+        [2, 5, 1, 7, true, 58, 62, false, false],
+        [2, 5, 0, 7, true, 90, 60, false, false],
+        [2, 5, 2, 7, true, 90, 28, false, false],
+        [2, 5, 1, 7, true, 58, 30, false, false],
+        [2, 5, 0, 0, false, 36, 88, false, false],
+        [2, 5, 1, 0, false, 44, 88, false, false],
+        [2, 5, 1, 0, false, 76, 88, false, false],
+        [2, 5, 0, 0, false, 68, 88, false, false],
+        [2, 5, 0, 7, true, 58, 88, false, false],
+        [2, 5, 2, 7, true, 90, 88, false, false],
+    ]
+}, {
+    name: "Sea Mine",
+    renderSequence: [
+        [3, 0, 10, 2, false, 28, 48, false, false],
+        [3, 0, 10, 2, false, 44, 48, true, false],
+        [3, 0, 10, 2, false, 44, 64, true, true],
+        [3, 0, 10, 2, false, 28, 64, false, true],
+        [3, 0, 12, 2, false, 68, 48, false, false],
+        [3, 0, 12, 2, false, 84, 48, true, false],
+        [3, 0, 12, 2, false, 84, 64, true, true],
+        [3, 0, 12, 2, false, 68, 64, false, true],
+    ]
+}, {
+    name: "Sparky",
+    renderSequence: [
+        [2, 2, 10, 0, false, 56, 56, false, false],
+    ]
+}, {
+    name: "Hothead",
+    renderSequence: [
+        [2, 2, 12, 0, false, 28, 48, false, false],
+        [2, 2, 14, 0, false, 44, 48, false, false],
+        [2, 2, 14, 0, false, 28, 64, true, true],
+        [2, 2, 12, 0, false, 44, 64, true, true],
+        [2, 2, 14, 0, false, 68, 48, true, false],
+        [2, 2, 14, 0, false, 84, 64, false, true],
+        [2, 2, 12, 0, false, 84, 48, true, false],
+        [2, 2, 12, 0, false, 68, 64, false, true],
+        [2, 0, 9, 0, true, 36, 56, false, false],
+        [2, 0, 9, 1, true, 76, 56, false, false],
+    ]
+}, {
+    name: "Blargg",
+    renderSequence: [
+        [3, 2, 2, 2, false, 28, 48, false, false],
+        [3, 2, 4, 2, false, 44, 48, false, false],
+        [3, 2, 2, 4, false, 28, 64, false, false],
+        [3, 2, 4, 4, false, 44, 64, false, false],
+        [3, 2, 6, 2, false, 60, 64, false, false],
+        [3, 2, 6, 6, false, 76, 64, false, false],
+        [3, 2, 8, 4, false, 92, 64, false, false],
+        [3, 2, 6, 2, false, 108, 64, false, false],
+        [3, 2, 4, 2, false, 92, 48, false, false],
+        [3, 2, 2, 2, false, 76, 48, false, false],
+        [3, 2, 0, 2, false, 8, 64, false, false],
+    ]
+}, {
+    name: "Reznor",
+    renderSequence: [
+        [2, 7, 0, 4, false, 48, 36, false, false],
+        [2, 7, 2, 4, false, 64, 36, false, false],
+        [2, 7, 0, 6, false, 48, 52, false, false],
+        [2, 7, 2, 6, false, 64, 52, false, false],
+        [2, 1, 14, 4, false, 48, 68, false, false],
+        [2, 1, 14, 4, false, 64, 68, true, false],
+        [2, 1, 14, 4, false, 28, 68, true, false],
+        [2, 1, 14, 4, false, 12, 68, false, false],
+        [2, 1, 14, 4, false, 84, 68, false, false],
+        [2, 1, 14, 4, false, 100, 68, true, false],
+        [2, 7, 8, 2, false, 84, 36, false, false],
+        [2, 7, 8, 2, false, 100, 36, true, false],
+        [2, 7, 8, 4, false, 84, 52, false, false],
+        [2, 7, 8, 4, false, 100, 52, true, false],
+        [2, 7, 4, 6, false, 12, 52, false, false],
+        [2, 7, 6, 6, false, 28, 52, false, false],
+        [2, 7, 4, 4, false, 12, 36, false, false],
+        [2, 7, 6, 4, false, 28, 36, false, false],
+    ]
+}, {
+    name: "Fishbone",
+    renderSequence: [
+        [3, 6, 6, 2, false, 36, 56, false, false],
+        [3, 6, 3, 2, true, 52, 56, false, false],
+        [3, 6, 3, 2, true, 52, 64, false, true],
+        [3, 6, 8, 2, false, 68, 56, false, false],
+        [3, 6, 3, 3, true, 84, 56, false, false],
+        [3, 6, 3, 3, true, 84, 64, false, true],
+    ]
+}, {
+    name: "Pencil",
+    renderSequence: [
+        [2, 0, 10, 4, false, 56, 32, false, false],
+        [2, 0, 10, 6, false, 56, 48, false, false],
+        [2, 0, 10, 6, false, 56, 64, false, false],
+        [2, 0, 10, 6, false, 56, 80, false, false],
+    ]
+}, {
+    name: "Falling Spike",
+    renderSequence: [
+        [3, 0, 0, 6, false, 56, 56, false, false],
+    ]
+}, {
+    name: "Bowser Statue",
+    renderSequence: [
+        [2, 0, 5, 3, false, 76, 52, false, false],
+        [2, 0, 6, 5, true, 84, 68, false, false],
+        [2, 0, 0, 3, false, 68, 44, false, false],
+        [2, 1, 1, 4, false, 44, 60, false, false],
+        [2, 1, 0, 3, false, 36, 52, false, false],
+    ]
+}, {
+    name: "Bowser Statue Fireball",
+    renderSequence: [
+        [2, 4, 2, 3, true, 56, 52, false, false],
+        [2, 4, 0, 5, true, 64, 52, false, false],
+        [2, 4, 3, 3, true, 56, 68, false, false],
+        [2, 4, 4, 3, true, 64, 68, false, false],
+    ]
+}, {
+    name: "Diagonal Reflecting Podoboo",
+    renderSequence: [
+        [3, 2, 12, 2, false, 56, 56, false, false],
+    ]
+}, {
+    name: "Boo",
+    renderSequence: [
+        [3, 1, 8, 0, false, 44, 56, false, false],
+        [3, 1, 12, 0, false, 68, 56, false, false],
+    ]
+}, {
+    name: "Boo Block",
+    renderSequence: [
+        [3, 1, 8, 0, false, 36, 56, false, false],
+        [3, 1, 8, 4, false, 56, 56, false, false],
+        [3, 1, 10, 4, false, 76, 56, false, false],
+    ]
+}, {
+    name: "Eerie",
+    renderSequence: [
+        [2, 6, 10, 6, false, 44, 56, false, false],
+        [3, 6, 13, 6, false, 68, 56, false, false],
+    ]
+}, {
+    name: "Fishin' Boo",
+    renderSequence: [
+        [0, 0, 0, 6, false, 28, 40, false, false],
+        [0, 0, 0, 6, false, 44, 40, false, false],
+        [0, 0, 0, 6, false, 36, 40, false, false],
+        [2, 6, 4, 6, false, 36, 28, false, false],
+        [3, 4, 10, 0, false, 22, 30, false, false],
+        [3, 6, 12, 2, false, 14, 46, false, false],
+        [3, 6, 12, 2, false, 14, 62, false, false],
+        [3, 6, 12, 2, false, 14, 78, false, false],
+        [3, 3, 12, 4, false, 14, 92, false, false],
+        [0, 0, 0, 6, false, 32, 44, true, false],
+        [0, 0, 0, 6, false, 40, 44, true, true],
+        [0, 0, 0, 6, false, 80, 40, false, false],
+        [0, 0, 0, 6, false, 96, 40, false, false],
+        [0, 0, 0, 6, false, 88, 40, false, false],
+        [2, 6, 4, 6, false, 88, 28, false, false],
+        [3, 4, 10, 0, false, 74, 30, false, false],
+        [3, 6, 12, 2, false, 66, 46, false, false],
+        [3, 6, 12, 2, false, 66, 62, false, false],
+        [3, 6, 12, 2, false, 66, 78, false, false],
+        [3, 3, 14, 4, false, 66, 92, false, false],
+        [0, 0, 0, 6, false, 84, 44, true, false],
+        [0, 0, 0, 6, false, 92, 44, true, true],
+    ]
+}, {
+    name: "Big Boo",
+    renderSequence: [
+        [3, 6, 0, 0, false, 0, 32, false, false],
+        [3, 6, 2, 0, false, 16, 32, false, false],
+        [3, 6, 4, 0, false, 32, 32, false, false],
+        [3, 6, 6, 0, false, 48, 32, false, false],
+        [3, 6, 0, 2, false, 0, 48, false, false],
+        [3, 6, 2, 2, false, 16, 48, false, false],
+        [3, 6, 4, 2, false, 32, 48, false, false],
+        [3, 6, 6, 2, false, 48, 48, false, false],
+        [3, 6, 0, 2, false, 0, 64, false, true],
+        [3, 6, 2, 2, false, 16, 64, false, false],
+        [3, 6, 4, 4, false, 32, 64, false, false],
+        [3, 6, 6, 4, false, 48, 64, false, false],
+        [3, 6, 6, 6, false, 48, 80, false, false],
+        [3, 6, 4, 6, false, 32, 80, false, false],
+        [3, 6, 0, 0, false, 0, 80, false, true],
+        [3, 6, 2, 0, false, 16, 80, false, true],
+        [3, 6, 2, 4, false, 8, 52, false, false],
+        [3, 6, 2, 6, false, 8, 68, false, false],
+        [3, 6, 8, 6, false, 0, 56, true, false],
+        [3, 6, 8, 6, false, 16, 56, false, false],
+        [3, 6, 8, 6, false, 60, 56, false, false],
+        [3, 6, 0, 2, false, 64, 48, false, false],
+        [3, 6, 0, 0, false, 64, 32, false, false],
+        [3, 6, 2, 0, false, 80, 32, false, false],
+        [3, 6, 4, 0, false, 96, 32, false, false],
+        [3, 6, 6, 0, false, 112, 32, false, false],
+        [3, 6, 6, 2, false, 112, 48, false, false],
+        [3, 6, 4, 2, false, 96, 48, false, false],
+        [3, 6, 2, 2, false, 80, 48, false, false],
+        [3, 6, 2, 2, false, 80, 64, false, false],
+        [3, 6, 0, 2, false, 64, 64, false, true],
+        [3, 6, 0, 0, false, 64, 80, false, true],
+        [3, 6, 2, 0, false, 80, 80, false, true],
+        [3, 6, 4, 4, false, 96, 64, false, false],
+        [3, 6, 6, 4, false, 112, 64, false, false],
+        [3, 6, 6, 6, false, 112, 80, false, false],
+        [3, 6, 4, 6, false, 96, 80, false, false],
+        [3, 6, 8, 6, false, 96, 56, true, false],
+        [3, 6, 0, 4, false, 72, 52, false, false],
+        [3, 6, 0, 6, false, 72, 68, false, false],
+    ]
+}, {
+    name: "Boo Buddies",
+    renderSequence: [
+        [3, 1, 8, 0, false, 32, 56, false, false],
+        [3, 1, 12, 0, false, 44, 36, false, false],
+        [3, 1, 14, 0, false, 68, 36, false, false],
+        [3, 1, 8, 2, false, 80, 56, false, false],
+        [3, 1, 14, 2, false, 68, 76, false, false],
+        [3, 1, 10, 2, false, 44, 76, false, false],
+    ]
+}, {
+    name: "Rex",
+    renderSequence: [
+        [3, 3, 10, 0, false, 12, 40, false, false],
+        [3, 3, 10, 2, false, 16, 56, false, false],
+        [3, 3, 10, 0, false, 32, 40, false, false],
+        [3, 3, 12, 2, false, 36, 56, false, false],
+        [3, 3, 12, 0, false, 56, 56, false, false],
+        [3, 3, 8, 2, false, 76, 56, false, false],
+        [3, 3, 2, 2, true, 96, 64, false, false],
+        [3, 3, 2, 3, true, 104, 64, false, false],
+    ]
+}, {
+    name: "Diagonal Carrot Platform",
+    renderSequence: [
+        [3, 5, 0, 6, false, 48, 64, false, false],
+        [3, 5, 2, 6, false, 64, 64, false, false],
+        [3, 5, 4, 6, false, 64, 48, false, false]
+    ]
+}, {
+    name: "Timed Carrot Platform",
+    renderSequence: [
+        [3, 5, 4, 4, false, 28, 44, false, false],
+        [3, 5, 4, 4, false, 44, 44, true, false],
+        [3, 5, 4, 4, false, 68, 44, false, false],
+        [3, 5, 4, 4, false, 84, 44, true, false],
+        [3, 5, 4, 4, false, 28, 68, false, false],
+        [3, 5, 4, 4, false, 44, 68, true, false],
+        [3, 5, 4, 4, false, 68, 68, false, false],
+        [3, 5, 4, 4, false, 84, 68, true, false],
+        [3, 0, 3, 3, true, 40, 48, false, false],
+        [3, 0, 4, 3, true, 80, 48, false, false],
+        [3, 0, 5, 3, true, 40, 72, false, false],
+        [3, 0, 6, 3, true, 80, 72, false, false]
+    ]
+}, {
+    name: "Moving Castle Block",
+    renderSequence: [
+        [3, 1, 12, 4, false, 48, 48, false, false],
+        [3, 1, 14, 4, false, 64, 48, false, false],
+        [3, 1, 12, 6, false, 48, 64, false, false],
+        [3, 1, 14, 6, false, 64, 64, false, false]
+    ]
+}, {
+    name: "Blurp",
+    renderSequence: [
+        [3, 5, 2, 2, false, 44, 56, false, false],
+        [3, 5, 12, 6, false, 68, 56, false, false]
+    ]
+}, {
+    name: "Fugu",
+    renderSequence: [
+        [3, 6, 6, 0, false, 28, 48, false, false],
+        [3, 6, 6, 2, false, 28, 64, false, false],
+        [3, 6, 2, 4, false, 44, 64, false, false],
+        [3, 6, 0, 4, false, 44, 48, false, false],
+        [3, 6, 6, 0, false, 68, 48, false, false],
+        [3, 6, 6, 2, false, 68, 64, false, false],
+        [3, 6, 10, 0, false, 84, 64, false, false],
+        [3, 6, 0, 4, false, 84, 48, false, false]
+    ]
+}, {
+    name: "Spotlight Disco Ball",
+    renderSequence: [
+        [3, 6, 0, 0, false, 36, 36, false, false],
+        [3, 6, 2, 0, false, 56, 36, false, false],
+        [3, 6, 4, 0, false, 76, 36, false, false],
+        [3, 6, 6, 0, false, 36, 56, false, false],
+        [3, 6, 8, 0, false, 56, 56, false, false],
+        [3, 6, 12, 0, false, 76, 56, false, false],
+        [3, 6, 0, 4, false, 36, 76, false, false],
+        [3, 6, 2, 4, false, 56, 76, false, false]
+    ]
+}, {
+    name: "Swooper Bat",
+    renderSequence: [
+        [3, 5, 14, 2, false, 36, 56, false, false],
+        [3, 5, 0, 4, false, 56, 56, false, false],
+        [3, 5, 8, 6, false, 76, 56, false, false]
+    ]
+}, {
+    name: "Mega Mole",
+    renderSequence: [
+        [3, 0, 6, 4, false, 28, 48, false, false],
+        [3, 0, 6, 6, false, 28, 64, false, false],
+        [3, 0, 8, 4, false, 44, 48, false, false],
+        [3, 0, 8, 6, false, 44, 64, false, false],
+        [3, 0, 10, 4, false, 68, 48, false, false],
+        [3, 0, 10, 6, false, 68, 64, false, false],
+        [3, 0, 12, 4, false, 84, 48, false, false],
+        [3, 0, 12, 6, false, 84, 64, false, false]
+    ]
+}, {
+    name: "Vertical Bullets Generator",
+    renderSequence: [
+        [3, 1, 4, 2, false, 44, 44, false, false],
+        [1, 1, 6, 2, false, 68, 44, false, false],
+        [3, 1, 4, 2, false, 68, 68, true, true],
+        [1, 1, 6, 2, false, 44, 68, true, false]
+    ]
+}, {
+    name: "Diagonal Bullets Generator",
+    renderSequence: [
+        [3, 1, 6, 2, false, 68, 68, true, false],
+        [3, 1, 6, 2, false, 44, 68, false, false],
+        [3, 1, 8, 2, false, 44, 44, true, false],
+        [3, 1, 8, 2, false, 68, 44, false, false]
+    ]
+}, {
+    name: "Background Candle Flames",
+    renderSequence: [
+        [3, 4, 2, 6, false, 48, 52, false, false],
+        [3, 4, 4, 6, false, 64, 52, false, false]
+    ]
+}, {
+    name: "On/Off Switch Bounce Tile",
+    renderSequence: [
+        [3, 3, 10, 0, false, 56, 56, false, false]
+    ]
+}, {
+    name: "Note Block Bounce Tile",
+    renderSequence: [
+        [2, 1, 11, 6, false, 56, 56, false, false]
+    ]
+}, {
+    name: "Small Floating Orange Platform",
+    renderSequence: [
+        [3, 5, 11, 4, false, 40, 48, false, false],
+        [3, 5, 12, 4, false, 56, 48, true, false],
+        [3, 5, 11, 4, false, 72, 48, true, false],
+        [3, 5, 4, 6, false, 48, 64, false, false],
+        [3, 5, 4, 6, false, 64, 64, true, false]        
+    ]
+}, {
+    name: "Large Floating Orange Platform",
+    renderSequence: [
+        [3, 5, 11, 4, false, 24, 48, false, false],
+        [3, 5, 11, 4, false, 88, 48, true, false],
+        [3, 5, 12, 4, false, 40, 48, true, false],
+        [3, 5, 12, 4, false, 56, 48, true, false],
+        [3, 5, 12, 4, false, 72, 48, true, false],
+        [3, 5, 4, 6, false, 32, 64, false, false],
+        [3, 5, 5, 6, false, 48, 64, true, false],
+        [3, 5, 5, 6, false, 64, 64, true, false],
+        [3, 5, 4, 6, false, 80, 64, true, false]
+    ]
+}]
 
 /*
-{
+
+,{
     name: "",
-    palette: 0,
     renderSequence: []
-},
+}
+
 */
 
 //  ==============================================================
 
 let activePaletteIndex = 0;
 const allGfx = [];
-const gfxIndexes = [0, 1, 14, 3]
-const gfxBitmaps = [];
+const gfxIndexes = [0, 1, 13, 3]
+const gfxBitmaps = [[], [], [], []]
 const scale = 3;
 
 let selectedTile = -1
@@ -1551,8 +1565,8 @@ window.onload = async function () {
             y = Math.floor(e.offsetY / (8 * scale))
             selected8x8 = true
         } else {
-            x = Math.floor((e.offsetX - 8) / (8 * scale))
-            y = Math.floor((e.offsetY - 8) / (8 * scale))
+            x = Math.floor(e.offsetX / (8 * scale) - 0.5)
+            y = Math.floor(e.offsetY / (8 * scale) - 0.5)
             selected8x8 = false
         }
         selectedTile = x + y * 16
@@ -1584,6 +1598,22 @@ window.onload = async function () {
     gfxCanvas.onmouseleave = function (e) {
         renderGfxCanvas();
     }
+    gfxCanvas.onwheel = function (e) {
+        if (e.deltaY > 0) {
+            activePaletteIndex += 1
+        } else {
+            activePaletteIndex -= 1
+        }
+        if (activePaletteIndex < 0) {
+            activePaletteIndex = 0
+        }
+        if (activePaletteIndex > 7) {
+            activePaletteIndex = 7
+        }
+        document.getElementById("paletteSelect").value = activePaletteIndex
+        renderGfxCanvas()
+        renderSpriteCanvas()
+    }
 
     const spriteCanvas = document.getElementById("spriteCanvas");
     spriteCanvas.setAttribute("width", 128 * scale)
@@ -1609,6 +1639,7 @@ window.onload = async function () {
 
             currentSprite.renderSequence.push([
                 Math.floor(selectedTile / 128),
+                activePaletteIndex,
                 selectedTile % 16,
                 Math.floor(selectedTile / 16) % 8,
                 selected8x8,
@@ -1644,6 +1675,15 @@ window.onload = async function () {
         renderSpriteCanvas();
     }
 
+    spriteCanvas.onwheel = function (e) {
+        if (selectedXFlip == selectedYFlip == e.deltaY > 0) {
+            selectedXFlip = !selectedXFlip
+        } else {
+            selectedYFlip = !selectedYFlip
+        }
+        renderSpriteCanvas()
+    }
+
     document.getElementById("clearButton").onclick = function (e) {
         selectedTile = -1
         currentSprite.renderSequence = []
@@ -1658,22 +1698,22 @@ window.onload = async function () {
                 if (e.ctrlKey) undo()
                 break;
             case "ArrowLeft":
-                currentSprite.renderSequence.forEach((step) => { step[4] -= 4 })
-                renderSpriteCanvas()
-                e.preventDefault()
-                break;
-            case "ArrowRight":
-                currentSprite.renderSequence.forEach((step) => { step[4] += 4 })
-                renderSpriteCanvas()
-                e.preventDefault()
-                break;
-            case "ArrowUp":
                 currentSprite.renderSequence.forEach((step) => { step[5] -= 4 })
                 renderSpriteCanvas()
                 e.preventDefault()
                 break;
-            case "ArrowDown":
+            case "ArrowRight":
                 currentSprite.renderSequence.forEach((step) => { step[5] += 4 })
+                renderSpriteCanvas()
+                e.preventDefault()
+                break;
+            case "ArrowUp":
+                currentSprite.renderSequence.forEach((step) => { step[6] -= 4 })
+                renderSpriteCanvas()
+                e.preventDefault()
+                break;
+            case "ArrowDown":
+                currentSprite.renderSequence.forEach((step) => { step[6] += 4 })
                 renderSpriteCanvas()
                 e.preventDefault()
                 break;
@@ -1686,14 +1726,6 @@ window.onload = async function () {
         unsecuredCopyToClipboard(`\n${currentSprite.renderSequence.map(step => `[${step.join(', ')}]`).join(',\n')}\n`)
     }
 
-    document.onwheel = function (e) {
-        if (selectedXFlip == selectedYFlip == e.deltaY > 0) {
-            selectedXFlip = !selectedXFlip
-        } else {
-            selectedYFlip = !selectedYFlip
-        }
-        renderSpriteCanvas()
-    }
 
     // load cached palettes, gfx etc...
 
@@ -1705,7 +1737,8 @@ window.onload = async function () {
     }
     paletteSelect.onchange = function (e) {
         activePaletteIndex = +(e.target.value)
-        refreshBitmaps()
+        renderGfxCanvas()
+        renderSpriteCanvas()
     }
 
     // populate sprite select
@@ -1717,7 +1750,7 @@ window.onload = async function () {
     spriteSelect.value = allSprites.length - 1
     spriteSelect.onchange = function (e) {
         currentSprite = allSprites[+(e.target.value)]
-        refreshBitmaps()
+        renderSpriteCanvas()
     }
 
     // populate gfx select
@@ -1746,7 +1779,7 @@ window.onload = async function () {
         loadGfxFile(blob, gfxFileNames[i]);
     };
 
-    refreshBitmaps();
+    await refreshBitmaps();
 };
 
 function loadGfxFile(blob, name) {
@@ -1766,7 +1799,7 @@ function renderGfxCanvas() {
     gfxCtx.imageSmoothingEnabled = false;
 
     for (let i = 0; i < 4; ++i) {
-        const bitmap = gfxBitmaps[i];
+        const bitmap = gfxBitmaps[i][activePaletteIndex];
         if (bitmap) {
             gfxCtx.drawImage(bitmap, 0, i * 64)
         }
@@ -1802,9 +1835,9 @@ function renderSpriteCanvas() {
     spriteCtx.stroke()
 
     for (let i = 0; i < currentSprite.renderSequence.length; i++) {
-        const [slot, tx, ty, is8x8, x, y, xFlip, yFlip] = currentSprite.renderSequence[i]
+        const [slot, palette, tx, ty, is8x8, x, y, xFlip, yFlip] = currentSprite.renderSequence[i]
         const size = is8x8 ? 8 : 16
-        const bitmap = gfxBitmaps[slot];
+        const bitmap = gfxBitmaps[slot][palette];
         const xScale = xFlip ? -1 : 1
         const yScale = yFlip ? -1 : 1
 
@@ -1824,7 +1857,7 @@ function renderSpriteCanvas() {
         const tx = selectedTile % 16
         const ty = Math.floor(selectedTile / 16) % 8
         const size = selected8x8 ? 8 : 16
-        const bitmap = gfxBitmaps[Math.floor(selectedTile / 128)];
+        const bitmap = gfxBitmaps[Math.floor(selectedTile / 128)][activePaletteIndex];
         const xScale = selectedXFlip ? -1 : 1
         const yScale = selectedYFlip ? -1 : 1
 
@@ -1844,8 +1877,10 @@ function renderSpriteCanvas() {
 
 async function refreshBitmaps() {
     return new Promise(async (resolve) => {
-        for (let i = 0; i < 4; ++i) {
-            await updateBitmap(allGfx[gfxIndexes[i]].pixels, rgbaPalettes[activePaletteIndex], i)
+        for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < 8; j++) {
+                await updateBitmap(allGfx[gfxIndexes[i]].pixels, i, j)
+            }
         }
         renderGfxCanvas()
         renderSpriteCanvas()
@@ -1853,16 +1888,17 @@ async function refreshBitmaps() {
     })
 }
 
-async function updateBitmap(pixels, palette, slot) {
+async function updateBitmap(pixels, slot, palette) {
     return new Promise((resolve) => {
-        const colorData = pixels.map((index) => (palette[index])).flat() //
+        const pal = rgbaPalettes[palette]
+        const colorData = pixels.map((index) => (pal[index])).flat() //
         const uintColorData = new Uint8ClampedArray(colorData)
         const imageData = new ImageData(uintColorData, 128)
         // save to slot
         createImageBitmap(imageData).then((bitmap) => {
             // throw out old bitmap
-            gfxBitmaps[slot]?.close?.()
-            gfxBitmaps[slot] = bitmap
+            gfxBitmaps[slot][palette]?.close?.()
+            gfxBitmaps[slot][palette] = bitmap
             resolve(bitmap)
         })
     })
