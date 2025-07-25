@@ -1,5 +1,5 @@
 body {
-    background-color:darkslategrey;
+    background-color: darkslategrey;
     color: whitesmoke;
     font-family: sans-serif;
     /* text-align: center; */
@@ -28,6 +28,7 @@ canvas {
 .flex-column {
     display: flex;
     flex-direction: column;
+
     .flex-row {
         margin-bottom: 16px;
     }
@@ -36,7 +37,49 @@ canvas {
 .flex-row {
     display: flex;
     flex-direction: row;
+
     .flex-column {
         margin-right: 16px;
+    }
+}
+
+.spriteCategory {
+    width: 40vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .header {
+        flex: 0 0 100%;
+        padding: 8px 12px;
+        margin: 2px;
+    }
+
+    .sprite {
+        flex: 1;
+        min-width: max-content;
+        max-width: max-content;
+
+        cursor: pointer;
+        user-select: none;
+        padding: 8px 12px;
+        margin: 2px;
+        border-radius: 2px;
+
+        box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.25);
+        background-color: grey;
+        :hover {
+            background-color: rgb(148, 148, 148);
+            box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.25);
+        }
+        .selected {
+            background-color: rgb(93, 143, 129);
+            :hover {
+                background-color: rgb(117, 153, 142);
+            }
+        }
+        :active {
+            box-shadow: none;
+        }
     }
 }
