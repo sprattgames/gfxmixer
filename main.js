@@ -3,7 +3,7 @@
 [x] draw gfx to screen
 [x] select palette
 [x] list of sprites and their palette/location/compatibility
-[ ] select which sprites you want to include
+[x] select which sprites you want to include
 [ ] detect conflicts
 [ ] create exgfx based on selection
 [ ] save exgfx file
@@ -70,6 +70,7 @@ const gfxFileNames = ["GFX00", "GFX01", "GFX02", "GFX03", "GFX04", "GFX05", "GFX
 const allSprites = [{
     name: "Bob-Omb",
     category: "forest",
+    slot3: "GFX02",
     renderSequence: [
         [3, 0, 12, 4, false, 28, 56, false, false],
         [3, 7, 10, 4, false, 48, 56, false, false],
@@ -82,6 +83,7 @@ const allSprites = [{
 }, {
     name: "Spiny",
     category: "forest",
+    slot3: "GFX02",
     renderSequence: [
         [3, 4, 0, 0, false, 44, 56, false, false],
         [3, 4, 2, 0, false, 68, 56, false, false],
@@ -89,6 +91,7 @@ const allSprites = [{
 }, {
     name: "Hopping Flame",
     category: "forest",
+    slot3: "GFX02",
     renderSequence: [
         [3, 2, 14, 0, false, 40, 52, false, false],
         [3, 2, 14, 2, false, 56, 52, false, false],
@@ -98,6 +101,7 @@ const allSprites = [{
 }, {
     name: "Falling Spiny",
     category: "forest",
+    slot3: "GFX02",
     renderSequence: [
         [3, 4, 4, 0, true, 44, 56, false, false],
         [3, 4, 4, 0, true, 44, 64, false, true],
@@ -111,6 +115,7 @@ const allSprites = [{
 }, {
     name: "Wiggler",
     category: "forest",
+    slot3: "GFX02",
     renderSequence: [
         [3, 2, 6, 4, false, 68, 44, false, false],
         [3, 2, 4, 4, false, 60, 44, false, false],
@@ -128,6 +133,8 @@ const allSprites = [{
 }, {
     name: "Lakitu's cloud",
     category: "forest",
+    slot0: "GFX00",
+    slot2: "GFX13",
     renderSequence: [
         [0, 0, 0, 6, false, 48, 52, false, false],
         [0, 0, 0, 6, false, 64, 52, false, false],
@@ -139,6 +146,9 @@ const allSprites = [{
 }, {
     name: "Flying Lakitu",
     category: "forest",
+    slot0: "GFX00",
+    slot2: "GFX13",
+    slot3: "GFX02",
     renderSequence: [
         [0, 0, 0, 6, false, 68, 40, false, false],
         [0, 0, 0, 6, false, 84, 40, false, false],
@@ -175,6 +185,7 @@ const allSprites = [{
 }, {
     name: "Pipe Dwelling Lakitu",
     category: "forest",
+    slot3: "GFX02",
     renderSequence: [
         [3, 4, 12, 6, false, 36, 48, false, false],
         [3, 4, 8, 2, false, 56, 48, false, false],
@@ -186,6 +197,7 @@ const allSprites = [{
 }, {
     name: "Cheep Cheep",
     category: "generic",
+    slot2: "GFX13",
     renderSequence: [
         [2, 2, 7, 6, false, 44, 56, false, false],
         [2, 2, 9, 6, false, 68, 56, false, false],
@@ -193,6 +205,7 @@ const allSprites = [{
 }, {
     name: "Magikoopa",
     category: "castle",
+    slot3: "GFX03",
     renderSequence: [
         [3, 3, 0, 4, false, 56, 64, false, false],
         [3, 3, 0, 2, false, 56, 48, false, false],
@@ -206,6 +219,7 @@ const allSprites = [{
 }, {
     name: "Magikoopa's Magic",
     category: "castle",
+    slot3: "GFX03",
     renderSequence: [
         [3, 4, 8, 0, true, 56, 52, false, false],
         [3, 3, 9, 0, true, 68, 60, false, false],
@@ -214,17 +228,19 @@ const allSprites = [{
 }, {
     name: "Net Koopas",
     category: "castle",
+    slot2: "GFX12",
     renderSequence: [
         [2, 4, 7, 0, false, 36, 44, false, false],
         [2, 4, 7, 2, false, 36, 60, false, false],
-        [2, 4, 9, 2, false, 56, 60, false, false],
-        [2, 4, 12, 4, false, 56, 44, false, false],
+        [2, 5, 9, 2, false, 56, 60, false, false],
+        [2, 5, 12, 4, false, 56, 44, false, false],
         [2, 4, 14, 4, false, 76, 44, false, false],
         [2, 4, 11, 2, false, 76, 60, false, false],
     ]
 }, {
     name: "Thwomp",
     category: "castle",
+    slot3: "GFX03",
     renderSequence: [
         [3, 1, 14, 0, false, 24, 48, false, false],
         [3, 1, 14, 0, false, 32, 48, true, false],
@@ -244,6 +260,7 @@ const allSprites = [{
 }, {
     name: "Thwimp",
     category: "castle",
+    slot3: "GFX03",
     renderSequence: [
         [3, 1, 2, 2, true, 56, 56, false, false],
         [3, 1, 2, 3, true, 56, 64, false, false],
@@ -253,6 +270,7 @@ const allSprites = [{
 }, {
     name: "Dry Bones",
     category: "castle",
+    slot2: "GFX12",
     renderSequence: [
         [2, 1, 4, 6, false, 12, 48, false, false],
         [2, 1, 6, 6, false, 20, 64, false, false],
@@ -266,6 +284,8 @@ const allSprites = [{
 }, {
     name: "Bony Beetle",
     category: "castle",
+    slot2: "GFX12",
+    slot3: "GFX03",
     renderSequence: [
         [3, 1, 12, 0, false, 24, 44, false, false],
         [3, 1, 10, 2, false, 44, 44, false, false],
@@ -279,6 +299,8 @@ const allSprites = [{
 }, {
     name: "Dry Bones (Throwing)",
     category: "castle",
+    slot2: "GFX12",
+    slot3: "GFX03",
     renderSequence: [
         [2, 1, 4, 6, false, 12, 60, false, false],
         [2, 1, 6, 6, false, 20, 76, false, false],
@@ -299,6 +321,7 @@ const allSprites = [{
 }, {
     name: "Grinder",
     category: "castle",
+    slot2: "GFX12",
     renderSequence: [
         [2, 1, 12, 6, false, 28, 48, false, false],
         [2, 1, 12, 6, false, 44, 48, true, false],
@@ -312,12 +335,14 @@ const allSprites = [{
 }, {
     name: "Sparky",
     category: "castle",
+    slot2: "GFX12",
     renderSequence: [
         [2, 2, 10, 0, false, 56, 56, false, false],
     ]
 }, {
     name: "Hothead",
     category: "castle",
+    slot2: "GFX12",
     renderSequence: [
         [2, 2, 12, 0, false, 28, 48, false, false],
         [2, 2, 14, 0, false, 44, 48, false, false],
@@ -333,6 +358,7 @@ const allSprites = [{
 }, {
     name: "Fishbone",
     category: "castle",
+    slot3: "GFX03",
     renderSequence: [
         [3, 6, 6, 2, false, 36, 56, false, false],
         [3, 6, 3, 2, true, 52, 56, false, false],
@@ -344,6 +370,7 @@ const allSprites = [{
 }, {
     name: "Pencil",
     category: "castle",
+    slot2: "GFX12",
     renderSequence: [
         [2, 0, 10, 4, false, 56, 32, false, false],
         [2, 0, 10, 6, false, 56, 48, false, false],
@@ -353,12 +380,14 @@ const allSprites = [{
 }, {
     name: "Falling Spike",
     category: "castle",
+    slot3: "GFX03",
     renderSequence: [
         [3, 0, 0, 6, false, 56, 56, false, false],
     ]
 }, {
     name: "Bowser Statue",
     category: "castle",
+    slot2: "GFX12",
     renderSequence: [
         [2, 0, 5, 3, false, 76, 52, false, false],
         [2, 0, 6, 5, true, 84, 68, false, false],
@@ -369,6 +398,7 @@ const allSprites = [{
 }, {
     name: "Bowser Statue Fireball",
     category: "castle",
+    slot2: "GFX12",
     renderSequence: [
         [2, 4, 2, 3, true, 56, 52, false, false],
         [2, 4, 0, 5, true, 64, 52, false, false],
@@ -378,12 +408,14 @@ const allSprites = [{
 }, {
     name: "Diagonal Reflecting Podoboo",
     category: "castle",
+    slot3: "GFX03",
     renderSequence: [
         [3, 2, 12, 2, false, 56, 56, false, false],
     ]
 }, {
     name: "Moving Castle Block",
     category: "castle",
+    slot3: "GFX03",
     renderSequence: [
         [3, 1, 12, 4, false, 48, 48, false, false],
         [3, 1, 14, 4, false, 64, 48, false, false],
@@ -393,6 +425,7 @@ const allSprites = [{
 }, {
     name: "Ball n' Chain",
     category: "castle",
+    slot3: "GFX03",
     renderSequence: [
         [3, 1, 8, 6, false, 68, 68, false, false],
         [3, 1, 8, 6, false, 56, 56, false, false],
@@ -404,6 +437,7 @@ const allSprites = [{
 }, {
     name: "Revolving Net Door",
     category: "castle",
+    slot2: "GFX12",
     renderSequence: [
         [2, 4, 0, 0, false, 24, 24, false, false],
         [2, 4, 0, 1, false, 24, 40, false, false],
@@ -433,6 +467,7 @@ const allSprites = [{
 }, {
     name: "Background Candle Flames",
     category: "misc",
+    slot3: "GFX03",
     renderSequence: [
         [3, 4, 2, 6, false, 48, 52, false, false],
         [3, 4, 4, 6, false, 64, 52, false, false]
@@ -440,6 +475,7 @@ const allSprites = [{
 }, {
     name: "Lava Splash Particles",
     category: "misc",
+    slot3: "GFX03",
     renderSequence: [
         [3, 2, 6, 4, true, 44, 56, false, false],
         [3, 2, 6, 5, true, 56, 52, false, false],
@@ -449,6 +485,7 @@ const allSprites = [{
 }, {
     name: "Boss Fireball",
     category: "misc",
+    slot3: "GFX24",
     renderSequence: [
         [3, 2, 10, 4, false, 48, 44, false, false],
         [3, 2, 12, 4, false, 64, 44, false, false],
@@ -458,6 +495,7 @@ const allSprites = [{
 }, {
     name: "Urchin",
     category: "water",
+    slot3: "GFX06",
     renderSequence: [
         [3, 3, 4, 4, false, 12, 48, false, false],
         [3, 3, 4, 4, false, 28, 48, true, false],
@@ -478,6 +516,7 @@ const allSprites = [{
 }, {
     name: "Rip Van Fish",
     category: "water",
+    slot3: "GFX06",
     renderSequence: [
         [3, 3, 12, 0, false, 24, 56, false, false],
         [3, 3, 14, 0, false, 44, 56, false, false],
@@ -491,6 +530,7 @@ const allSprites = [{
 }, {
     name: "Para-bomb",
     category: "forest",
+    slot3: "GFX02",
     renderSequence: [
         [3, 0, 2, 4, false, 24, 48, false, false],
         [3, 3, 6, 6, false, 16, 32, false, false],
@@ -510,20 +550,22 @@ const allSprites = [{
 }, {
     name: "Para-goomba",
     category: "forest",
+    slot3: "GFX02",
     renderSequence: [
-        [3, 0, 3, 2, true, 68, 48, false, false],
-        [3, 0, 3, 3, true, 68, 56, false, false],
-        [3, 0, 3, 2, true, 76, 48, true, false],
-        [3, 0, 3, 3, true, 76, 56, true, false],
+        [3, 2, 3, 2, true, 68, 48, false, false],
+        [3, 2, 3, 3, true, 68, 56, false, false],
+        [3, 2, 3, 2, true, 76, 48, true, false],
+        [3, 2, 3, 3, true, 76, 56, true, false],
         [3, 3, 2, 6, false, 68, 32, false, false],
-        [3, 0, 8, 6, false, 44, 48, false, false],
+        [3, 2, 8, 6, false, 44, 48, false, false],
         [3, 3, 6, 6, false, 36, 32, false, false],
-        [1, 0, 10, 2, false, 68, 68, false, false],
-        [1, 0, 8, 2, false, 44, 68, false, false],
+        [1, 2, 10, 2, false, 68, 68, false, false],
+        [1, 2, 8, 2, false, 44, 68, false, false],
     ]
 }, {
     name: "Horizontal Dolphin",
     category: "water",
+    slot3: "GFX06",
     renderSequence: [
         [3, 3, 8, 0, false, 48, 44, false, false],
         [3, 3, 8, 2, false, 64, 44, false, false],
@@ -535,6 +577,7 @@ const allSprites = [{
 }, {
     name: "Vertical Dolphin",
     category: "water",
+    slot3: "GFX06",
     renderSequence: [
         [3, 3, 14, 4, false, 56, 48, false, false],
         [3, 3, 14, 6, false, 56, 64, false, false],
@@ -542,6 +585,7 @@ const allSprites = [{
 }, {
     name: "Torpedo Ted",
     category: "water",
+    slot3: "GFX06",
     renderSequence: [
         [3, 1, 0, 0, false, 40, 44, false, false],
         [3, 1, 2, 0, false, 56, 44, false, false],
@@ -555,6 +599,7 @@ const allSprites = [{
 }, {
     name: "Torpedo Ted Launcher",
     category: "water",
+    slot3: "GFX06",
     renderSequence: [
         [3, 1, 0, 0, false, 40, 40, false, false],
         [3, 1, 2, 0, false, 56, 40, false, false],
@@ -568,6 +613,7 @@ const allSprites = [{
 }, {
     name: "Blurp",
     category: "water",
+    slot3: "GFX06",
     renderSequence: [
         [3, 5, 2, 2, false, 44, 56, false, false],
         [3, 5, 12, 6, false, 68, 56, false, false]
@@ -575,6 +621,7 @@ const allSprites = [{
 }, {
     name: "Fugu",
     category: "water",
+    slot3: "GFX06",
     renderSequence: [
         [3, 6, 6, 0, false, 28, 48, false, false],
         [3, 6, 6, 2, false, 28, 64, false, false],
@@ -588,6 +635,7 @@ const allSprites = [{
 }, {
     name: "Growing Pipe",
     category: "forest",
+    slot3: "GFX02",
     renderSequence: [
         [3, 5, 4, 2, false, 48, 56, false, false],
         [3, 5, 6, 2, false, 64, 56, false, false],
@@ -595,22 +643,25 @@ const allSprites = [{
 }, {
     name: "Goal Orb",
     category: "generic",
+    slot3: "GFX05",
     renderSequence: [
         [3, 5, 12, 0, false, 56, 56, true, false],
     ]
 }, {
     name: "Monty Mole (ground)",
     category: "pokey",
+    slot3: "GFX09",
     renderSequence: [
-        [3, 0, 8, 0, true, 32, 64, false, false],
-        [3, 0, 9, 0, true, 40, 64, false, false],
-        [3, 0, 6, 0, false, 32, 44, false, false],
-        [3, 0, 4, 0, false, 52, 56, false, false],
-        [3, 0, 2, 0, false, 72, 56, false, false],
+        [3, 0, 8, 0, true, 36, 64, false, false],
+        [3, 0, 9, 0, true, 44, 64, false, false],
+        [3, 0, 6, 0, false, 36, 44, false, false],
+        [3, 0, 4, 0, false, 56, 56, false, false],
+        [3, 0, 2, 0, false, 76, 56, false, false]
     ]
 }, {
     name: "Monty Mole (ledge)",
     category: "pokey",
+    slot3: "GFX09",
     renderSequence: [
         [3, 0, 12, 0, false, 36, 64, false, false],
         [3, 0, 6, 0, false, 36, 44, false, false],
@@ -620,6 +671,7 @@ const allSprites = [{
 }, {
     name: "Ninji",
     category: "bowser",
+    slot3: "GFX0E",
     renderSequence: [
         [3, 4, 7, 2, false, 68, 56, false, false],
         [3, 4, 9, 2, false, 44, 56, false, false],
@@ -627,6 +679,7 @@ const allSprites = [{
 }, {
     name: "Moving Ghost House Hole",
     category: "ghost",
+    slot3: "GFX11",
     renderSequence: [
         [3, 0, 11, 6, false, 40, 56, true, false],
         [3, 0, 10, 6, false, 56, 56, false, false],
@@ -635,6 +688,7 @@ const allSprites = [{
 }, {
     name: "Checkerboard Platforms",
     category: "generic",
+    slot3: "GFX05",
     renderSequence: [
         [3, 0, 10, 6, false, 24, 68, false, false],
         [3, 0, 11, 6, false, 40, 68, false, false],
@@ -650,6 +704,7 @@ const allSprites = [{
 }, {
     name: "Rock Platform",
     category: "generic",
+    slot3: "GFX05",
     renderSequence: [
         [3, 1, 5, 0, false, 40, 48, false, false],
         [3, 1, 6, 0, false, 56, 48, false, false],
@@ -660,6 +715,7 @@ const allSprites = [{
 }, {
     name: "Sinking Rock Platform",
     category: "generic",
+    slot3: "GFX05",
     renderSequence: [
         [3, 1, 5, 0, false, 40, 48, false, false],
         [3, 1, 6, 0, false, 56, 48, false, false],
@@ -668,6 +724,7 @@ const allSprites = [{
 }, {
     name: "Grey / Brown Platforms (Thin)",
     category: "generic",
+    slot2: "GFX13",
     renderSequence: [
         [2, 0, 0, 6, false, 40, 68, false, false],
         [2, 0, 1, 6, false, 56, 68, false, false],
@@ -680,6 +737,7 @@ const allSprites = [{
 }, {
     name: "Grey / Brown Platforms (Thick)",
     category: "generic",
+    slot2: "GFX12",
     renderSequence: [
         [2, 0, 0, 6, false, 40, 68, false, false],
         [2, 0, 1, 6, false, 56, 68, false, false],
@@ -690,8 +748,32 @@ const allSprites = [{
         [2, 1, 2, 6, false, 80, 44, false, false],
     ]
 }, {
-    name: "Rotating Brown / Grey Platforms",
+    name: "Rotating Brown / Grey Platforms (Thin)",
     category: "generic",
+    slot2: "GFX13",
+    slot3: "GFX05",
+    renderSequence: [
+        [3, 0, 2, 2, false, 56, 24, false, false],
+        [2, 0, 1, 6, false, 48, 20, false, false],
+        [2, 0, 1, 6, false, 64, 20, false, false],
+        [2, 0, 0, 6, false, 32, 20, false, false],
+        [2, 0, 2, 6, false, 80, 20, false, false],
+        [3, 0, 2, 2, false, 66, 36, false, false],
+        [3, 0, 2, 2, false, 76, 48, false, false],
+        [3, 0, 2, 2, false, 86, 60, false, false],
+        [3, 0, 2, 2, false, 96, 72, false, false],
+        [3, 1, 2, 2, false, 56, 96, false, false],
+        [3, 1, 2, 2, false, 48, 82, false, false],
+        [3, 1, 2, 2, false, 40, 68, false, false],
+        [2, 1, 1, 6, false, 56, 92, false, false],
+        [2, 1, 0, 6, false, 40, 92, false, false],
+        [2, 1, 2, 6, false, 72, 92, false, false],
+    ]
+}, {
+    name: "Rotating Brown / Grey Platforms (Thick)",
+    category: "generic",
+    slot2: "GFX12",
+    slot3: "GFX05",
     renderSequence: [
         [3, 0, 2, 2, false, 56, 24, false, false],
         [2, 0, 1, 6, false, 48, 20, false, false],
@@ -712,13 +794,21 @@ const allSprites = [{
 }, {
     name: "Flattened Switch Palace Switch",
     category: "misc",
+    slot3: "GFX0D",
     renderSequence: [
-        [3, 5, 0, 0, false, 48, 56, false, false],
-        [3, 5, 0, 0, false, 64, 56, true, false],
+        [3, 0, 0, 1, true, 48, 64, false, false],
+        [3, 0, 1, 1, true, 56, 64, false, false],
+        [3, 0, 1, 1, true, 64, 64, true, false],
+        [3, 0, 0, 1, true, 72, 64, true, false],
+        [3, 5, 0, 0, true, 48, 56, false, false],
+        [3, 5, 1, 0, true, 56, 56, false, false],
+        [3, 5, 1, 0, true, 64, 56, true, false],
+        [3, 5, 0, 0, true, 72, 56, true, false]
     ]
 }, {
     name: "Switch Palace Blocks Message",
     category: "misc",
+    slot2: "GFX14",
     renderSequence: [
         [2, 5, 7, 2, true, 72, 56, false, false],
         [2, 5, 7, 2, true, 80, 56, true, false],
@@ -732,6 +822,7 @@ const allSprites = [{
 }, {
     name: "Floating Skull Platform",
     category: "cave",
+    slot3: "GFX04",
     renderSequence: [
         [3, 1, 0, 6, false, 48, 44, false, false],
         [3, 1, 0, 6, false, 32, 44, false, false],
@@ -745,6 +836,7 @@ const allSprites = [{
 }, {
     name: "Rope Mechanism",
     category: "generic",
+    slot3: "GFX05",
     renderSequence: [
         [3, 3, 0, 4, false, 36, 32, false, false],
         [3, 3, 2, 4, false, 56, 32, false, false],
@@ -765,6 +857,7 @@ const allSprites = [{
 }, {
     name: "Chainsaw",
     category: "generic",
+    slot3: "GFX05",
     renderSequence: [
         [3, 1, 14, 2, false, 32, 56, false, false],
         [3, 1, 14, 0, false, 32, 40, false, false],
@@ -779,12 +872,14 @@ const allSprites = [{
 }, {
     name: "Fuzzy",
     category: "generic",
+    slot3: "GFX05",
     renderSequence: [
         [3, 2, 8, 4, false, 56, 56, false, false],
     ]
 }, {
     name: "Coin Game Cloud",
     category: "generic",
+    slot2: "GFX13",
     renderSequence: [
         [0, 0, 0, 6, false, 44, 56, false, false],
         [2, 4, 13, 4, true, 48, 60, false, false],
@@ -793,6 +888,7 @@ const allSprites = [{
 }, {
     name: "Dino-Rhino",
     category: "dino",
+    slot3: "GFX23",
     renderSequence: [
         [3, 7, 0, 4, false, 28, 48, false, false],
         [3, 7, 0, 6, false, 28, 64, false, false],
@@ -806,6 +902,7 @@ const allSprites = [{
 }, {
     name: "Dino-Torch",
     category: "dino",
+    slot3: "GFX23",
     renderSequence: [
         [3, 4, 0, 0, false, 24, 68, false, false],
         [3, 2, 2, 0, false, 32, 68, false, false],
@@ -824,6 +921,7 @@ const allSprites = [{
 }, {
     name: "Pokey",
     category: "pokey",
+    slot3: "GFX09",
     renderSequence: [
         [3, 2, 8, 6, false, 56, 88, false, false],
         [3, 2, 8, 6, false, 54, 72, false, false],
@@ -834,6 +932,7 @@ const allSprites = [{
 }, {
     name: "Super Koopa (Ground)",
     category: "pokey",
+    slot3: "GFX09",
     renderSequence: [
         [1, 3, 0, 6, false, 8, 44, false, false],
         [3, 2, 8, 4, true, 16, 44, false, false],
@@ -869,6 +968,7 @@ const allSprites = [{
 }, {
     name: "Super Koopa (Flying)",
     category: "pokey",
+    slot3: "GFX09",
     renderSequence: [
         [3, 5, 0, 6, false, 12, 56, false, false],
         [3, 5, 2, 7, true, 28, 64, false, false],
@@ -890,6 +990,8 @@ const allSprites = [{
 }, {
     name: "Firework",
     category: "misc",
+    slot2: "GFX24",
+    slot3: "GFX22",
     renderSequence: [
         [3, 5, 12, 6, true, 48, 52, false, false],
         [3, 5, 13, 6, true, 56, 52, false, false],
@@ -903,6 +1005,9 @@ const allSprites = [{
 }, {
     name: "Peach",
     category: "misc",
+    slot1: "GFX0D",
+    slot2: "GFX24",
+    slot3: "GFX22",
     renderSequence: [
         [1, 0, 2, 0, false, 16, 44, false, false],
         [1, 0, 2, 2, false, 16, 60, false, false],
@@ -924,6 +1029,7 @@ const allSprites = [{
 }, {
     name: "Peach Ending Cutscene Text",
     category: "misc",
+    slot1: "GFX0D",
     renderSequence: [
         [1, 0, 8, 0, true, 32, 36, false, false],
         [1, 0, 10, 0, true, 40, 36, false, false],
@@ -968,6 +1074,7 @@ const allSprites = [{
 }, {
     name: "Yoshi's House Bird",
     category: "misc",
+    slot3: "GFX0F",
     renderSequence: [
         [3, 2, 0, 5, true, 52, 52, false, false],
         [3, 3, 1, 5, true, 68, 52, false, false],
@@ -977,6 +1084,7 @@ const allSprites = [{
 }, {
     name: "Yoshi's House Fireplace",
     category: "misc",
+    slot3: "GFX0F",
     renderSequence: [
         [3, 2, 11, 3, true, 52, 76, false, false],
         [3, 2, 11, 2, true, 52, 68, false, false],
@@ -988,6 +1096,7 @@ const allSprites = [{
 }, {
     name: "Ghost House Exit Door",
     category: "misc",
+    slot3: "GFX0F",
     renderSequence: [
         [3, 7, 0, 2, false, 8, 40, true, false],
         [3, 7, 0, 3, false, 8, 48, true, false],
@@ -1017,6 +1126,7 @@ const allSprites = [{
 }, {
     name: "Mushroom Platforms",
     category: "generic",
+    slot3: "GFX05",
     renderSequence: [
         [3, 5, 0, 0, false, 48, 56, false, false],
         [3, 5, 0, 0, false, 64, 56, true, false],
@@ -1024,6 +1134,7 @@ const allSprites = [{
 }, {
     name: "Small Floating Orange Platform",
     category: "generic",
+    slot3: "GFX05",
     renderSequence: [
         [3, 5, 11, 4, false, 40, 48, false, false],
         [3, 5, 12, 4, false, 56, 48, true, false],
@@ -1034,6 +1145,7 @@ const allSprites = [{
 }, {
     name: "Large Floating Orange Platform",
     category: "generic",
+    slot3: "GFX05",
     renderSequence: [
         [3, 5, 11, 4, false, 24, 48, false, false],
         [3, 5, 11, 4, false, 88, 48, true, false],
@@ -1048,6 +1160,7 @@ const allSprites = [{
 }, {
     name: "Volcano Lotus",
     category: "pokey",
+    slot3: "GFX09",
     renderSequence: [
         [3, 5, 14, 4, false, 48, 68, false, false],
         [3, 5, 14, 4, false, 64, 68, true, false],
@@ -1061,6 +1174,7 @@ const allSprites = [{
 }, {
     name: "Lightning Bolt",
     category: "pokey",
+    slot3: "GFX09",
     renderSequence: [
         [3, 2, 3, 7, true, 48, 56, false, false],
         [3, 2, 3, 7, true, 48, 64, true, true],
@@ -1070,6 +1184,7 @@ const allSprites = [{
 }, {
     name: "Sumo Bro",
     category: "pokey",
+    slot3: "GFX09",
     renderSequence: [
         [3, 2, 3, 4, false, 32, 44, false, false],
         [3, 2, 1, 4, false, 16, 44, false, false],
@@ -1093,12 +1208,14 @@ const allSprites = [{
 }, {
     name: "Football",
     category: "generic",
+    slot3: "GFX04",
     renderSequence: [
         [3, 0, 10, 0, false, 56, 56, false, false],
     ]
 }, {
     name: "Bouncing Rock",
     category: "generic",
+    slot3: "GFX05",
     renderSequence: [
         [3, 6, 4, 4, false, 44, 56, false, false],
         [3, 6, 6, 4, false, 68, 56, false, false],
@@ -1106,6 +1223,8 @@ const allSprites = [{
 }, {
     name: "Diggin' Chuck",
     category: "generic",
+    slot2: "GFX13",
+    slot3: "GFX05",
     renderSequence: [
         [3, 3, 2, 6, false, 12, 56, false, false],
         [2, 5, 8, 2, false, 24, 56, false, false],
@@ -1124,6 +1243,7 @@ const allSprites = [{
 }, {
     name: "Chargin' Chuck",
     category: "generic",
+    slot2: "GFX13",
     renderSequence: [
         [2, 5, 6, 0, false, 50, 32, false, false],
         [2, 5, 0, 2, false, 52, 44, false, false],
@@ -1153,6 +1273,7 @@ const allSprites = [{
 }, {
     name: "Clappin' Chuck",
     category: "generic",
+    slot2: "GFX13",
     renderSequence: [
         [2, 5, 13, 2, false, 20, 60, false, false],
         [2, 5, 13, 2, false, 28, 60, true, false],
@@ -1169,6 +1290,8 @@ const allSprites = [{
 }, {
     name: "Pitchin' Chuck",
     category: "generic",
+    slot2: "GFX13",
+    slot3: "GFX09",
     renderSequence: [
         [2, 5, 6, 0, false, 24, 68, false, false],
         [3, 4, 13, 2, true, 26, 84, false, false],
@@ -1196,6 +1319,8 @@ const allSprites = [{
 }, {
     name: "Kickin' Chuck",
     category: "generic",
+    slot2: "GFX13",
+    slot3: "GFX04",
     renderSequence: [
         [2, 5, 6, 0, false, 80, 52, false, false],
         [2, 5, 14, 4, false, 88, 60, false, false],
@@ -1212,6 +1337,7 @@ const allSprites = [{
 }, {
     name: "Whistlin' Chuck",
     category: "generic",
+    slot2: "GFX13",
     renderSequence: [
         [2, 5, 6, 2, false, 20, 56, false, false],
         [2, 5, 6, 2, false, 28, 56, true, false],
@@ -1230,6 +1356,7 @@ const allSprites = [{
 }, {
     name: "Splittin' / Jumpin' Chucks",
     category: "generic",
+    slot2: "GFX13",
     renderSequence: [
         [2, 5, 13, 2, false, 60, 56, true, false],
         [2, 5, 13, 2, false, 52, 56, false, false],
@@ -1246,6 +1373,7 @@ const allSprites = [{
 }, {
     name: "Amazing Flying Hammer Brother",
     category: "generic",
+    slot2: "GFX13",
     renderSequence: [
         [2, 3, 6, 4, false, 48, 60, false, false],
         [2, 3, 8, 4, false, 64, 60, false, false],
@@ -1257,6 +1385,7 @@ const allSprites = [{
 }, {
     name: "Bubble",
     category: "forest",
+    slot3: "GFX02",
     renderSequence: [
         [3, 3, 0, 2, false, 48, 64, false, true],
         [3, 3, 0, 2, false, 48, 48, false, false],
@@ -1267,6 +1396,7 @@ const allSprites = [{
 }, {
     name: "Banzai Bill",
     category: "banzai",
+    slot3: "GFX20",
     renderSequence: [
         [3, 1, 0, 0, false, 28, 32, false, false],
         [3, 1, 2, 0, false, 44, 32, false, false],
@@ -1288,6 +1418,7 @@ const allSprites = [{
 }, {
     name: "Big Steely",
     category: "bowser",
+    slot2: "GFX24",
     renderSequence: [
         [2, 6, 5, 4, false, 40, 40, false, false],
         [2, 6, 7, 4, false, 56, 40, false, false],
@@ -1303,6 +1434,7 @@ const allSprites = [{
 }, {
     name: "Mechakoopa",
     category: "bowser",
+    slot2: "GFX24",
     renderSequence: [
         [2, 5, 0, 4, false, 68, 20, false, false],
         [2, 5, 12, 0, false, 76, 28, false, false],
@@ -1334,6 +1466,7 @@ const allSprites = [{
 }, {
     name: "Spotlight Disco Ball",
     category: "bowser",
+    slot3: "GFX0E",
     renderSequence: [
         [3, 6, 0, 0, false, 36, 36, false, false],
         [3, 6, 2, 0, false, 56, 36, false, false],
@@ -1347,6 +1480,7 @@ const allSprites = [{
 }, {
     name: "Sea Mine",
     category: "water",
+    slot3: "GFX05",
     renderSequence: [
         [3, 0, 10, 2, false, 28, 48, false, false],
         [3, 0, 10, 2, false, 44, 48, true, false],
@@ -1360,6 +1494,7 @@ const allSprites = [{
 }, {
     name: "Boo",
     category: "ghost",
+    slot3: "GFX11",
     renderSequence: [
         [3, 1, 8, 0, false, 44, 56, false, false],
         [3, 1, 12, 0, false, 68, 56, false, false],
@@ -1367,6 +1502,7 @@ const allSprites = [{
 }, {
     name: "Boo Block",
     category: "ghost",
+    slot3: "GFX11",
     renderSequence: [
         [3, 1, 8, 0, false, 36, 56, false, false],
         [3, 1, 8, 4, false, 56, 56, false, false],
@@ -1375,6 +1511,8 @@ const allSprites = [{
 }, {
     name: "Eerie",
     category: "ghost",
+    slot2: "GFX06",
+    slot3: "GFX11",
     renderSequence: [
         [2, 6, 10, 6, false, 44, 56, false, false],
         [3, 6, 13, 6, false, 68, 56, false, false],
@@ -1382,6 +1520,8 @@ const allSprites = [{
 }, {
     name: "Fishin' Boo",
     category: "ghost",
+    slot2: "GFX06",
+    slot3: "GFX11",
     renderSequence: [
         [0, 0, 0, 6, false, 28, 40, false, false],
         [0, 0, 0, 6, false, 44, 40, false, false],
@@ -1409,6 +1549,7 @@ const allSprites = [{
 }, {
     name: "Big Boo",
     category: "ghost",
+    slot3: "GFX11",
     renderSequence: [
         [3, 6, 0, 0, false, 0, 32, false, false],
         [3, 6, 2, 0, false, 16, 32, false, false],
@@ -1454,6 +1595,7 @@ const allSprites = [{
 }, {
     name: "Boo Buddies",
     category: "ghost",
+    slot3: "GFX11",
     renderSequence: [
         [3, 1, 8, 0, false, 32, 56, false, false],
         [3, 1, 12, 0, false, 44, 36, false, false],
@@ -1465,6 +1607,7 @@ const allSprites = [{
 }, {
     name: "Large Green Gas Bubble",
     category: "ghost",
+    slot3: "GFX11",
     renderSequence: [
         [3, 5, 0, 0, false, 36, 32, false, false],
         [3, 5, 2, 0, false, 52, 32, false, false],
@@ -1486,6 +1629,7 @@ const allSprites = [{
 }, {
     name: "Rex",
     category: "banzai",
+    slot3: "GFX20",
     renderSequence: [
         [3, 3, 10, 0, false, 12, 40, false, false],
         [3, 3, 10, 2, false, 16, 56, false, false],
@@ -1499,6 +1643,7 @@ const allSprites = [{
 }, {
     name: "Mega Mole",
     category: "banzai",
+    slot3: "GFX20",
     renderSequence: [
         [3, 0, 6, 4, false, 28, 48, false, false],
         [3, 0, 6, 6, false, 28, 64, false, false],
@@ -1512,6 +1657,7 @@ const allSprites = [{
 }, {
     name: "Diagonal Carrot Platform",
     category: "generic",
+    slot3: "GFX20",
     renderSequence: [
         [3, 5, 0, 6, false, 48, 64, false, false],
         [3, 5, 2, 6, false, 64, 64, false, false],
@@ -1520,6 +1666,7 @@ const allSprites = [{
 }, {
     name: "Timed Carrot Platform",
     category: "generic",
+    slot3: "GFX20",
     renderSequence: [
         [3, 5, 4, 4, false, 28, 44, false, false],
         [3, 5, 4, 4, false, 44, 44, true, false],
@@ -1537,6 +1684,7 @@ const allSprites = [{
 }, {
     name: "Swooper Bat",
     category: "cave",
+    slot3: "GFX04",
     renderSequence: [
         [3, 5, 14, 2, false, 36, 56, false, false],
         [3, 5, 0, 4, false, 56, 56, false, false],
@@ -1545,6 +1693,7 @@ const allSprites = [{
 }, {
     name: "Vertical Bullets",
     category: "generic",
+    slot3: "GFX05",
     renderSequence: [
         [3, 1, 4, 2, false, 44, 44, false, false],
         [1, 1, 6, 2, false, 68, 44, false, false],
@@ -1554,6 +1703,7 @@ const allSprites = [{
 }, {
     name: "Diagonal Bullets",
     category: "generic",
+    slot3: "GFX05",
     renderSequence: [
         [3, 1, 6, 2, false, 68, 68, true, false],
         [3, 1, 6, 2, false, 44, 68, false, false],
@@ -1563,18 +1713,21 @@ const allSprites = [{
 }, {
     name: "On/Off Switch Bounce Tile",
     category: "misc",
+    slot3: "GFX03",
     renderSequence: [
         [3, 3, 10, 0, false, 56, 56, false, false]
     ]
 }, {
     name: "Note Block Bounce Tile",
     category: "misc",
+    slot2: "GFX13",
     renderSequence: [
         [2, 1, 11, 6, false, 56, 56, false, false]
     ]
 }, {
     name: "Pirahna Plant",
     category: "cave",
+    slot3: "GFX04",
     renderSequence: [
         [3, 5, 14, 4, false, 44, 48, false, true],
         [1, 4, 14, 2, false, 44, 64, false, true],
@@ -1584,6 +1737,7 @@ const allSprites = [{
 }, {
     name: "Yoshi Egg",
     category: "generic",
+    slot2: "GFX13",
     renderSequence: [
         [2, 5, 2, 0, false, 56, 56, false, false],
         [2, 5, 0, 0, false, 36, 56, false, false],
@@ -1595,6 +1749,7 @@ const allSprites = [{
 }, {
     name: "Spike Top",
     category: "cave",
+    slot3: "GFX04",
     renderSequence: [
         [3, 4, 12, 0, false, 56, 28, false, false],
         [3, 4, 10, 2, false, 84, 56, false, false],
@@ -1608,6 +1763,7 @@ const allSprites = [{
 }, {
     name: "Buzzy Beetle",
     category: "cave",
+    slot3: "GFX04",
     renderSequence: [
         [3, 6, 6, 0, false, 56, 68, false, false],
         [3, 6, 4, 0, false, 36, 68, false, false],
@@ -1618,6 +1774,7 @@ const allSprites = [{
 }, {
     name: "Blargg",
     category: "cave",
+    slot3: "GFX04",
     renderSequence: [
         [3, 2, 2, 2, false, 28, 48, false, false],
         [3, 2, 4, 2, false, 44, 48, false, false],
@@ -1634,6 +1791,7 @@ const allSprites = [{
 }, {
     name: "Reznor",
     category: "misc",
+    slot2: "GFX25",
     renderSequence: [
         [2, 7, 0, 4, false, 48, 36, false, false],
         [2, 7, 2, 4, false, 64, 36, false, false],
@@ -1657,6 +1815,7 @@ const allSprites = [{
 }, {
     name: "Wendy",
     category: "misc",
+    slot2: "GFX0A",
     renderSequence: [
         [2, 4, 8, 2, false, 24, 12, false, false],
         [2, 4, 0, 4, false, 16, 4, false, false],
@@ -1710,6 +1869,7 @@ const allSprites = [{
 }, {
     name: "Lemmy",
     category: "misc",
+    slot2: "GFX0A",
     renderSequence: [
         [2, 2, 8, 2, false, 24, 16, false, false],
         [2, 2, 0, 0, false, 16, 8, false, false],
@@ -1760,7 +1920,7 @@ const allSprites = [{
         [2, 3, 0, 6, false, 92, 92, false, false],
         [2, 3, 3, 4, true, 92, 84, false, false],
         [2, 3, 3, 4, true, 100, 84, true, false]
-        
+
     ]
 }]
 
@@ -1776,9 +1936,9 @@ const allSprites = [{
 //  ==============================================================
 
 let activePaletteIndex = 0;
-const allGfx = [];
-const gfxIndexes = [0, 1, 13, 3]
-const gfxBitmaps = [[], [], [], []]
+const allGfx = {};
+const gfxSlots = ["GFX00", "GFX01", "GFX13", "GFX02"]
+const gfxBitmaps = {}
 const gfxScale = 3;
 const spriteScale = 3;
 
@@ -1788,7 +1948,7 @@ let selectedXFlip = false
 let selectedYFlip = false
 let mouseX, mouseY
 
-let currentSprite = allSprites[allSprites.length - 1]
+let currentSprite = allSprites[0]
 
 let gfxCtx, spriteCtx
 
@@ -1941,7 +2101,22 @@ window.onload = async function () {
         clone.onclick = function (e) {
             const sprite = allSprites[this.id]
             currentSprite = sprite
+
+            if (sprite.slot0) {
+                gfxSlots[0] = sprite.slot0
+            }
+            if (sprite.slot1) {
+                gfxSlots[1] = sprite.slot1
+            }
+            if (sprite.slot2) {
+                gfxSlots[2] = sprite.slot2
+            }
+            if (sprite.slot3) {
+                gfxSlots[3] = sprite.slot3
+            }
+            renderGfxCanvas()
             renderSpriteCanvas()
+
             sprite.selected = !sprite.selected
             this.classList.toggle('selected');
             updateGfxRequirements()
@@ -2031,32 +2206,52 @@ window.onload = async function () {
         const select = gfxSelects[i];
 
         for (let j = 0; j < gfxFileNames.length; j++) {
-            select.appendChild(new Option(gfxFileNames[j], j));
+            select.appendChild(new Option(gfxFileNames[j], gfxFileNames[j]));
         }
-        select.value = gfxIndexes[i];
+        select.value = gfxSlots[i];
         select.onchange = async function (e) {
-            gfxIndexes[i] = +(e.target.value);
-            refreshBitmaps();
+            gfxSlots[i] = e.target.value;
+            renderGfxCanvas()
+            renderSpriteCanvas()
         }
     }
 
     // import GFX files
     for (let i = 0; i < gfxFileNames.length; i++) {
         const blob = await fetch(`/gfx/${gfxFileNames[i]}.bin`);
-        loadGfxFile(blob, gfxFileNames[i]);
+        await loadGfxFile(blob, gfxFileNames[i]);
     };
 
-    await refreshBitmaps();
+    renderGfxCanvas()
+    renderSpriteCanvas()
 };
 
-function loadGfxFile(blob, name) {
-    blob.arrayBuffer().then(((arrayBuffer) => {
+function loadGfxFile(blob, gfx) {
+    return new Promise(async (resolve) => {
+        const arrayBuffer = await blob.arrayBuffer()
         const snesBytes = new Int8Array(arrayBuffer);
 
         const pixels = snesToPixels(snesBytes);
 
-        allGfx.push({ name, pixels });
-    }))
+        gfxBitmaps[gfx] = []
+
+        for (let i = 0; i < 8; i++) {
+            gfxBitmaps[gfx][i] = await createBitmap(pixels, i)
+        }
+
+        resolve()
+    })
+}
+
+async function createBitmap(pixels, palette) {
+    return new Promise((resolve) => {
+        const pal = rgbaPalettes[palette]
+        const colorData = pixels.map((index) => (pal[index])).flat()
+        const uintColorData = new Uint8ClampedArray(colorData)
+        const imageData = new ImageData(uintColorData, 128)
+        // save to slot
+        createImageBitmap(imageData).then((bitmap) => resolve(bitmap))
+    })
 }
 
 function renderGfxCanvas() {
@@ -2066,7 +2261,7 @@ function renderGfxCanvas() {
     gfxCtx.imageSmoothingEnabled = false;
 
     for (let i = 0; i < 4; ++i) {
-        const bitmap = gfxBitmaps[i][activePaletteIndex];
+        const bitmap = gfxBitmaps[gfxSlots[i]][activePaletteIndex];
         if (bitmap) {
             gfxCtx.drawImage(bitmap, 0, i * 64)
         }
@@ -2103,8 +2298,9 @@ function renderSpriteCanvas() {
 
     for (let i = 0; i < currentSprite.renderSequence.length; i++) {
         const [slot, palette, tx, ty, is8x8, x, y, xFlip, yFlip] = currentSprite.renderSequence[i]
+        const preferredGfx = [currentSprite.slot0, currentSprite.slot1, currentSprite.slot2, currentSprite.slot3]
         const size = is8x8 ? 8 : 16
-        const bitmap = gfxBitmaps[slot][palette];
+        const bitmap = gfxBitmaps[preferredGfx[slot] ?? gfxSlots[slot]][palette];
         const xScale = xFlip ? -1 : 1
         const yScale = yFlip ? -1 : 1
 
@@ -2124,7 +2320,7 @@ function renderSpriteCanvas() {
         const tx = selectedTile % 16
         const ty = Math.floor(selectedTile / 16) % 8
         const size = selected8x8 ? 8 : 16
-        const bitmap = gfxBitmaps[Math.floor(selectedTile / 128)][activePaletteIndex];
+        const bitmap = gfxBitmaps[gfxSlots[Math.floor(selectedTile / 128)]][activePaletteIndex];
         const xScale = selectedXFlip ? -1 : 1
         const yScale = selectedYFlip ? -1 : 1
 
@@ -2140,35 +2336,6 @@ function renderSpriteCanvas() {
 
         spriteCtx.restore();
     }
-}
-
-async function refreshBitmaps() {
-    return new Promise(async (resolve) => {
-        for (let i = 0; i < 4; i++) {
-            for (let j = 0; j < 8; j++) {
-                await updateBitmap(allGfx[gfxIndexes[i]].pixels, i, j)
-            }
-        }
-        renderGfxCanvas()
-        renderSpriteCanvas()
-        resolve()
-    })
-}
-
-async function updateBitmap(pixels, slot, palette) {
-    return new Promise((resolve) => {
-        const pal = rgbaPalettes[palette]
-        const colorData = pixels.map((index) => (pal[index])).flat() //
-        const uintColorData = new Uint8ClampedArray(colorData)
-        const imageData = new ImageData(uintColorData, 128)
-        // save to slot
-        createImageBitmap(imageData).then((bitmap) => {
-            // throw out old bitmap
-            gfxBitmaps[slot][palette]?.close?.()
-            gfxBitmaps[slot][palette] = bitmap
-            resolve(bitmap)
-        })
-    })
 }
 
 // modified from https://sneslab.net/wiki/Graphics_Format
