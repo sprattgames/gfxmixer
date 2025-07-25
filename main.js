@@ -1931,6 +1931,7 @@ window.onload = async function () {
     }
 
     const spriteTemplate = document.getElementById("spriteTemplate")
+    allSprites.sort((a, b) => a.name > b.name ? 1 : -1)
     for (let i = 0; i < allSprites.length; i++) {
         const sprite = allSprites[i];
         const clone = spriteTemplate.cloneNode(true)
