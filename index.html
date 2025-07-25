@@ -9,6 +9,25 @@
     <h1>Vanilla GFX Mixer</h1>
     <div class="flex-row">
         <div class="flex-column">
+            <div>
+                <select name="gfx0" id="gfx0Select"></select>
+                <select name="gfx1" id="gfx1Select"></select>
+                <select name="gfx2" id="gfx2Select"></select>
+                <select name="gfx3" id="gfx3Select"></select>
+                <select name="palettes" id="paletteSelect"></select>
+            </div>
+            <canvas id="gfxCanvas" width="256" height="512"></canvas>
+        </div>
+        <div class="flex-column">
+            <canvas id="spriteCanvas" width="256" height="256"></canvas>
+            <div>
+                <select name="sprites" id="spriteSelect"></select>
+                <button id="clearButton">Clear</button>
+                <button id="undoButton">Undo</button>
+                <button id="copyButton">Copy</button>
+            </div>
+        </div>
+        <div class="flex-column">
             <div id="spriteTemplate" class="sprite"></div>
             <div id="generic" class="spriteCategory">
                 <div class="header">Generic</div>
@@ -44,26 +63,6 @@
                 <div class="header">Misc</div>
             </div>
         </div>
-        <div class="flex-column">
-            <div>
-                <select name="gfx0" id="gfx0Select"></select>
-                <select name="gfx1" id="gfx1Select"></select>
-                <select name="gfx2" id="gfx2Select"></select>
-                <select name="gfx3" id="gfx3Select"></select>
-                <select name="palettes" id="paletteSelect"></select>
-            </div>
-            <canvas id="gfxCanvas" width="256" height="512"></canvas>
-        </div>
-        <div class="flex-column">
-            <canvas id="spriteCanvas" width="256" height="256"></canvas>
-            <div>
-                <select name="sprites" id="spriteSelect"></select>
-                <button id="clearButton">Clear</button>
-                <button id="undoButton">Undo</button>
-                <button id="copyButton">Copy</button>
-            </div>
-        </div>
-
     </div>
 </body>
 

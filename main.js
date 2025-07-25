@@ -666,7 +666,19 @@ const allSprites = [{
         [3, 1, 5, 0, false, 72, 48, true, false],
     ]
 }, {
-    name: "Grey / Brown Platforms",
+    name: "Grey / Brown Platforms (Thin)",
+    category: "generic",
+    renderSequence: [
+        [2, 0, 0, 6, false, 40, 68, false, false],
+        [2, 0, 1, 6, false, 56, 68, false, false],
+        [2, 0, 2, 6, false, 72, 68, false, false],
+        [2, 1, 0, 6, false, 32, 44, false, false],
+        [2, 1, 1, 6, false, 48, 44, false, false],
+        [2, 1, 1, 6, false, 64, 44, false, false],
+        [2, 1, 2, 6, false, 80, 44, false, false],
+    ]
+}, {
+    name: "Grey / Brown Platforms (Thick)",
     category: "generic",
     renderSequence: [
         [2, 0, 0, 6, false, 40, 68, false, false],
@@ -1642,7 +1654,115 @@ const allSprites = [{
         [2, 7, 4, 4, false, 12, 36, false, false],
         [2, 7, 6, 4, false, 28, 36, false, false],
     ]
-},]
+}, {
+    name: "Wendy",
+    category: "misc",
+    renderSequence: [
+        [2, 4, 8, 2, false, 24, 12, false, false],
+        [2, 4, 0, 4, false, 16, 4, false, false],
+        [2, 4, 2, 4, true, 32, 4, false, false],
+        [2, 4, 10, 4, false, 48, 4, false, false],
+        [2, 4, 8, 2, false, 56, 12, false, false],
+        [2, 4, 0, 2, false, 48, 44, false, false],
+        [2, 4, 0, 2, false, 64, 44, true, false],
+        [2, 4, 6, 4, false, 56, 40, false, false],
+        [2, 4, 2, 5, true, 56, 32, false, false],
+        [2, 4, 2, 5, true, 64, 32, false, false],
+        [2, 4, 0, 2, false, 84, 12, false, false],
+        [2, 4, 0, 2, false, 100, 12, true, false],
+        [2, 4, 4, 4, false, 92, 8, false, false],
+        [2, 4, 2, 5, true, 92, 0, false, false],
+        [2, 4, 2, 5, true, 100, 0, false, false],
+        [2, 4, 0, 2, false, 28, 44, true, false],
+        [2, 4, 0, 2, false, 12, 44, false, false],
+        [2, 4, 12, 4, false, 20, 40, false, false],
+        [2, 4, 14, 1, true, 20, 32, false, false],
+        [2, 4, 15, 1, true, 28, 32, false, false],
+        [2, 4, 2, 2, false, 84, 44, false, false],
+        [2, 4, 2, 2, false, 100, 44, true, false],
+        [2, 4, 4, 4, false, 92, 40, false, false],
+        [2, 4, 3, 0, true, 96, 54, false, false],
+        [2, 4, 2, 5, true, 92, 32, false, false],
+        [2, 4, 2, 5, true, 100, 32, false, false],
+        [2, 4, 10, 2, false, 12, 68, false, false],
+        [2, 4, 10, 2, false, 28, 68, true, false],
+        [2, 4, 12, 2, false, 48, 68, false, false],
+        [2, 4, 12, 2, false, 64, 68, true, false],
+        [2, 2, 2, 6, false, 84, 68, false, false],
+        [2, 2, 2, 6, false, 100, 68, true, false],
+        [2, 2, 10, 6, false, 92, 66, false, false],
+        [2, 2, 14, 4, false, 84, 100, false, false],
+        [2, 2, 14, 4, false, 100, 100, true, false],
+        [2, 2, 6, 6, false, 92, 96, false, false],
+        [2, 2, 8, 6, true, 92, 88, false, false],
+        [2, 2, 8, 6, true, 100, 88, true, false],
+        [2, 4, 14, 2, false, 12, 92, false, false],
+        [2, 4, 14, 2, false, 28, 92, true, false],
+        [2, 4, 4, 2, false, 12, 108, false, false],
+        [2, 4, 4, 2, false, 28, 108, true, false],
+        [2, 4, 8, 4, false, 20, 88, false, false],
+        [2, 4, 0, 2, false, 48, 92, false, false],
+        [2, 4, 0, 2, false, 64, 92, true, false],
+        [2, 4, 6, 2, false, 48, 108, false, false],
+        [2, 4, 6, 2, false, 64, 108, true, false],
+        [2, 4, 8, 4, false, 56, 88, false, false]
+    ]
+}, {
+    name: "Lemmy",
+    category: "misc",
+    renderSequence: [
+        [2, 2, 8, 2, false, 24, 16, false, false],
+        [2, 2, 0, 0, false, 16, 8, false, false],
+        [2, 2, 2, 0, true, 24, 0, false, false],
+        [2, 2, 8, 2, false, 56, 16, false, false],
+        [2, 2, 10, 0, false, 48, 8, false, false],
+        [2, 2, 3, 1, true, 64, 8, false, false],
+        [2, 2, 0, 2, false, 84, 16, false, false],
+        [2, 2, 0, 2, false, 100, 16, true, false],
+        [2, 2, 4, 0, false, 92, 12, false, false],
+        [2, 2, 2, 1, true, 92, 4, false, false],
+        [2, 2, 2, 1, true, 100, 4, true, false],
+        [2, 2, 0, 2, false, 12, 44, false, false],
+        [2, 2, 0, 2, false, 28, 44, true, false],
+        [2, 2, 0, 2, false, 48, 44, false, false],
+        [2, 2, 0, 2, false, 64, 44, true, false],
+        [2, 2, 12, 0, false, 20, 40, false, false],
+        [2, 2, 14, 0, true, 20, 32, false, false],
+        [2, 2, 15, 0, true, 28, 32, false, false],
+        [2, 2, 6, 0, false, 56, 40, false, false],
+        [2, 2, 2, 1, true, 56, 32, false, false],
+        [2, 2, 2, 1, true, 64, 32, true, false],
+        [2, 2, 2, 2, false, 84, 44, false, false],
+        [2, 2, 2, 2, false, 100, 44, true, false],
+        [2, 2, 6, 0, false, 92, 40, true, false],
+        [2, 2, 2, 1, true, 92, 32, false, false],
+        [2, 2, 2, 1, true, 100, 32, true, false],
+        [2, 2, 3, 0, true, 96, 54, false, false],
+        [2, 2, 10, 2, false, 12, 64, false, false],
+        [2, 2, 10, 2, false, 28, 64, true, false],
+        [2, 2, 12, 2, false, 48, 64, false, false],
+        [2, 2, 12, 2, false, 64, 64, true, false],
+        [2, 2, 2, 6, false, 84, 64, false, false],
+        [2, 2, 2, 6, false, 100, 64, true, false],
+        [2, 3, 4, 6, false, 92, 62, false, false],
+        [2, 2, 14, 2, false, 12, 92, false, false],
+        [2, 2, 14, 2, false, 28, 92, true, false],
+        [2, 2, 4, 2, false, 12, 108, false, false],
+        [2, 2, 4, 2, false, 28, 108, true, false],
+        [2, 2, 8, 0, false, 20, 88, false, false],
+        [2, 2, 0, 2, false, 48, 92, false, false],
+        [2, 2, 0, 2, false, 64, 92, true, false],
+        [2, 2, 6, 2, false, 48, 108, false, false],
+        [2, 2, 6, 2, false, 64, 108, true, false],
+        [2, 2, 8, 0, false, 56, 88, false, false],
+        [2, 2, 14, 4, false, 84, 96, false, false],
+        [2, 2, 14, 4, false, 100, 96, true, false],
+        [2, 3, 0, 6, false, 92, 92, false, false],
+        [2, 3, 3, 4, true, 92, 84, false, false],
+        [2, 3, 3, 4, true, 100, 84, true, false]
+        
+    ]
+}]
 
 /*
 
@@ -1660,7 +1780,7 @@ const allGfx = [];
 const gfxIndexes = [0, 1, 13, 3]
 const gfxBitmaps = [[], [], [], []]
 const gfxScale = 3;
-const spriteScale = 2;
+const spriteScale = 3;
 
 let selectedTile = -1
 let selected8x8 = true
