@@ -1,28 +1,3 @@
-/*  TODO
-[x] load gfx files
-[x] draw gfx to screen
-[x] select palette
-[x] list of sprites and their palette/location/compatibility
-[x] select which sprites you want to include
-[ ] detect conflicts
-[ ] create exgfx based on selection
-[ ] save exgfx file
-
-
-[ ] search bar
-[ ] categories/tags - castle, koopas, powerups, etc
-[x] sprite images
-[x] multiple palettes within sprite
-[ ] "passable" conflict detection (pokey head football, bone spiny etc)
-[x]     show all animation frames, variations etc
-[x] checkbox for lava particles, bounce sprites etc
-
-
-[ ] load custom pal files
-[ ] remap sprite locations? (for use with STEAR etc)
-[ ] custom sprites?
-
-*/
 const hexPalettes = [
     ["#0000", "#f8f8f8", "#000000", "#885818", "#d8a038", "#f8d870", "#f8c898", "#e800b0", "#500000", "#f84070", "#203088", "#408098", "#80d8c8", "#b02860", "#f87068", "#f8f800"],
     ["#0000", "#f8f8f8", "#000000", "#707070", "#a0a0a0", "#c0c0c0", "#e0e0e0", "#f81058", "#0000", "#f8f8f8", "#000000", "#00c800", "#b00000", "#f80000", "#f85800", "#f8a000"],
