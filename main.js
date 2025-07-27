@@ -71,7 +71,7 @@ const allSprites = [{
     name: "Bob-Omb",
     category: "forest",
     slot3: "GFX02",
-    renderSequence: [
+    displayTiles: [
         [3, 0, 12, 4, false, 28, 56, false, false],
         [3, 7, 10, 4, false, 48, 56, false, false],
         [3, 2, 12, 3, true, 80, 48, false, false],
@@ -84,7 +84,7 @@ const allSprites = [{
     name: "Spiny",
     category: "forest",
     slot3: "GFX02",
-    renderSequence: [
+    displayTiles: [
         [3, 4, 0, 0, false, 44, 56, false, false],
         [3, 4, 2, 0, false, 68, 56, false, false],
     ]
@@ -92,7 +92,7 @@ const allSprites = [{
     name: "Hopping Flame",
     category: "forest",
     slot3: "GFX02",
-    renderSequence: [
+    displayTiles: [
         [3, 2, 14, 0, false, 40, 52, false, false],
         [3, 2, 14, 2, false, 56, 52, false, false],
         [3, 2, 12, 2, true, 76, 60, false, false],
@@ -102,7 +102,7 @@ const allSprites = [{
     name: "Falling Spiny",
     category: "forest",
     slot3: "GFX02",
-    renderSequence: [
+    displayTiles: [
         [3, 4, 4, 0, true, 44, 56, false, false],
         [3, 4, 4, 0, true, 44, 64, false, true],
         [3, 4, 4, 0, true, 52, 56, true, false],
@@ -116,7 +116,7 @@ const allSprites = [{
     name: "Wiggler",
     category: "forest",
     slot3: "GFX02",
-    renderSequence: [
+    displayTiles: [
         [3, 2, 6, 4, false, 68, 44, false, false],
         [3, 2, 4, 4, false, 60, 44, false, false],
         [3, 2, 6, 4, false, 52, 44, false, false],
@@ -135,7 +135,7 @@ const allSprites = [{
     category: "forest",
     slot0: "GFX00",
     slot2: "GFX13",
-    renderSequence: [
+    displayTiles: [
         [0, 0, 0, 6, false, 48, 52, false, false],
         [0, 0, 0, 6, false, 64, 52, false, false],
         [0, 0, 0, 6, false, 56, 52, true, false],
@@ -149,7 +149,7 @@ const allSprites = [{
     slot0: "GFX00",
     slot2: "GFX13",
     slot3: "GFX02",
-    renderSequence: [
+    displayTiles: [
         [0, 0, 0, 6, false, 68, 40, false, false],
         [0, 0, 0, 6, false, 84, 40, false, false],
         [3, 4, 12, 6, false, 76, 24, false, false],
@@ -186,7 +186,7 @@ const allSprites = [{
     name: "Pipe Dwelling Lakitu",
     category: "forest",
     slot3: "GFX02",
-    renderSequence: [
+    displayTiles: [
         [3, 4, 12, 6, false, 36, 48, false, false],
         [3, 4, 8, 2, false, 56, 48, false, false],
         [3, 4, 14, 4, false, 76, 48, false, false],
@@ -196,9 +196,9 @@ const allSprites = [{
     ]
 }, {
     name: "Cheep Cheep",
-    category: "generic",
+    category: "water",
     slot2: "GFX13",
-    renderSequence: [
+    displayTiles: [
         [2, 2, 7, 6, false, 44, 56, false, false],
         [2, 2, 9, 6, false, 68, 56, false, false],
     ]
@@ -206,7 +206,7 @@ const allSprites = [{
     name: "Magikoopa",
     category: "castle",
     slot3: "GFX03",
-    renderSequence: [
+    displayTiles: [
         [3, 3, 0, 4, false, 56, 64, false, false],
         [3, 3, 0, 2, false, 56, 48, false, false],
         [3, 3, 9, 1, true, 48, 64, false, false],
@@ -220,7 +220,7 @@ const allSprites = [{
     name: "Magikoopa's Magic",
     category: "castle",
     slot3: "GFX03",
-    renderSequence: [
+    displayTiles: [
         [3, 4, 8, 0, true, 56, 52, false, false],
         [3, 3, 9, 0, true, 68, 60, false, false],
         [3, 2, 8, 1, true, 56, 68, false, false],
@@ -229,7 +229,7 @@ const allSprites = [{
     name: "Net Koopas",
     category: "castle",
     slot2: "GFX12",
-    renderSequence: [
+    displayTiles: [
         [2, 4, 7, 0, false, 36, 44, false, false],
         [2, 4, 7, 2, false, 36, 60, false, false],
         [2, 5, 9, 2, false, 56, 60, false, false],
@@ -241,7 +241,7 @@ const allSprites = [{
     name: "Thwomp",
     category: "castle",
     slot3: "GFX03",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 14, 0, false, 24, 48, false, false],
         [3, 1, 14, 0, false, 32, 48, true, false],
         [3, 1, 14, 2, false, 24, 64, false, false],
@@ -261,7 +261,7 @@ const allSprites = [{
     name: "Thwimp",
     category: "castle",
     slot3: "GFX03",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 2, 2, true, 56, 56, false, false],
         [3, 1, 2, 3, true, 56, 64, false, false],
         [3, 1, 2, 3, true, 64, 64, true, false],
@@ -271,7 +271,7 @@ const allSprites = [{
     name: "Dry Bones",
     category: "castle",
     slot2: "GFX12",
-    renderSequence: [
+    displayTiles: [
         [2, 1, 4, 6, false, 12, 48, false, false],
         [2, 1, 6, 6, false, 20, 64, false, false],
         [2, 1, 4, 6, false, 32, 48, false, false],
@@ -286,7 +286,7 @@ const allSprites = [{
     category: "castle",
     slot2: "GFX12",
     slot3: "GFX03",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 12, 0, false, 24, 44, false, false],
         [3, 1, 10, 2, false, 44, 44, false, false],
         [3, 1, 6, 0, false, 68, 44, false, false],
@@ -301,7 +301,7 @@ const allSprites = [{
     category: "castle",
     slot2: "GFX12",
     slot3: "GFX03",
-    renderSequence: [
+    displayTiles: [
         [2, 1, 4, 6, false, 12, 60, false, false],
         [2, 1, 6, 6, false, 20, 76, false, false],
         [2, 1, 4, 6, false, 32, 60, false, false],
@@ -322,7 +322,7 @@ const allSprites = [{
     name: "Grinder",
     category: "castle",
     slot2: "GFX12",
-    renderSequence: [
+    displayTiles: [
         [2, 1, 12, 6, false, 28, 48, false, false],
         [2, 1, 12, 6, false, 44, 48, true, false],
         [2, 1, 12, 6, false, 28, 64, false, true],
@@ -336,14 +336,14 @@ const allSprites = [{
     name: "Sparky",
     category: "castle",
     slot2: "GFX12",
-    renderSequence: [
+    displayTiles: [
         [2, 2, 10, 0, false, 56, 56, false, false],
     ]
 }, {
     name: "Hothead",
     category: "castle",
     slot2: "GFX12",
-    renderSequence: [
+    displayTiles: [
         [2, 2, 12, 0, false, 28, 48, false, false],
         [2, 2, 14, 0, false, 44, 48, false, false],
         [2, 2, 14, 0, false, 28, 64, true, true],
@@ -359,7 +359,7 @@ const allSprites = [{
     name: "Fishbone",
     category: "castle",
     slot3: "GFX03",
-    renderSequence: [
+    displayTiles: [
         [3, 6, 6, 2, false, 36, 56, false, false],
         [3, 6, 3, 2, true, 52, 56, false, false],
         [3, 6, 3, 2, true, 52, 64, false, true],
@@ -371,7 +371,7 @@ const allSprites = [{
     name: "Pencil",
     category: "castle",
     slot2: "GFX12",
-    renderSequence: [
+    displayTiles: [
         [2, 0, 10, 4, false, 56, 32, false, false],
         [2, 0, 10, 6, false, 56, 48, false, false],
         [2, 0, 10, 6, false, 56, 64, false, false],
@@ -381,14 +381,14 @@ const allSprites = [{
     name: "Falling Spike",
     category: "castle",
     slot3: "GFX03",
-    renderSequence: [
+    displayTiles: [
         [3, 0, 0, 6, false, 56, 56, false, false],
     ]
 }, {
     name: "Bowser Statue",
     category: "castle",
     slot2: "GFX12",
-    renderSequence: [
+    displayTiles: [
         [2, 0, 5, 3, false, 76, 52, false, false],
         [2, 0, 6, 5, true, 84, 68, false, false],
         [2, 0, 0, 3, false, 68, 44, false, false],
@@ -399,7 +399,7 @@ const allSprites = [{
     name: "Bowser Statue Fireball",
     category: "castle",
     slot2: "GFX12",
-    renderSequence: [
+    displayTiles: [
         [2, 4, 2, 3, true, 56, 52, false, false],
         [2, 4, 0, 5, true, 64, 52, false, false],
         [2, 4, 3, 3, true, 56, 68, false, false],
@@ -409,14 +409,14 @@ const allSprites = [{
     name: "Diagonal Reflecting Podoboo",
     category: "castle",
     slot3: "GFX03",
-    renderSequence: [
+    displayTiles: [
         [3, 2, 12, 2, false, 56, 56, false, false],
     ]
 }, {
     name: "Moving Castle Block",
     category: "castle",
     slot3: "GFX03",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 12, 4, false, 48, 48, false, false],
         [3, 1, 14, 4, false, 64, 48, false, false],
         [3, 1, 12, 6, false, 48, 64, false, false],
@@ -426,7 +426,7 @@ const allSprites = [{
     name: "Ball n' Chain",
     category: "castle",
     slot3: "GFX03",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 8, 6, false, 68, 68, false, false],
         [3, 1, 8, 6, false, 56, 56, false, false],
         [3, 1, 10, 6, false, 44, 48, true, true],
@@ -438,7 +438,7 @@ const allSprites = [{
     name: "Revolving Net Door",
     category: "castle",
     slot2: "GFX12",
-    renderSequence: [
+    displayTiles: [
         [2, 4, 0, 0, false, 24, 24, false, false],
         [2, 4, 0, 1, false, 24, 40, false, false],
         [2, 4, 0, 0, false, 24, 48, false, true],
@@ -466,17 +466,17 @@ const allSprites = [{
     ]
 }, {
     name: "Background Candle Flames",
-    category: "misc",
+    category: "particle",
     slot3: "GFX03",
-    renderSequence: [
+    displayTiles: [
         [3, 4, 2, 6, false, 48, 52, false, false],
         [3, 4, 4, 6, false, 64, 52, false, false]
     ]
 }, {
     name: "Lava Splash Particles",
-    category: "misc",
+    category: "particle",
     slot3: "GFX03",
-    renderSequence: [
+    displayTiles: [
         [3, 2, 6, 4, true, 44, 56, false, false],
         [3, 2, 6, 5, true, 56, 52, false, false],
         [3, 2, 7, 4, true, 68, 56, false, false],
@@ -484,9 +484,9 @@ const allSprites = [{
     ]
 }, {
     name: "Boss Fireball",
-    category: "misc",
+    category: "boss",
     slot3: "GFX24",
-    renderSequence: [
+    displayTiles: [
         [3, 2, 10, 4, false, 48, 44, false, false],
         [3, 2, 12, 4, false, 64, 44, false, false],
         [3, 2, 10, 6, false, 48, 68, false, false],
@@ -496,7 +496,7 @@ const allSprites = [{
     name: "Urchin",
     category: "water",
     slot3: "GFX06",
-    renderSequence: [
+    displayTiles: [
         [3, 3, 4, 4, false, 12, 48, false, false],
         [3, 3, 4, 4, false, 28, 48, true, false],
         [3, 3, 4, 4, false, 28, 64, true, true],
@@ -517,7 +517,7 @@ const allSprites = [{
     name: "Rip Van Fish",
     category: "water",
     slot3: "GFX06",
-    renderSequence: [
+    displayTiles: [
         [3, 3, 12, 0, false, 24, 56, false, false],
         [3, 3, 14, 0, false, 44, 56, false, false],
         [3, 3, 0, 6, true, 36, 48, false, false],
@@ -531,7 +531,7 @@ const allSprites = [{
     name: "Para-bomb",
     category: "forest",
     slot3: "GFX02",
-    renderSequence: [
+    displayTiles: [
         [3, 0, 2, 4, false, 24, 48, false, false],
         [3, 3, 6, 6, false, 16, 32, false, false],
         [3, 0, 2, 2, true, 48, 48, false, false],
@@ -551,7 +551,7 @@ const allSprites = [{
     name: "Para-goomba",
     category: "forest",
     slot3: "GFX02",
-    renderSequence: [
+    displayTiles: [
         [3, 2, 3, 2, true, 68, 48, false, false],
         [3, 2, 3, 3, true, 68, 56, false, false],
         [3, 2, 3, 2, true, 76, 48, true, false],
@@ -566,7 +566,7 @@ const allSprites = [{
     name: "Horizontal Dolphin",
     category: "water",
     slot3: "GFX06",
-    renderSequence: [
+    displayTiles: [
         [3, 3, 8, 0, false, 48, 44, false, false],
         [3, 3, 8, 2, false, 64, 44, false, false],
         [3, 3, 9, 2, false, 72, 44, false, false],
@@ -578,7 +578,7 @@ const allSprites = [{
     name: "Vertical Dolphin",
     category: "water",
     slot3: "GFX06",
-    renderSequence: [
+    displayTiles: [
         [3, 3, 14, 4, false, 56, 48, false, false],
         [3, 3, 14, 6, false, 56, 64, false, false],
     ]
@@ -586,7 +586,7 @@ const allSprites = [{
     name: "Torpedo Ted",
     category: "water",
     slot3: "GFX06",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 0, 0, false, 40, 44, false, false],
         [3, 1, 2, 0, false, 56, 44, false, false],
         [3, 1, 0, 2, false, 56, 68, false, false],
@@ -600,7 +600,7 @@ const allSprites = [{
     name: "Torpedo Ted Launcher",
     category: "water",
     slot3: "GFX06",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 0, 0, false, 40, 40, false, false],
         [3, 1, 2, 0, false, 56, 40, false, false],
         [3, 1, 4, 0, false, 48, 30, false, false],
@@ -614,7 +614,7 @@ const allSprites = [{
     name: "Blurp",
     category: "water",
     slot3: "GFX06",
-    renderSequence: [
+    displayTiles: [
         [3, 5, 2, 2, false, 44, 56, false, false],
         [3, 5, 12, 6, false, 68, 56, false, false]
     ]
@@ -622,7 +622,7 @@ const allSprites = [{
     name: "Fugu",
     category: "water",
     slot3: "GFX06",
-    renderSequence: [
+    displayTiles: [
         [3, 6, 6, 0, false, 28, 48, false, false],
         [3, 6, 6, 2, false, 28, 64, false, false],
         [3, 6, 2, 4, false, 44, 64, false, false],
@@ -636,7 +636,7 @@ const allSprites = [{
     name: "Growing Pipe",
     category: "forest",
     slot3: "GFX02",
-    renderSequence: [
+    displayTiles: [
         [3, 5, 4, 2, false, 48, 56, false, false],
         [3, 5, 6, 2, false, 64, 56, false, false],
     ]
@@ -644,14 +644,14 @@ const allSprites = [{
     name: "Goal Orb",
     category: "generic",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 5, 12, 0, false, 56, 56, true, false],
     ]
 }, {
     name: "Monty Mole (ground)",
     category: "pokey",
     slot3: "GFX09",
-    renderSequence: [
+    displayTiles: [
         [3, 0, 8, 0, true, 36, 64, false, false],
         [3, 0, 9, 0, true, 44, 64, false, false],
         [3, 0, 6, 0, false, 36, 44, false, false],
@@ -662,7 +662,7 @@ const allSprites = [{
     name: "Monty Mole (ledge)",
     category: "pokey",
     slot3: "GFX09",
-    renderSequence: [
+    displayTiles: [
         [3, 0, 12, 0, false, 36, 64, false, false],
         [3, 0, 6, 0, false, 36, 44, false, false],
         [3, 0, 2, 0, false, 56, 56, false, false],
@@ -670,9 +670,9 @@ const allSprites = [{
     ]
 }, {
     name: "Ninji",
-    category: "bowser",
+    category: "mecha",
     slot3: "GFX0E",
-    renderSequence: [
+    displayTiles: [
         [3, 4, 7, 2, false, 68, 56, false, false],
         [3, 4, 9, 2, false, 44, 56, false, false],
     ]
@@ -680,16 +680,16 @@ const allSprites = [{
     name: "Moving Ghost House Hole",
     category: "ghost",
     slot3: "GFX11",
-    renderSequence: [
+    displayTiles: [
         [3, 0, 11, 6, false, 40, 56, true, false],
         [3, 0, 10, 6, false, 56, 56, false, false],
         [3, 0, 11, 6, false, 72, 56, false, false],
     ]
 }, {
     name: "Checkerboard Platforms",
-    category: "generic",
+    category: "platform",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 0, 10, 6, false, 24, 68, false, false],
         [3, 0, 11, 6, false, 40, 68, false, false],
         [3, 0, 11, 6, false, 56, 68, false, false],
@@ -703,9 +703,9 @@ const allSprites = [{
     ]
 }, {
     name: "Rock Platform",
-    category: "generic",
+    category: "platform",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 5, 0, false, 40, 48, false, false],
         [3, 1, 6, 0, false, 56, 48, false, false],
         [3, 1, 5, 0, false, 72, 48, true, false],
@@ -714,18 +714,18 @@ const allSprites = [{
     ]
 }, {
     name: "Sinking Rock Platform",
-    category: "generic",
+    category: "platform",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 5, 0, false, 40, 48, false, false],
         [3, 1, 6, 0, false, 56, 48, false, false],
         [3, 1, 5, 0, false, 72, 48, true, false],
     ]
 }, {
     name: "Grey / Brown Platforms (Thin)",
-    category: "generic",
+    category: "platform",
     slot2: "GFX13",
-    renderSequence: [
+    displayTiles: [
         [2, 0, 0, 6, false, 40, 68, false, false],
         [2, 0, 1, 6, false, 56, 68, false, false],
         [2, 0, 2, 6, false, 72, 68, false, false],
@@ -736,9 +736,9 @@ const allSprites = [{
     ]
 }, {
     name: "Grey / Brown Platforms (Thick)",
-    category: "generic",
+    category: "platform",
     slot2: "GFX12",
-    renderSequence: [
+    displayTiles: [
         [2, 0, 0, 6, false, 40, 68, false, false],
         [2, 0, 1, 6, false, 56, 68, false, false],
         [2, 0, 2, 6, false, 72, 68, false, false],
@@ -749,10 +749,10 @@ const allSprites = [{
     ]
 }, {
     name: "Rotating Brown / Grey Platforms (Thin)",
-    category: "generic",
+    category: "platform",
     slot2: "GFX13",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 0, 2, 2, false, 56, 24, false, false],
         [2, 0, 1, 6, false, 48, 20, false, false],
         [2, 0, 1, 6, false, 64, 20, false, false],
@@ -771,10 +771,10 @@ const allSprites = [{
     ]
 }, {
     name: "Rotating Brown / Grey Platforms (Thick)",
-    category: "generic",
+    category: "platform",
     slot2: "GFX12",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 0, 2, 2, false, 56, 24, false, false],
         [2, 0, 1, 6, false, 48, 20, false, false],
         [2, 0, 1, 6, false, 64, 20, false, false],
@@ -795,7 +795,7 @@ const allSprites = [{
     name: "Flattened Switch Palace Switch",
     category: "misc",
     slot3: "GFX0D",
-    renderSequence: [
+    displayTiles: [
         [3, 0, 0, 1, true, 48, 64, false, false],
         [3, 0, 1, 1, true, 56, 64, false, false],
         [3, 0, 1, 1, true, 64, 64, true, false],
@@ -809,7 +809,7 @@ const allSprites = [{
     name: "Switch Palace Blocks Message",
     category: "misc",
     slot2: "GFX14",
-    renderSequence: [
+    displayTiles: [
         [2, 5, 7, 2, true, 72, 56, false, false],
         [2, 5, 7, 2, true, 80, 56, true, false],
         [2, 5, 7, 3, true, 72, 64, false, false],
@@ -823,7 +823,7 @@ const allSprites = [{
     name: "Floating Skull Platform",
     category: "cave",
     slot3: "GFX04",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 0, 6, false, 48, 44, false, false],
         [3, 1, 0, 6, false, 32, 44, false, false],
         [3, 1, 0, 6, false, 64, 44, false, false],
@@ -835,9 +835,9 @@ const allSprites = [{
     ]
 }, {
     name: "Rope Mechanism",
-    category: "generic",
+    category: "line",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 3, 0, 4, false, 36, 32, false, false],
         [3, 3, 2, 4, false, 56, 32, false, false],
         [3, 3, 0, 6, false, 76, 32, false, false],
@@ -856,9 +856,9 @@ const allSprites = [{
     ]
 }, {
     name: "Chainsaw",
-    category: "generic",
+    category: "line",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 14, 2, false, 32, 56, false, false],
         [3, 1, 14, 0, false, 32, 40, false, false],
         [3, 1, 14, 2, false, 56, 60, false, false],
@@ -871,16 +871,16 @@ const allSprites = [{
     ]
 }, {
     name: "Fuzzy",
-    category: "generic",
+    category: "line",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 2, 8, 4, false, 56, 56, false, false],
     ]
 }, {
     name: "Coin Game Cloud",
     category: "generic",
     slot2: "GFX13",
-    renderSequence: [
+    displayTiles: [
         [0, 0, 0, 6, false, 44, 56, false, false],
         [2, 4, 13, 4, true, 48, 60, false, false],
         [1, 2, 2, 4, false, 68, 56, false, false],
@@ -889,7 +889,7 @@ const allSprites = [{
     name: "Dino-Rhino",
     category: "dino",
     slot3: "GFX23",
-    renderSequence: [
+    displayTiles: [
         [3, 7, 0, 4, false, 28, 48, false, false],
         [3, 7, 0, 6, false, 28, 64, false, false],
         [3, 7, 2, 4, false, 44, 48, false, false],
@@ -903,7 +903,7 @@ const allSprites = [{
     name: "Dino-Torch",
     category: "dino",
     slot3: "GFX23",
-    renderSequence: [
+    displayTiles: [
         [3, 4, 0, 0, false, 24, 68, false, false],
         [3, 2, 2, 0, false, 32, 68, false, false],
         [3, 2, 4, 0, false, 44, 68, false, false],
@@ -922,7 +922,7 @@ const allSprites = [{
     name: "Pokey",
     category: "pokey",
     slot3: "GFX09",
-    renderSequence: [
+    displayTiles: [
         [3, 2, 8, 6, false, 56, 88, false, false],
         [3, 2, 8, 6, false, 54, 72, false, false],
         [3, 2, 8, 6, false, 56, 56, false, false],
@@ -933,7 +933,7 @@ const allSprites = [{
     name: "Super Koopa (Ground)",
     category: "pokey",
     slot3: "GFX09",
-    renderSequence: [
+    displayTiles: [
         [1, 3, 0, 6, false, 8, 44, false, false],
         [3, 2, 8, 4, true, 16, 44, false, false],
         [3, 2, 8, 5, true, 16, 52, false, false],
@@ -969,7 +969,7 @@ const allSprites = [{
     name: "Super Koopa (Flying)",
     category: "pokey",
     slot3: "GFX09",
-    renderSequence: [
+    displayTiles: [
         [3, 5, 0, 6, false, 12, 56, false, false],
         [3, 5, 2, 7, true, 28, 64, false, false],
         [3, 4, 4, 6, true, 20, 60, false, false],
@@ -992,7 +992,7 @@ const allSprites = [{
     category: "misc",
     slot2: "GFX24",
     slot3: "GFX22",
-    renderSequence: [
+    displayTiles: [
         [3, 5, 12, 6, true, 48, 52, false, false],
         [3, 5, 13, 6, true, 56, 52, false, false],
         [3, 5, 14, 0, true, 64, 52, false, false],
@@ -1008,7 +1008,7 @@ const allSprites = [{
     slot1: "GFX0D",
     slot2: "GFX24",
     slot3: "GFX22",
-    renderSequence: [
+    displayTiles: [
         [1, 0, 2, 0, false, 16, 44, false, false],
         [1, 0, 2, 2, false, 16, 60, false, false],
         [1, 0, 3, 0, false, 24, 44, false, false],
@@ -1030,7 +1030,7 @@ const allSprites = [{
     name: "Peach Ending Cutscene Text",
     category: "misc",
     slot1: "GFX0D",
-    renderSequence: [
+    displayTiles: [
         [1, 0, 8, 0, true, 32, 36, false, false],
         [1, 0, 10, 0, true, 40, 36, false, false],
         [1, 0, 11, 0, true, 48, 36, false, false],
@@ -1075,7 +1075,7 @@ const allSprites = [{
     name: "Yoshi's House Bird",
     category: "misc",
     slot3: "GFX0F",
-    renderSequence: [
+    displayTiles: [
         [3, 2, 0, 5, true, 52, 52, false, false],
         [3, 3, 1, 5, true, 68, 52, false, false],
         [3, 4, 2, 5, true, 52, 68, false, false],
@@ -1085,7 +1085,7 @@ const allSprites = [{
     name: "Yoshi's House Fireplace",
     category: "misc",
     slot3: "GFX0F",
-    renderSequence: [
+    displayTiles: [
         [3, 2, 11, 3, true, 52, 76, false, false],
         [3, 2, 11, 2, true, 52, 68, false, false],
         [3, 2, 10, 1, true, 68, 76, false, false],
@@ -1097,7 +1097,7 @@ const allSprites = [{
     name: "Ghost House Exit Door",
     category: "misc",
     slot3: "GFX0F",
-    renderSequence: [
+    displayTiles: [
         [3, 7, 0, 2, false, 8, 40, true, false],
         [3, 7, 0, 3, false, 8, 48, true, false],
         [3, 7, 0, 3, false, 8, 64, true, true],
@@ -1125,17 +1125,17 @@ const allSprites = [{
     ]
 }, {
     name: "Mushroom Platforms",
-    category: "generic",
+    category: "platform",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 5, 0, 0, false, 48, 56, false, false],
         [3, 5, 0, 0, false, 64, 56, true, false],
     ]
 }, {
     name: "Small Floating Orange Platform",
-    category: "generic",
+    category: "platform",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 5, 11, 4, false, 40, 48, false, false],
         [3, 5, 12, 4, false, 56, 48, true, false],
         [3, 5, 11, 4, false, 72, 48, true, false],
@@ -1144,9 +1144,9 @@ const allSprites = [{
     ]
 }, {
     name: "Large Floating Orange Platform",
-    category: "generic",
+    category: "platform",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 5, 11, 4, false, 24, 48, false, false],
         [3, 5, 11, 4, false, 88, 48, true, false],
         [3, 5, 12, 4, false, 40, 48, true, false],
@@ -1161,7 +1161,7 @@ const allSprites = [{
     name: "Volcano Lotus",
     category: "pokey",
     slot3: "GFX09",
-    renderSequence: [
+    displayTiles: [
         [3, 5, 14, 4, false, 48, 68, false, false],
         [3, 5, 14, 4, false, 64, 68, true, false],
         [3, 4, 2, 6, true, 56, 68, false, false],
@@ -1175,7 +1175,7 @@ const allSprites = [{
     name: "Lightning Bolt",
     category: "pokey",
     slot3: "GFX09",
-    renderSequence: [
+    displayTiles: [
         [3, 2, 3, 7, true, 48, 56, false, false],
         [3, 2, 3, 7, true, 48, 64, true, true],
         [3, 2, 12, 6, false, 72, 64, false, false],
@@ -1185,7 +1185,7 @@ const allSprites = [{
     name: "Sumo Bro",
     category: "pokey",
     slot3: "GFX09",
-    renderSequence: [
+    displayTiles: [
         [3, 2, 3, 4, false, 32, 44, false, false],
         [3, 2, 1, 4, false, 16, 44, false, false],
         [3, 2, 0, 0, false, 30, 36, false, false],
@@ -1209,23 +1209,23 @@ const allSprites = [{
     name: "Football",
     category: "generic",
     slot3: "GFX04",
-    renderSequence: [
+    displayTiles: [
         [3, 0, 10, 0, false, 56, 56, false, false],
     ]
 }, {
     name: "Bouncing Rock",
     category: "generic",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 6, 4, 4, false, 44, 56, false, false],
         [3, 6, 6, 4, false, 68, 56, false, false],
     ]
 }, {
     name: "Diggin' Chuck",
-    category: "generic",
+    category: "chuck",
     slot2: "GFX13",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 3, 2, 6, false, 12, 56, false, false],
         [2, 5, 8, 2, false, 24, 56, false, false],
         [2, 5, 9, 2, false, 32, 56, false, false],
@@ -1242,9 +1242,9 @@ const allSprites = [{
     ]
 }, {
     name: "Chargin' Chuck",
-    category: "generic",
+    category: "chuck",
     slot2: "GFX13",
-    renderSequence: [
+    displayTiles: [
         [2, 5, 6, 0, false, 50, 32, false, false],
         [2, 5, 0, 2, false, 52, 44, false, false],
         [2, 5, 1, 2, false, 60, 44, false, false],
@@ -1272,9 +1272,9 @@ const allSprites = [{
     ]
 }, {
     name: "Clappin' Chuck",
-    category: "generic",
+    category: "chuck",
     slot2: "GFX13",
-    renderSequence: [
+    displayTiles: [
         [2, 5, 13, 2, false, 20, 60, false, false],
         [2, 5, 13, 2, false, 28, 60, true, false],
         [2, 5, 6, 0, false, 24, 56, false, false],
@@ -1289,10 +1289,10 @@ const allSprites = [{
     ]
 }, {
     name: "Pitchin' Chuck",
-    category: "generic",
+    category: "chuck",
     slot2: "GFX13",
     slot3: "GFX09",
-    renderSequence: [
+    displayTiles: [
         [2, 5, 6, 0, false, 24, 68, false, false],
         [3, 4, 13, 2, true, 26, 84, false, false],
         [2, 5, 14, 4, false, 32, 76, false, false],
@@ -1318,10 +1318,10 @@ const allSprites = [{
     ]
 }, {
     name: "Kickin' Chuck",
-    category: "generic",
+    category: "chuck",
     slot2: "GFX13",
     slot3: "GFX04",
-    renderSequence: [
+    displayTiles: [
         [2, 5, 6, 0, false, 80, 52, false, false],
         [2, 5, 14, 4, false, 88, 60, false, false],
         [2, 5, 13, 0, true, 80, 66, false, false],
@@ -1336,9 +1336,9 @@ const allSprites = [{
     ]
 }, {
     name: "Whistlin' Chuck",
-    category: "generic",
+    category: "chuck",
     slot2: "GFX13",
-    renderSequence: [
+    displayTiles: [
         [2, 5, 6, 2, false, 20, 56, false, false],
         [2, 5, 6, 2, false, 28, 56, true, false],
         [2, 5, 6, 0, false, 24, 48, false, false],
@@ -1355,9 +1355,9 @@ const allSprites = [{
     ]
 }, {
     name: "Splittin' / Jumpin' Chucks",
-    category: "generic",
+    category: "chuck",
     slot2: "GFX13",
-    renderSequence: [
+    displayTiles: [
         [2, 5, 13, 2, false, 60, 56, true, false],
         [2, 5, 13, 2, false, 52, 56, false, false],
         [2, 5, 6, 0, false, 56, 52, false, false],
@@ -1374,7 +1374,7 @@ const allSprites = [{
     name: "Amazing Flying Hammer Brother",
     category: "generic",
     slot2: "GFX13",
-    renderSequence: [
+    displayTiles: [
         [2, 3, 6, 4, false, 48, 60, false, false],
         [2, 3, 8, 4, false, 64, 60, false, false],
         [2, 3, 10, 4, true, 64, 52, false, false],
@@ -1386,7 +1386,7 @@ const allSprites = [{
     name: "Bubble",
     category: "forest",
     slot3: "GFX02",
-    renderSequence: [
+    displayTiles: [
         [3, 3, 0, 2, false, 48, 64, false, true],
         [3, 3, 0, 2, false, 48, 48, false, false],
         [3, 3, 0, 2, false, 64, 48, true, false],
@@ -1397,7 +1397,7 @@ const allSprites = [{
     name: "Banzai Bill",
     category: "banzai",
     slot3: "GFX20",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 0, 0, false, 28, 32, false, false],
         [3, 1, 2, 0, false, 44, 32, false, false],
         [3, 1, 4, 0, false, 60, 32, false, false],
@@ -1417,9 +1417,9 @@ const allSprites = [{
     ]
 }, {
     name: "Big Steely",
-    category: "bowser",
+    category: "mecha",
     slot2: "GFX24",
-    renderSequence: [
+    displayTiles: [
         [2, 6, 5, 4, false, 40, 40, false, false],
         [2, 6, 7, 4, false, 56, 40, false, false],
         [2, 6, 5, 4, false, 72, 40, true, false],
@@ -1433,9 +1433,9 @@ const allSprites = [{
     ]
 }, {
     name: "Mechakoopa",
-    category: "bowser",
+    category: "mecha",
     slot2: "GFX24",
-    renderSequence: [
+    displayTiles: [
         [2, 5, 0, 4, false, 68, 20, false, false],
         [2, 5, 12, 0, false, 76, 28, false, false],
         [2, 5, 0, 4, false, 36, 20, false, false],
@@ -1465,9 +1465,9 @@ const allSprites = [{
     ]
 }, {
     name: "Spotlight Disco Ball",
-    category: "bowser",
+    category: "mecha",
     slot3: "GFX0E",
-    renderSequence: [
+    displayTiles: [
         [3, 6, 0, 0, false, 36, 36, false, false],
         [3, 6, 2, 0, false, 56, 36, false, false],
         [3, 6, 4, 0, false, 76, 36, false, false],
@@ -1481,7 +1481,7 @@ const allSprites = [{
     name: "Sea Mine",
     category: "water",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 0, 10, 2, false, 28, 48, false, false],
         [3, 0, 10, 2, false, 44, 48, true, false],
         [3, 0, 10, 2, false, 44, 64, true, true],
@@ -1495,7 +1495,7 @@ const allSprites = [{
     name: "Boo",
     category: "ghost",
     slot3: "GFX11",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 8, 0, false, 44, 56, false, false],
         [3, 1, 12, 0, false, 68, 56, false, false],
     ]
@@ -1503,7 +1503,7 @@ const allSprites = [{
     name: "Boo Block",
     category: "ghost",
     slot3: "GFX11",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 8, 0, false, 36, 56, false, false],
         [3, 1, 8, 4, false, 56, 56, false, false],
         [3, 1, 10, 4, false, 76, 56, false, false],
@@ -1513,7 +1513,7 @@ const allSprites = [{
     category: "ghost",
     slot2: "GFX06",
     slot3: "GFX11",
-    renderSequence: [
+    displayTiles: [
         [2, 6, 10, 6, false, 44, 56, false, false],
         [3, 6, 13, 6, false, 68, 56, false, false],
     ]
@@ -1522,7 +1522,7 @@ const allSprites = [{
     category: "ghost",
     slot2: "GFX06",
     slot3: "GFX11",
-    renderSequence: [
+    displayTiles: [
         [0, 0, 0, 6, false, 28, 40, false, false],
         [0, 0, 0, 6, false, 44, 40, false, false],
         [0, 0, 0, 6, false, 36, 40, false, false],
@@ -1550,7 +1550,7 @@ const allSprites = [{
     name: "Big Boo",
     category: "ghost",
     slot3: "GFX11",
-    renderSequence: [
+    displayTiles: [
         [3, 6, 0, 0, false, 0, 32, false, false],
         [3, 6, 2, 0, false, 16, 32, false, false],
         [3, 6, 4, 0, false, 32, 32, false, false],
@@ -1596,7 +1596,7 @@ const allSprites = [{
     name: "Boo Buddies",
     category: "ghost",
     slot3: "GFX11",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 8, 0, false, 32, 56, false, false],
         [3, 1, 12, 0, false, 44, 36, false, false],
         [3, 1, 14, 0, false, 68, 36, false, false],
@@ -1608,7 +1608,7 @@ const allSprites = [{
     name: "Large Green Gas Bubble",
     category: "ghost",
     slot3: "GFX11",
-    renderSequence: [
+    displayTiles: [
         [3, 5, 0, 0, false, 36, 32, false, false],
         [3, 5, 2, 0, false, 52, 32, false, false],
         [3, 5, 4, 0, false, 68, 32, false, false],
@@ -1630,7 +1630,7 @@ const allSprites = [{
     name: "Rex",
     category: "banzai",
     slot3: "GFX20",
-    renderSequence: [
+    displayTiles: [
         [3, 3, 10, 0, false, 12, 40, false, false],
         [3, 3, 10, 2, false, 16, 56, false, false],
         [3, 3, 10, 0, false, 32, 40, false, false],
@@ -1644,7 +1644,7 @@ const allSprites = [{
     name: "Mega Mole",
     category: "banzai",
     slot3: "GFX20",
-    renderSequence: [
+    displayTiles: [
         [3, 0, 6, 4, false, 28, 48, false, false],
         [3, 0, 6, 6, false, 28, 64, false, false],
         [3, 0, 8, 4, false, 44, 48, false, false],
@@ -1656,18 +1656,18 @@ const allSprites = [{
     ]
 }, {
     name: "Diagonal Carrot Platform",
-    category: "generic",
+    category: "platform",
     slot3: "GFX20",
-    renderSequence: [
+    displayTiles: [
         [3, 5, 0, 6, false, 48, 64, false, false],
         [3, 5, 2, 6, false, 64, 64, false, false],
         [3, 5, 4, 6, false, 64, 48, false, false]
     ]
 }, {
     name: "Timed Carrot Platform",
-    category: "generic",
+    category: "platform",
     slot3: "GFX20",
-    renderSequence: [
+    displayTiles: [
         [3, 5, 4, 4, false, 28, 44, false, false],
         [3, 5, 4, 4, false, 44, 44, true, false],
         [3, 5, 4, 4, false, 68, 44, false, false],
@@ -1685,7 +1685,7 @@ const allSprites = [{
     name: "Swooper Bat",
     category: "cave",
     slot3: "GFX04",
-    renderSequence: [
+    displayTiles: [
         [3, 5, 14, 2, false, 36, 56, false, false],
         [3, 5, 0, 4, false, 56, 56, false, false],
         [3, 5, 8, 6, false, 76, 56, false, false]
@@ -1694,7 +1694,7 @@ const allSprites = [{
     name: "Vertical Bullets",
     category: "generic",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 4, 2, false, 44, 44, false, false],
         [1, 1, 6, 2, false, 68, 44, false, false],
         [3, 1, 4, 2, false, 68, 68, true, true],
@@ -1704,7 +1704,7 @@ const allSprites = [{
     name: "Diagonal Bullets",
     category: "generic",
     slot3: "GFX05",
-    renderSequence: [
+    displayTiles: [
         [3, 1, 6, 2, false, 68, 68, true, false],
         [3, 1, 6, 2, false, 44, 68, false, false],
         [3, 1, 8, 2, false, 44, 44, true, false],
@@ -1714,21 +1714,21 @@ const allSprites = [{
     name: "On/Off Switch Bounce Tile",
     category: "misc",
     slot3: "GFX03",
-    renderSequence: [
+    displayTiles: [
         [3, 3, 10, 0, false, 56, 56, false, false]
     ]
 }, {
     name: "Note Block Bounce Tile",
     category: "misc",
     slot2: "GFX13",
-    renderSequence: [
+    displayTiles: [
         [2, 1, 11, 6, false, 56, 56, false, false]
     ]
 }, {
     name: "Pirahna Plant",
     category: "cave",
     slot3: "GFX04",
-    renderSequence: [
+    displayTiles: [
         [3, 5, 14, 4, false, 44, 48, false, true],
         [1, 4, 14, 2, false, 44, 64, false, true],
         [3, 5, 14, 4, false, 68, 48, false, true],
@@ -1738,7 +1738,7 @@ const allSprites = [{
     name: "Yoshi Egg",
     category: "generic",
     slot2: "GFX13",
-    renderSequence: [
+    displayTiles: [
         [2, 5, 2, 0, false, 56, 56, false, false],
         [2, 5, 0, 0, false, 36, 56, false, false],
         [2, 0, 15, 6, true, 76, 52, false, false],
@@ -1750,7 +1750,7 @@ const allSprites = [{
     name: "Spike Top",
     category: "cave",
     slot3: "GFX04",
-    renderSequence: [
+    displayTiles: [
         [3, 4, 12, 0, false, 56, 28, false, false],
         [3, 4, 10, 2, false, 84, 56, false, false],
         [3, 4, 8, 2, false, 28, 56, true, true],
@@ -1764,7 +1764,7 @@ const allSprites = [{
     name: "Buzzy Beetle",
     category: "cave",
     slot3: "GFX04",
-    renderSequence: [
+    displayTiles: [
         [3, 6, 6, 0, false, 56, 68, false, false],
         [3, 6, 4, 0, false, 36, 68, false, false],
         [3, 6, 8, 0, false, 76, 68, false, false],
@@ -1775,7 +1775,7 @@ const allSprites = [{
     name: "Blargg",
     category: "cave",
     slot3: "GFX04",
-    renderSequence: [
+    displayTiles: [
         [3, 2, 2, 2, false, 28, 48, false, false],
         [3, 2, 4, 2, false, 44, 48, false, false],
         [3, 2, 2, 4, false, 28, 64, false, false],
@@ -1790,9 +1790,9 @@ const allSprites = [{
     ]
 }, {
     name: "Reznor",
-    category: "misc",
+    category: "boss",
     slot2: "GFX25",
-    renderSequence: [
+    displayTiles: [
         [2, 7, 0, 4, false, 48, 36, false, false],
         [2, 7, 2, 4, false, 64, 36, false, false],
         [2, 7, 0, 6, false, 48, 52, false, false],
@@ -1814,9 +1814,9 @@ const allSprites = [{
     ]
 }, {
     name: "Wendy",
-    category: "misc",
+    category: "boss",
     slot2: "GFX0A",
-    renderSequence: [
+    displayTiles: [
         [2, 4, 8, 2, false, 24, 12, false, false],
         [2, 4, 0, 4, false, 16, 4, false, false],
         [2, 4, 2, 4, true, 32, 4, false, false],
@@ -1868,9 +1868,9 @@ const allSprites = [{
     ]
 }, {
     name: "Lemmy",
-    category: "misc",
+    category: "boss",
     slot2: "GFX0A",
-    renderSequence: [
+    displayTiles: [
         [2, 2, 8, 2, false, 24, 16, false, false],
         [2, 2, 0, 0, false, 16, 8, false, false],
         [2, 2, 2, 0, true, 24, 0, false, false],
@@ -1924,36 +1924,46 @@ const allSprites = [{
     ]
 }]
 
-/*
-
-,{
-    name: "",
-    renderSequence: []
+// create minimised list of used tiles
+for (let i = 0; i < allSprites.length; i++) {
+    const sprite = allSprites[i]
+    sprite.tiles = []
+    for (let j = 0; j < sprite.displayTiles.length; j++) {
+        const [slot, pal, x, y, is8x8] = sprite.displayTiles[j];
+        const gfx = sprite[`slot${slot}`]
+        if (gfx) {
+            const index = x + y * 16 + slot * 128
+            sprite.tiles[index] = [index, gfx]
+            if (!is8x8) {
+                sprite.tiles[index + 1] = [index + 1, gfx]
+                sprite.tiles[index + 16] = [index + 16, gfx]
+                sprite.tiles[index + 17] = [index + 17, gfx]
+            }
+        }
+    }
+    sprite.tiles = sprite.tiles.filter(Boolean);
 }
 
-*/
-
 //  ==============================================================
+
+const gfxScale = 2;
+const spriteScale = 2;
 
 let activePaletteIndex = 0;
 const allGfx = {};
 const gfxSlots = ["GFX00", "GFX01", "GFX13", "GFX02"]
 const gfxBitmaps = {}
-const gfxScale = 3;
-const spriteScale = 3;
 
+let selectedSprites = []
+let selectedTiles = []
+let currentSprite = null
+
+let gfxCtx, spriteCtx
 let selectedTile = -1
 let selected8x8 = true
 let selectedXFlip = false
 let selectedYFlip = false
 let mouseX, mouseY
-
-let currentSprite = allSprites[0]
-
-let gfxCtx, spriteCtx
-
-//  ==============================================================
-
 
 //  ==============================================================
 
@@ -2042,7 +2052,7 @@ window.onload = async function () {
                 y = Math.floor(y / 4 + 0.5) * 4
             }
 
-            currentSprite.renderSequence.push([
+            currentSprite.displayTiles.push([
                 Math.floor(selectedTile / 128),
                 activePaletteIndex,
                 selectedTile % 16,
@@ -2079,7 +2089,6 @@ window.onload = async function () {
         mouseY = -999
         renderSpriteCanvas();
     }
-
     spriteCanvas.onwheel = function (e) {
         if (selectedXFlip == selectedYFlip == e.deltaY > 0) {
             selectedXFlip = !selectedXFlip
@@ -2090,6 +2099,11 @@ window.onload = async function () {
         renderSpriteCanvas()
     }
 
+    document.getElementById("clearButton").onclick = function (e) {
+        selectedSprites = []
+        updateGFX()
+    }
+
     const spriteTemplate = document.getElementById("spriteTemplate")
     allSprites.sort((a, b) => a.name > b.name ? 1 : -1)
     for (let i = 0; i < allSprites.length; i++) {
@@ -2097,124 +2111,119 @@ window.onload = async function () {
         const clone = spriteTemplate.cloneNode(true)
         clone.setAttribute('id', i)
         clone.innerText = sprite.name
-        sprite.element = clone
+        sprite.el = clone
+        clone.onmouseover = function (e) {
+            currentSprite = allSprites[this.id];
+            updateGFX();
+        }
+        clone.onmouseleave = function (e) {
+            currentSprite = null;
+            updateGFX();
+        }
         clone.onclick = function (e) {
-            const sprite = allSprites[this.id]
-            currentSprite = sprite
-
-            if (sprite.slot0) {
-                gfxSlots[0] = sprite.slot0
+            const spriteTiles = sprite.tiles;
+            let allConflict = true
+            for (let j = 0; j < sprite.tiles.length; j++) {
+                const [index, gfx] = spriteTiles[j];
+                if (!selectedTiles[index] || selectedTiles[index] === gfx) {
+                    allConflict = false
+                }
             }
-            if (sprite.slot1) {
-                gfxSlots[1] = sprite.slot1
+            if (!allConflict) {
+                const index = selectedSprites.findIndex(x => x === sprite);
+                if (index > -1) {
+                    selectedSprites.splice(index, 1)
+                } else {
+                    selectedSprites.push(sprite);
+                }
             }
-            if (sprite.slot2) {
-                gfxSlots[2] = sprite.slot2
-            }
-            if (sprite.slot3) {
-                gfxSlots[3] = sprite.slot3
-            }
-            renderGfxCanvas()
-            renderSpriteCanvas()
-
-            sprite.selected = !sprite.selected
-            this.classList.toggle('selected');
-            updateGfxRequirements()
-            e.preventDefault()
+            updateGFX();
+            e.preventDefault();
         }
         document.getElementById(sprite.category).appendChild(clone)
     }
     spriteTemplate.remove()
 
-    document.getElementById("clearButton").onclick = function (e) {
-        selectedTile = -1
-        currentSprite.renderSequence = []
-        renderGfxCanvas()
-        renderSpriteCanvas()
-    }
 
-    document.getElementById("undoButton").onclick = undo
-    document.onkeydown = function (e) {
-        switch (e.key) {
-            case "z":
-                if (e.ctrlKey) undo()
-                break;
-            case "ArrowLeft":
-                currentSprite.renderSequence.forEach((step) => { step[5] -= 4 })
-                renderSpriteCanvas()
-                e.preventDefault()
-                break;
-            case "ArrowRight":
-                currentSprite.renderSequence.forEach((step) => { step[5] += 4 })
-                renderSpriteCanvas()
-                e.preventDefault()
-                break;
-            case "ArrowUp":
-                currentSprite.renderSequence.forEach((step) => { step[6] -= 4 })
-                renderSpriteCanvas()
-                e.preventDefault()
-                break;
-            case "ArrowDown":
-                currentSprite.renderSequence.forEach((step) => { step[6] += 4 })
-                renderSpriteCanvas()
-                e.preventDefault()
-                break;
-            default:
-        }
+    // document.getElementById("undoButton").onclick = undo
+    // document.onkeydown = function (e) {
+    //     switch (e.key) {
+    //         case "z":
+    //             if (e.ctrlKey) undo()
+    //             break;
+    //         case "ArrowLeft":
+    //             selectedSprite.displayTiles.forEach((step) => { step[5] -= 4 })
+    //             renderSpriteCanvas()
+    //             e.preventDefault()
+    //             break;
+    //         case "ArrowRight":
+    //             selectedSprite.displayTiles.forEach((step) => { step[5] += 4 })
+    //             renderSpriteCanvas()
+    //             e.preventDefault()
+    //             break;
+    //         case "ArrowUp":
+    //             selectedSprite.displayTiles.forEach((step) => { step[6] -= 4 })
+    //             renderSpriteCanvas()
+    //             e.preventDefault()
+    //             break;
+    //         case "ArrowDown":
+    //             selectedSprite.displayTiles.forEach((step) => { step[6] += 4 })
+    //             renderSpriteCanvas()
+    //             e.preventDefault()
+    //             break;
+    //         default:
+    //     }
 
-    }
+    // }
 
-    document.getElementById("copyButton").onclick = function (e) {
-        unsecuredCopyToClipboard(`\n${currentSprite.renderSequence.map(step => `[${step.join(', ')}]`).join(',\n')}\n`)
-    }
-
-
-    // load cached palettes, gfx etc...
+    // document.getElementById("copyButton").onclick = function (e) {
+    //     unsecuredCopyToClipboard(`\n${selectedSprite.displayTiles.map(step => `[${step.join(', ')}]`).join(',\n')}\n`)
+    // }
 
     // populate palette select
-    const paletteSelect = document.getElementById("paletteSelect")
-    for (let i = 0; i < hexPalettes.length; i++) {
-        const option = new Option(`Palette ${i}`, i)
-        paletteSelect.appendChild(option)
-    }
-    paletteSelect.onchange = function (e) {
-        activePaletteIndex = +(e.target.value)
-        renderGfxCanvas()
-        renderSpriteCanvas()
-    }
+    // const paletteSelect = document.getElementById("paletteSelect")
+    // for (let i = 0; i < hexPalettes.length; i++) {
+    //     const option = new Option(`Palette ${i}`, i)
+    //     paletteSelect.appendChild(option)
+    // }
+    // paletteSelect.onchange = function (e) {
+    //     activePaletteIndex = +(e.target.value)
+    //     renderGfxCanvas()
+    //     renderSpriteCanvas()
+    // }
 
-    // populate sprite select
-    const spriteSelect = document.getElementById("spriteSelect")
-    for (let i = 0; i < allSprites.length; i++) {
-        const option = new Option(allSprites[i].name, i)
-        spriteSelect.appendChild(option)
-    }
-    spriteSelect.value = allSprites.length - 1
-    spriteSelect.onchange = function (e) {
-        currentSprite = allSprites[+(e.target.value)]
-        renderSpriteCanvas()
-    }
+    // // populate sprite select
+    // const spriteSelect = document.getElementById("spriteSelect")
+    // for (let i = 0; i < allSprites.length; i++) {
+    //     const option = new Option(allSprites[i].name, i)
+    //     spriteSelect.appendChild(option)
+    // }
+    // spriteSelect.value = allSprites.length - 1
+    // spriteSelect.onchange = function (e) {
+    //     selectedSprite = allSprites[+(e.target.value)]
+    //     renderSpriteCanvas()
+    // }
 
-    // populate gfx select
-    const gfxSelects = [
-        document.getElementById("gfx0Select"),
-        document.getElementById("gfx1Select"),
-        document.getElementById("gfx2Select"),
-        document.getElementById("gfx3Select")
-    ]
-    for (let i = 0; i < gfxSelects.length; i++) {
-        const select = gfxSelects[i];
+    // // populate gfx select
+    // const gfxSelects = [
+    //     document.getElementById("gfx0Select"),
+    //     document.getElementById("gfx1Select"),
+    //     document.getElementById("gfx2Select"),
+    //     document.getElementById("gfx3Select")
+    // ]
+    // for (let i = 0; i < gfxSelects.length; i++) {
+    //     const select = gfxSelects[i];
 
-        for (let j = 0; j < gfxFileNames.length; j++) {
-            select.appendChild(new Option(gfxFileNames[j], gfxFileNames[j]));
-        }
-        select.value = gfxSlots[i];
-        select.onchange = async function (e) {
-            gfxSlots[i] = e.target.value;
-            renderGfxCanvas()
-            renderSpriteCanvas()
-        }
-    }
+    //     for (let j = 0; j < gfxFileNames.length; j++) {
+    //         select.appendChild(new Option(gfxFileNames[j], gfxFileNames[j]));
+    //     }
+    //     select.value = gfxSlots[i];
+    //     select.onchange = async function (e) {
+    //         gfxSlots[i] = e.target.value;
+    //         renderGfxCanvas()
+    //         renderSpriteCanvas()
+    //     }
+    // }
 
     // import GFX files
     for (let i = 0; i < gfxFileNames.length; i++) {
@@ -2260,10 +2269,20 @@ function renderGfxCanvas() {
     gfxCtx.scale(gfxScale, gfxScale)
     gfxCtx.imageSmoothingEnabled = false;
 
-    for (let i = 0; i < 4; ++i) {
+    for (let i = 0; i < 2; i++) {
         const bitmap = gfxBitmaps[gfxSlots[i]][activePaletteIndex];
         if (bitmap) {
             gfxCtx.drawImage(bitmap, 0, i * 64)
+        }
+    }
+
+    for (let i = 0; i < 512; i++) {
+        const tile = selectedTiles[i];
+        if (tile) {
+            const x = i % 16
+            const y = Math.floor(i / 16)
+            const bitmap = gfxBitmaps[tile][activePaletteIndex];
+            gfxCtx.drawImage(bitmap, x * 8, (y % 8) * 8, 8, 8, x * 8, y * 8, 8, 8)
         }
     }
 
@@ -2289,32 +2308,35 @@ function renderSpriteCanvas() {
     spriteCtx.imageSmoothingEnabled = false;
 
     // draw center point
-    spriteCtx.strokeStyle = "darkslategrey";
-    spriteCtx.moveTo(64, 0);
-    spriteCtx.lineTo(64, 256);
-    spriteCtx.moveTo(0, 64);
-    spriteCtx.lineTo(256, 64);
-    spriteCtx.stroke()
+    // spriteCtx.strokeStyle = "darkslategrey";
+    // spriteCtx.moveTo(64, 0);
+    // spriteCtx.lineTo(64, 256);
+    // spriteCtx.moveTo(0, 64);
+    // spriteCtx.lineTo(256, 64);
+    // spriteCtx.stroke()
 
-    for (let i = 0; i < currentSprite.renderSequence.length; i++) {
-        const [slot, palette, tx, ty, is8x8, x, y, xFlip, yFlip] = currentSprite.renderSequence[i]
-        const preferredGfx = [currentSprite.slot0, currentSprite.slot1, currentSprite.slot2, currentSprite.slot3]
-        const size = is8x8 ? 8 : 16
-        const bitmap = gfxBitmaps[preferredGfx[slot] ?? gfxSlots[slot]][palette];
-        const xScale = xFlip ? -1 : 1
-        const yScale = yFlip ? -1 : 1
+    if (currentSprite) {
+        for (let i = 0; i < currentSprite.displayTiles.length; i++) {
+            const [slot, palette, tx, ty, is8x8, x, y, xFlip, yFlip] = currentSprite.displayTiles[i]
+            const preferredGfx = [currentSprite.slot0, currentSprite.slot1, currentSprite.slot2, currentSprite.slot3]
+            const size = is8x8 ? 8 : 16
+            const bitmap = gfxBitmaps[preferredGfx[slot] ?? gfxSlots[slot]][palette];
+            const xScale = xFlip ? -1 : 1
+            const yScale = yFlip ? -1 : 1
 
-        spriteCtx.save();
+            spriteCtx.save();
 
-        spriteCtx.translate(x, y);
-        spriteCtx.scale(xScale, yScale);
-        spriteCtx.translate(-x, -y);
+            spriteCtx.translate(x, y);
+            spriteCtx.scale(xScale, yScale);
+            spriteCtx.translate(-x, -y);
 
-        spriteCtx.drawImage(bitmap, tx * 8, ty * 8, size, size, x, y, size * xScale, size * yScale);
+            spriteCtx.drawImage(bitmap, tx * 8, ty * 8, size, size, x, y, size * xScale, size * yScale);
 
-        spriteCtx.restore();
+            spriteCtx.restore();
+            spriteCtx.restore();
+            spriteCtx.restore();
+        }
     }
-
     // draw mouse
     if (selectedTile > -1) {
         const tx = selectedTile % 16
@@ -2330,7 +2352,7 @@ function renderSpriteCanvas() {
 
         spriteCtx.translate(mouseX, mouseY);
         spriteCtx.scale(xScale, yScale);
-        spriteCtx.translate(-mouseX, -mouseY);
+        spriteCtx.traslate(-mouseX, -mouseY);
 
         spriteCtx.drawImage(bitmap, tx * 8, ty * 8, size, size, mouseX, mouseY, size * xScale, size * yScale);
 
@@ -2383,12 +2405,58 @@ function unsecuredCopyToClipboard(text) {
 }
 
 function undo() {
-    if (currentSprite && currentSprite.renderSequence.length > 0) {
-        currentSprite.renderSequence.pop()
+    if (currentSprite && currentSprite.displayTiles.length > 0) {
+        currentSprite.displayTiles.pop()
         renderSpriteCanvas()
     }
 }
 
-function updateGfxRequirements() {
+function updateGFX() {
+    selectedTiles = []
+    const tileConflicts = []
 
+    for (let i = 0; i < selectedSprites.length; i++) {
+        const spriteTiles = selectedSprites[i].tiles;
+        for (let j = 0; j < spriteTiles.length; j++) {
+            const [index, gfx] = spriteTiles[j];
+            if (!selectedTiles[index]) {
+                selectedTiles[index] = gfx
+            } else if (selectedTiles[index] != gfx) {
+                tileConflicts[index] = true;
+            }
+        }
+    }
+
+    for (let i = 0; i < allSprites.length; i++) {
+        const sprite = allSprites[i]
+        const spriteTiles = sprite.tiles;
+        let someConflict = false
+        let allConflict = true
+        for (let j = 0; j < spriteTiles.length; j++) {
+            const [index, gfx] = spriteTiles[j];
+            if (selectedTiles[index] && selectedTiles[index] != gfx) {
+                someConflict = true;
+            } else {
+                allConflict = false
+            }
+        }
+
+        sprite.el.classList.toggle('selected', selectedSprites.includes(sprite));
+        sprite.el.classList.toggle('conflict', someConflict && !allConflict);
+        sprite.el.classList.toggle('disabled', allConflict);
+    }
+
+    if (currentSprite) {
+        for (let j = 0; j < currentSprite.tiles.length; j++) {
+            const [index, gfx] = currentSprite.tiles[j];
+            if (!selectedTiles[index]) {
+                selectedTiles[index] = gfx
+            } else if (selectedTiles[index] != gfx) {
+                tileConflicts[index] = true;
+            }
+        }
+    }
+
+    renderGfxCanvas()
+    renderSpriteCanvas()
 }

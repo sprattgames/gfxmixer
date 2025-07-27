@@ -1,11 +1,32 @@
+html {
+
+    background-color: rgb(24, 32, 32);
+}
+
 body {
     background-color: darkslategrey;
     color: whitesmoke;
     font-family: sans-serif;
-    /* text-align: center; */
     display: flex;
     flex-direction: column;
-    padding: 8px;
+    padding: 32px;
+    padding-bottom: 64px;
+    max-width: 1600px;
+    margin: auto;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.25);
+}
+
+h1 {
+    margin: 0;
+    font-size: xx-large;
+    text-align: right;
+}
+
+h2 {
+    margin: 0;
+    font-size: medium;
+    color: rgba(245, 245, 245, 0.767);
+    text-align: right;
 }
 
 canvas {
@@ -18,18 +39,19 @@ canvas {
 
     margin-top: 16px;
     margin-bottom: 16px;
-    border: 4px solid rgb(35, 65, 65);
+    border: 4px solid rgb(29, 56, 56);
+    border-radius: 2px;
 
     align-self: center;
 
-    background-color: rgb(35, 65, 65);
+    background-color: rgb(29, 56, 56);
 }
 
 .flex-column {
     display: flex;
     flex-direction: column;
 
-    .flex-row {
+    .flex-row:not(:last-child) {
         margin-bottom: 16px;
     }
 }
@@ -38,13 +60,68 @@ canvas {
     display: flex;
     flex-direction: row;
 
-    .flex-column {
+    .flex-column:not(:last-child) {
         margin-right: 16px;
     }
 }
 
+.sticky {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 16px;
+}
+
+.button {
+    flex: 1;
+    min-width: max-content;
+    max-width: max-content;
+    max-height: 18px;
+
+    cursor: pointer;
+    user-select: none;
+    padding: 8px 12px;
+    margin: 2px;
+    border-radius: 2px;
+
+    box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.25);
+    background-color: grey;
+    &:hover {
+        background-color: rgb(148, 148, 148);
+        box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.25);
+    }
+    &.selected {
+        background-color: rgb(93, 143, 129);
+        &:hover {
+            background-color: rgb(117, 153, 142);
+        }
+    }
+    &.conflict {
+        color: rgba(250, 250, 250, 0.9);
+        background-color: rgba(100, 100, 100, 0.9);
+        &:hover {
+            background-color: rgb(133, 127, 98);
+        }
+        &.selected {
+            background-color: rgb(131, 130, 94);
+            &:hover {
+                background-color: rgb(153, 153, 114);
+            }
+        }
+    }
+    &.disabled {
+        cursor: default;
+        box-shadow: none;
+        color: rgba(194, 194, 194, 0.5);
+        background-color: rgba(100, 100, 100, 0.5);
+    }
+    &:active:not(.disabled) {
+        box-shadow: none;
+        background-color: rgb(85, 116, 108);
+    }
+}
+
 .spriteCategory {
-    width: 40vw;
+    width: 80%;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -53,34 +130,5 @@ canvas {
         flex: 0 0 100%;
         padding: 8px 12px;
         margin: 2px;
-    }
-
-    .sprite {
-        flex: 1;
-        min-width: max-content;
-        max-width: max-content;
-
-        cursor: pointer;
-        user-select: none;
-        padding: 8px 12px;
-        margin: 2px;
-        border-radius: 2px;
-
-        box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.25);
-        background-color: grey;
-        &:hover {
-            background-color: rgb(148, 148, 148);
-            box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.25);
-        }
-        &.selected {
-            background-color: rgb(93, 143, 129);
-            :hover {
-                background-color: rgb(117, 153, 142);
-            }
-        }
-        &:active {
-            box-shadow: none;
-            background-color: rgb(85, 116, 108);
-        }
     }
 }

@@ -6,31 +6,20 @@
 </head>
 
 <body>
-    <h1>Vanilla GFX Mixer</h1>
     <div class="flex-row">
         <div class="flex-column">
-            <div>
-                <select name="gfx0" id="gfx0Select"></select>
-                <select name="gfx1" id="gfx1Select"></select>
-                <select name="gfx2" id="gfx2Select"></select>
-                <select name="gfx3" id="gfx3Select"></select>
-                <select name="palettes" id="paletteSelect"></select>
-            </div>
-            <canvas id="gfxCanvas" width="256" height="512"></canvas>
-        </div>
-        <div class="flex-column">
-            <canvas id="spriteCanvas" width="256" height="256"></canvas>
-            <div>
-                <select name="sprites" id="spriteSelect"></select>
-                <button id="clearButton">Clear</button>
-                <button id="undoButton">Undo</button>
-                <button id="copyButton">Copy</button>
-            </div>
-        </div>
-        <div class="flex-column">
-            <div id="spriteTemplate" class="sprite"></div>
+            <div id="spriteTemplate" class="button"></div>
             <div id="generic" class="spriteCategory">
                 <div class="header">Generic</div>
+            </div>
+            <div id="chuck" class="spriteCategory">
+                <div class="header">Chucks</div>
+            </div>
+            <div id="platform" class="spriteCategory">
+                <div class="header">Platforms</div>
+            </div>
+            <div id="line" class="spriteCategory">
+                <div class="header">Line-guided</div>
             </div>
             <div id="forest" class="spriteCategory">
                 <div class="header">Forest</div>
@@ -56,11 +45,43 @@
             <div id="dino" class="spriteCategory">
                 <div class="header">Dino-rhino</div>
             </div>
-            <div id="bowser" class="spriteCategory">
-                <div class="header">Bowser</div>
+            <div id="mecha" class="spriteCategory">
+                <div class="header">Mecha</div>
+            </div>
+            <div id="boss" class="spriteCategory">
+                <div class="header">Bosses</div>
+            </div>
+            <div id="particle" class="spriteCategory">
+                <div class="header">Particles & block animations</div>
             </div>
             <div id="misc" class="spriteCategory">
                 <div class="header">Misc</div>
+            </div>
+        </div>
+        <div class="flex-column">
+            <div class="sticky">
+                <h1>
+                    Vanilla<br>
+                    Graphics<br>
+                    Mixer
+                </h1>
+                <h2>by spratt</h2>
+                <div hidden>
+                    <select name="gfx0" id="gfx0Select"></select>
+                    <select name="gfx1" id="gfx1Select"></select>
+                    <select name="gfx2" id="gfx2Select"></select>
+                    <select name="gfx3" id="gfx3Select"></select>
+                    <select name="palettes" id="paletteSelect"></select>
+                </div>
+                <canvas id="gfxCanvas" width="256" height="512"></canvas>
+                <div id="clearButton" class="button">Clear all</div>
+                <canvas id="spriteCanvas" width="256" height="256"></canvas>
+                <div>
+                    <!-- <select name="sprites" id="spriteSelect"></select> -->
+                    <!-- <button id="clearButton">Clear</button>
+                        <button id="undoButton">Undo</button>
+                        <button id="copyButton">Copy</button> -->
+                </div>
             </div>
         </div>
     </div>
