@@ -2104,8 +2104,9 @@ window.onload = async function () {
         updateGFX()
     }
 
-    const spriteTemplate = document.getElementById("spriteTemplate")
+    const spriteTemplate = document.getElementById("spriteTemplate");
     allSprites.sort((a, b) => a.name > b.name ? 1 : -1)
+    let tooltipTimeout 
     for (let i = 0; i < allSprites.length; i++) {
         const sprite = allSprites[i];
         const clone = spriteTemplate.cloneNode(true)
@@ -2113,12 +2114,32 @@ window.onload = async function () {
         clone.innerText = sprite.name
         sprite.el = clone
         clone.onmouseover = function (e) {
+            const tooltip = document.getElementById("spriteCanvas");
+            tooltip.hidden = false;
             currentSprite = allSprites[this.id];
+            clearTimeout(tooltipTimeout)
             updateGFX();
         }
+        clone.onmousemove = function (e) {
+            const tooltip = document.getElementById("spriteCanvas");
+            const rect = clone.getBoundingClientRect()
+            let x = rect.left + (rect.width - tooltip.clientWidth) / 2
+            let y = rect.top - tooltip.clientHeight - 8
+            x = Math.min(x, window.innerWidth - tooltip.clientWidth - 12)
+            x = Math.max(x, 12)
+            if (y < 12) {
+                y = rect.bottom + 8
+            }
+            tooltip.style.left = x + window.scrollX
+            tooltip.style.top = y + window.scrollY
+        }
         clone.onmouseleave = function (e) {
-            currentSprite = null;
-            updateGFX();
+            tooltipTimeout = setTimeout(() => {
+                const tooltip = document.getElementById("spriteCanvas");
+                tooltip.hidden = true;
+                currentSprite = null;
+                updateGFX();
+            }, 100)
         }
         clone.onclick = function (e) {
             const spriteTiles = sprite.tiles;

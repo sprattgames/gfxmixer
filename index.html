@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <div class="flex-row">
+    <div class="main-container">
         <div class="flex-column">
             <div id="spriteTemplate" class="button"></div>
             <div id="generic" class="spriteCategory">
@@ -73,9 +73,8 @@
                     <select name="gfx3" id="gfx3Select"></select>
                     <select name="palettes" id="paletteSelect"></select>
                 </div>
-                <canvas id="gfxCanvas" width="256" height="512"></canvas>
+                <canvas id="gfxCanvas" width="256" height="512" class="gfxCanvas"></canvas>
                 <div id="clearButton" class="button">Clear all</div>
-                <canvas id="spriteCanvas" width="256" height="256"></canvas>
                 <div>
                     <!-- <select name="sprites" id="spriteSelect"></select> -->
                     <!-- <button id="clearButton">Clear</button>
@@ -85,6 +84,7 @@
             </div>
         </div>
     </div>
+    <canvas id="spriteCanvas" width="256" height="256" class="spriteTooltip"></canvas>
 </body>
 
 </html>

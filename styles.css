@@ -1,19 +1,7 @@
-html {
-
-    background-color: rgb(24, 32, 32);
-}
-
 body {
-    background-color: darkslategrey;
+    background-color: rgb(24, 32, 32);
     color: whitesmoke;
     font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    padding: 32px;
-    padding-bottom: 64px;
-    max-width: 1600px;
-    margin: auto;
-    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.25);
 }
 
 h1 {
@@ -36,15 +24,42 @@ canvas {
     image-rendering: -o-crisp-edges;
     image-rendering: -webkit-optimize-contrast;
     -ms-interpolation-mode: nearest-neighbor;
+}
 
+.gfxCanvas {
     margin-top: 16px;
     margin-bottom: 16px;
-    border: 4px solid rgb(29, 56, 56);
-    border-radius: 2px;
+    border: 8px solid rgb(29, 56, 56);
+    border-radius: 4px;
 
     align-self: center;
 
     background-color: rgb(29, 56, 56);
+}
+
+.spriteTooltip {
+    position: absolute;
+    pointer-events: none;
+    box-shadow: 1px 1px 16px 2px rgba(0,0,0,0.25);
+    border-radius: 2px;
+    background-color: rgba(29, 56, 56, 0.9);
+    margin: 0;
+}
+
+.main-container {
+    background-color: darkslategrey;
+    display: flex;
+    flex-direction: row;
+    padding: 32px;
+    padding-bottom: 64px;
+    max-width: 1600px;
+    margin: 0px auto;
+    box-shadow: 1px 1px 8px 1px rgba(0,0,0,0.25);
+    border-radius: 2px;
+
+    .flex-column:not(:last-child) {
+        margin-bottom: 16px;
+    }
 }
 
 .flex-column {
@@ -53,15 +68,6 @@ canvas {
 
     .flex-row:not(:last-child) {
         margin-bottom: 16px;
-    }
-}
-
-.flex-row {
-    display: flex;
-    flex-direction: row;
-
-    .flex-column:not(:last-child) {
-        margin-right: 16px;
     }
 }
 
