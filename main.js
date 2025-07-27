@@ -1931,6 +1931,7 @@ let activePaletteIndex = 0;
 const allGfx = {};
 const gfxSlots = ["GFX00", "GFX01", "GFX13", "GFX02"]
 const gfxBitmaps = {}
+const gfxPixels = {}
 
 let selectedSprites = []
 let selectedTiles = []
@@ -1951,46 +1952,46 @@ window.onload = async function () {
     gfxCanvas.setAttribute("width", 128 * gfxScale)
     gfxCanvas.setAttribute("height", 256 * gfxScale)
     gfxCtx = gfxCanvas.getContext("2d");
-    gfxCanvas.onclick = function (e) {
-        let x, y
-        if (e.ctrlKey) {
-            x = Math.floor(e.offsetX / (8 * gfxScale))
-            y = Math.floor(e.offsetY / (8 * gfxScale))
-            selected8x8 = true
-        } else {
-            x = Math.floor(e.offsetX / (8 * gfxScale) - 0.5)
-            y = Math.floor(e.offsetY / (8 * gfxScale) - 0.5)
-            selected8x8 = false
-        }
-        selectedTile = x + y * 16
-        selectedXFlip = false
-        selectedYFlip = false
-        renderGfxCanvas();
-        e.preventDefault();
-    }
-    gfxCanvas.onmousemove = function (e) {
-        renderGfxCanvas();
-        let x, y
-        if (e.ctrlKey) {
-            x = Math.floor(e.offsetX / (8 * gfxScale))
-            y = Math.floor(e.offsetY / (8 * gfxScale))
-        } else {
-            x = Math.floor(e.offsetX / (8 * gfxScale) - 0.5)
-            y = Math.floor(e.offsetY / (8 * gfxScale) - 0.5)
-        }
-        gfxCtx.beginPath()
-        gfxCtx.lineWidth = 1;
-        gfxCtx.strokeStyle = 'white';
-        if (e.ctrlKey) {
-            gfxCtx.rect(x * 8, y * 8, 8, 8);
-        } else {
-            gfxCtx.rect(x * 8, y * 8, 16, 16);
-        }
-        gfxCtx.stroke();
-    }
-    gfxCanvas.onmouseleave = function (e) {
-        renderGfxCanvas();
-    }
+    // gfxCanvas.onclick = function (e) {
+    //     let x, y
+    //     if (e.ctrlKey) {
+    //         x = Math.floor(e.offsetX / (8 * gfxScale))
+    //         y = Math.floor(e.offsetY / (8 * gfxScale))
+    //         selected8x8 = true
+    //     } else {
+    //         x = Math.floor(e.offsetX / (8 * gfxScale) - 0.5)
+    //         y = Math.floor(e.offsetY / (8 * gfxScale) - 0.5)
+    //         selected8x8 = false
+    //     }
+    //     selectedTile = x + y * 16
+    //     selectedXFlip = false
+    //     selectedYFlip = false
+    //     renderGfxCanvas();
+    //     e.preventDefault();
+    // }
+    // gfxCanvas.onmousemove = function (e) {
+    //     renderGfxCanvas();
+    //     let x, y
+    //     if (e.ctrlKey) {
+    //         x = Math.floor(e.offsetX / (8 * gfxScale))
+    //         y = Math.floor(e.offsetY / (8 * gfxScale))
+    //     } else {
+    //         x = Math.floor(e.offsetX / (8 * gfxScale) - 0.5)
+    //         y = Math.floor(e.offsetY / (8 * gfxScale) - 0.5)
+    //     }
+    //     gfxCtx.beginPath()
+    //     gfxCtx.lineWidth = 1;
+    //     gfxCtx.strokeStyle = 'white';
+    //     if (e.ctrlKey) {
+    //         gfxCtx.rect(x * 8, y * 8, 8, 8);
+    //     } else {
+    //         gfxCtx.rect(x * 8, y * 8, 16, 16);
+    //     }
+    //     gfxCtx.stroke();
+    // }
+    // gfxCanvas.onmouseleave = function (e) {
+    //     renderGfxCanvas();
+    // }
     gfxCanvas.onwheel = function (e) {
         if (e.deltaY > 0) {
             activePaletteIndex += 1
@@ -2013,78 +2014,91 @@ window.onload = async function () {
     tooltipCanvas.setAttribute("width", 128 * spriteScale)
     tooltipCanvas.setAttribute("height", 128 * spriteScale)
     spriteCtx = tooltipCanvas.getContext("2d");
-    tooltipCanvas.onclick = function (e) {
-        if (selectedTile > -1) {
-            let x, y
-            if (selected8x8) {
-                x = Math.floor(e.offsetX / spriteScale - 4)
-                y = Math.floor(e.offsetY / spriteScale - 4)
-            } else {
-                x = Math.floor(e.offsetX / spriteScale - 8)
-                y = Math.floor(e.offsetY / spriteScale - 8)
-            }
-            if (e.shiftKey) {
-                x = Math.floor(x / 2 + 0.5) * 2
-                y = Math.floor(y / 2 + 0.5) * 2
-            } else {
-                x = Math.floor(x / 4 + 0.5) * 4
-                y = Math.floor(y / 4 + 0.5) * 4
-            }
+    // tooltipCanvas.onclick = function (e) {
+    //     if (selectedTile > -1) {
+    //         let x, y
+    //         if (selected8x8) {
+    //             x = Math.floor(e.offsetX / spriteScale - 4)
+    //             y = Math.floor(e.offsetY / spriteScale - 4)
+    //         } else {
+    //             x = Math.floor(e.offsetX / spriteScale - 8)
+    //             y = Math.floor(e.offsetY / spriteScale - 8)
+    //         }
+    //         if (e.shiftKey) {
+    //             x = Math.floor(x / 2 + 0.5) * 2
+    //             y = Math.floor(y / 2 + 0.5) * 2
+    //         } else {
+    //             x = Math.floor(x / 4 + 0.5) * 4
+    //             y = Math.floor(y / 4 + 0.5) * 4
+    //         }
 
-            currentSprite.displayTiles.push([
-                Math.floor(selectedTile / 128),
-                activePaletteIndex,
-                selectedTile % 16,
-                Math.floor(selectedTile / 16) % 8,
-                selected8x8,
-                x,
-                y,
-                selectedXFlip,
-                selectedYFlip
-            ])
-        }
-        renderTooltipCanvas();
-        e.preventDefault();
-    }
-    tooltipCanvas.onmousemove = function (e) {
-        if (selected8x8) {
-            mouseX = Math.floor(e.offsetX / spriteScale - 4)
-            mouseY = Math.floor(e.offsetY / spriteScale - 4)
-        } else {
-            mouseX = Math.floor(e.offsetX / spriteScale - 8)
-            mouseY = Math.floor(e.offsetY / spriteScale - 8)
-        }
-        if (e.shiftKey) {
-            mouseX = Math.floor(mouseX / 2 + 0.5) * 2
-            mouseY = Math.floor(mouseY / 2 + 0.5) * 2
-        } else {
-            mouseX = Math.floor(mouseX / 4 + 0.5) * 4
-            mouseY = Math.floor(mouseY / 4 + 0.5) * 4
-        }
-        renderTooltipCanvas();
-    }
-    tooltipCanvas.onmouseleave = function (e) {
-        mouseX = -999
-        mouseY = -999
-        renderTooltipCanvas();
-    }
-    tooltipCanvas.onwheel = function (e) {
-        if (selectedXFlip == selectedYFlip == e.deltaY > 0) {
-            selectedXFlip = !selectedXFlip
-        } else {
-            selectedYFlip = !selectedYFlip
-        }
-        e.preventDefault()
-        renderTooltipCanvas()
-    }
+    //         currentSprite.displayTiles.push([
+    //             Math.floor(selectedTile / 128),
+    //             activePaletteIndex,
+    //             selectedTile % 16,
+    //             Math.floor(selectedTile / 16) % 8,
+    //             selected8x8,
+    //             x,
+    //             y,
+    //             selectedXFlip,
+    //             selectedYFlip
+    //         ])
+    //     }
+    //     renderTooltipCanvas();
+    //     e.preventDefault();
+    // }
+    // tooltipCanvas.onmousemove = function (e) {
+    //     if (selected8x8) {
+    //         mouseX = Math.floor(e.offsetX / spriteScale - 4)
+    //         mouseY = Math.floor(e.offsetY / spriteScale - 4)
+    //     } else {
+    //         mouseX = Math.floor(e.offsetX / spriteScale - 8)
+    //         mouseY = Math.floor(e.offsetY / spriteScale - 8)
+    //     }
+    //     if (e.shiftKey) {
+    //         mouseX = Math.floor(mouseX / 2 + 0.5) * 2
+    //         mouseY = Math.floor(mouseY / 2 + 0.5) * 2
+    //     } else {
+    //         mouseX = Math.floor(mouseX / 4 + 0.5) * 4
+    //         mouseY = Math.floor(mouseY / 4 + 0.5) * 4
+    //     }
+    //     renderTooltipCanvas();
+    // }
+    // tooltipCanvas.onmouseleave = function (e) {
+    //     mouseX = -999
+    //     mouseY = -999
+    //     renderTooltipCanvas();
+    // }
+    // tooltipCanvas.onwheel = function (e) {
+    //     if (selectedXFlip == selectedYFlip == e.deltaY > 0) {
+    //         selectedXFlip = !selectedXFlip
+    //     } else {
+    //         selectedYFlip = !selectedYFlip
+    //     }
+    //     e.preventDefault()
+    //     renderTooltipCanvas()
+    // }
 
-    document.getElementById("clearButton").onclick = function (e) {
+    document.getElementById("clearAllButton").onclick = function (e) {
         selectedSprites = []
         updateGFX()
     }
 
+    document.getElementById("clearConflictsButton").onclick = function (e) {
+        for (let i = selectedSprites.length - 1; i >= 0; i--) {
+            const sprite = selectedSprites[i];
+            for (let j = 0; j < sprite.tiles.length; j++) {
+                const [index, gfx] = sprite.tiles[j];
+                if (selectedTiles[index] && selectedTiles[index] != gfx) {
+                    selectedSprites.splice(i, 1)
+                    updateGFX()
+                }
+            }
+        }
+    }
+
     document.getElementById("randButton").onclick = function (e) {
-        const remainingSprites = allSprites.filter(({category}) => category !== "misc")
+        const remainingSprites = allSprites.filter(({ category }) => category !== "misc")
 
         for (let i = 0; i < selectedSprites.length; i++) {
             const sprite = selectedSprites[i];
@@ -2113,6 +2127,9 @@ window.onload = async function () {
             }
         }
     }
+
+    document.getElementById("download2Button").onclick = () => downloadGfx(2);
+    document.getElementById("download3Button").onclick = () => downloadGfx(3);
 
     const spriteTemplate = document.getElementById("spriteTemplate");
     allSprites.sort((a, b) => a.name > b.name ? 1 : -1)
@@ -2272,6 +2289,7 @@ function loadGfxFile(blob, gfx) {
 
         const pixels = snesToPixels(snesBytes);
 
+        gfxPixels[gfx] = pixels
         gfxBitmaps[gfx] = []
 
         for (let i = 0; i < 8; i++) {
@@ -2399,36 +2417,6 @@ function renderTooltipCanvas() {
     }
 }
 
-// modified from https://sneslab.net/wiki/Graphics_Format
-function snesToPixels(snesBytes) {
-    if (snesBytes.length % 32 > 0) {
-        return []
-    }
-
-    let b0, b1, b2, b3, p, mul
-    let pixels = []
-    let spriteIndex = 0
-    while (spriteIndex * 32 < snesBytes.length) {
-        for (let i = 0; i < 8; i++) {
-            mul = 1;
-            b0 = snesBytes[spriteIndex * 32 + i * 2];
-            b1 = snesBytes[spriteIndex * 32 + i * 2 + 1];
-            b2 = snesBytes[spriteIndex * 32 + i * 2 + 16];
-            b3 = snesBytes[spriteIndex * 32 + i * 2 + 17];
-            for (let j = 0; j < 8; j++) {
-                p = ((b0 & mul) | ((b1 & mul) << 1) | ((b2 & mul) << 2) | ((b3 & mul) << 3)) >> j;
-                mul <<= 1;
-                const x = (spriteIndex % 16) * 8 + 7 - j
-                const y = Math.floor(spriteIndex / 16) * 8 + i
-                pixels[x + y * 128] = p
-            }
-        }
-        spriteIndex++;
-    }
-
-    return pixels
-}
-
 function unsecuredCopyToClipboard(text) {
     const textArea = document.createElement("textarea");
     textArea.value = text;
@@ -2452,8 +2440,8 @@ function undo() {
 
 function updateGFX() {
     selectedTiles = []
-    const tileConflicts = []
 
+    let conflicts = false
     const spriteListElements = []
     const listElementTemplate = document.getElementById("listTemplate");
 
@@ -2465,8 +2453,8 @@ function updateGFX() {
             if (!selectedTiles[index]) {
                 selectedTiles[index] = gfx
             } else if (selectedTiles[index] != gfx) {
-                tileConflicts[index] = true;
                 conflict = true
+                conflicts = true
             }
         }
 
@@ -2504,19 +2492,28 @@ function updateGFX() {
         sprite.el.classList.toggle('disabled', allConflict);
     }
 
+    const slotEmpty = [true, true, true, true]
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 128; j++) {
+            if (selectedTiles[i * 128 + j]) {
+                slotEmpty[i] = false
+                break;
+            }
+        }
+    }
+    document.getElementById("download2Button").classList.toggle('disabled', slotEmpty[2]);
+    document.getElementById("download3Button").classList.toggle('disabled', slotEmpty[3]);
+
     if (currentSprite) {
         for (let j = 0; j < currentSprite.tiles.length; j++) {
             const [index, gfx] = currentSprite.tiles[j];
             if (!selectedTiles[index]) {
                 selectedTiles[index] = gfx
-            } else if (selectedTiles[index] != gfx) {
-                tileConflicts[index] = true;
             }
         }
     }
 
-
-    const remainingSprites = allSprites.filter(({category}) => category !== "misc")
+    const remainingSprites = allSprites.filter(({ category }) => category !== "misc")
 
     for (let i = 0; i < selectedSprites.length; i++) {
         const sprite = selectedSprites[i];
@@ -2534,9 +2531,100 @@ function updateGFX() {
         }
     }
 
-    document.getElementById("clearButton").classList.toggle('disabled', !selectedSprites.length);
+    document.getElementById("clearAllButton").classList.toggle('disabled', !selectedSprites.length);
+    document.getElementById("clearConflictsButton").classList.toggle('disabled', !conflicts);
     document.getElementById("randButton").classList.toggle('disabled', !remainingSprites.length);
 
     renderGfxCanvas()
     renderTooltipCanvas()
+}
+
+// modified from https://sneslab.net/wiki/Graphics_Format
+function snesToPixels(snesBytes) {
+    if (snesBytes.length % 32 > 0) {
+        return []
+    }
+
+    const pixels = []
+    let b0, b1, b2, b3, p, mul
+    let tileIndex = 0
+    while (tileIndex * 32 < snesBytes.length) {
+        for (let i = 0; i < 8; i++) {
+            mul = 1;
+            b0 = snesBytes[tileIndex * 32 + i * 2];
+            b1 = snesBytes[tileIndex * 32 + i * 2 + 1];
+            b2 = snesBytes[tileIndex * 32 + i * 2 + 16];
+            b3 = snesBytes[tileIndex * 32 + i * 2 + 17];
+            for (let j = 0; j < 8; j++) {
+                p = ((b0 & mul) | ((b1 & mul) << 1) | ((b2 & mul) << 2) | ((b3 & mul) << 3)) >> j;
+                mul <<= 1;
+                const x = (tileIndex % 16) * 8 + 7 - j
+                const y = Math.floor(tileIndex / 16) * 8 + i
+                pixels[x + y * 128] = p
+            }
+        }
+        tileIndex++;
+    }
+
+    return pixels
+}
+
+// input pixels must be stored one 8x8 tile after the last! not a regular pixel grid
+function pixelsToSnes(pixels) {
+    let snesBytes = new Int8Array(pixels.length / 2)
+    let b0, b1, b2, b3, pixel
+    let tile = 0
+    while (tile * 64 < pixels.length) {
+        for (let row = 0; row < 8; row++) {
+            b0 = 0;
+            b1 = 0;
+            b2 = 0;
+            b3 = 0;
+            for (let x = 0; x < 8; x++) {
+                pixel = pixels[tile * 64 + row * 8 + x]
+                b0 = (b0 * 2) | (pixel & 1)
+                b1 = (b1 * 2) | (pixel >> 1 & 1)
+                b2 = (b2 * 2) | (pixel >> 2 & 1)
+                b3 = (b3 * 2) | (pixel >> 3 & 1)
+            }
+            snesBytes[tile * 32 + row * 2] = b0
+            snesBytes[tile * 32 + row * 2 + 1] = b1
+            snesBytes[tile * 32 + row * 2 + 16] = b2
+            snesBytes[tile * 32 + row * 2 + 17] = b3
+        }
+
+        tile++;
+    }
+
+    return snesBytes
+}
+
+function downloadGfx(slot) {
+    // step 1 - loop through selectedTiles and copy pixels into new array
+    const pixels = []
+    for (let i = 0; i < 128; i++) {
+        const tile = selectedTiles[i + slot * 128];
+        let tileStart = (i % 16) * 8 + Math.floor(i / 16) * 1024
+        if (tile) {
+            for (let j = 0; j < 8; j++) {
+                pixels.push(...gfxPixels[tile].slice(tileStart, tileStart + 8))
+                tileStart += 128
+            }
+        } else {
+            // empty space - fill with something cool?
+            pixels.push(...Array.from({length: 64}, () => Math.floor(Math.random() * 64)))
+        }
+    }
+
+    // step 2 - convert pixels back to snes graphics format
+    const snesBytes = pixelsToSnes(pixels)
+
+    // step 3 - download as .bin file
+    const blob = new Blob([snesBytes], { type: "application/octet-stream" });
+
+    const link = document.createElement('a');
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "ExGFX80.bin";
+    link.click();
+    URL.revokeObjectURL(link.href);
 }

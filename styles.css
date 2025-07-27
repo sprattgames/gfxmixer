@@ -31,15 +31,15 @@ h2 {
 .flex-column {
     display: flex;
     flex-direction: column;
-
-    .flex-row:not(:last-child) {
-        margin-bottom: 8px;
-    }
 }
 
 .flex-row {
     display: flex;
     flex-direction: row;
+
+    >.button {
+        max-width: none;
+    }
 
     .flex-column:not(:last-child) {
         margin-right: 8px;
@@ -69,6 +69,7 @@ canvas {
 }
 
 .gfx-canvas {
+    flex: 0 0 0;
     margin-top: 16px;
     margin-bottom: 16px;
     padding: 8px;
@@ -89,6 +90,7 @@ canvas {
 
     .selected-list-element {
         cursor: pointer;
+        user-select: none;
         padding: 2px 4px;
         border-radius: 3px;
         display: flex;
@@ -149,6 +151,7 @@ canvas {
     min-width: max-content;
     max-width: max-content;
     max-height: 18px;
+    text-align: center;
 
     cursor: pointer;
     user-select: none;

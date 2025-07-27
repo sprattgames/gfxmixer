@@ -24,11 +24,18 @@
                 </div>
                 <canvas id="gfxCanvas" width="256" height="512" class="gfx-canvas"></canvas>
                 <div class="flex-row">
-                    <div id="clearButton" class="button disabled">Clear all</div>
-                    <div id="randButton" class="button">Random fill</div>
+                    <div id="randButton" class="button">Random</div>
+                    <div id="clearAllButton" class="button disabled">Clear all</div>
+                    <div id="clearConflictsButton" class="button disabled">Clear conflicts</div>
+                </div>
+                <div class="flex-row">
+                    <div id="download2Button" class="button disabled">Download SP2</div>
+                    <div id="download3Button" class="button disabled">Download SP3</div>
                 </div>
                 <div id="selectedList" class="selected-list"></div>
-                <div hidden id="listTemplate" class="selected-list-element"><div>x</div></div>
+                <div hidden id="listTemplate" class="selected-list-element">
+                    <div>x</div>
+                </div>
             </div>
         </div>
         <div class="flex-column">
@@ -85,7 +92,7 @@
             </div>
         </div>
     </div>
-    <canvas id="tooltipCanvas" width="256" height="256" class="sprite-tooltip"></canvas>
+    <canvas id="tooltipCanvas" width="256" height="256" class="sprite-tooltip" hidden></canvas>
 </body>
 
 </html>
