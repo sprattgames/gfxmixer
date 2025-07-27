@@ -6,60 +6,9 @@
 </head>
 
 <body>
-    <div class="main-container">
+    <div class="main-container flex-row">
         <div class="flex-column">
-            <div id="spriteTemplate" class="button"></div>
-            <div id="generic" class="spriteCategory">
-                <div class="header">Generic</div>
-            </div>
-            <div id="chuck" class="spriteCategory">
-                <div class="header">Chucks</div>
-            </div>
-            <div id="platform" class="spriteCategory">
-                <div class="header">Platforms</div>
-            </div>
-            <div id="line" class="spriteCategory">
-                <div class="header">Line-guided</div>
-            </div>
-            <div id="forest" class="spriteCategory">
-                <div class="header">Forest</div>
-            </div>
-            <div id="castle" class="spriteCategory">
-                <div class="header">Castle</div>
-            </div>
-            <div id="pokey" class="spriteCategory">
-                <div class="header">Pokey</div>
-            </div>
-            <div id="ghost" class="spriteCategory">
-                <div class="header">Ghost</div>
-            </div>
-            <div id="water" class="spriteCategory">
-                <div class="header">Water</div>
-            </div>
-            <div id="cave" class="spriteCategory">
-                <div class="header">Cave</div>
-            </div>
-            <div id="banzai" class="spriteCategory">
-                <div class="header">Banzai</div>
-            </div>
-            <div id="dino" class="spriteCategory">
-                <div class="header">Dino-rhino</div>
-            </div>
-            <div id="mecha" class="spriteCategory">
-                <div class="header">Mecha</div>
-            </div>
-            <div id="boss" class="spriteCategory">
-                <div class="header">Bosses</div>
-            </div>
-            <div id="particle" class="spriteCategory">
-                <div class="header">Particles & block animations</div>
-            </div>
-            <div id="misc" class="spriteCategory">
-                <div class="header">Misc</div>
-            </div>
-        </div>
-        <div class="flex-column">
-            <div class="sticky">
+            <div class="sidebar">
                 <h1>
                     Vanilla<br>
                     Graphics<br>
@@ -73,18 +22,70 @@
                     <select name="gfx3" id="gfx3Select"></select>
                     <select name="palettes" id="paletteSelect"></select>
                 </div>
-                <canvas id="gfxCanvas" width="256" height="512" class="gfxCanvas"></canvas>
-                <div id="clearButton" class="button">Clear all</div>
-                <div>
-                    <!-- <select name="sprites" id="spriteSelect"></select> -->
-                    <!-- <button id="clearButton">Clear</button>
-                        <button id="undoButton">Undo</button>
-                        <button id="copyButton">Copy</button> -->
+                <canvas id="gfxCanvas" width="256" height="512" class="gfx-canvas"></canvas>
+                <div class="flex-row">
+                    <div id="clearButton" class="button disabled">Clear all</div>
+                    <div id="randButton" class="button">Random fill</div>
+                </div>
+                <div id="selectedList" class="selected-list"></div>
+                <div hidden id="listTemplate" class="selected-list-element"><div>x</div></div>
+            </div>
+        </div>
+        <div class="flex-column">
+            <div class="category-list">
+                <div id="spriteTemplate" class="button"></div>
+                <div id="generic" class="sprite-category">
+                    <div class="header">Common</div>
+                </div>
+                <div id="chuck" class="sprite-category">
+                    <div class="header">Chucks</div>
+                </div>
+                <div id="platform" class="sprite-category">
+                    <div class="header">Platforms</div>
+                </div>
+                <div id="forest" class="sprite-category">
+                    <div class="header">Forest</div>
+                </div>
+                <div id="castle" class="sprite-category">
+                    <div class="header">Castle</div>
+                </div>
+                <div id="mushroom" class="sprite-category">
+                    <div class="header">Mushroom</div>
+                </div>
+                <div id="cave" class="sprite-category">
+                    <div class="header">Cave</div>
+                </div>
+                <div id="water" class="sprite-category">
+                    <div class="header">Water</div>
+                </div>
+                <div id="pokey" class="sprite-category">
+                    <div class="header">Pokey</div>
+                </div>
+                <div id="ghost" class="sprite-category">
+                    <div class="header">Ghost</div>
+                </div>
+                <div id="banzai" class="sprite-category">
+                    <div class="header">Banzai</div>
+                </div>
+                <div id="dino" class="sprite-category">
+                    <div class="header">Dino</div>
+                </div>
+                <div id="mecha" class="sprite-category">
+                    <div class="header">Mecha</div>
+                </div>
+                <div id="boss" class="sprite-category">
+                    <div class="header">Bosses</div>
+                </div>
+                <div id="particle" class="sprite-category">
+                    <div class="header">Particles & block animations</div>
+                </div>
+                <div id="misc" class="sprite-category">
+                    <div class="header">Misc</div>
                 </div>
             </div>
         </div>
     </div>
-    <canvas id="spriteCanvas" width="256" height="256" class="spriteTooltip"></canvas>
+    <canvas id="tooltipCanvas" width="256" height="256" class="sprite-tooltip"></canvas>
 </body>
 
 </html>

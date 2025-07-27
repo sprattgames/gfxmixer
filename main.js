@@ -423,7 +423,7 @@ const allSprites = [{
         [3, 1, 14, 6, false, 64, 64, false, false]
     ]
 }, {
-    name: "Ball n' Chain",
+    name: "Ball 'n' Chain",
     category: "castle",
     slot3: "GFX03",
     displayTiles: [
@@ -642,13 +642,13 @@ const allSprites = [{
     ]
 }, {
     name: "Goal Orb",
-    category: "generic",
+    category: "mushroom",
     slot3: "GFX05",
     displayTiles: [
         [3, 5, 12, 0, false, 56, 56, true, false],
     ]
 }, {
-    name: "Monty Mole (ground)",
+    name: "Monty Mole (Ground)",
     category: "pokey",
     slot3: "GFX09",
     displayTiles: [
@@ -659,7 +659,7 @@ const allSprites = [{
         [3, 0, 2, 0, false, 76, 56, false, false]
     ]
 }, {
-    name: "Monty Mole (ledge)",
+    name: "Monty Mole (Ledge)",
     category: "pokey",
     slot3: "GFX09",
     displayTiles: [
@@ -722,7 +722,7 @@ const allSprites = [{
         [3, 1, 5, 0, false, 72, 48, true, false],
     ]
 }, {
-    name: "Grey / Brown Platforms (Thin)",
+    name: "Grey / Brown Platforms (Regular)",
     category: "platform",
     slot2: "GFX13",
     displayTiles: [
@@ -735,7 +735,7 @@ const allSprites = [{
         [2, 1, 2, 6, false, 80, 44, false, false],
     ]
 }, {
-    name: "Grey / Brown Platforms (Thick)",
+    name: "Grey / Brown Platforms (Castle)",
     category: "platform",
     slot2: "GFX12",
     displayTiles: [
@@ -748,31 +748,9 @@ const allSprites = [{
         [2, 1, 2, 6, false, 80, 44, false, false],
     ]
 }, {
-    name: "Rotating Brown / Grey Platforms (Thin)",
+    name: "Rotating Platforms",
     category: "platform",
     slot2: "GFX13",
-    slot3: "GFX05",
-    displayTiles: [
-        [3, 0, 2, 2, false, 56, 24, false, false],
-        [2, 0, 1, 6, false, 48, 20, false, false],
-        [2, 0, 1, 6, false, 64, 20, false, false],
-        [2, 0, 0, 6, false, 32, 20, false, false],
-        [2, 0, 2, 6, false, 80, 20, false, false],
-        [3, 0, 2, 2, false, 66, 36, false, false],
-        [3, 0, 2, 2, false, 76, 48, false, false],
-        [3, 0, 2, 2, false, 86, 60, false, false],
-        [3, 0, 2, 2, false, 96, 72, false, false],
-        [3, 1, 2, 2, false, 56, 96, false, false],
-        [3, 1, 2, 2, false, 48, 82, false, false],
-        [3, 1, 2, 2, false, 40, 68, false, false],
-        [2, 1, 1, 6, false, 56, 92, false, false],
-        [2, 1, 0, 6, false, 40, 92, false, false],
-        [2, 1, 2, 6, false, 72, 92, false, false],
-    ]
-}, {
-    name: "Rotating Brown / Grey Platforms (Thick)",
-    category: "platform",
-    slot2: "GFX12",
     slot3: "GFX05",
     displayTiles: [
         [3, 0, 2, 2, false, 56, 24, false, false],
@@ -835,7 +813,7 @@ const allSprites = [{
     ]
 }, {
     name: "Rope Mechanism",
-    category: "line",
+    category: "mushroom",
     slot3: "GFX05",
     displayTiles: [
         [3, 3, 0, 4, false, 36, 32, false, false],
@@ -856,7 +834,7 @@ const allSprites = [{
     ]
 }, {
     name: "Chainsaw",
-    category: "line",
+    category: "mushroom",
     slot3: "GFX05",
     displayTiles: [
         [3, 1, 14, 2, false, 32, 56, false, false],
@@ -871,7 +849,7 @@ const allSprites = [{
     ]
 }, {
     name: "Fuzzy",
-    category: "line",
+    category: "mushroom",
     slot3: "GFX05",
     displayTiles: [
         [3, 2, 8, 4, false, 56, 56, false, false],
@@ -1125,7 +1103,7 @@ const allSprites = [{
     ]
 }, {
     name: "Mushroom Platforms",
-    category: "platform",
+    category: "mushroom",
     slot3: "GFX05",
     displayTiles: [
         [3, 5, 0, 0, false, 48, 56, false, false],
@@ -1207,14 +1185,14 @@ const allSprites = [{
     ]
 }, {
     name: "Football",
-    category: "generic",
+    category: "cave",
     slot3: "GFX04",
     displayTiles: [
         [3, 0, 10, 0, false, 56, 56, false, false],
     ]
 }, {
     name: "Bouncing Rock",
-    category: "generic",
+    category: "mushroom",
     slot3: "GFX05",
     displayTiles: [
         [3, 6, 4, 4, false, 44, 56, false, false],
@@ -1676,10 +1654,10 @@ const allSprites = [{
         [3, 5, 4, 4, false, 44, 68, true, false],
         [3, 5, 4, 4, false, 68, 68, false, false],
         [3, 5, 4, 4, false, 84, 68, true, false],
-        [3, 0, 3, 3, true, 40, 48, false, false],
-        [3, 0, 4, 3, true, 80, 48, false, false],
-        [3, 0, 5, 3, true, 40, 72, false, false],
-        [3, 0, 6, 3, true, 80, 72, false, false]
+        [3, 5, 3, 3, true, 40, 48, false, false],
+        [3, 5, 4, 3, true, 80, 48, false, false],
+        [3, 5, 5, 3, true, 40, 72, false, false],
+        [3, 5, 6, 3, true, 80, 72, false, false]
     ]
 }, {
     name: "Swooper Bat",
@@ -1692,7 +1670,7 @@ const allSprites = [{
     ]
 }, {
     name: "Vertical Bullets",
-    category: "generic",
+    category: "mushroom",
     slot3: "GFX05",
     displayTiles: [
         [3, 1, 4, 2, false, 44, 44, false, false],
@@ -1702,7 +1680,7 @@ const allSprites = [{
     ]
 }, {
     name: "Diagonal Bullets",
-    category: "generic",
+    category: "mushroom",
     slot3: "GFX05",
     displayTiles: [
         [3, 1, 6, 2, false, 68, 68, true, false],
@@ -1712,14 +1690,14 @@ const allSprites = [{
     ]
 }, {
     name: "On/Off Switch Bounce Tile",
-    category: "misc",
+    category: "particle",
     slot3: "GFX03",
     displayTiles: [
         [3, 3, 10, 0, false, 56, 56, false, false]
     ]
 }, {
     name: "Note Block Bounce Tile",
-    category: "misc",
+    category: "particle",
     slot2: "GFX13",
     displayTiles: [
         [2, 1, 11, 6, false, 56, 56, false, false]
@@ -1956,9 +1934,10 @@ const gfxBitmaps = {}
 
 let selectedSprites = []
 let selectedTiles = []
-let currentSprite = null
+let currentSprite
+let tooltipTimeout
 
-let gfxCtx, spriteCtx
+let gfxCtx, spriteCtx, tooltipCanvas
 let selectedTile = -1
 let selected8x8 = true
 let selectedXFlip = false
@@ -2027,14 +2006,14 @@ window.onload = async function () {
         document.getElementById("paletteSelect").value = activePaletteIndex
         e.preventDefault()
         renderGfxCanvas()
-        renderSpriteCanvas()
+        renderTooltipCanvas()
     }
 
-    const spriteCanvas = document.getElementById("spriteCanvas");
-    spriteCanvas.setAttribute("width", 128 * spriteScale)
-    spriteCanvas.setAttribute("height", 128 * spriteScale)
-    spriteCtx = spriteCanvas.getContext("2d");
-    spriteCanvas.onclick = function (e) {
+    tooltipCanvas = document.getElementById("tooltipCanvas");
+    tooltipCanvas.setAttribute("width", 128 * spriteScale)
+    tooltipCanvas.setAttribute("height", 128 * spriteScale)
+    spriteCtx = tooltipCanvas.getContext("2d");
+    tooltipCanvas.onclick = function (e) {
         if (selectedTile > -1) {
             let x, y
             if (selected8x8) {
@@ -2064,10 +2043,10 @@ window.onload = async function () {
                 selectedYFlip
             ])
         }
-        renderSpriteCanvas();
+        renderTooltipCanvas();
         e.preventDefault();
     }
-    spriteCanvas.onmousemove = function (e) {
+    tooltipCanvas.onmousemove = function (e) {
         if (selected8x8) {
             mouseX = Math.floor(e.offsetX / spriteScale - 4)
             mouseY = Math.floor(e.offsetY / spriteScale - 4)
@@ -2082,21 +2061,21 @@ window.onload = async function () {
             mouseX = Math.floor(mouseX / 4 + 0.5) * 4
             mouseY = Math.floor(mouseY / 4 + 0.5) * 4
         }
-        renderSpriteCanvas();
+        renderTooltipCanvas();
     }
-    spriteCanvas.onmouseleave = function (e) {
+    tooltipCanvas.onmouseleave = function (e) {
         mouseX = -999
         mouseY = -999
-        renderSpriteCanvas();
+        renderTooltipCanvas();
     }
-    spriteCanvas.onwheel = function (e) {
+    tooltipCanvas.onwheel = function (e) {
         if (selectedXFlip == selectedYFlip == e.deltaY > 0) {
             selectedXFlip = !selectedXFlip
         } else {
             selectedYFlip = !selectedYFlip
         }
         e.preventDefault()
-        renderSpriteCanvas()
+        renderTooltipCanvas()
     }
 
     document.getElementById("clearButton").onclick = function (e) {
@@ -2104,42 +2083,68 @@ window.onload = async function () {
         updateGFX()
     }
 
+    document.getElementById("randButton").onclick = function (e) {
+        const remainingSprites = allSprites.filter(({category}) => category !== "misc")
+
+        for (let i = 0; i < selectedSprites.length; i++) {
+            const sprite = selectedSprites[i];
+            remainingSprites.splice(remainingSprites.findIndex(x => x == sprite), 1)
+        }
+
+        while (remainingSprites.length > 0) {
+            for (let i = remainingSprites.length - 1; i >= 0; i--) {
+                const sprite = remainingSprites[i];
+                for (let j = 0; j < sprite.tiles.length; j++) {
+                    const [index, gfx] = sprite.tiles[j];
+                    if (selectedTiles[index] && selectedTiles[index] !== gfx) {
+                        remainingSprites.splice(i, 1)
+                        break;
+                    }
+                }
+            }
+
+            if (remainingSprites.length > 0) {
+                const index = Math.floor(Math.random() * remainingSprites.length)
+                selectedSprites.push(remainingSprites[index])
+                remainingSprites.splice(index, 1)
+                updateGFX()
+            } else {
+                return
+            }
+        }
+    }
+
     const spriteTemplate = document.getElementById("spriteTemplate");
     allSprites.sort((a, b) => a.name > b.name ? 1 : -1)
-    let tooltipTimeout 
     for (let i = 0; i < allSprites.length; i++) {
         const sprite = allSprites[i];
         const clone = spriteTemplate.cloneNode(true)
         clone.setAttribute('id', i)
         clone.innerText = sprite.name
         sprite.el = clone
-        clone.onmouseover = function (e) {
-            const tooltip = document.getElementById("spriteCanvas");
-            tooltip.hidden = false;
+        clone.onmouseenter = function (e) {
             currentSprite = allSprites[this.id];
-            clearTimeout(tooltipTimeout)
             updateGFX();
-        }
-        clone.onmousemove = function (e) {
-            const tooltip = document.getElementById("spriteCanvas");
-            const rect = clone.getBoundingClientRect()
-            let x = rect.left + (rect.width - tooltip.clientWidth) / 2
-            let y = rect.top - tooltip.clientHeight - 8
-            x = Math.min(x, window.innerWidth - tooltip.clientWidth - 12)
+
+            clearTimeout(tooltipTimeout)
+            tooltipCanvas.hidden = false;
+            const rect = this.getBoundingClientRect()
+            let x = (rect.left + rect.right - tooltipCanvas.clientWidth) / 2
+            let y = rect.top - tooltipCanvas.clientHeight - 8
+            x = Math.min(x, window.innerWidth - tooltipCanvas.clientWidth - 12)
             x = Math.max(x, 12)
             if (y < 12) {
                 y = rect.bottom + 8
             }
-            tooltip.style.left = x + window.scrollX
-            tooltip.style.top = y + window.scrollY
+            tooltipCanvas.style.left = x + window.scrollX
+            tooltipCanvas.style.top = y + window.scrollY
         }
         clone.onmouseleave = function (e) {
             tooltipTimeout = setTimeout(() => {
-                const tooltip = document.getElementById("spriteCanvas");
-                tooltip.hidden = true;
+                tooltipCanvas.hidden = true;
                 currentSprite = null;
                 updateGFX();
-            }, 100)
+            }, 50)
         }
         clone.onclick = function (e) {
             const spriteTiles = sprite.tiles;
@@ -2161,7 +2166,11 @@ window.onload = async function () {
             updateGFX();
             e.preventDefault();
         }
-        document.getElementById(sprite.category).appendChild(clone)
+        let category = document.getElementById(sprite.category)
+        if (!category) {
+            category = document.getElementById("misc")
+        }
+        category.appendChild(clone)
     }
     spriteTemplate.remove()
 
@@ -2174,22 +2183,22 @@ window.onload = async function () {
     //             break;
     //         case "ArrowLeft":
     //             selectedSprite.displayTiles.forEach((step) => { step[5] -= 4 })
-    //             renderSpriteCanvas()
+    //             renderTooltipCanvas()
     //             e.preventDefault()
     //             break;
     //         case "ArrowRight":
     //             selectedSprite.displayTiles.forEach((step) => { step[5] += 4 })
-    //             renderSpriteCanvas()
+    //             renderTooltipCanvas()
     //             e.preventDefault()
     //             break;
     //         case "ArrowUp":
     //             selectedSprite.displayTiles.forEach((step) => { step[6] -= 4 })
-    //             renderSpriteCanvas()
+    //             renderTooltipCanvas()
     //             e.preventDefault()
     //             break;
     //         case "ArrowDown":
     //             selectedSprite.displayTiles.forEach((step) => { step[6] += 4 })
-    //             renderSpriteCanvas()
+    //             renderTooltipCanvas()
     //             e.preventDefault()
     //             break;
     //         default:
@@ -2210,7 +2219,7 @@ window.onload = async function () {
     // paletteSelect.onchange = function (e) {
     //     activePaletteIndex = +(e.target.value)
     //     renderGfxCanvas()
-    //     renderSpriteCanvas()
+    //     renderTooltipCanvas()
     // }
 
     // // populate sprite select
@@ -2222,7 +2231,7 @@ window.onload = async function () {
     // spriteSelect.value = allSprites.length - 1
     // spriteSelect.onchange = function (e) {
     //     selectedSprite = allSprites[+(e.target.value)]
-    //     renderSpriteCanvas()
+    //     renderTooltipCanvas()
     // }
 
     // // populate gfx select
@@ -2242,7 +2251,7 @@ window.onload = async function () {
     //     select.onchange = async function (e) {
     //         gfxSlots[i] = e.target.value;
     //         renderGfxCanvas()
-    //         renderSpriteCanvas()
+    //         renderTooltipCanvas()
     //     }
     // }
 
@@ -2253,7 +2262,7 @@ window.onload = async function () {
     };
 
     renderGfxCanvas()
-    renderSpriteCanvas()
+    renderTooltipCanvas()
 };
 
 function loadGfxFile(blob, gfx) {
@@ -2322,62 +2331,71 @@ function renderGfxCanvas() {
     }
 }
 
-function renderSpriteCanvas() {
-    spriteCtx.reset()
-    spriteCtx.resetTransform()
-    spriteCtx.scale(spriteScale, spriteScale)
-    spriteCtx.imageSmoothingEnabled = false;
-
-    // draw center point
-    // spriteCtx.strokeStyle = "darkslategrey";
-    // spriteCtx.moveTo(64, 0);
-    // spriteCtx.lineTo(64, 256);
-    // spriteCtx.moveTo(0, 64);
-    // spriteCtx.lineTo(256, 64);
-    // spriteCtx.stroke()
-
+function renderTooltipCanvas() {
     if (currentSprite) {
+        let top, left, right, bottom
+        for (let i = 0; i < currentSprite.displayTiles.length; i++) {
+            const [slot, palette, tx, ty, is8x8, x, y] = currentSprite.displayTiles[i]
+            if (left == undefined || x < left) {
+                left = x
+            }
+            if (right == undefined || x + (is8x8 ? 8 : 16) > right) {
+                right = x + (is8x8 ? 8 : 16)
+            }
+            if (top == undefined || y < top) {
+                top = y
+            }
+            if (bottom == undefined || y + (is8x8 ? 8 : 16) > bottom) {
+                bottom = y + (is8x8 ? 8 : 16)
+            }
+        }
+        tooltipCanvas.width = (right - left) * spriteScale
+        tooltipCanvas.height = (bottom - top) * spriteScale
+
+        spriteCtx.reset()
+        spriteCtx.resetTransform()
+        spriteCtx.imageSmoothingEnabled = false;
+        spriteCtx.scale(spriteScale, spriteScale)
+        spriteCtx.translate(-left, -top)
+
+
+
         for (let i = 0; i < currentSprite.displayTiles.length; i++) {
             const [slot, palette, tx, ty, is8x8, x, y, xFlip, yFlip] = currentSprite.displayTiles[i]
             const preferredGfx = [currentSprite.slot0, currentSprite.slot1, currentSprite.slot2, currentSprite.slot3]
             const size = is8x8 ? 8 : 16
-            const bitmap = gfxBitmaps[preferredGfx[slot] ?? gfxSlots[slot]][palette];
+            // const bitmap = gfxBitmaps[preferredGfx[slot] ?? gfxSlots[slot]][palette];
             const xScale = xFlip ? -1 : 1
             const yScale = yFlip ? -1 : 1
 
             spriteCtx.save();
 
-            spriteCtx.translate(x, y);
-            spriteCtx.scale(xScale, yScale);
-            spriteCtx.translate(-x, -y);
+            if (is8x8) {
+                spriteCtx.translate(x, y);
+                spriteCtx.scale(xScale, yScale);
+                spriteCtx.translate(-x, - y);
+            } else {
+                spriteCtx.translate(x + 4, y + 4);
+                spriteCtx.scale(xScale, yScale);
+                spriteCtx.translate(-x - 4, - y - 4);
+            }
 
-            spriteCtx.drawImage(bitmap, tx * 8, ty * 8, size, size, x, y, size * xScale, size * yScale);
+            // spriteCtx.drawImage(bitmap, tx * 8, ty * 8 + slot * 128, size, size, x, y, size * xScale, size * yScale);
 
-            spriteCtx.restore();
-            spriteCtx.restore();
+            const tileIndex = tx + ty * 16 + slot * 128
+            let bitmap = gfxBitmaps[selectedTiles[tileIndex] ?? preferredGfx[slot] ?? gfxSlots[slot]][palette];
+            spriteCtx.drawImage(bitmap, tx * 8, ty * 8, 8, 8, x, y, 8 * xScale, 8 * yScale)
+            if (!is8x8) {
+                bitmap = gfxBitmaps[selectedTiles[tileIndex + 1] ?? preferredGfx[slot] ?? gfxSlots[slot]][palette];
+                spriteCtx.drawImage(bitmap, tx * 8 + 8, ty * 8, 8, 8, x + 8, y, 8 * xScale, 8 * yScale)
+                bitmap = gfxBitmaps[selectedTiles[tileIndex + 16] ?? preferredGfx[slot] ?? gfxSlots[slot]][palette];
+                spriteCtx.drawImage(bitmap, tx * 8, ty * 8 + 8, 8, 8, x, y + 8, 8 * xScale, 8 * yScale)
+                bitmap = gfxBitmaps[selectedTiles[tileIndex + 17] ?? preferredGfx[slot] ?? gfxSlots[slot]][palette];
+                spriteCtx.drawImage(bitmap, tx * 8 + 8, ty * 8 + 8, 8, 8, x + 8, y + 8, 8 * xScale, 8 * yScale)
+            }
+
             spriteCtx.restore();
         }
-    }
-    // draw mouse
-    if (selectedTile > -1) {
-        const tx = selectedTile % 16
-        const ty = Math.floor(selectedTile / 16) % 8
-        const size = selected8x8 ? 8 : 16
-        const bitmap = gfxBitmaps[gfxSlots[Math.floor(selectedTile / 128)]][activePaletteIndex];
-        const xScale = selectedXFlip ? -1 : 1
-        const yScale = selectedYFlip ? -1 : 1
-
-        spriteCtx.save();
-
-        spriteCtx.globalAlpha = 0.5;
-
-        spriteCtx.translate(mouseX, mouseY);
-        spriteCtx.scale(xScale, yScale);
-        spriteCtx.traslate(-mouseX, -mouseY);
-
-        spriteCtx.drawImage(bitmap, tx * 8, ty * 8, size, size, mouseX, mouseY, size * xScale, size * yScale);
-
-        spriteCtx.restore();
     }
 }
 
@@ -2428,7 +2446,7 @@ function unsecuredCopyToClipboard(text) {
 function undo() {
     if (currentSprite && currentSprite.displayTiles.length > 0) {
         currentSprite.displayTiles.pop()
-        renderSpriteCanvas()
+        renderTooltipCanvas()
     }
 }
 
@@ -2436,25 +2454,44 @@ function updateGFX() {
     selectedTiles = []
     const tileConflicts = []
 
+    const spriteListElements = []
+    const listElementTemplate = document.getElementById("listTemplate");
+
     for (let i = 0; i < selectedSprites.length; i++) {
         const spriteTiles = selectedSprites[i].tiles;
+        let conflict = false
         for (let j = 0; j < spriteTiles.length; j++) {
             const [index, gfx] = spriteTiles[j];
             if (!selectedTiles[index]) {
                 selectedTiles[index] = gfx
             } else if (selectedTiles[index] != gfx) {
                 tileConflicts[index] = true;
+                conflict = true
             }
         }
+
+        const clone = listElementTemplate.cloneNode()
+        clone.removeAttribute("id")
+        clone.hidden = false
+        clone.innerText = selectedSprites[i].name
+        if (conflict) {
+            clone.classList.add("conflict")
+        }
+        clone.onclick = function (e) {
+            selectedSprites.splice(i, 1)
+            updateGFX()
+        }
+        spriteListElements.push(clone)
     }
+
+    document.getElementById("selectedList").replaceChildren(...spriteListElements)
 
     for (let i = 0; i < allSprites.length; i++) {
         const sprite = allSprites[i]
-        const spriteTiles = sprite.tiles;
         let someConflict = false
         let allConflict = true
-        for (let j = 0; j < spriteTiles.length; j++) {
-            const [index, gfx] = spriteTiles[j];
+        for (let j = 0; j < sprite.tiles.length; j++) {
+            const [index, gfx] = sprite.tiles[j];
             if (selectedTiles[index] && selectedTiles[index] != gfx) {
                 someConflict = true;
             } else {
@@ -2478,6 +2515,28 @@ function updateGFX() {
         }
     }
 
+
+    const remainingSprites = allSprites.filter(({category}) => category !== "misc")
+
+    for (let i = 0; i < selectedSprites.length; i++) {
+        const sprite = selectedSprites[i];
+        remainingSprites.splice(remainingSprites.findIndex(x => x == sprite), 1)
+    }
+
+    for (let i = remainingSprites.length - 1; i >= 0; i--) {
+        const sprite = remainingSprites[i];
+        for (let j = 0; j < sprite.tiles.length; j++) {
+            const [index, gfx] = sprite.tiles[j];
+            if (selectedTiles[index] && selectedTiles[index] !== gfx) {
+                remainingSprites.splice(i, 1)
+                break;
+            }
+        }
+    }
+
+    document.getElementById("clearButton").classList.toggle('disabled', !selectedSprites.length);
+    document.getElementById("randButton").classList.toggle('disabled', !remainingSprites.length);
+
     renderGfxCanvas()
-    renderSpriteCanvas()
+    renderTooltipCanvas()
 }
