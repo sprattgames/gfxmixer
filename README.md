@@ -4,14 +4,14 @@
 
 --------------
 
-Todo:
-====
+#### Todo:
 
-[ ] sprite search bar
-[ ] better categories/tags
-[ ] custom palettes
 
-To never do (someone else can implement this if they want it):
+- sprite search bar
+- better categories/tags
+- custom palettes
 
-[ ] remap sprite locations (for use with STEAR etc)
-[ ] custom sprites
+#### To never do (someone else can implement this if they want it):
+
+- remap sprite locations (for use with STEAR etc)
+- custom sprites
