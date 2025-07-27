@@ -6,7 +6,6 @@
 
 #### Todo:
 
-
 - sprite search bar
 - better categories/tags
 - custom palettes

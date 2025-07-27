@@ -2249,7 +2249,7 @@ window.onload = async function () {
 
     // import GFX files
     for (let i = 0; i < gfxFileNames.length; i++) {
-        const blob = await fetch(`/gfx/${gfxFileNames[i]}.bin`);
+        const blob = await fetch(`gfx/${gfxFileNames[i]}.bin`);
         await loadGfxFile(blob, gfxFileNames[i]);
     };
 
