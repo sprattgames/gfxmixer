@@ -5,19 +5,6 @@ body {
     margin: 0;
 }
 
-h1 {
-    margin: 0;
-    font-size: xx-large;
-    text-align: right;
-}
-
-h2 {
-    margin: 0;
-    font-size: medium;
-    color: rgba(245, 245, 245, 0.767);
-    text-align: right;
-}
-
 .main-container {
     background-color: rgb(41, 68, 71);
     justify-content: space-between;
@@ -27,6 +14,49 @@ h2 {
     border-radius: 2px;
 }
 
+h1 {
+    margin: 0;
+    font-size: xx-large;
+    text-align: right;
+}
+
+h2 {
+    margin: 0;
+    font-size: medium;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: right;
+    a {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+
+h3 {
+    margin: 0;
+    font-size: x-large;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+p {
+    margin: 0;
+    font-size: large;
+    color: white;
+    margin-bottom: 24px;
+    margin-left: 12px;
+    a {
+        color: white;
+        text-decoration: underline;
+        &:hover {
+            color: rgba(255, 255, 255, 0.75);
+        }
+    }
+}
 
 .flex-column {
     display: flex;
@@ -104,6 +134,7 @@ canvas {
             background-color: rgb(51, 99, 104);
 
             &::after {
+                color: white;
                 content: "(click to remove)";
                 display: flex;
                 right: 0;
@@ -210,5 +241,73 @@ canvas {
     &:active:not(.disabled) {
         box-shadow: none;
         background-color: rgb(103, 125, 129);
+    }
+}
+
+.help {
+    position: fixed;
+    top: -8px;
+    left: 0;
+    right: 0;
+    max-width: 1200px;
+    margin: 0px auto;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+
+    &:hover {
+        .modal {
+            transform: translateY(0);
+        }
+        .background {
+            opacity: 1;
+        }
+    }
+
+    .background {
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.25);
+        opacity: 0;
+        transition: opacity 0.1s;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        pointer-events: none;
+    }
+
+    .modal {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.25);
+        background-color: rgb(51, 96, 102);
+        margin: 0px 16px 16px 368px;
+        padding: 48px 24px;
+        border-radius: 4px;
+        pointer-events: auto;
+        transition: transform 0.1s;
+        transform: translateY(-100%);
+    }
+
+    .tab {
+        position: absolute;
+        top: 0px;
+        right: 8px;
+        overflow: hidden;
+        width: max-content;
+        padding: 0px 8px 8px 8px;
+        height: 40px;
+        pointer-events: none;
+
+        div {
+            padding: 8px 12px;
+            padding-top: 16px;
+            background-color: rgb(51, 96, 102);
+            border-radius: 0px 0px 4px 4px;
+            box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.25);
+            pointer-events: auto;
+            user-select: none;
+        }
     }
 }

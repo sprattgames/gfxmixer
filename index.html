@@ -14,7 +14,7 @@
                     Graphics<br>
                     Mixer
                 </h1>
-                <h2>by spratt</h2>
+                <h2>by <a href="https://www.smwcentral.net/?p=profile&id=57900" target="_blank">spratt</a></h2>
                 <div hidden>
                     <select name="gfx0" id="gfx0Select"></select>
                     <select name="gfx1" id="gfx1Select"></select>
@@ -29,8 +29,8 @@
                     <div id="clearConflictsButton" class="button disabled">Clear conflicts</div>
                 </div>
                 <div class="flex-row">
-                    <div id="download2Button" class="button disabled">Download SP2</div>
-                    <div id="download3Button" class="button disabled">Download SP3</div>
+                    <div id="download2Button" class="button disabled">Download SP3</div>
+                    <div id="download3Button" class="button disabled">Download SP4</div>
                 </div>
                 <div id="selectedList" class="selected-list"></div>
                 <div hidden id="listTemplate" class="selected-list-element">
@@ -93,6 +93,49 @@
         </div>
     </div>
     <canvas id="tooltipCanvas" width="256" height="256" class="sprite-tooltip" hidden></canvas>
+    <div class="help">
+        <div class="background"></div>
+        <div class="tab">
+            <div>
+                Help
+            </div>
+        </div>
+        <div class="modal">
+            <h3>What is this?</h3>
+            <p>
+                <b>Vanilla Graphics Mixer</b> is a tool to simplify the process of merging Super Mario World
+                sprite GFX files. This allows you to use combinations of sprites that don't appear in the original
+                game (Dry bones + Mechakoopas, for example).
+            </p>
+            <br>
+            <h3>How does it work?</h3>
+            <p>
+                Start by selecting sprites from the list on the right. Sprites that conflict with your selections
+                will turn grey, and the preview tooltip will show which parts of the sprite will have the wrong tiles.
+                If a sprite is fully incompatible then it will be disabled.
+                <br>
+                <br>
+                The panel on the left shows the full graphics sheet. You can change the selected palette by scrolling.
+                Selected sprites will appear in a list below the gfx panel. Sprites with tile conflicts will be
+                highlighted.
+                Clicking on a sprite from the list will remove it.
+                <br>
+                <br>
+                The <i>random</i> button will fill remainging space in the gfx file with randomly selected sprites. It
+                will only choose sprites that do not conflict with what you've already selected, and won't pick anything
+                from the "misc" category.
+                <br>
+                <br>
+                To get the graphics into your romhack, make sure to download both SP3 and SP4 gfx files and insert them
+                as ExGFX. If you don't know how to do that, check out the
+                <a href="https://www.smwcentral.net/?p=faq&page=1219826-graphics">SMWCentral FAQ</a>.
+            </p>
+            <br>
+            <h3>I found a bug!</h3>
+            <p> Report it on <a href="https://github.com/sprattgames/gfxmixer">the github</a> please! Or even better,
+                fix it for me! </p>
+        </div>
+    </div>
 </body>
 
 </html>
