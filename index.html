@@ -1,8 +1,10 @@
 <html>
 
 <head>
+    <title>GFX Mixer</title>
     <script src="main.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 
 <body>
@@ -23,19 +25,14 @@
                     <select name="palettes" id="paletteSelect"></select>
                 </div>
                 <canvas id="gfxCanvas" width="256" height="512" class="gfx-canvas"></canvas>
-                <div class="flex-row">
+                <div class="buttons-container">
                     <div id="randButton" class="button">Random</div>
                     <div id="clearAllButton" class="button disabled">Clear all</div>
-                    <div id="clearConflictsButton" class="button disabled">Clear conflicts</div>
-                </div>
-                <div class="flex-row">
                     <div id="download2Button" class="button disabled">Download SP3</div>
                     <div id="download3Button" class="button disabled">Download SP4</div>
                 </div>
                 <div id="selectedList" class="selected-list"></div>
-                <div hidden id="listTemplate" class="selected-list-element">
-                    <div>x</div>
-                </div>
+                <div hidden id="listTemplate" class="selected-list-element"></div>
             </div>
         </div>
         <div class="flex-column">
@@ -132,8 +129,11 @@
             </p>
             <br>
             <h3>I found a bug!</h3>
-            <p> Report it on <a href="https://github.com/sprattgames/gfxmixer">the github</a> please! Or even better,
-                fix it for me! </p>
+            <p> Report it on <a href="https://github.com/sprattgames/gfxmixer">the github</a> please! You can also
+                request features there (no promises). </p>
+            <br>
+            <h3>Can I use this for evil?</h3>
+            <p>Yes.</p>
         </div>
     </div>
 </body>

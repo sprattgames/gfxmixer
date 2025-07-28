@@ -1900,7 +1900,7 @@ for (let i = 0; i < allSprites.length; i++) {
 //  ==============================================================
 
 const gfxScale = 2;
-const spriteScale = 2;
+const spriteScale = 3;
 
 let activePaletteIndex = 0;
 const allGfx = {};
@@ -2057,19 +2057,6 @@ window.onload = async function () {
     document.getElementById("clearAllButton").onclick = function (e) {
         selectedSprites = []
         updateGFX()
-    }
-
-    document.getElementById("clearConflictsButton").onclick = function (e) {
-        for (let i = selectedSprites.length - 1; i >= 0; i--) {
-            const sprite = selectedSprites[i];
-            for (let j = 0; j < sprite.tiles.length; j++) {
-                const [index, gfx] = sprite.tiles[j];
-                if (selectedTiles[index] && selectedTiles[index] != gfx) {
-                    selectedSprites.splice(i, 1)
-                    updateGFX()
-                }
-            }
-        }
     }
 
     document.getElementById("randButton").onclick = function (e) {
@@ -2507,7 +2494,6 @@ function updateGFX() {
     }
 
     document.getElementById("clearAllButton").classList.toggle('disabled', !selectedSprites.length);
-    document.getElementById("clearConflictsButton").classList.toggle('disabled', !conflicts);
     document.getElementById("randButton").classList.toggle('disabled', !remainingSprites.length);
 
     renderGfxCanvas()
