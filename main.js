@@ -360,13 +360,19 @@ const allSprites = [{
         [3, 0, 0, 6, false, 56, 56, false, false],
     ]
 }, {
-    name: "Bowser Statue",
+    name: "Bowser Statue (Jumping)",
     category: "castle",
     slot2: "GFX12",
     displayTiles: [
         [2, 0, 5, 3, false, 76, 52, false, false],
         [2, 0, 6, 5, true, 84, 68, false, false],
         [2, 0, 0, 3, false, 68, 44, false, false],
+    ]
+}, {
+    name: "Bowser Statue (Static)",
+    category: "castle",
+    slot2: "GFX12",
+    displayTiles: [
         [2, 1, 1, 4, false, 44, 60, false, false],
         [2, 1, 0, 3, false, 36, 52, false, false],
     ]
@@ -985,44 +991,38 @@ const allSprites = [{
     slot1: "GFX0D",
     displayTiles: [
         [1, 0, 8, 0, true, 32, 36, false, false],
-        [1, 0, 10, 0, true, 40, 36, false, false],
-        [1, 0, 11, 0, true, 48, 36, false, false],
-        [1, 0, 12, 0, true, 56, 36, false, false],
-        [1, 0, 13, 0, true, 64, 36, false, false],
-        [1, 0, 14, 0, true, 72, 36, false, false],
-        [1, 0, 8, 1, true, 80, 36, false, false],
-        [1, 0, 9, 1, true, 88, 36, false, false],
-        [1, 0, 14, 1, true, 32, 44, false, false],
-        [1, 0, 8, 2, true, 40, 44, false, false],
-        [1, 0, 11, 2, true, 48, 44, false, false],
-        [1, 0, 12, 2, true, 56, 44, false, false],
-        [1, 0, 13, 2, true, 64, 44, false, false],
-        [1, 0, 14, 2, true, 72, 44, false, false],
-        [1, 0, 15, 2, true, 80, 44, false, false],
-        [1, 0, 10, 3, true, 88, 44, false, false],
-        [1, 0, 13, 3, true, 32, 52, false, false],
-        [1, 0, 14, 3, true, 40, 52, false, false],
-        [1, 0, 15, 3, true, 48, 52, false, false],
-        [1, 0, 0, 2, true, 56, 52, false, false],
-        [1, 0, 1, 2, true, 64, 52, false, false],
-        [1, 0, 0, 3, true, 72, 52, false, false],
-        [1, 0, 14, 2, true, 40, 68, false, false],
-        [1, 0, 14, 1, true, 48, 68, false, false],
-        [1, 0, 14, 2, true, 56, 68, false, false],
-        [1, 0, 12, 2, true, 64, 68, false, false],
-        [1, 0, 12, 0, true, 72, 68, false, false],
-        [1, 0, 11, 0, true, 80, 68, false, false],
-        [1, 0, 9, 0, true, 36, 80, false, false],
-        [1, 0, 10, 1, true, 44, 80, false, false],
-        [1, 0, 11, 1, true, 52, 80, false, false],
-        [1, 0, 12, 1, true, 60, 80, false, false],
-        [1, 0, 13, 1, true, 68, 80, false, false],
-        [1, 0, 9, 2, true, 76, 80, false, false],
-        [1, 0, 10, 2, true, 84, 80, false, false],
-        [1, 0, 8, 3, true, 36, 88, false, false],
-        [1, 0, 9, 3, true, 44, 88, false, false],
-        [1, 0, 11, 3, true, 52, 88, false, false],
-        [1, 0, 12, 3, true, 60, 88, false, false],
+        [1, 0, 9, 0, true, 40, 36, false, false],
+        [1, 0, 10, 0, true, 48, 36, false, false],
+        [1, 0, 11, 0, true, 56, 36, false, false],
+        [1, 0, 12, 0, true, 64, 36, false, false],
+        [1, 0, 13, 0, true, 72, 36, false, false],
+        [1, 0, 14, 0, true, 80, 36, false, false],
+        [1, 0, 8, 1, true, 88, 36, false, false],
+        [1, 0, 9, 1, true, 96, 36, false, false],
+        [1, 0, 10, 1, true, 104, 36, false, false],
+        [1, 0, 11, 1, true, 112, 36, false, false],
+        [1, 0, 12, 1, true, 32, 44, false, false],
+        [1, 0, 13, 1, true, 40, 44, false, false],
+        [1, 0, 14, 1, true, 48, 44, false, false],
+        [1, 0, 8, 2, true, 56, 44, false, false],
+        [1, 0, 9, 2, true, 64, 44, false, false],
+        [1, 0, 10, 2, true, 72, 44, false, false],
+        [1, 0, 11, 2, true, 80, 44, false, false],
+        [1, 0, 12, 2, true, 88, 44, false, false],
+        [1, 0, 13, 2, true, 96, 44, false, false],
+        [1, 0, 14, 2, true, 104, 44, false, false],
+        [1, 0, 15, 2, true, 112, 44, false, false],
+        [1, 0, 8, 3, true, 32, 52, false, false],
+        [1, 0, 9, 3, true, 40, 52, false, false],
+        [1, 0, 10, 3, true, 48, 52, false, false],
+        [1, 0, 11, 3, true, 56, 52, false, false],
+        [1, 0, 12, 3, true, 64, 52, false, false],
+        [1, 0, 13, 3, true, 72, 52, false, false],
+        [1, 0, 14, 3, true, 80, 52, false, false],
+        [1, 0, 15, 3, true, 88, 52, false, false],
+        [1, 0, 0, 2, true, 96, 52, false, false],
+        [1, 0, 1, 2, true, 104, 52, false, false],
+        [1, 0, 0, 3, true, 112, 52, false, false],
     ]
 }, {
     name: "Yoshi's House Bird",
@@ -2573,7 +2573,7 @@ function downloadGfx(slot) {
             }
         } else {
             // empty space - fill with something cool?
-            pixels.push(...Array.from({length: 64}, () => Math.floor(Math.random() * 64)))
+            pixels.push(...Array.from({ length: 64 }, () => Math.floor(Math.random() * 64)))
         }
     }
 
