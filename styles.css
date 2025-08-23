@@ -277,7 +277,7 @@ canvas {
         position: fixed;
         background-color: rgba(0, 0, 0, 0.25);
         opacity: 0;
-        transition: opacity 0.1s;
+        transition: opacity 0.25s;
         left: 0;
         right: 0;
         top: 0;
@@ -295,7 +295,7 @@ canvas {
         padding: 48px 24px 24px;
         border-radius: 4px;
         pointer-events: auto;
-        transition: transform 0.1s;
+        transition: transform 0.25s;
         transform: translateY(-100%);
     }
 

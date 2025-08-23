@@ -1700,6 +1700,25 @@ const allSprites = [{
         [2, 0, 15, 6, true, 88, 64, false, false],
     ]
 }, {
+    name: "Yoshi Fireballs",
+    category: "generic",
+    slot2: "GFX13",
+    displayTiles: [
+        [2, 2, 11, 2, false, 68, 56, false, false],
+        [2, 2, 4, 0, false, 44, 56, false, false],
+    ]
+},  {
+    name: "Yoshi's Tongue",
+    category: "generic",
+    slot2: "GFX13",
+    displayTiles: [
+        [2, 3, 6, 6, true, 60, 56, false, false],
+        [2, 3, 6, 7, true, 68, 56, false, false],
+        [2, 3, 6, 7, true, 76, 56, false, false],
+        [2, 3, 6, 7, true, 84, 56, false, false],
+        [2, 5, 15, 3, true, 96, 64, false, false],
+    ]
+}, {
     name: "Spike Top",
     category: "cave",
     slot3: "GFX04",
@@ -2573,7 +2592,7 @@ function downloadGfx(slot) {
             }
         } else {
             // empty space - fill with something cool?
-            pixels.push(...Array.from({ length: 64 }, () => Math.floor(Math.random() * 64)))
+            pixels.push(...Array.from({ length: 64 }, () => 0))
         }
     }
 
