@@ -1707,7 +1707,7 @@ const allSprites = [{
         [2, 2, 11, 2, false, 68, 56, false, false],
         [2, 2, 4, 0, false, 44, 56, false, false],
     ]
-},  {
+}, {
     name: "Yoshi's Tongue",
     category: "generic",
     slot2: "GFX13",
@@ -1918,8 +1918,8 @@ for (let i = 0; i < allSprites.length; i++) {
 
 //  ==============================================================
 
-const gfxScale = 2;
-const spriteScale = 3;
+let gfxScale = 1;
+let spriteScale = 3;
 
 let activePaletteIndex = 0;
 const allGfx = {};
@@ -1942,9 +1942,11 @@ let mouseX, mouseY
 //  ==============================================================
 
 window.onload = async function () {
+    gfxScale = window.innerHeight <= 880 ? 1 : 2
+    spriteScale = window.innerHeight <= 880 ? 2 : 3
     const gfxCanvas = document.getElementById("gfxCanvas");
-    gfxCanvas.setAttribute("width", 128 * gfxScale)
-    gfxCanvas.setAttribute("height", 256 * gfxScale)
+    gfxCanvas.width = 128 * gfxScale;
+    gfxCanvas.height = 256 * gfxScale;
     gfxCtx = gfxCanvas.getContext("2d");
     // gfxCanvas.onclick = function (e) {
     //     let x, y
@@ -1993,12 +1995,11 @@ window.onload = async function () {
             activePaletteIndex -= 1
         }
         if (activePaletteIndex < 0) {
-            activePaletteIndex = 0
+            activePaletteIndex += 8
         }
-        if (activePaletteIndex > 7) {
-            activePaletteIndex = 7
+        while (activePaletteIndex > 7) {
+            activePaletteIndex -= 8
         }
-        document.getElementById("paletteSelect").value = activePaletteIndex
         e.preventDefault()
         renderGfxCanvas()
         renderTooltipCanvas()
@@ -2262,6 +2263,18 @@ window.onload = async function () {
     renderGfxCanvas()
     renderTooltipCanvas()
 };
+
+window.onresize = function () {
+    const oldGfxScale = gfxScale
+    gfxScale = window.innerHeight <= 880 ? 1 : 2
+    spriteScale = window.innerHeight <= 880 ? 2 : 3
+    if (oldGfxScale != gfxScale) {
+        const gfxCanvas = document.getElementById("gfxCanvas");
+        gfxCanvas.width = 128 * gfxScale
+        gfxCanvas.height = 256 * gfxScale
+        renderGfxCanvas()
+    }
+}
 
 function loadGfxFile(blob, gfx) {
     return new Promise(async (resolve) => {

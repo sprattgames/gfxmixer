@@ -81,11 +81,24 @@ p {
     position: sticky;
     position: -webkit-sticky;
     height: calc(100vh - 32px);
+    min-width: 272px;
     background-color: rgb(51, 96, 102);
     box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, 0.25);
     padding: 16px 24px;
     flex-direction: column;
+    display: flex;
     top: 0px;
+    overflow-y: hidden;
+
+    .top-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        >div:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
 }
 
 canvas {
@@ -108,12 +121,14 @@ canvas {
 
 .selected-list {
     margin-top: 8px;
-    min-height: 250px;
     overflow-y: auto;
     background-color: rgb(45, 89, 94);
     box-shadow: inset 1px 1px 8px 0px rgba(0, 0, 0, 0.125);
     padding: 7px 4px;
     border-radius: 4px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
 
     .selected-list-element {
         cursor: pointer;
@@ -124,8 +139,8 @@ canvas {
         justify-content: space-between;
         text-overflow: ellipsis;
         overflow: hidden;
+        min-height: 18px;
         max-height: 18px;
-        /* white-space: nowrap; */
 
         &:hover {
             background-color: rgb(51, 99, 104);
@@ -152,6 +167,10 @@ canvas {
 
     >.button {
         max-width: none;
+    }
+
+    .title {
+        display: none;
     }
 }
 
@@ -291,7 +310,7 @@ canvas {
         flex-direction: column;
         box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.25);
         background-color: rgb(51, 96, 102);
-        margin: 0px 16px 16px 368px;
+        margin: 0px 16px 16px 344px;
         padding: 48px 24px 24px;
         border-radius: 4px;
         pointer-events: auto;
@@ -324,5 +343,60 @@ canvas {
 @media (max-width: 900px) {
     .help .modal {
         margin: 0px 16px 16px 16px;
+    }
+}
+
+@media (max-height: 880px) {
+    h1 {
+        font-size: x-large;
+    }
+
+    h2 {
+        font-size: small;
+    }
+
+    h3 {
+        font-size: large;
+        margin-bottom: 8px;
+    }
+
+    p {
+        font-size: medium;
+        margin-bottom: 8px;
+        margin-left: 12px;
+    }
+
+    .modal {
+        padding-top: 32px;
+    }
+
+    .sidebar .top-section {
+        flex-direction: row;
+        justify-content: space-between;
+
+        .gfx-canvas {
+            margin-right: 8px;
+            padding: 4px;
+            margin-bottom: 0;
+        }
+
+        .title {
+            display: none;
+        }
+
+        .buttons-container {
+            align-items: flex-end;
+            flex: 1;
+
+            .title {
+                display: block;
+                margin-left: auto;
+                margin-bottom: 4px;
+            }
+        }
+    }
+
+    .category-list {
+        padding: 48px 0px;
     }
 }
