@@ -32,9 +32,10 @@
                             </h2>
                         </div>
                         <div id="randButton" class="button">Random</div>
-                        <div id="clearAllButton" class="button disabled">Clear all</div>
+                        <div id="uploadButton" class="button">Upload custom</div>
                         <div id="download2Button" class="button disabled">Download SP3</div>
                         <div id="download3Button" class="button disabled">Download SP4</div>
+                        <div id="clearAllButton" class="button disabled">Clear all</div>
                     </div>
                 </div>
                 <div id="selectedList" class="selected-list"></div>
@@ -95,7 +96,11 @@
             </div>
         </div>
     </div>
-    <canvas id="tooltipCanvas" width="256" height="256" class="sprite-tooltip" hidden></canvas>
+    <input id="fileInput" hidden type="file" multiple accept=".bin">
+    <div id="tooltip" class="sprite-tooltip" hidden>
+        <canvas id="tooltipCanvas" width="256" height="256"></canvas>
+        <div id="tooltipText"></div>
+    </div>
     <div class="help">
         <div class="background"></div>
         <div class="tab">
@@ -132,6 +137,18 @@
                 To get the graphics into your romhack, make sure to download both SP3 and SP4 gfx files and insert them
                 as ExGFX. If you don't know how to do that, check out the
                 <a href="https://www.smwcentral.net/?p=faq&page=1219826-graphics">SMWCentral FAQ</a>.
+                <br>
+            </p>
+            <br>
+            <h3>How do I include custom/redrawn graphics?</h3>
+            <p>
+                First, rename your custom GFX files so that they have the same name as their corresponding vanilla
+                GFX. <a href="https://www.smwcentral.net/?p=section&a=details&id=6603">This list may be useful.</a> 
+                For example, graphics for a redrawn thwomp in SP4 should be renamed to <i>GFX03.bin</i>.
+                <br>
+                <br>
+                Once the names are correct, click the <i>Upload custom</i> button and select your new GFX files. They
+                will replace the current ones until the page is refreshed.
             </p>
             <br>
             <h3>I found a bug!</h3>

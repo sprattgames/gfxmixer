@@ -1678,6 +1678,13 @@ const allSprites = [{
         [2, 1, 11, 6, false, 56, 56, false, false]
     ]
 }, {
+    name: "Glass Block Bounce Tile",
+    category: "particle",
+    slot3: "GFX02",
+    displayTiles: [
+        [3, 1, 10, 6, false, 56, 56, false, false]
+    ]
+}, {
     name: "Pirahna Plant",
     category: "cave",
     slot3: "GFX04",
@@ -1932,7 +1939,7 @@ let selectedTiles = []
 let currentSprite
 let tooltipTimeout
 
-let gfxCtx, spriteCtx, tooltipCanvas
+let gfxCtx, spriteCtx, tooltip, tooltipCanvas, tooltipText
 let selectedTile = -1
 let selected8x8 = true
 let selectedXFlip = false
@@ -2005,7 +2012,10 @@ window.onload = async function () {
         renderTooltipCanvas()
     }
 
+    tooltip = document.getElementById("tooltip");
+    tooltipText = document.getElementById("tooltipText");
     tooltipCanvas = document.getElementById("tooltipCanvas");
+
     tooltipCanvas.setAttribute("width", 128 * spriteScale)
     tooltipCanvas.setAttribute("height", 128 * spriteScale)
     spriteCtx = tooltipCanvas.getContext("2d");
@@ -2113,6 +2123,12 @@ window.onload = async function () {
     document.getElementById("download2Button").onclick = () => downloadGfx(2);
     document.getElementById("download3Button").onclick = () => downloadGfx(3);
 
+    document.getElementById("uploadButton").onclick = () => uploadCustomGfx();
+
+    document.getElementById('fileInput').onchange = () => onCustomGfxUploaded()
+    // document.getElementById('fileInput').oncancel = () => null
+
+
     const spriteTemplate = document.getElementById("spriteTemplate");
     allSprites.sort((a, b) => a.name > b.name ? 1 : -1)
     for (let i = 0; i < allSprites.length; i++) {
@@ -2126,21 +2142,21 @@ window.onload = async function () {
             updateGFX();
 
             clearTimeout(tooltipTimeout)
-            tooltipCanvas.hidden = false;
+            tooltip.hidden = false;
             const rect = this.getBoundingClientRect()
-            let x = (rect.left + rect.right - tooltipCanvas.clientWidth) / 2
-            let y = rect.top - tooltipCanvas.clientHeight - 8
-            x = Math.min(x, window.innerWidth - tooltipCanvas.clientWidth - 12)
+            let x = (rect.left + rect.right - tooltip.clientWidth) / 2
+            let y = rect.top - tooltip.clientHeight - 8
+            x = Math.min(x, window.innerWidth - tooltip.clientWidth - 12)
             x = Math.max(x, 12)
             if (y < 12) {
                 y = rect.bottom + 8
             }
-            tooltipCanvas.style.left = x + window.scrollX
-            tooltipCanvas.style.top = y + window.scrollY
+            tooltip.style.left = x + window.scrollX
+            tooltip.style.top = y + window.scrollY
         }
         clone.onmouseleave = function (e) {
             tooltipTimeout = setTimeout(() => {
-                tooltipCanvas.hidden = true;
+                tooltip.hidden = true;
                 currentSprite = null;
                 updateGFX();
             }, 50)
@@ -2370,8 +2386,6 @@ function renderTooltipCanvas() {
         spriteCtx.scale(spriteScale, spriteScale)
         spriteCtx.translate(-left, -top)
 
-
-
         for (let i = 0; i < currentSprite.displayTiles.length; i++) {
             const [slot, palette, tx, ty, is8x8, x, y, xFlip, yFlip] = currentSprite.displayTiles[i]
             const preferredGfx = [currentSprite.slot0, currentSprite.slot1, currentSprite.slot2, currentSprite.slot3]
@@ -2408,6 +2422,9 @@ function renderTooltipCanvas() {
 
             spriteCtx.restore();
         }
+
+        var slots = [currentSprite.slot1, currentSprite.slot2, currentSprite.slot3, currentSprite.slot4]
+        tooltipText.innerHTML = slots.filter(Boolean).join(', ');
     }
 }
 
@@ -2620,4 +2637,37 @@ function downloadGfx(slot) {
     link.download = "ExGFX80.bin";
     link.click();
     URL.revokeObjectURL(link.href);
+}
+
+function uploadCustomGfx() {
+    document.getElementById('fileInput').click()
+}
+
+async function onCustomGfxUploaded() {
+    var input = document.getElementById('fileInput')
+
+    if (input.files.length == 0) {
+        // cancelled or did not upload file
+    } else {
+        try {
+            for (let i = 0; i < input.files.length; i++) {
+                const file = input.files[i];
+                var name = file.name.split('.')[0].toUpperCase()
+                if (!gfxFileNames.includes(name)) {
+                    throw new Error("Incorrect file name. GFX will not be included");
+                }
+                await loadGfxFile(file, name);
+            }
+            
+            renderGfxCanvas()
+            renderTooltipCanvas()
+
+            alert("Successfully uploaded " + input.files.length + (input.files.length == 1 ? " GFX file." : " GFX files."))
+        } catch (error) {
+            console.error(error)
+            alert("Error uploading custom file! Check help section for instructions.")
+            renderGfxCanvas()
+            renderTooltipCanvas()
+        }
+    }
 }
